@@ -136,54 +136,6 @@
                     "isPartOfComposite": true
                 }
             ]
-        },
-        {
-            "name": "Enviroment",
-            "id": "9f50fb19-55ff-4564-bfa3-2ae3035f9001",
-            "actions": [
-                {
-                    "name": "Left Click",
-                    "type": "Button",
-                    "id": "e315ee7f-9704-4b37-b40a-7890b2d791bc",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Right Click",
-                    "type": "Button",
-                    "id": "26e08f64-5adf-4a63-aa2e-95bbfe620bef",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "6c300890-e956-40c4-bfaa-50d2e57d589f",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5ca93502-9a9e-4163-9c84-51aaf2121dd5",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
         }
     ],
     "controlSchemes": []

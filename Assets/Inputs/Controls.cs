@@ -158,54 +158,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
-        },
-        {
-            ""name"": ""Enviroment"",
-            ""id"": ""9f50fb19-55ff-4564-bfa3-2ae3035f9001"",
-            ""actions"": [
-                {
-                    ""name"": ""Left Click"",
-                    ""type"": ""Button"",
-                    ""id"": ""e315ee7f-9704-4b37-b40a-7890b2d791bc"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Right Click"",
-                    ""type"": ""Button"",
-                    ""id"": ""26e08f64-5adf-4a63-aa2e-95bbfe620bef"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""6c300890-e956-40c4-bfaa-50d2e57d589f"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left Click"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5ca93502-9a9e-4163-9c84-51aaf2121dd5"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right Click"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": []
@@ -214,10 +166,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Shooting = m_Player.FindAction("Shooting", throwIfNotFound: true);
-        // Enviroment
-        m_Enviroment = asset.FindActionMap("Enviroment", throwIfNotFound: true);
-        m_Enviroment_LeftClick = m_Enviroment.FindAction("Left Click", throwIfNotFound: true);
-        m_Enviroment_RightClick = m_Enviroment.FindAction("Right Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -329,68 +277,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-
-    // Enviroment
-    private readonly InputActionMap m_Enviroment;
-    private List<IEnviromentActions> m_EnviromentActionsCallbackInterfaces = new List<IEnviromentActions>();
-    private readonly InputAction m_Enviroment_LeftClick;
-    private readonly InputAction m_Enviroment_RightClick;
-    public struct EnviromentActions
-    {
-        private @Controls m_Wrapper;
-        public EnviromentActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LeftClick => m_Wrapper.m_Enviroment_LeftClick;
-        public InputAction @RightClick => m_Wrapper.m_Enviroment_RightClick;
-        public InputActionMap Get() { return m_Wrapper.m_Enviroment; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(EnviromentActions set) { return set.Get(); }
-        public void AddCallbacks(IEnviromentActions instance)
-        {
-            if (instance == null || m_Wrapper.m_EnviromentActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_EnviromentActionsCallbackInterfaces.Add(instance);
-            @LeftClick.started += instance.OnLeftClick;
-            @LeftClick.performed += instance.OnLeftClick;
-            @LeftClick.canceled += instance.OnLeftClick;
-            @RightClick.started += instance.OnRightClick;
-            @RightClick.performed += instance.OnRightClick;
-            @RightClick.canceled += instance.OnRightClick;
-        }
-
-        private void UnregisterCallbacks(IEnviromentActions instance)
-        {
-            @LeftClick.started -= instance.OnLeftClick;
-            @LeftClick.performed -= instance.OnLeftClick;
-            @LeftClick.canceled -= instance.OnLeftClick;
-            @RightClick.started -= instance.OnRightClick;
-            @RightClick.performed -= instance.OnRightClick;
-            @RightClick.canceled -= instance.OnRightClick;
-        }
-
-        public void RemoveCallbacks(IEnviromentActions instance)
-        {
-            if (m_Wrapper.m_EnviromentActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IEnviromentActions instance)
-        {
-            foreach (var item in m_Wrapper.m_EnviromentActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_EnviromentActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public EnviromentActions @Enviroment => new EnviromentActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnShooting(InputAction.CallbackContext context);
-    }
-    public interface IEnviromentActions
-    {
-        void OnLeftClick(InputAction.CallbackContext context);
-        void OnRightClick(InputAction.CallbackContext context);
     }
 }
