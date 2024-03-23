@@ -37,9 +37,12 @@ public abstract class Projectile : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D colider)
     {
-        Debug.Log("tigger enter");
-        onHit(colider.gameObject);
-        kill();
+        Debug.Log("collsion: "+ colider.tag);
+        if (!colider.CompareTag("Player") && !colider.CompareTag("Projectile"))
+        {
+            onHit(colider.gameObject);
+            kill();
+        }
     }
 
     protected abstract void onHit(GameObject obj);

@@ -16,6 +16,7 @@ public class PlayerActionsController : MonoBehaviour
     [SerializeField] private float shootCooldown;
     [SerializeField] private float shootCooldownAttributeMultiplayer;
     private Transform shootParent;
+    private Transform puttedParent;
     [Header("Single item use")]
 
     [Header("Activated item use")]
@@ -39,7 +40,8 @@ public class PlayerActionsController : MonoBehaviour
     {
         canShoot = true;
         this.collider=GetComponent<Collider2D>();
-        shootParent = GameObject.Find("bombs").transform;
+        shootParent = GameObject.Find("Projectiles").transform;
+        puttedParent = GameObject.Find("Putted").transform;
         animator = this.gameObject.GetComponent<Animator>();
         playerAttributes = this.gameObject.GetComponent<PlayerAttributesController>();
     }
@@ -49,6 +51,11 @@ public class PlayerActionsController : MonoBehaviour
         udpateMouseShoot();
     }
 
+    #region Shooting
+
+    
+
+   
 
     private void shoot()
     {
@@ -156,4 +163,23 @@ public class PlayerActionsController : MonoBehaviour
     {
         this.setShootingDiretion(worldMousePositon - new Vector2(this.transform.position.x, this.transform.position.y));
     }
-}
+    #endregion
+
+    #region Putting
+
+    public void putObject()
+    {
+            GameObject shootable = Instantiate(
+                puttableItem,
+                this.transform.position,
+                new Quaternion(0f, 0f, 0f, 0f),
+                puttedParent
+            );
+        
+        }
+
+
+        #endregion
+
+
+    }

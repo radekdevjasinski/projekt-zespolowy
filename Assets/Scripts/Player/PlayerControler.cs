@@ -122,7 +122,8 @@ public class PlayerControler : MonoBehaviour
     }
     void OnPut()
     {
-        Debug.Log("On put");
+        //Debug.Log("On put");
+        playerActionsController.putObject();
     }
     void OnCancelPut()
     {

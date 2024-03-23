@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class BombExplosion : MonoBehaviour
 {
-    public GameObject blastPrefab;
+    [SerializeField] private GameObject blastPrefab;
+
+    [SerializeField] private float explosionTimer = 3;
     void Start()
     {
-        Destroy(this.gameObject, 5f);
+        Invoke("kill", explosionTimer);
+        
     }
-    void OnCollisionEnter2D(Collision2D collision)
+
+    private void kill()
     {
-
-        if (!collision.gameObject.CompareTag("Player"))
-        {
-            GameObject blast = Instantiate(blastPrefab);
-            blast.transform.position = this.transform.position;
-            blast.GetComponent<ParticleSystem>().Play();
-            Destroy(blast, 3f);
-            Destroy(this.gameObject);
-
-        }
+        GameObject blast = Instantiate(blastPrefab);
+        blast.transform.position = this.transform.position;
+        blast.GetComponent<ParticleSystem>().Play();
+        Destroy(blast, 3f);
+        Destroy(this.gameObject);
     }
 
 }
