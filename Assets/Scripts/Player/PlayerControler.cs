@@ -10,7 +10,8 @@ public class PlayerControler : MonoBehaviour
 
 
     //Controllers
-
+    PlayerMovementController playerMovementController;
+    PlayerActionsController playerActionsController;
 
 
     //Actions
@@ -25,6 +26,8 @@ public class PlayerControler : MonoBehaviour
     {
         Debug.Log("Awake");
         this.controls =new Controls();
+        this.playerMovementController=this.GetComponent<PlayerMovementController>();
+        this.playerActionsController= this.GetComponent<PlayerActionsController>();
     }
 
     void OnEnable()
@@ -39,7 +42,7 @@ public class PlayerControler : MonoBehaviour
 
         shoot = this.controls.Player.Shoot;
         shoot.performed += ctx => { OnShoot(ctx.ReadValue<Vector2>()); };
-        shoot.canceled += ctx => { OnCancelShoot(ctx.ReadValue<Vector2>()); };
+        shoot.canceled += ctx => { OnCancelShoot(); };
 
         useActivatedItem=this.controls.Player.UseActivatedItem;
         useActivatedItem.performed += ctx => { OnUseActivatedItem(); };
@@ -65,20 +68,24 @@ public class PlayerControler : MonoBehaviour
     //On actions
     void OnMove(Vector2 movement)
     {
-        Debug.Log("movemnet: " + movement);
+        Debug.Log("On move: "+ movement);
+        playerMovementController.setMoveValue(movement);
     }
     void OnCancelMove(Vector2 movement)
     {
-        Debug.Log("cancel movemnet: " + movement);
+        playerMovementController.setMoveValue(movement);
     }
 
-    void OnShoot(Vector2 movement)
+    void OnShoot(Vector2 direction)
     {
-        Debug.Log("Shoot: " + movement);
+        //Debug.Log("Shoot: " + movement);
+        //this.playerActionsController.shoot(direction);
+        this.playerActionsController.setIsShooting(true, direction);
     }
-    void OnCancelShoot(Vector2 movement)
+    void OnCancelShoot()
     {
-        Debug.Log("cancel Shoot: " + movement);
+        //Debug.Log("cancel Shoot: " + movement);
+        this.playerActionsController.setIsShooting(false, new Vector2(0,0));
     }
 
     void OnUseActivatedItem()
