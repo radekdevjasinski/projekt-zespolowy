@@ -11,7 +11,10 @@ public class PlayerActionsController : MonoBehaviour
     [Header("Shooting")]
     [SerializeField] private GameObject shootableItem;
     [SerializeField] private float shootSpeed;
+    [SerializeField] private float shootAttributeMultiplayer=1;
+
     [SerializeField] private float shootCooldown;
+    [SerializeField] private float shootCooldownAttributeMultiplayer;
     private Transform shootParent;
     [Header("Single item use")]
 
@@ -28,12 +31,17 @@ public class PlayerActionsController : MonoBehaviour
     Collider2D collider;
     private Animator animator;
 
+
+    //controllers
+    private PlayerAttributesController playerAttributes;
+
     private void Awake()
     {
         canShoot = true;
         this.collider=GetComponent<Collider2D>();
         shootParent = GameObject.Find("bombs").transform;
         animator = this.gameObject.GetComponent<Animator>();
+        playerAttributes = this.gameObject.GetComponent<PlayerAttributesController>();
     }
 
     void Update()
@@ -54,14 +62,18 @@ public class PlayerActionsController : MonoBehaviour
             transform.position.y + collider.bounds.size.y*1.4f * direction.y,
             0f)
             ;
-        GameObject shootable = Instantiate(
-            shootableItem,
-             startPosition,
-           new Quaternion(0f,0f,0f,0f),
-           shootParent
-           );
-        shootable.GetComponent<Rigidbody2D>().AddForce(direction * shootSpeed,ForceMode2D.Impulse);
-           Invoke("resetShootingCooldDown", shootCooldown);
+            GameObject shootable = Instantiate(
+                shootableItem,
+                 startPosition,
+               new Quaternion(0f, 0f, 0f, 0f),
+               shootParent
+               );
+            shootable.GetComponent<Projectile>().setupProjectileParams(
+                playerAttributes.Damage,
+                playerAttributes.Range
+                );
+            shootable.GetComponent<Rigidbody2D>().AddForce(direction * shootSpeed *(1+playerAttributes.ProjectileSpeed) , ForceMode2D.Impulse);
+            Invoke("resetShootingCooldDown", shootCooldown/(1+playerAttributes.FireRate* shootCooldownAttributeMultiplayer));
         }
     }
 
@@ -109,12 +121,12 @@ public class PlayerActionsController : MonoBehaviour
 
     private Vector2 bount(Vector2 vec)
     {
-        Debug.Log("bount tmp: " + vec);
+       
         Vector2 tmp = new Vector2(
            vec.x == 0 ? 0 : vec.x < 0 ? -1 : 1,
              vec.y == 0 ? 0 : vec.y < 0 ? -1 : 1
             );
-        Debug.Log("Shooting tmp: " + tmp);
+    
         return new Vector2(
             Mathf.Abs(vec.y)> Mathf.Abs(vec.x) ? 0:tmp.x,
             Mathf.Abs(vec.y) <= Mathf.Abs(vec.x) ? 0 : tmp.y
@@ -130,7 +142,6 @@ public class PlayerActionsController : MonoBehaviour
         animator.SetFloat("HorizontalShoot", dir.x);
         animator.SetFloat("VerticalShoot", dir.y);
         this.direction= dir;
-        Debug.Log("Shooting dieciton: " + dir);
     }
 
     internal void setIsShooting(bool state)

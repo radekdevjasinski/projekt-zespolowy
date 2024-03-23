@@ -14,6 +14,7 @@ public class PlayerControler : MonoBehaviour
     //Controllers
     PlayerMovementController playerMovementController;
     PlayerActionsController playerActionsController;
+    PlayerAttributesController playerAttributesController;
 
 
     //Actions
@@ -30,16 +31,15 @@ public class PlayerControler : MonoBehaviour
  
     private void Awake()
     {
-        Debug.Log("Awake");
+       
         this.controls =new Controls();
         this.playerMovementController=this.GetComponent<PlayerMovementController>();
         this.playerActionsController= this.GetComponent<PlayerActionsController>();
-
+        this.playerAttributesController= this.GetComponent<PlayerAttributesController>();
     }
 
     void OnEnable()
     {
-        Debug.Log("OnEnable");
         this.controls.Player.Enable();
 
         move = this.controls.Player.Move;
@@ -93,13 +93,13 @@ public class PlayerControler : MonoBehaviour
 
     void OnShoot(Vector2 direction)
     {
-        Debug.Log("direction: "+ direction);
+        //Debug.Log("direction: "+ direction);
         this.playerActionsController.setShootingDiretion(direction);
         this.playerActionsController.setIsShooting(true);
     }
     void OnCancelShoot()
     {
-        Debug.Log("cancel shoot: ");
+       // Debug.Log("cancel shoot: ");
         this.playerActionsController.setIsShooting(false);
       
     }

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
-
+    //controlers
+    PlayerAttributesController playerAttributesController;
 
     //Parameters
     [SerializeField] float baseSpeed;
-
+    [SerializeField] private float sppedAttributeMultiplayer = 1;
 
     private Rigidbody2D rb;
     private GameObject bombs;
@@ -24,41 +25,19 @@ public class PlayerMovementController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         animator = this.gameObject.GetComponent<Animator>();
-        //bombs = GameObject.Find("bombs");
+        playerAttributesController = this.gameObject.GetComponent<PlayerAttributesController>();
     }
 
 
 
     void FixedUpdate()
     {
-        //moveValue = controls.Player.Movement.ReadValue<Vector2>();
-
-;        rb.AddForce( moveValue * baseSpeed);
-
-        //shootValue = controls.Player.Shooting.ReadValue<Vector2>();
-        //if (shootValue.magnitude > 0.0001f)
-        //{
-        //    animator.SetBool("Shooting", true);
-        //    animator.SetFloat("Horizontal", shootValue.x);
-        //    animator.SetFloat("Vertical", shootValue.y);
-
-        //    Shoot();
-        //}
-        //else
-        //{
-        //    animator.SetBool("Shooting", false);
-        //}
-        //if (timer >= 0)
-        //{
-        //    timer -= Time.deltaTime;
-        //}
-
+;        rb.AddForce( moveValue * baseSpeed*(1+(sppedAttributeMultiplayer*playerAttributesController.Speed)));
     }
   
 
     public void setMoveValue(Vector2 moveValue)
     {
-        Debug.Log("set move vmlaue: "+ moveValue);
         this.moveValue = moveValue;
         animator.SetFloat("HorizontalMove", moveValue.x);
         animator.SetFloat("VerticalMove", moveValue.y);
