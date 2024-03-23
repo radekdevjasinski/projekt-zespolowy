@@ -38,9 +38,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Shoot"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""51a93813-ba44-4594-b3cb-8ca08f28acc6"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Stick"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -80,64 +80,27 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePress"",
+                    ""type"": ""Button"",
+                    ""id"": ""2914ae54-23dc-44a8-a326-961e0cd80776"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePostion"",
+                    ""type"": ""Value"",
+                    ""id"": ""65e183b7-bfbb-4748-bc73-2291e3d4644b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": ""Keyboard"",
-                    ""id"": ""1eb457b2-65b4-42e4-a526-56b4c16aac4b"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""764bae22-5f42-4017-910a-b5d47ad3ea7d"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""eea335e1-be82-4a5d-9065-d4dfc19fb112"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""a50c8ccf-7760-4edc-9267-98fbdb5c8adb"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""2f8f1af8-8ae1-4806-aa64-84dfcb8c8266"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
                 {
                     ""name"": ""2D Vector"",
                     ""id"": ""5b1dd020-8a97-42d0-a372-3ceba5d13fbc"",
@@ -247,6 +210,83 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""DropEquiped"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9d644ee0-2147-4763-8444-5b878b035ccf"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d57f3b1-a7a5-48ee-9476-c2a6a9775dd5"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePostion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""1eb457b2-65b4-42e4-a526-56b4c16aac4b"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""764bae22-5f42-4017-910a-b5d47ad3ea7d"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""eea335e1-be82-4a5d-9065-d4dfc19fb112"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a50c8ccf-7760-4edc-9267-98fbdb5c8adb"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""2f8f1af8-8ae1-4806-aa64-84dfcb8c8266"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -261,6 +301,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Put = m_Player.FindAction("Put", throwIfNotFound: true);
         m_Player_UseSingleItem = m_Player.FindAction("UseSingleItem", throwIfNotFound: true);
         m_Player_DropEquiped = m_Player.FindAction("DropEquiped", throwIfNotFound: true);
+        m_Player_MousePress = m_Player.FindAction("MousePress", throwIfNotFound: true);
+        m_Player_MousePostion = m_Player.FindAction("MousePostion", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +370,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Put;
     private readonly InputAction m_Player_UseSingleItem;
     private readonly InputAction m_Player_DropEquiped;
+    private readonly InputAction m_Player_MousePress;
+    private readonly InputAction m_Player_MousePostion;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -338,6 +382,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Put => m_Wrapper.m_Player_Put;
         public InputAction @UseSingleItem => m_Wrapper.m_Player_UseSingleItem;
         public InputAction @DropEquiped => m_Wrapper.m_Player_DropEquiped;
+        public InputAction @MousePress => m_Wrapper.m_Player_MousePress;
+        public InputAction @MousePostion => m_Wrapper.m_Player_MousePostion;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -365,6 +411,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @DropEquiped.started += instance.OnDropEquiped;
             @DropEquiped.performed += instance.OnDropEquiped;
             @DropEquiped.canceled += instance.OnDropEquiped;
+            @MousePress.started += instance.OnMousePress;
+            @MousePress.performed += instance.OnMousePress;
+            @MousePress.canceled += instance.OnMousePress;
+            @MousePostion.started += instance.OnMousePostion;
+            @MousePostion.performed += instance.OnMousePostion;
+            @MousePostion.canceled += instance.OnMousePostion;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -387,6 +439,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @DropEquiped.started -= instance.OnDropEquiped;
             @DropEquiped.performed -= instance.OnDropEquiped;
             @DropEquiped.canceled -= instance.OnDropEquiped;
+            @MousePress.started -= instance.OnMousePress;
+            @MousePress.performed -= instance.OnMousePress;
+            @MousePress.canceled -= instance.OnMousePress;
+            @MousePostion.started -= instance.OnMousePostion;
+            @MousePostion.performed -= instance.OnMousePostion;
+            @MousePostion.canceled -= instance.OnMousePostion;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -412,5 +470,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnPut(InputAction.CallbackContext context);
         void OnUseSingleItem(InputAction.CallbackContext context);
         void OnDropEquiped(InputAction.CallbackContext context);
+        void OnMousePress(InputAction.CallbackContext context);
+        void OnMousePostion(InputAction.CallbackContext context);
     }
 }

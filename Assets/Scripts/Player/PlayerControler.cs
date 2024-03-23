@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,13 +23,18 @@ public class PlayerControler : MonoBehaviour
     private InputAction useSingleItem;
     private InputAction put;
     private InputAction dropEquiped;
+    private InputAction mousePress;
+    private InputAction mousePosition;
 
+ 
+ 
     private void Awake()
     {
         Debug.Log("Awake");
         this.controls =new Controls();
         this.playerMovementController=this.GetComponent<PlayerMovementController>();
         this.playerActionsController= this.GetComponent<PlayerActionsController>();
+
     }
 
     void OnEnable()
@@ -59,7 +66,16 @@ public class PlayerControler : MonoBehaviour
         dropEquiped = this.controls.Player.DropEquiped;
         dropEquiped.performed += ctx => { OnDropEquiped(); };
         dropEquiped.canceled += ctx => { OnCancelDropEquiped(); };
+
+        mousePress = this.controls.Player.MousePress;
+        mousePress.performed += ctx => { OnMouseLeftPress(); };
+        mousePress.canceled += ctx => { OnCancelMouseLeftPress(); };
+
+        mousePosition = this.controls.Player.MousePostion;
+        mousePosition.performed += ctx => { OnMousePostion(ctx.ReadValue<Vector2>()); };
+
     }
+    
     void OnDisable()
     {
         this.controls.Player.Disable();
@@ -68,7 +84,6 @@ public class PlayerControler : MonoBehaviour
     //On actions
     void OnMove(Vector2 movement)
     {
-        Debug.Log("On move: "+ movement);
         playerMovementController.setMoveValue(movement);
     }
     void OnCancelMove(Vector2 movement)
@@ -78,14 +93,15 @@ public class PlayerControler : MonoBehaviour
 
     void OnShoot(Vector2 direction)
     {
-        //Debug.Log("Shoot: " + movement);
-        //this.playerActionsController.shoot(direction);
-        this.playerActionsController.setIsShooting(true, direction);
+        Debug.Log("direction: "+ direction);
+        this.playerActionsController.setShootingDiretion(direction);
+        this.playerActionsController.setIsShooting(true);
     }
     void OnCancelShoot()
     {
-        //Debug.Log("cancel Shoot: " + movement);
-        this.playerActionsController.setIsShooting(false, new Vector2(0,0));
+        Debug.Log("cancel shoot: ");
+        this.playerActionsController.setIsShooting(false);
+      
     }
 
     void OnUseActivatedItem()
@@ -121,4 +137,28 @@ public class PlayerControler : MonoBehaviour
         Debug.Log("Cancel DropEquiped");
     }
 
+
+
+    void OnMousePostion(Vector2 pos)
+    {
+        this.playerActionsController.setWorldMousePostion(Camera.main.ScreenToWorldPoint(pos));
+    }
+
+
+ 
+    void OnMouseLeftPress()
+    {
+        this.playerActionsController.setLeftMousePress(true);
+        this.playerActionsController.setShootingDirectionFromMouse();
+        this.playerActionsController.setIsShooting(true);
+        
+    }
+
+
+
+    void OnCancelMouseLeftPress()
+    {
+        this.playerActionsController.setLeftMousePress(false);
+        this.playerActionsController.setIsShooting(false);
+    }
 }
