@@ -163,3 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blastPrefab: {fileID: 1210725082526529892, guid: 80bf835b798aac34c96c7680dcec9755, type: 3}
   explosionTimer: 3
+  blastRadius: 0.5
+  destructableMask:
+    serializedVersion: 2
+    m_Bits: 64
