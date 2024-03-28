@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PicableItem : MonoBehaviour
+public abstract class PicableItem : EnterableObjects
 {
-    // Start is called before the first frame update
-    void Start()
+
+  protected abstract void onItemPick(GameObject obj);
+
+    protected override void onEnter(GameObject gameobject)
     {
-        
+        if (gameobject.CompareTag("Player"))
+        {
+            Debug.Log("enter");
+            onItemPick(gameobject);
+            Destroy(this.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void onExitEnter(GameObject gameobject)
     {
-        
+        //doNothign
     }
 }
