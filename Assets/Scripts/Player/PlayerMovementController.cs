@@ -20,6 +20,7 @@ public class PlayerMovementController : MonoBehaviour
     public float speed;
     public float shootSpeed = 0.5f;
     private float timer = 0f;
+    private float groundSpeedAffect= 1f;
     void Awake()
     {
 
@@ -32,7 +33,7 @@ public class PlayerMovementController : MonoBehaviour
 
     void FixedUpdate()
     {
-;        rb.AddForce( moveValue * baseSpeed*(1+(sppedAttributeMultiplayer*playerAttributesController.Speed)));
+;        rb.AddForce( moveValue*groundSpeedAffect * baseSpeed*(1+(sppedAttributeMultiplayer*playerAttributesController.Speed)));
     }
   
 
@@ -42,6 +43,11 @@ public class PlayerMovementController : MonoBehaviour
         animator.SetFloat("HorizontalMove", moveValue.x);
         animator.SetFloat("VerticalMove", moveValue.y);
         animator.SetFloat("Speed", moveValue.sqrMagnitude);
+    }
+
+    public void setGroundSpeedAffect(float val)
+    {
+        this.groundSpeedAffect = val;
     }
 
 }
