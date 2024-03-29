@@ -3,10 +3,10 @@ using UnityEngine;
 public class DestroyAfterTime : MonoBehaviour
 {
     public float delay = 3f;
-    [SerializeField] private AudioClip blastSound;
+    [SerializeField] private GameObject blastSound;
     void Start()
     {
-        SoundManager.playSound(blastSound);
+        SoundManager.instance.playSound(blastSound,transform.position);
         Destroy(gameObject, delay); 
     }
 }

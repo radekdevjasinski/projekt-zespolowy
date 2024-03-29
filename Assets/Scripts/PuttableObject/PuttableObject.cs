@@ -5,13 +5,13 @@ using UnityEngine;
 
 public abstract class PuttableObject : MonoBehaviour
 {
-    [SerializeField] private AudioClip onPutSound;
+    [SerializeField] private GameObject onPutSound;
     [SerializeField] private GameObject Prefab;
 
     private void Start()
     {
         if(onPutSound!=null)
-            SoundManager.playSound(onPutSound);
+            SoundManager.instance.playSound(onPutSound,transform.position);
         onPut();
     }
 

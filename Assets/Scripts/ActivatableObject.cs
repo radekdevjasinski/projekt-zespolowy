@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class ActivatableObject : MonoBehaviour
 {
 
-    [SerializeField] private AudioClip onAcvtivationSound;
+    [SerializeField] private GameObject onAcvtivationSound;
 
     private void OnCollisionEnter2D(Collision2D collsion)
     {
@@ -14,7 +14,7 @@ public abstract class ActivatableObject : MonoBehaviour
         if (collsion.collider.CompareTag("Player"))
         {
             if(onAcvtivationSound!=null)
-                SoundManager.playSound(onAcvtivationSound);
+                SoundManager.instance.playSound(onAcvtivationSound,transform.position);
             onActivate(collsion.collider.gameObject);
         }
     }
