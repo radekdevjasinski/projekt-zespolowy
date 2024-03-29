@@ -27,6 +27,7 @@ public class LootChest : ActivatableObject
         Vector2 push = new Vector2(Mathf.Sin(roatation), Mathf.Cos(roatation));
         loot.GetComponent<Rigidbody2D>().AddForce(push * 3,ForceMode2D.Impulse);
         
+        
     }
 
     private void dropLoot()

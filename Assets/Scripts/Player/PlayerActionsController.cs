@@ -79,6 +79,7 @@ public class PlayerActionsController : MonoBehaviour
                 playerAttributes.Damage,
                 playerAttributes.Range
                 );
+            shootable.GetComponent<Projectile>().setWasShootByPlayer(true);
             shootable.GetComponent<Rigidbody2D>().AddForce(direction * shootSpeed *(1+playerAttributes.ProjectileSpeed) , ForceMode2D.Impulse);
             Invoke("resetShootingCooldDown", shootCooldown/(1+playerAttributes.FireRate* shootCooldownAttributeMultiplayer));
         }

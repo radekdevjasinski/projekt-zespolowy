@@ -12,4 +12,13 @@ public static
         audio.PlayOneShot(clip);
         DestroyAfterTime.Destroy(soundGameObjet, clip.length);
     }
+    public static void playSound(AudioClip clip,Transform parent)
+    {
+        GameObject soundGameObjet = new GameObject(clip.name);
+        
+        AudioSource audio = soundGameObjet.AddComponent<AudioSource>();
+        audio.maxDistance=0.1f;
+        audio.PlayOneShot(clip);
+        DestroyAfterTime.Destroy(soundGameObjet, clip.length);
+    }
 }

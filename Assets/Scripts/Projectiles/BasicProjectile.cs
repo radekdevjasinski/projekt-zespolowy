@@ -13,6 +13,11 @@ public class BasicProjectile : Projectile
 
     protected override void onHit(GameObject obj)
     {
+        EntityController entityController;
+        if (obj.TryGetComponent<EntityController>(out entityController))
+        {
+            entityController.dealDamage(this.baseDamage);
+        }
         //throw new System.NotImplementedException();
     }
 

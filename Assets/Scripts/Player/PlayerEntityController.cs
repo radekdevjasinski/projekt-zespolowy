@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerEntityController : EntityController
@@ -19,5 +21,21 @@ public class PlayerEntityController : EntityController
     public override void setGroundSpeedAffect(float f)
     {
       this.GetComponent<PlayerMovementController>().setGroundSpeedAffect(f);
+    }
+
+    protected override void reviceDamage(int damage)
+    {
+        this.GetComponent<PlayerAttributesController>().increaseHealth(-damage);
+    }
+
+    protected override int getHealth()
+    {
+        return
+            this.GetComponent<PlayerAttributesController>().Health;
+    }
+
+    protected override void onDie()
+    {
+        Destroy(this.gameObject);
     }
 }
