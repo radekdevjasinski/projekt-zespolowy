@@ -114,7 +114,7 @@ public class PlayerControler : MonoBehaviour
     }
     void OnUseSingleItem()
     {
-        Debug.Log("UseSingleItem");
+        this.playerActionsController.useSingleUseItem();
     }
     void OnCancelUseSingleItem()
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerActionsController : MonoBehaviour
@@ -17,8 +18,8 @@ public class PlayerActionsController : MonoBehaviour
     [SerializeField] private float shootCooldownAttributeMultiplayer;
     private Transform shootParent;
     private Transform puttedParent;
-    [Header("Single item use")]
-
+    [Header("Single item use")] 
+    [SerializeField] private GameObject singleUseItem;
     [Header("Activated item use")]
     //states
     bool canShoot;
@@ -181,7 +182,33 @@ public class PlayerActionsController : MonoBehaviour
     }
 
 
-        #endregion
+    #endregion
 
-
+    #region single use item
+    public void setSingleUseItem(GameObject o)
+    {
+        Debug.Log("-------new single use item: "+ o.GetComponent<UsableItem>().getAudioClip().name);
+        this.singleUseItem = o;
     }
+
+    public void useSingleUseItem()
+    {
+        Debug.Log("attempt use singel itme");
+
+        if (singleUseItem != null)
+        {
+            Debug.Log("----------Use item");
+            singleUseItem.GetComponent<UsableItem>().use(this.gameObject);
+            Destroy(singleUseItem);
+            singleUseItem = null;
+        }
+        else
+        {
+            Debug.Log("single use item null");
+
+        }
+    }
+
+
+#endregion
+}
