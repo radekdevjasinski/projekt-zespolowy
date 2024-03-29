@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d05c04fa1ef574e9c8612c71e8199e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAcvtivationSound: {fileID: 0}
+  onAcvtivationSound: {fileID: 8559890285010858849, guid: 505dd2a0f36e6de44ae8f3ca2ffaf35a, type: 3}
   loot:
   - {fileID: 5112259435028361392, guid: f0a71b1dbbe90e6478f68b62f9e01c32, type: 3}
   - {fileID: 5112259435028361392, guid: f0a71b1dbbe90e6478f68b62f9e01c32, type: 3}
@@ -183,7 +183,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -5,6 +5,9 @@ using UnityEngine;
 
 abstract public class EntityController : MonoBehaviour
 {
+
+    [SerializeField] private GameObject soundOnDamage;
+
     protected float groundDragBase = 30f;
 
     abstract public void resetDrag();
@@ -15,6 +18,8 @@ abstract public class EntityController : MonoBehaviour
 
     public void dealDamage(int baseDamage)
     {
+        if(this.soundOnDamage!=null)
+        SoundManager.instance.playSound(this.transform,this.soundOnDamage,this.transform.position);
         this.reviceDamage(baseDamage);
         if (this.getHealth() == 0)
         {

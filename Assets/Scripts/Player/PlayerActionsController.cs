@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PlayerActionsController : MonoBehaviour
 {
-
     [Header("Putting")]
     [SerializeField] private GameObject puttableItem;
     [Header("Shooting")]
