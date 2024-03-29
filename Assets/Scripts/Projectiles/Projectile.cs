@@ -16,13 +16,20 @@ public abstract class Projectile : MonoBehaviour
     private int rangeModifer;
 
     //base Attributes
+    [Header("atrributes")]
     [SerializeField] private int baseDamage;
     [SerializeField] private float baseLifeTime=0.5f;
     [SerializeField] private float projectileTimeMultiplayer=0.2f;
 
+    [Header("sounds")]
+    [SerializeField] AudioClip onShootAudio;
+    [SerializeField] AudioClip onhitAudio;
+
     //sets attribures, has to be activated to remove later projectile
     public void setupProjectileParams(int damageModifer, int rangeModifer)
     {
+        if(onShootAudio!=null)
+            SoundManager.playSound(this.onShootAudio);
         this.damageModifer = damageModifer;
         this.rangeModifer = rangeModifer;
         Invoke("kill", baseLifeTime+ (rangeModifer* projectileTimeMultiplayer));
@@ -38,8 +45,10 @@ public abstract class Projectile : MonoBehaviour
     protected void OnTriggerEnter2D(Collider2D colider)
     {
         Debug.Log("collsion: "+ colider.tag);
-        if (!colider.CompareTag("Player") && !colider.CompareTag("Projectile"))
+        if (!colider.CompareTag("Player") && colider.CompareTag("Collider") || colider.CompareTag("Entity"))
         {
+            if (this.onhitAudio!= null)
+                SoundManager.playSound(this.onhitAudio);
             onHit(colider.gameObject);
             kill();
         }

@@ -134,6 +134,8 @@ MonoBehaviour:
   baseDamage: 1
   baseLifeTime: 0.5
   projectileTimeMultiplayer: 0.2
+  onShootAudio: {fileID: 8300000, guid: 0378f5e12edd0154f9c3484a121131c2, type: 3}
+  onhitAudio: {fileID: 8300000, guid: 2fc4503df0e196e459861c47c5c43201, type: 3}
 --- !u!1 &8463097625477239595
 GameObject:
   m_ObjectHideFlags: 0

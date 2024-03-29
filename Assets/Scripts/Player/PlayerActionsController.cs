@@ -169,14 +169,15 @@ public class PlayerActionsController : MonoBehaviour
 
     public void putObject()
     {
-            GameObject shootable = Instantiate(
-                puttableItem,
-                this.transform.position,
-                new Quaternion(0f, 0f, 0f, 0f),
-                puttedParent
-            );
-        
-        }
+
+        GameObject shootable = Instantiate(
+            puttableItem,
+            this.transform.position,
+            new Quaternion(0f, 0f, 0f, 0f),
+            puttedParent
+        );
+
+    }
 
 
         #endregion

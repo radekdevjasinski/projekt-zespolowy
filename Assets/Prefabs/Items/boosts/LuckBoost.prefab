@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4114455591145922529}
   m_Layer: 0
   m_Name: LuckBoost
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79fbae46c34a8c43b91c01f36b69cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onItemPickSound: {fileID: 8300000, guid: 611901c919b20ba4aacd9c9128312c2e, type: 3}
   value: 1
   attribute: 6
 --- !u!61 &4114455591145922529

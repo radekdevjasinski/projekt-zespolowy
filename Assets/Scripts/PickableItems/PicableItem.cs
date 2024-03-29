@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class PicableItem : EnterableObjects
 {
 
+    [SerializeField] private AudioClip onItemPickSound;
   protected abstract void onItemPick(GameObject obj);
 
     protected override void onEnter(GameObject gameobject)
@@ -13,6 +14,8 @@ public abstract class PicableItem : EnterableObjects
         {
             Debug.Log("enter");
             onItemPick(gameobject);
+            if(onItemPickSound!=null)
+                SoundManager.playSound(onItemPickSound);
             Destroy(this.gameObject);
         }
     }
