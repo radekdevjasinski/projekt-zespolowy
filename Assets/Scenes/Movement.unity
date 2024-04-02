@@ -937,10 +937,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomSpace: 25
-  roomCount: 0
-  shopRoomCount: 0
-  bossRoomCount: 0
-  smallPrefab: {fileID: 1025584897092830552, guid: 4cad6866e80a6294197e8c35e30567e6, type: 3}
+  roomCount: 100
+  shopRoomCount: 2
+  bossRoomCount: 2
+  roomPrefabs:
+  - {fileID: 1025584897092830552, guid: 4cad6866e80a6294197e8c35e30567e6, type: 3}
+  bossPrefabs:
+  - {fileID: 6731866519351943996, guid: f8ad48d1fabf76b4ead0e02525480788, type: 3}
+  shopPrefabs:
+  - {fileID: 1283665515420840585, guid: a88ba8972af57c24197f000f85b13867, type: 3}
 --- !u!1 &1651590102
 GameObject:
   m_ObjectHideFlags: 0

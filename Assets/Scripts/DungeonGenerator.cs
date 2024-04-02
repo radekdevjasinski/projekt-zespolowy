@@ -55,41 +55,40 @@ public class DungeonGenerator : MonoBehaviour
     public int shopRoomCount;
     public int bossRoomCount;
 
-    public GameObject smallPrefab;
+    public GameObject[] roomPrefabs;
+    public GameObject[] bossPrefabs;
+    public GameObject[] shopPrefabs;
 
     public List<DungeonRoom> rooms = new List<DungeonRoom>();
 
     void Start()
     {
-        //int room = roomCount + shopRoomCount + bossRoomCount;
+        int allRooms = roomCount + shopRoomCount + bossRoomCount;
         List<Vector2Int> freeRooms = new List<Vector2Int>();
 
 
         rooms.Add(new DungeonRoom(0, new Vector2Int(0, 0), RoomType.STARTROOM));
-        rooms.Add(new DungeonRoom(1, new Vector2Int(0, 1), RoomType.ROOM));
-        rooms.Add(new DungeonRoom(1, new Vector2Int(0, 2), RoomType.ROOM));
-        rooms.Add(new DungeonRoom(1, new Vector2Int(0, 3), RoomType.ROOM));
-        rooms.Add(new DungeonRoom(1, new Vector2Int(1, 1), RoomType.ROOM));
-        rooms.Add(new DungeonRoom(1, new Vector2Int(2, 1), RoomType.ROOM));
-        rooms.Add(new DungeonRoom(2, new Vector2Int(-1, 0), RoomType.ROOM));
 
 
-
-        /*for (int i = 0; i < roomCount; i++)
+        for (int i = 0; i < allRooms; i++)
         {
             freeRooms = CalculateFreeRooms();
-            if (smallRoomCount > 0 || bigRoomCount > 0)
+            if (roomCount > 0)
             {
-                int random = Random.Range(0, 100);
-                if ( > 50)
-                {
-                    rooms.Add(new DungeonRoom(roomCount, freeRooms[], RoomType.STARTROOM));
-
-                }
+                rooms.Add(new DungeonRoom(roomCount, freeRooms[UnityEngine.Random.Range(0, freeRooms.Count)], RoomType.ROOM));
+                roomCount--;
+            }
+            else if (shopRoomCount > 0)
+            {
+                rooms.Add(new DungeonRoom(roomCount, freeRooms[UnityEngine.Random.Range(0, freeRooms.Count)], RoomType.SHOPROOM));
+                shopRoomCount--;
+            }
+            else if (bossRoomCount > 0)
+            {
+                rooms.Add(new DungeonRoom(roomCount, freeRooms[UnityEngine.Random.Range(0, freeRooms.Count)], RoomType.BOSSROOM));
+                bossRoomCount--;
             }
         }
-        
-        freeRooms.AddRange(rooms[1].freeSpots(rooms));*/
         DrawRooms();
     }
     List<Vector2Int> CalculateFreeRooms()
@@ -105,8 +104,27 @@ public class DungeonGenerator : MonoBehaviour
     {
         for (int i = 0; i < rooms.Count; i++)
         {
-            rooms[i].gameObject = Instantiate(smallPrefab, this.gameObject.transform);
-            rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
+            switch(rooms[i].roomType)
+            {
+                case RoomType.STARTROOM:
+                    rooms[i].gameObject = Instantiate(roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Length)], this.gameObject.transform);
+                    rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
+                    break;
+
+                case RoomType.ROOM:
+                    rooms[i].gameObject = Instantiate(roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Length)], this.gameObject.transform);
+                    rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
+                    break;
+                case RoomType.BOSSROOM:
+                    rooms[i].gameObject = Instantiate(bossPrefabs[UnityEngine.Random.Range(0, bossPrefabs.Length)], this.gameObject.transform);
+                    rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
+                    break;
+                case RoomType.SHOPROOM:
+                    rooms[i].gameObject = Instantiate(shopPrefabs[UnityEngine.Random.Range(0, shopPrefabs.Length)], this.gameObject.transform);
+                    rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
+                    break;
+
+            }
         }
     }
 
