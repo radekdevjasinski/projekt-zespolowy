@@ -4,35 +4,78 @@ using TMPro;
 
 public class NPCConversation : MonoBehaviour
 {
-    public TMP_Text dialogueText; 
-    private bool conversationStarted = false; 
+    public TMP_Text dialogueText;
+    public TMP_Text playerResponseText;
+    private bool conversationStarted = false;
+
+    void Start()
+    {
+        playerResponseText.gameObject.SetActive(false);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        { 
-            conversationStarted = true; 
-            Debug.Log("Gracz wszed³ w obszar kolizji NPC."); 
+        {
+            StartConversation();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
         {
-            conversationStarted = false; 
-            Debug.Log("Gracz opuœci³ obszar kolizji NPC.");
-            dialogueText.text = "";
-        }
-    }
-    void Update()
-    {
-        if (conversationStarted && Input.GetKeyDown(KeyCode.Space)) 
-        {
-            Debug.Log("Rozpoczêto rozmowê z NPC.");
-            dialogueText.text = "Hello!"; 
-            Debug.Log("Tekst wyœwietlony na ekranie: " + dialogueText.text); 
+            EndConversation();
         }
     }
 
+    void Update()
+    {
+        if (conversationStarted)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                RespondToNPC("1. Tak, chêtnie.");
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                RespondToNPC("2. Nie, dziêkujê.");
+            }
+        }
+    }
+
+    void StartConversation()
+    {
+        dialogueText.text = "Czy mogê ci pomóc?";
+        playerResponseText.gameObject.SetActive(true);
+        playerResponseText.text = "1. Tak, chêtnie.\n2. Nie, dziêkujê.";
+        conversationStarted = true; 
+    }
+
+    void EndConversation()
+    {
+        dialogueText.text = "";
+        playerResponseText.text = "";
+        playerResponseText.gameObject.SetActive(false);
+        conversationStarted = false; 
+    }
+
+    void RespondToNPC(string response)
+    {
+        playerResponseText.text = "Gracz odpowiedzia³: " + response;
+        if (response.StartsWith("1"))
+        {
+            RespondToPlayer("Dziêkujê! Jestem bardzo zadowolony z twojej decyzji.");
+        }
+        else if (response.StartsWith("2"))
+        {
+            RespondToPlayer("Rozumiem. Mo¿e nastêpnym razem.");
+        }
+        playerResponseText.gameObject.SetActive(false);
+    }
+
+    void RespondToPlayer(string response)
+    {
+        dialogueText.text = response;
+    }
 }
