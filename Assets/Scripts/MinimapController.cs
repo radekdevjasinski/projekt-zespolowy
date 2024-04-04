@@ -19,9 +19,10 @@ public class MiniMapController : MonoBehaviour
 
     private Vector2 lastPlayerPos;
 
+    public DungeonGenerator dungeonGenerator;
+
     void Start()
     {
-        // Dodaj ikony do słownika
         roomIconsDict.Add(RoomType.STARTROOM, startRoomIconSprite);
         roomIconsDict.Add(RoomType.ROOM, roomIconSprite);
         roomIconsDict.Add(RoomType.SHOPROOM, shopRoomIconSprite);
@@ -29,7 +30,6 @@ public class MiniMapController : MonoBehaviour
 
         miniMapRect = GetComponent<RectTransform>();
 
-        // Utwórz ikonę gracza
         playerIcon = new GameObject("PlayerIcon").AddComponent<Image>();
         playerIcon.sprite = roomIconSprite;
         playerIcon.transform.SetParent(transform);
@@ -37,10 +37,17 @@ public class MiniMapController : MonoBehaviour
     }
 
     void DrawMiniMap()
+{
+    foreach (DungeonRoom room in dungeonGenerator.rooms)
     {
-        foreach (DungeonRoom room in DungeonGenerator.rooms)
+        Vector2 miniMapPos = new Vector2(room.pos.x * (iconSize + roomSpacing), room.pos.y * (iconSize + roomSpacing));
+
+        // Sprawdź odległość pomiędzy graczem a pokojem
+        float distanceToPlayer = Vector2.Distance(player.transform.position, miniMapPos);
+
+        // Sprawdź, czy pokój mieści się w zasięgu widoku minimapy
+        if (distanceToPlayer <= miniMapRect.rect.width / 2f) // Załóżmy, że minimapa jest kwadratem
         {
-            Vector2 miniMapPos = new Vector2(room.pos.x * (iconSize + roomSpacing), room.pos.y * (iconSize + roomSpacing));
             Image roomIcon = new GameObject("RoomIcon").AddComponent<Image>();
             roomIcon.sprite = GetRoomSprite(room.roomType);
             roomIcon.transform.SetParent(transform);
@@ -50,6 +57,7 @@ public class MiniMapController : MonoBehaviour
             roomIcons.Add(roomIcon);
         }
     }
+}
 
     Sprite GetRoomSprite(RoomType roomType)
     {
@@ -61,7 +69,7 @@ public class MiniMapController : MonoBehaviour
 
     void Update()
     {
-        if (DungeonGenerator.rooms.Count > 0 && roomIcons.Count == 0)
+        if (dungeonGenerator.rooms.Count > 0 && roomIcons.Count == 0)
         {
             DrawMiniMap();
         }
