@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class DungeonRoom
     public Vector2Int pos;
     public RoomType roomType;
     public GameObject gameObject;
+    public GameObject[] doors;
 
     public DungeonRoom(int id, Vector2Int pos, RoomType roomType)
     {
@@ -46,6 +48,33 @@ public class DungeonRoom
         }
         return free;
     }
+    public void OpenRightDoors(List<DungeonRoom> rooms)
+    {
+        if (gameObject != null)
+        {
+            Vector2Int[] directions = { new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(1, 0), new Vector2Int(0, -1) };
+            Door[] doors = gameObject.transform.GetComponentsInChildren<Door>();
+            for (int i = 0; i < directions.Length; i++)
+            {
+                bool taken = false;
+                for (int j = 0; j < rooms.Count; j++)
+                {
+                    if (this.pos + directions[i] == rooms[j].pos)
+                    {
+                        taken = true;
+                    }
+                }
+                if (taken)
+                {
+                    doors[i].OpenDoor();
+                }
+                else
+                {
+                    doors[i].CloseDoor();
+                }
+            }
+        }
+    }
 }
 public class DungeonGenerator : MonoBehaviour
 {
@@ -59,7 +88,7 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject[] bossPrefabs;
     public GameObject[] shopPrefabs;
 
-    public static List<DungeonRoom> rooms = new List<DungeonRoom>();
+    public List<DungeonRoom> rooms = new List<DungeonRoom>();
 
     void Start()
     {
@@ -90,6 +119,10 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
         DrawRooms();
+        foreach (DungeonRoom room in rooms)
+        {
+            room.OpenRightDoors(rooms);
+        }
     }
     List<Vector2Int> CalculateFreeRooms()
     {
