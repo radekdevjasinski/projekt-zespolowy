@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -59,7 +59,7 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject[] bossPrefabs;
     public GameObject[] shopPrefabs;
 
-    public List<DungeonRoom> rooms = new List<DungeonRoom>();
+    public static List<DungeonRoom> rooms = new List<DungeonRoom>();
 
     void Start()
     {
