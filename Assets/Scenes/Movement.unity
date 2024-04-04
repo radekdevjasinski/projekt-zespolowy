@@ -531,6 +531,7 @@ GameObject:
   - component: {fileID: 1000411114}
   - component: {fileID: 1000411113}
   - component: {fileID: 1000411116}
+  - component: {fileID: 1000411119}
   - component: {fileID: 1000411117}
   - component: {fileID: 1000411118}
   m_Layer: 0
@@ -715,6 +716,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1000411119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000411112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f743c0d2cff0aa4cb796d244314361f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonGenerator: {fileID: 1572097156}
 --- !u!1 &1572097154
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,10 +776,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92b9f97a5e84424cb833d47dce87f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomSpace: 25
-  roomCount: 100
-  shopRoomCount: 2
-  bossRoomCount: 2
+  roomSpace: 20
+  roomCount: 15
+  shopRoomCount: 1
+  bossRoomCount: 1
   roomPrefabs:
   - {fileID: 1025584897092830552, guid: 4cad6866e80a6294197e8c35e30567e6, type: 3}
   bossPrefabs:
