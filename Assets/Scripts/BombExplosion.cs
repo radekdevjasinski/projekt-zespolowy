@@ -15,11 +15,14 @@ public class BombExplosion : MonoBehaviour
         if (!collision.gameObject.CompareTag("Player"))
         {
             GameObject blast = Instantiate(blastPrefab);
+            if (collision.gameObject.GetComponent<Barrel>() != null)
+            {
+                collision.gameObject.GetComponent<DestroyableObject>().GetDamage(2);
+            }
             blast.transform.position = this.transform.position;
             blast.GetComponent<ParticleSystem>().Play();
             Destroy(blast, 3f);
             Destroy(this.gameObject);
-
         }
     }
 
