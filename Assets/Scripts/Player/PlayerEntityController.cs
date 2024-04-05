@@ -26,6 +26,8 @@ public class PlayerEntityController : EntityController
     protected override void reviceDamage(int damage)
     {
         this.GetComponent<PlayerAttributesController>().increaseHealth(-damage);
+        GameObject HpBar = GameObject.Find("HpBar");
+        HpBar.GetComponent<HealtHeartBar>().DrawHearts();
     }
 
     protected override int getHealth()
@@ -37,5 +39,8 @@ public class PlayerEntityController : EntityController
     protected override void onDie()
     {
         Destroy(this.gameObject);
+        GameObject gameOverScreen = GameObject.Find("GameOver");
+        gameOverScreen.GetComponent<GameOverScreen>().Setup();
+
     }
 }

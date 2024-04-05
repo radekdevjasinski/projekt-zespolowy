@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject gameOverScreen;
     public void Setup()
     {
-        gameObject.SetActive(true);
+        gameOverScreen.SetActive(true);
     }
     public void RestartButton()
     {
-        SceneManager.LoadScene("Movement");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -12,7 +12,11 @@ public class CameraFollow : MonoBehaviour
     }
     void Update()
     {
-        Vector3 moveTo = playerTransform.position;
-        this.transform.position = new Vector3(moveTo.x, moveTo.y, -10);
+        if (playerTransform != null)
+        {
+            Vector3 moveTo = playerTransform.position;
+            this.transform.position = new Vector3(moveTo.x, moveTo.y, -10);
+        }
+
     }
 }
