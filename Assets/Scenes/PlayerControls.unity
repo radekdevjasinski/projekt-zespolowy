@@ -4504,6 +4504,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7220919553689563252, guid: ee66a2f0a78f2ed4791563707bd5e94a, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220919553689563252, guid: ee66a2f0a78f2ed4791563707bd5e94a, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220919553689563252, guid: ee66a2f0a78f2ed4791563707bd5e94a, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220919553689563252, guid: ee66a2f0a78f2ed4791563707bd5e94a, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220919553689563252, guid: ee66a2f0a78f2ed4791563707bd5e94a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220919553689563252, guid: ee66a2f0a78f2ed4791563707bd5e94a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220919553689563252, guid: ee66a2f0a78f2ed4791563707bd5e94a, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7653803568766427971, guid: ee66a2f0a78f2ed4791563707bd5e94a, type: 3}
       propertyPath: m_Name
       value: enemyM
@@ -4919,10 +4947,10 @@ RectTransform:
   - {fileID: 1494412432}
   m_Father: {fileID: 389981815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066767849
 MonoBehaviour:
@@ -11896,6 +11924,34 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1551874863873102096, guid: b8c2387eb82e5dd40b960b4d039fb635, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551874863873102096, guid: b8c2387eb82e5dd40b960b4d039fb635, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551874863873102096, guid: b8c2387eb82e5dd40b960b4d039fb635, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551874863873102096, guid: b8c2387eb82e5dd40b960b4d039fb635, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551874863873102096, guid: b8c2387eb82e5dd40b960b4d039fb635, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551874863873102096, guid: b8c2387eb82e5dd40b960b4d039fb635, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551874863873102096, guid: b8c2387eb82e5dd40b960b4d039fb635, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4170395204945577557, guid: b8c2387eb82e5dd40b960b4d039fb635, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.2674544
@@ -13830,7 +13886,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1266, y: 668}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1494412434
 MonoBehaviour:

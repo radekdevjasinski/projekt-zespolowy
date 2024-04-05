@@ -162,10 +162,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPutSound: {fileID: 8559890285010858849, guid: f808bd60be3c5644495f6231151b3528, type: 3}
-  Prefab: {fileID: 8559890285010858849, guid: 3f98a9c002253544bb3807665279a54e, type: 3}
+  Prefab: {fileID: 0}
   blastPrefab: {fileID: 1210725082526529892, guid: 80bf835b798aac34c96c7680dcec9755, type: 3}
   explosionTimer: 3
-  blastRadius: 1
+  blastRadius: 0.5
   destructableMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
