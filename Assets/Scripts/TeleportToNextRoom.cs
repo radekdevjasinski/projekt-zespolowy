@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class TeleportToNextRoom : MonoBehaviour
 {
-    public DungeonGenerator dungeonGenerator;
-    public DungeonRoom activePlayerRoom;
+    private DungeonGenerator dungeonGenerator;
+    private DungeonRoom activePlayerRoom;
+    private void Start()
+    {
+        dungeonGenerator = GameObject.Find("Dungeon").GetComponent<DungeonGenerator>();
+    }
     public void Teleport(Vector2 triggerPos)
     {
         if (activePlayerRoom == null)
