@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1055446559731231583}
   - component: {fileID: 5464605780278759079}
   - component: {fileID: 40862322505450894}
-  - component: {fileID: -3542442522713655168}
+  - component: {fileID: -480172180874166123}
   m_Layer: 0
   m_Name: bomb
   m_TagString: Untagged
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-3542442522713655168
+--- !u!114 &-480172180874166123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,14 +158,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 291931993708767948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f5ccd82aaaf4d4b88c259a61bea866, type: 3}
+  m_Script: {fileID: 11500000, guid: 590991e59aaeafa4e8a42f65f47905d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onPutSound: {fileID: 8559890285010858849, guid: f808bd60be3c5644495f6231151b3528, type: 3}
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 8559890285010858849, guid: 3f98a9c002253544bb3807665279a54e, type: 3}
   blastPrefab: {fileID: 1210725082526529892, guid: 80bf835b798aac34c96c7680dcec9755, type: 3}
   explosionTimer: 3
-  blastRadius: 0.5
+  blastRadius: 1
   destructableMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0

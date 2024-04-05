@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombExplosion_ : MonoBehaviour
+public class BombExplosion_old : MonoBehaviour
 {
     public GameObject blastPrefab;
     void Start()
