@@ -101,6 +101,7 @@ public class DungeonGenerator : MonoBehaviour
 
         for (int i = 0; i < allRooms; i++)
         {
+            Debug.Log("roomCount: " + roomCount + " : rooms: " + rooms.Count);
             freeRooms = CalculateFreeRooms();
             if (roomCount > 0)
             {
@@ -135,6 +136,7 @@ public class DungeonGenerator : MonoBehaviour
     }
     void DrawRooms()
     {
+  
         for (int i = 0; i < rooms.Count; i++)
         {
             switch(rooms[i].roomType)
