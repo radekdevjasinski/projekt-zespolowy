@@ -6,6 +6,11 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager instance { get; private set; }
 
+    [SerializeField]
+    private GameObject BasicAmbientSounds;
+    private GameObject ActiveAmbient;
+    private Transform ambientParent;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -16,6 +21,9 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
         }
+
+        ambientParent = transform.Find("Ambient").transform;
+        setAmbient(BasicAmbientSounds);
     }
     public void playSound( GameObject soundObject, Vector3 postion)
     {
@@ -37,5 +45,23 @@ public class SoundManager : MonoBehaviour
         AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
         audio.Play();
         return soundGameObjet;
+    }
+
+    public void setAmbient(GameObject ambientPack)
+    {
+        if (this.ActiveAmbient != null)
+        {
+            Destroy(this.ActiveAmbient);
+        }
+
+        ActiveAmbient = Instantiate(ambientPack, this.ambientParent);
+    }
+
+    public void revertToBasicAmbient()
+    {
+        if (this.ActiveAmbient.gameObject != this.BasicAmbientSounds)
+        {
+            setAmbient(this.BasicAmbientSounds);
+        }
     }
 }

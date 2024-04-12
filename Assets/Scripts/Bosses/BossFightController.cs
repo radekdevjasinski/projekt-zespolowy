@@ -9,7 +9,7 @@ public class BossFightController : MonoBehaviour
 
     [SerializeField] private Transform cameraFollowPoint;
     [SerializeField] private bool skipStartSequnace=false;
-
+    [SerializeField] private GameObject battleAmbient;
     private Animator BossFightRoomAniamtor;
     private Camera activeCamera;
     private GameObject Player;
@@ -30,7 +30,8 @@ public class BossFightController : MonoBehaviour
     public void startFight()
     {
         Debug.Log("Start Fight");
-       
+       if(battleAmbient!=null)
+           SoundManager.instance.setAmbient(battleAmbient);
         if(skipStartSequnace)
             lichBossStartSequance.startSequanceImidielty();
         else
