@@ -129,6 +129,8 @@ GameObject:
   - component: {fileID: 6826194531923535045}
   - component: {fileID: -4968691488995461515}
   - component: {fileID: 9169540436490657673}
+  - component: {fileID: 1751732205843319037}
+  - component: {fileID: 7998156683434462000}
   m_Layer: 0
   m_Name: LichCrystal
   m_TagString: Entity
@@ -188,10 +190,10 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -250,8 +252,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundOnDamage: {fileID: 8559890285010858849, guid: 4231a17a19a21264db668cfc09f21454, type: 3}
-  maxHealth: 2
+  maxHealth: 1
   healthBar: {fileID: 7673800001072618406, guid: 9c9e51635c7629c4dbf4aeb71b2d6fe7, type: 3}
+--- !u!114 &1751732205843319037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5531303175931307295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c478f363cddbf7f4ca90702753881194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paritcleObject: {fileID: 4260209433436079419, guid: ae8b23e478e54d548828ca466d5ba52b, type: 3}
+--- !u!114 &7998156683434462000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5531303175931307295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41bde210d987d7f4989de3e2092ec85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8559890285010858849, guid: 4c658e0578f4d504ba58235aa6a05328, type: 3}
 --- !u!1 &6872702618839144175
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,8 +24,21 @@ abstract public class EntityController : MonoBehaviour
         if (this.getHealth() == 0)
         {
             this.onDie();
+
+
+            this.GetComponents<DeathSeuance>();
         }
     }
+
+    protected void runDeathSequanceElemnts()
+    {
+        foreach (DeathSeuance var in this.GetComponents<DeathSeuance>())
+        {
+            var.onDeath();
+
+        }
+    }
+
 
     protected abstract void onDie();
 

@@ -32,8 +32,7 @@ public class LichBossStartSequance : MonoBehaviour
     }
     void summonBoss()
     {
-        Instantiate(Boss, bossSummonPostion);
-
+       Instantiate(Boss, bossSummonPostion);
     }
 
     void summonShield()

@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossFightController : MonoBehaviour
+public class BossFightController : MonoBehaviour, StageDeprndentElements
 {
 
     //Todo: changing timing of appreance to animation events
@@ -10,6 +11,9 @@ public class BossFightController : MonoBehaviour
     [SerializeField] private Transform cameraFollowPoint;
     [SerializeField] private bool skipStartSequnace=false;
     [SerializeField] private GameObject battleAmbient;
+
+
+   
     private Animator BossFightRoomAniamtor;
     private Camera activeCamera;
     private GameObject Player;
@@ -45,6 +49,8 @@ public class BossFightController : MonoBehaviour
     public void stopFight()
     {
         this.BossFightRoomAniamtor.SetBool("duringFight", false);
+        SoundManager.instance.revertToBasicAmbient();
+        transform.Find("Boss").GetComponentInChildren<LichWarriorEntity>().dealDamage(1);
     }
 
 
@@ -74,4 +80,43 @@ public class BossFightController : MonoBehaviour
     {
         Player.GetComponent<PlayerControler>().unlockInput();
     }
+
+    #region Stages
+    [SerializeField] private int[] stageBarriers;
+    private int activeStage=0;
+    private List<StageDeprndentElements> stageDependentElements=new List<StageDeprndentElements>();
+
+    public void increaseStage()
+    {
+      
+        this.activeStage += 1;
+        Debug.Log("Increase stage to: " + activeStage);
+        foreach (StageDeprndentElements var in stageDependentElements)
+        {
+            var.increaseStage();
+        }
+    }
+    public int getNextStageBarrier()
+    {
+        Debug.Log("getting next barrier: "+ activeStage);
+        if (activeStage >= stageBarriers.Length)
+            return -1;
+        return stageBarriers[activeStage];
+    }
+
+    public void addStageDependentElement(StageDeprndentElements var)
+    {
+        Debug.Log("add stage depende elelmt: ");
+        this.stageDependentElements.Add(var);
+    }
+
+    public int getStage()
+    {
+        return activeStage;
+    }
+
+    #endregion
+
+
+
 }
