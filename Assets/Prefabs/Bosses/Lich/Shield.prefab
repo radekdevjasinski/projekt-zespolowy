@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4330561423236922134}
   - component: {fileID: 1257166227430006807}
   - component: {fileID: 584294834564249327}
+  - component: {fileID: 6075731506786271459}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Collider
@@ -97,6 +98,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8559890285010858849, guid: c4e1dd77fb504614b8933b9b32f4dcc7, type: 3}
   timeOffset: 0
+--- !u!114 &6075731506786271459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845359998596621047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d526b72e042574497cb5914a466c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8559890285010858849, guid: 4c658e0578f4d504ba58235aa6a05328, type: 3}
 --- !u!1 &6008546293665116668
 GameObject:
   m_ObjectHideFlags: 0

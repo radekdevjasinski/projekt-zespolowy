@@ -265,12 +265,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2461171e8f13f9b41bb83d3fc1298561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundOnDamage: {fileID: 0}
   particleDeathLoading: {fileID: 9110553342523879051, guid: 5ee64b1f82571a94ead6dbecfb874c5a, type: 3}
   rageSound: {fileID: 8559890285010858849, guid: a540c75f9d0baba4cb95db1510e7efd7, type: 3}
   delayBetweenMinionSpawn: 0.5
-  minionToSpawn: 5
+  minionToSpawn: 1
   minionSummon: {fileID: 7945528964406659908, guid: d645231aca2a8804ebca041755a05dda, type: 3}
+  sleepTime: 5
+  timeToMoveBetwwenPoints: 0.6
+  actionsPerBehaviour: 1
+  BehaviourPerPhaze: 1
+  ActionCoolDown: 0.2
+  newMovemntTime: 0.3
+  newCooldown: 0.2
+  newAmountOfActionPerBehaviour: 1
+  newAmountBehavioutPerPhases: 1
+  newSleepTime: 2
 --- !u!114 &3468268825458569588
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 9169540436490657673}
   - component: {fileID: 1751732205843319037}
   - component: {fileID: 7998156683434462000}
+  - component: {fileID: 5532547450233657755}
   m_Layer: 0
   m_Name: LichCrystal
   m_TagString: Entity
@@ -251,8 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceb73f2df3d8764d8491b22dee916fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundOnDamage: {fileID: 8559890285010858849, guid: 4231a17a19a21264db668cfc09f21454, type: 3}
-  maxHealth: 10
+  maxHealth: 50
   healthBar: {fileID: 7673800001072618406, guid: 9c9e51635c7629c4dbf4aeb71b2d6fe7, type: 3}
 --- !u!114 &1751732205843319037
 MonoBehaviour:
@@ -280,6 +280,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundToPlay: {fileID: 8559890285010858849, guid: 4c658e0578f4d504ba58235aa6a05328, type: 3}
+--- !u!114 &5532547450233657755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5531303175931307295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc5149182e712a4a87b4a2f9f596c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8559890285010858849, guid: 4231a17a19a21264db668cfc09f21454, type: 3}
 --- !u!1 &6872702618839144175
 GameObject:
   m_ObjectHideFlags: 0

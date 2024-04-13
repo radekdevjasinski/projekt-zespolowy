@@ -17,6 +17,7 @@ public class LichBossStartSequance : MonoBehaviour
     [SerializeField] private Transform cystalSummonPosition;
 
     private Transform summonedCrystal;
+    private Transform summonedShield;
 
     public void startSequance()
     {
@@ -26,7 +27,7 @@ public class LichBossStartSequance : MonoBehaviour
         Invoke("summonShield", shieldSummonTimeOffset);
     }
 
-    void summonCrystal()
+    public void summonCrystal()
     {
         summonedCrystal = Instantiate(crystal, cystalSummonPosition,true).transform;
     }
@@ -35,9 +36,10 @@ public class LichBossStartSequance : MonoBehaviour
        Instantiate(Boss, bossSummonPostion);
     }
 
-    void summonShield()
+    public void summonShield()
     {
-        Instantiate(Shield,  summonedCrystal.Find("shieldPosition").transform);
+        if(summonedCrystal!=null)
+        summonedShield= Instantiate(Shield,  summonedCrystal.Find("shieldPosition").transform).transform;
     }
 
     public void startSequanceImidielty()
@@ -45,5 +47,11 @@ public class LichBossStartSequance : MonoBehaviour
         summonCrystal();
         summonBoss();
         summonShield();
+    }
+
+
+    public Transform getSummoneShield()
+    {
+        return summonedShield;
     }
 }

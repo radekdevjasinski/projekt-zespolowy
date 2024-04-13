@@ -24,6 +24,7 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
 
     private void Awake()
     {
+      
         this.BossFightRoomAniamtor = this.GetComponent<Animator>();
         activeCamera = this.activeCamera;
         lichBossStartSequance = this.GetComponent<LichBossStartSequance>();
@@ -84,6 +85,18 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
         Player.GetComponent<PlayerControler>().unlockInput();
     }
 
+
+    public void summonShield()
+    {
+        this.lichBossStartSequance.summonShield();
+    }
+
+    public void destroyShield()
+    {
+       Destroy(this.lichBossStartSequance.getSummoneShield().gameObject);
+    }
+
+
     #region Stages
     [SerializeField] private int[] stageBarriers;
     private int activeStage=0;
@@ -120,7 +133,9 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
 
     private Vector2 getPostionInBoudneries(Bounds bounds)
     {
-        return new Vector2(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y));
+
+        Vector2 scaledPOstion= new Vector2(Random.Range(bounds.min.x*1000, bounds.max.x*1000), Random.Range(bounds.min.y*1000.0f, bounds.max.y*1000.0f));
+        return scaledPOstion / 1000.0f;
     }
 
     internal Vector2 getRandomPostionOnBossMap(float collisionRadius)
@@ -129,10 +144,13 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
         bool state = false;
         Collider2D[] res;
         Vector2 pos=new Vector2();
-        while (state==false) { 
-            if(attempts--<20)
+        while (state==false) {
+            Random.seed = System.DateTime.Now.Millisecond* attempts;
+
+            if (attempts--<20)
                 break;
         pos = getPostionInBoudneries(this.fightMap.bounds);
+        //Debug.Log("Positon to cosisder: "+ pos);
         res = Physics2D.OverlapCircleAll(pos, collisionRadius);
         //Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), pos, new Quaternion());
         foreach (Collider2D var in res)
