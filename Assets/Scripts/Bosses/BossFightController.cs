@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BossFightController : MonoBehaviour, StageDeprndentElements
 {
@@ -13,12 +14,13 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
     [SerializeField] private GameObject battleAmbient;
 
 
+
    
     private Animator BossFightRoomAniamtor;
     private Camera activeCamera;
     private GameObject Player;
     private LichBossStartSequance lichBossStartSequance;
-    
+    private Collider2D fightMap;
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
         activeCamera = this.activeCamera;
         lichBossStartSequance = this.GetComponent<LichBossStartSequance>();
         Player = GameObject.Find("Player");
+        fightMap = transform.Find("FightMap").GetComponent<Collider2D>();
     }
 
 
@@ -113,6 +116,48 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
     public int getStage()
     {
         return activeStage;
+    }
+
+    private Vector2 getPostionInBoudneries(Bounds bounds)
+    {
+        return new Vector2(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y));
+    }
+
+    internal Vector2 getRandomPostionOnBossMap(float collisionRadius)
+    {
+        int attempts = 20;
+        bool state = false;
+        Collider2D[] res;
+        Vector2 pos=new Vector2();
+        while (state==false) { 
+            if(attempts--<20)
+                break;
+        pos = getPostionInBoudneries(this.fightMap.bounds);
+        res = Physics2D.OverlapCircleAll(pos, collisionRadius);
+        //Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), pos, new Quaternion());
+        foreach (Collider2D var in res)
+        {
+            if (var.CompareTag("Map"))
+            {
+                Debug.Log("Correct collsion wih: " + var.name);
+
+                    state = true;
+
+            }
+            else
+            {
+                Debug.Log("False collsion wih: " + var.name);
+
+                    state = false;
+                break;
+            }
+        }
+
+        }
+
+        return pos;
+
+
     }
 
     #endregion
