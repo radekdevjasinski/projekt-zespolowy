@@ -240,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8559890285010858849, guid: 75c7024c39c7c8e4a975c83a87542162, type: 3}
   timeOffset: 0
+  thisAsParent: 1
 --- !u!114 &9169540436490657673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceb73f2df3d8764d8491b22dee916fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 30
   healthBar: {fileID: 7673800001072618406, guid: 9c9e51635c7629c4dbf4aeb71b2d6fe7, type: 3}
 --- !u!114 &1751732205843319037
 MonoBehaviour:

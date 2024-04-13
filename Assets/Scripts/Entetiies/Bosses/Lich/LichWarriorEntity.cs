@@ -13,13 +13,14 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     private BossFightController bossFightController;
     private Animator animator;
     private Transform minionsParent;
-
+    private Transform ObjectHolder;
     private void Awake()
     {
         animator = this.GetComponent<Animator>();
         this.minionsParent = GameObject.Find("Minions").transform;
         bossFightController = GetComponentInParent<BossFightController>();
         bossFightController.addStageDependentElement(this);
+        ObjectHolder = transform.Find("ObjectHolder");
     }
     #region BossActions
 
@@ -76,7 +77,7 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     private void summonMinion()
     {
         currentAmountOfMinons++;
-        Vector2 pos= bossFightController.getRandomPostionOnBossMap(5);
+        Vector2 pos= bossFightController.getRandomPostionOnBossMap(0.1f);
         GameObject minion = Instantiate(this.minionSummon, new Vector3(pos.x, pos.y,0) , new Quaternion(), this.minionsParent);
         Debug.Log("Set mionn bsses");
         foreach (InformBossAboutDeath VARIABLE in minion.GetComponentsInChildren<InformBossAboutDeath>())
@@ -128,6 +129,13 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     private int BehaviourPerPhaze = 0;
     [SerializeField]
     private float ActionCoolDown = 0;
+
+    [SerializeField] private GameObject LichDropBurst;
+    [SerializeField] private GameObject LichProejctile;
+    [SerializeField] private int projectileDmg = 1;
+    [SerializeField] private float ProejctileSpeed = 10;
+    [SerializeField] private float timeOfRoation;
+    [SerializeField] private int amtOfPoejcitles = 10;
     private Vector2 targetPositon = new Vector2();
     private Vector2 velocity=Vector2.zero;
 
@@ -163,7 +171,7 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
 
     void performActiofBehaviout()
     {
-        Debug.Log("Perfomr action: "+ currentActiveBehaviour);
+        //Debug.Log("Perfomr action: "+ currentActiveBehaviour);
         animator.SetBool(currentActiveBehaviour,true);
      
         //  animator.ResetTrigger(currentActiveBehaviour);
@@ -191,7 +199,7 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
         }
         
 
-        this.targetPositon = this.bossFightController.getRandomPostionOnBossMap(1);
+        this.targetPositon = this.bossFightController.getRandomPostionArundPlayer(1,3);
         //Debug.Log("Moving towards: "+ targetPositon);
         Invoke("move", ActionCoolDown);
 
@@ -204,14 +212,51 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
 
     public void dropAttack()
     {
-        Debug.Log("Drop attack");
+        Debug.Log("Drop Attack");
+        Instantiate(this.LichDropBurst,transform.position,new Quaternion(), transform.parent);
     }
+
 
     public void shootAttack()
     {
         Debug.Log("shoot attack");
+        for (int i = 0; i < amtOfPoejcitles; i++)
+        {
+            StartCoroutine(shoot(timeOfRoation / amtOfPoejcitles * i, i));
+         
+        }
+
+     
     }
 
+    private IEnumerator shoot(float time,int numbber)
+    {
+        yield return new WaitForSeconds(time);
+
+        float angle = 360/amtOfPoejcitles* numbber * Mathf.Deg2Rad;
+        float x = Mathf.Cos(angle);
+        float y = Mathf.Sin(angle);
+
+
+        Vector2 dir = new Vector2(x,y);
+        //Debug.Log("Direction: " + ObjectHolder.rotation);
+        Vector3 startPosition = this.transform.position + new Vector3(dir.x,dir.y,0)*2;
+                ;
+            GameObject shootable = Instantiate(
+                this.LichProejctile,
+                startPosition,
+                transform.rotation,
+                transform.parent
+            );
+            shootable.GetComponent<Projectile>().setupProjectileParams(
+                this.projectileDmg,
+                1
+            );
+            
+            shootable.GetComponent<Projectile>().setWasShootByPlayer(false);
+            shootable.GetComponent<Rigidbody2D>().AddForce(dir * ProejctileSpeed , ForceMode2D.Impulse);
+
+        }
 
 
 

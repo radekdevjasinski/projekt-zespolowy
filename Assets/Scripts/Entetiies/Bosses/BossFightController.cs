@@ -63,14 +63,14 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
     private Transform previousCameraAttachment;
     public void attachCameraToBossRoomCamera()
     {
-        previousCameraAttachment = Camera.main.GetComponent<CameraFollow>().getFollowPoint();
+        previousCameraAttachment = CameraController.Instance.GetComponent<CameraFollow>().getFollowPoint();
         this.cameraFollowPoint.transform.position = previousCameraAttachment.position;
-        Camera.main.GetComponent<CameraFollow>().setFollowPoint(this.cameraFollowPoint);
+        CameraController.Instance.GetComponent<CameraFollow>().setFollowPoint(this.cameraFollowPoint);
     }
 
     public void deattachCameraToBossRoomCamera()
     {
-        Camera.main.GetComponent<CameraFollow>().setFollowPoint(previousCameraAttachment);
+        CameraController.Instance.GetComponent<CameraFollow>().setFollowPoint(previousCameraAttachment);
     }
     #endregion
 
@@ -177,7 +177,44 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
 
 
     }
+    public Vector2 getRandomPostionArundPlayer(int collisionRadius, int radiusArundPlayer)
+    {
+        int attempts = 20;
+        bool state = false;
+        Collider2D[] res;
+        Vector2 pos = new Vector2();
+        while (state == false)
+        {
+            Random.seed = System.DateTime.Now.Millisecond * attempts;
 
+            if (attempts-- < 20)
+                break;
+            pos = Random.insideUnitCircle * radiusArundPlayer + new Vector2(Player.transform.position.x, Player.transform.position.y);
+            //Debug.Log("Positon to cosisder: "+ pos);
+            res = Physics2D.OverlapCircleAll(pos, collisionRadius);
+            //Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), pos, new Quaternion());
+            foreach (Collider2D var in res)
+            {
+                if (var.CompareTag("Map"))
+                {
+                    Debug.Log("Correct collsion wih: " + var.name);
+
+                    state = true;
+
+                }
+                else
+                {
+                    Debug.Log("False collsion wih: " + var.name);
+
+                    state = false;
+                    break;
+                }
+            }
+
+        }
+
+        return pos;
+    }
     #endregion
 
 

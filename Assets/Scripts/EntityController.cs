@@ -20,14 +20,14 @@ abstract public class EntityController<TH> : MonoBehaviour
 
     private float converToFloat(TH val)
     {
-        if (typeof(float).IsAssignableFrom(typeof(TH)))
-        {
+        //if (typeof(float).IsAssignableFrom(typeof(TH)))
+        //{
             return (float)Convert.ChangeType(val, typeof(float));
-        }
-        else
-        {
-            throw new InvalidCastException("Cannot ocnverrt type");
-        }
+        //}
+        //else
+        //{
+        //    throw new InvalidCastException("Cannot ocnverrt type");
+        //}
     }
 
     public void dealDamage(TH baseDamage)

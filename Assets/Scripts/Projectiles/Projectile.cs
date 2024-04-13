@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
 
+
     void Awake()
     {
         Debug.Log("Porjectile awake: "+this.GetComponent<Collider2D>().isTrigger );

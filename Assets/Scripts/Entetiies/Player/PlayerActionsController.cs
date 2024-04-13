@@ -53,10 +53,6 @@ public class PlayerActionsController : MonoBehaviour
 
     #region Shooting
 
-    
-
-   
-
     private void shoot()
     {
     if(canShoot)
