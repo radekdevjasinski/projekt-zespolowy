@@ -19,5 +19,8 @@ public class BossUIHelathBar : MonoBehaviour
     {
         slider.value = (float)a / b;
     }
-
+    public void updateSlider(float a, float b)
+    {
+        slider.value = a / b;
+    }
 }

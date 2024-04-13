@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BossEntityController : EntityController, StageDeprndentElements
+public class BossEntityController : EntityController<float>, StageDeprndentElements
 {
 
-    [SerializeField] private int maxHealth;
+    [SerializeField] private float maxHealth;
     private BossFightController bossFightController;
-    private int health;
+    private float health;
     [SerializeField] private GameObject healthBar;
     private GameObject healthBarInstnace;
     
     private Animator animator;
 
-    private int getMaxHealth()
+    override protected float getMaxHealth()
     {
         return maxHealth;
     }
@@ -34,20 +34,7 @@ public class BossEntityController : EntityController, StageDeprndentElements
 
 
 
-    public override void resetDrag()
-    {
-       // not aplicable, considering changing base class to avoid this
-    }
 
-    public override void setDrag(float drag)
-    {
-        // not aplicable, considering changing base class to avoid this
-    }
-
-    public override void setGroundSpeedAffect(float f)
-    {
-        // not aplicable, considering changing base class to avoid this
-    }
 
     protected override void onDie()
     {
@@ -57,14 +44,14 @@ public class BossEntityController : EntityController, StageDeprndentElements
         Destroy(healthBarInstnace.gameObject);
     }
 
-    protected override int getHealth()
+    protected override float getHealth()
     {
         return this.health;
     }
 
 
 
-    protected override void reviceDamage(int damage)
+    protected override void reviceDamage(float damage)
     {
         this.health-=damage;
         this.bossUIHelathBar.updateSlider(this.health,this.maxHealth);

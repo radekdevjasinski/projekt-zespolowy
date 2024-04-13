@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LichWarriorEntity : EntityController, StageDeprndentElements, MinionBoss
+public class LichWarriorEntity : EntityController<float>, MinionBoss
 {
 
     [SerializeField] private GameObject particleDeathLoading;
@@ -95,25 +95,6 @@ public class LichWarriorEntity : EntityController, StageDeprndentElements, Minio
 
     #endregion
 
-
-
-
-
-    public override void resetDrag()
-    {
-        throw new System.NotImplementedException(); // not aplicable, considering changing base class to avoid this
-    }
-
-    public override void setDrag(float drag)
-    {
-        throw new System.NotImplementedException(); // not aplicable, considering changing base class to avoid this
-    }
-
-    public override void setGroundSpeedAffect(float f)
-    {
-        throw new System.NotImplementedException(); // not aplicable, considering changing base class to avoid this
-    }
-
     protected override void onDie()
     {
         Debug.Log(" animator.SetTrigger(\"LoadDeath\");");
@@ -131,22 +112,23 @@ public class LichWarriorEntity : EntityController, StageDeprndentElements, Minio
         runDeathSequanceElemnts();
         Destroy(this.gameObject);
     }
-    protected override int getHealth()
+    protected override float getHealth()
     {
         return 0;
     }
 
-    protected override void reviceDamage(int damage)
+    protected override float getMaxHealth()
     {
-      
+        return 1;
+    }
+
+    protected override void reviceDamage(float damage)
+    {
+      // this entity does not recive dagme
     }
 
     
 
-    public void increaseStage()
-    {
-        throw new System.NotImplementedException();
-    }
 
  
 }

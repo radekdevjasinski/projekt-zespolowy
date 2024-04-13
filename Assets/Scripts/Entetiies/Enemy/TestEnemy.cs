@@ -8,18 +8,9 @@ public class TestEnemy : EnemyBase
         Move();
         if (IsWithinRange())
         {
-            Die();
+            killImidielty();
         }
     }
 
-    protected override void Die()
-    {
-        ExplodeOnDeath();
-        base.Die();
-    }
 
-    private void ExplodeOnDeath()
-    {
-        Debug.Log("Exploded");
-    }
 }

@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : EntityController<float>
 {
-    protected float healthPoints = 20f; //punkty ¿ycia wrogów
+    [SerializeField]
+    protected const float maxHelathPoints = 20f; //punkty ¿ycia wrogów
     protected float currentHealthPoints;
     protected float visionRange = 1f; //zasiêg widzenia wrogów
-    protected float damage = 1f; //damage wrogów per hit
+    protected int damage = 1; //damage wrogów per hit
     protected float speed = 1f; //szybkosc wroga
 
     private float changeDirectionTimer = 3f; //czas po którym zmieniamy kierunek ruchu
@@ -13,24 +14,27 @@ public class EnemyBase : MonoBehaviour
     private Vector2 randomDirection;
     private Rigidbody2D rb;
 
+
+    private Transform playerTransform;
+
     // Start is called before the first frame update
     void Start()
     {
-        currentHealthPoints = healthPoints;
+        currentHealthPoints = maxHelathPoints;
         rb = GetComponent<Rigidbody2D>();
         timer = changeDirectionTimer;
         GetRandomDirection();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
 
     //metoda która sprawnia ¿e wróg otrzymuje obra¿enia, bêdzie wywo³ywana gdy wróg otrzyma dmg
-    public virtual void TakeDamage(float damage)
+
+
+    protected override void reviceDamage(float damage)
     {
-        if (currentHealthPoints <= 0) //je¿eli ¿ycie wroga bêdzie mniejsze lub rowne 0 to ginie
-        {
-            Die();
-        }
-        currentHealthPoints -= damage;
+        Debug.Log("enemy recive damage, now: "+ this.getHealth());
+        currentHealthPoints -= damage; //sprawdzenie smeirci jest w klasie bazowej
     }
 
     //metoda do poruszania siê wroga (domyœlnie randomowo)
@@ -66,14 +70,14 @@ public class EnemyBase : MonoBehaviour
     //metoda do sprawdzenia czy gracz jest w zasiegu wroga
     protected virtual bool IsWithinRange()
     {
-        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+       // (przeniseion wyszukiwanie obekitu player do zmiennej globlanej aby nie trzeba bylo szukac do update) 
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
         return distanceToPlayer <= visionRange; //jeœli dystans od gracza dp wroga jest mniejszy
         //lub równy polu widzenia to zwracamy albo true albo false
     }
 
     //metoda, który niszczy obiekt wroga
-    protected virtual void Die()
+    protected override void onDie()
     {
         Destroy(gameObject);
     }
@@ -83,4 +87,17 @@ public class EnemyBase : MonoBehaviour
     {
         //za³o¿enie ¿e ka¿dy rodzaj wroga ma inny sposób ataku
     }
+
+
+    protected override float getHealth()
+    {
+        return currentHealthPoints;
+    }
+
+    protected override float getMaxHealth()
+    {
+        return maxHelathPoints;
+    }
+
+ 
 }
