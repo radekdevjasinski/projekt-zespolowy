@@ -18,12 +18,13 @@ public class EnemyBase : EntityController<float>
     private Transform playerTransform;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         currentHealthPoints = maxHelathPoints;
         rb = GetComponent<Rigidbody2D>();
         timer = changeDirectionTimer;
         GetRandomDirection();
+        Debug.Log("get player transofrm");
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -71,6 +72,7 @@ public class EnemyBase : EntityController<float>
     protected virtual bool IsWithinRange()
     {
        // (przeniseion wyszukiwanie obekitu player do zmiennej globlanej aby nie trzeba bylo szukac do update) 
+       Debug.Log("Is within range");
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
         return distanceToPlayer <= visionRange; //jeœli dystans od gracza dp wroga jest mniejszy
         //lub równy polu widzenia to zwracamy albo true albo false

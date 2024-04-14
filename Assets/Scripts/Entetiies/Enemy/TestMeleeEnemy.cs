@@ -8,8 +8,9 @@ public class TestMeleeEnemy : EnemyBase
     private float range = 0.5f; //zasiêg ataku wroga
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         //speed = 3f;
         timer = nextAttackTimer;
     }

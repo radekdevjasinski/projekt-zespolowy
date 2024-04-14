@@ -10,8 +10,9 @@ public class TestRangedEnemy : EnemyBase
     private float nextBombTimer = 1.5f;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         visionRange = 7f;
         timer = nextBombTimer;
     }
