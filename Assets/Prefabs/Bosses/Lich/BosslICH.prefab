@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.56, y: 0.56, z: 0.56}
+  m_LocalScale: {x: 1.59, y: 1.59, z: 1.59}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1596174433644580259}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 23a30b4e8fc505d4e82ac8608e27030e, type: 3}
+  m_Sprite: {fileID: 371916814, guid: 7756d6cbb6826f340abb8cf722dd7eb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 2809522281866360331}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.942, z: 0}
+  m_LocalPosition: {x: 0.009, y: 0.126, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.597
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.20764458, g: 1, b: 0, a: 1}
   m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 506696395157851815}
   - component: {fileID: 3468268825458569588}
   - component: {fileID: 6576860835382372549}
-  - component: {fileID: 6481502338835222423}
   m_Layer: 0
   m_Name: BosslICH
   m_TagString: Untagged
@@ -273,7 +272,7 @@ MonoBehaviour:
   minionSummon: {fileID: 7945528964406659908, guid: d645231aca2a8804ebca041755a05dda, type: 3}
   sleepTime: 5
   timeToMoveBetwwenPoints: 0.6
-  actionsPerBehaviour: 3
+  actionsPerBehaviour: 2
   BehaviourPerPhaze: 3
   ActionCoolDown: 0.2
   LichDropBurst: {fileID: 2944750994736841635, guid: 6dd50ce442f2ccb4f993aeedd11fb1e9, type: 3}
@@ -286,7 +285,7 @@ MonoBehaviour:
   newCooldown: 0.1
   newAmountOfActionPerBehaviour: 4
   newAmountBehavioutPerPhases: 4
-  newSleepTime: 2
+  newSleepTime: 3
 --- !u!114 &3468268825458569588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,19 +312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paritcleObject: {fileID: 9110553342523879051, guid: 1ff047ddc94613d47bcf6781e65b2ac7, type: 3}
---- !u!114 &6481502338835222423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8846188796045317858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41bde210d987d7f4989de3e2092ec85e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8559890285010858849, guid: 41e0973bfade29340ae40b89f2163279, type: 3}
 --- !u!1 &9104760106020727222
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.6320754, g: 0, b: 0.6245399, a: 1}
+  m_Color: {r: 0.11453253, g: 0.6313726, b: 0, a: 1}
   m_Intensity: 3.55
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -217,8 +217,8 @@ MonoBehaviour:
   baseDamage: 1
   baseLifeTime: 5
   projectileTimeMultiplayer: 0.2
-  onShootAudio: {fileID: 0}
-  onhitAudio: {fileID: 0}
+  onShootAudio: {fileID: 8559890285010858849, guid: 7a94e912402d6ca4f9f22a59115dddf8, type: 3}
+  onhitAudio: {fileID: 8559890285010858849, guid: e3d0bf125168e764a81e51c0dfbca010, type: 3}
 --- !u!1 &8463097625477239595
 GameObject:
   m_ObjectHideFlags: 0

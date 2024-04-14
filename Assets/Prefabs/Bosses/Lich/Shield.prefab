@@ -68,9 +68,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.039155006, y: 0.011187196}
+  m_Offset: {x: -0.01535821, y: 0.011187196}
   serializedVersion: 2
-  m_Radius: 1.2328523
+  m_Radius: 1.318516
 --- !u!114 &1257166227430006807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8559890285010858849, guid: c4e1dd77fb504614b8933b9b32f4dcc7, type: 3}
   timeOffset: 0
+  thisAsParent: 1
 --- !u!114 &6075731506786271459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +139,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.7577, y: 3.7577, z: 3.7577}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.8800001, y: 1.8800001, z: 1.8800001}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6050661177895491229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -184,7 +185,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: bfe0f79bc79d9cb48a501eda8ac9b714, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4071a136024f07c47a09256698fffd93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

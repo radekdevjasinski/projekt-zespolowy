@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8559890285010858849, guid: d8d555a944944ed4bb637f084c349b5d, type: 3}
   timeOffset: 0
+  thisAsParent: 1
 --- !u!199 &428577527257670001
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -313,7 +314,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0, a: 1}
+      maxColor: {r: 0.28527856, g: 1, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

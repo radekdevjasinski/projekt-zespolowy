@@ -308,6 +308,12 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
 
     public void deathLoaded()
     {
+      
+       
+    }
+
+    public void destroy()
+    {
         runDeathSequanceElemnts();
         Destroy(this.gameObject);
     }
