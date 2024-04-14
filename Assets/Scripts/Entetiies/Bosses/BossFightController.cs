@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -140,18 +141,31 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
 
     internal Vector2 getRandomPostionOnBossMap(float collisionRadius)
     {
-        int attempts = 20;
-        bool state = false;
-        Collider2D[] res;
+        int attempts = 200;
+
+        bool state=false;
         Vector2 pos=new Vector2();
         while (state==false) {
             Random.seed = System.DateTime.Now.Millisecond* attempts;
-
-            if (attempts--<20)
+            if (attempts--<0)
                 break;
         pos = getPostionInBoudneries(this.fightMap.bounds);
-        //Debug.Log("Positon to cosisder: "+ pos);
-        res = Physics2D.OverlapCircleAll(pos, collisionRadius);
+        state = checkIfWithinMap(pos,collisionRadius);
+        }
+        if(state)
+        return pos;
+        else
+            return new Vector2();
+
+    }
+
+
+    private bool checkIfWithinMap(Vector2 pos, float radius)
+    {
+        bool state = false;
+
+        Collider2D[] res;
+        res = Physics2D.OverlapCircleAll(pos, radius);
         //Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), pos, new Quaternion());
         foreach (Collider2D var in res)
         {
@@ -159,50 +173,12 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
             {
                 Debug.Log("Correct collsion wih: " + var.name);
 
-                    state = true;
+                state = true;
 
             }
             else
             {
-                Debug.Log("False collsion wih: " + var.name);
-
-                    state = false;
-                break;
-            }
-        }
-
-        }
-
-        return pos;
-
-
-    }
-    public Vector2 getRandomPostionArundPlayer(int collisionRadius, int radiusArundPlayer)
-    {
-        int attempts = 20;
-        bool state = false;
-        Collider2D[] res;
-        Vector2 pos = new Vector2();
-        while (state == false)
-        {
-            Random.seed = System.DateTime.Now.Millisecond * attempts;
-
-            if (attempts-- < 20)
-                break;
-            pos = Random.insideUnitCircle * radiusArundPlayer + new Vector2(Player.transform.position.x, Player.transform.position.y);
-            //Debug.Log("Positon to cosisder: "+ pos);
-            res = Physics2D.OverlapCircleAll(pos, collisionRadius);
-            //Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), pos, new Quaternion());
-            foreach (Collider2D var in res)
-            {
-                if (var.CompareTag("Map"))
-                {
-                    Debug.Log("Correct collsion wih: " + var.name);
-
-                    state = true;
-
-                }
-                else
+                if (var.CompareTag("Collider"))
                 {
                     Debug.Log("False collsion wih: " + var.name);
 
@@ -210,6 +186,25 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
                     break;
                 }
             }
+        }
+
+        return state;
+    }
+
+    public Vector2 getRandomPostionArundPlayer(int collisionRadius, int radiusArundPlayer)
+    {
+        int attempts = 200;
+        bool state = false;
+        Collider2D[] res;
+        Vector2 pos = new Vector2();
+        while (state == false)
+        {
+            Random.seed = System.DateTime.Now.Millisecond * attempts;
+
+            if (attempts-- < 0)
+                break;
+            pos = Random.insideUnitCircle * radiusArundPlayer + new Vector2(Player.transform.position.x, Player.transform.position.y);
+            state =  checkIfWithinMap(pos, collisionRadius);
 
         }
 
