@@ -106,11 +106,11 @@ public class PlayerControler : MonoBehaviour
 
     void OnUseActivatedItem()
     {
-        Debug.Log("UseActivatedItem" );
+        //Debug.Log("UseActivatedItem" );
     }
     void OnCancelUseActivatedItem()
     {
-        Debug.Log("CancelActivatedItem");
+        //Debug.Log("CancelActivatedItem");
     }
     void OnUseSingleItem()
     {
@@ -118,7 +118,7 @@ public class PlayerControler : MonoBehaviour
     }
     void OnCancelUseSingleItem()
     {
-        Debug.Log("CancelSingleItem");
+        //Debug.Log("CancelSingleItem");
     }
     void OnPut()
     {
@@ -127,15 +127,15 @@ public class PlayerControler : MonoBehaviour
     }
     void OnCancelPut()
     {
-        Debug.Log("Cancel On put");
+        //Debug.Log("Cancel On put");
     }
     void OnDropEquiped()
     {
-        Debug.Log("DropEquiped");
+        //Debug.Log("DropEquiped");
     }
     void OnCancelDropEquiped()
     {
-        Debug.Log("Cancel DropEquiped");
+        //Debug.Log("Cancel DropEquiped");
     }
 
 
