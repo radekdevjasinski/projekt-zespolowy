@@ -10,8 +10,8 @@ public class MiniMapController : MonoBehaviour
     public Sprite startRoomIconSprite;
     public Sprite shopRoomIconSprite;
     public Sprite bossRoomIconSprite;
-    public float iconSize = 10f;
-    public float roomSpacing = 20f;
+    public float iconSize = 15f;
+    public float roomSpacing = 18f;
     private RectTransform miniMapRect;
     private Image playerIcon;
 
