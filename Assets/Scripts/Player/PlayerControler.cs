@@ -162,4 +162,5 @@ public class PlayerControler : MonoBehaviour
         this.playerActionsController.setLeftMousePress(false);
         this.playerActionsController.setIsShooting(false);
     }
+
 }
