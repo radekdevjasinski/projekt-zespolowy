@@ -15,7 +15,7 @@ public class Summoned : MonoBehaviour
 
     public void DeffenseStance(Vector2 pos)
     {
-        transform.position = pos;   
+        transform.position = Vector2.MoveTowards(transform.position, pos, summonedAttributesController.GetSpeed() * Time.deltaTime); 
     }
 
     public void AggresiveStance()
@@ -42,7 +42,7 @@ public class Summoned : MonoBehaviour
 
     private IEnumerator FindEnemies()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         listOfEnemis = GameObject.FindGameObjectsWithTag("Enemy");
         FindCloseEnemy();
     }

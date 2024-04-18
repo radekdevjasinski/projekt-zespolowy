@@ -6,7 +6,7 @@ public class SummonedControler : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     public SummonedStance summonedStance;
-    public List<Summoned> summons;
+    public List<Summoned> summons= new List<Summoned>();
     void Start()
     {
         
@@ -14,24 +14,27 @@ public class SummonedControler : MonoBehaviour
 
     void Update()
     {
-        if(summons.Count>0) 
+        if (summons!=null)
         {
-            if (summonedStance == SummonedStance.Defense)
+            if (summons.Count >= 2)
             {
-                /*foreach (Summoned summoned in summons)
+                if (summonedStance == SummonedStance.Defense)
                 {
-                    summoned.DeffenseStance();
-                }*/
-                Vector2 newPosition = (Vector2)player.transform.position + new Vector2(1f, 0);
-                summons[0].DeffenseStance(newPosition);
-                newPosition = (Vector2)player.transform.position + new Vector2(-1f, 0);
-                summons[1].DeffenseStance(newPosition);
-            }
-            else
-            {
-                foreach (Summoned summoned in summons)
+                    /*foreach (Summoned summoned in summons)
+                    {
+                        summoned.DeffenseStance();
+                    }*/
+                    Vector2 newPosition = (Vector2)player.transform.position + new Vector2(1f, 0);
+                    summons[0].DeffenseStance(newPosition);
+                    newPosition = (Vector2)player.transform.position + new Vector2(-1f, 0);
+                    summons[1].DeffenseStance(newPosition);
+                }
+                else
                 {
-                    summoned.AggresiveStance();
+                    foreach (Summoned summoned in summons)
+                    {
+                        summoned.AggresiveStance();
+                    }
                 }
             }
         }

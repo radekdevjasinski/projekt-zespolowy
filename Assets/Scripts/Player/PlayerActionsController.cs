@@ -112,25 +112,24 @@ public class PlayerActionsController : MonoBehaviour
         if(summonedControler.summons.Count == 0)
         {
             int i;
-            Vector2 newPosition = (Vector2)this.transform.position + offsetSummoning;
+            Vector2 newPosition = (Vector2)this.transform.position;
             for (i = 1; i <= 2; i++)
             {
                 Vector2 newPositionTmp = newPosition;
+                if (i % 2 == 0)
+                {
+                    offsetSummoning = new Vector2(-1f, 0f);
+                }
+                else if (i % 3 == 0)
+                {
+                    offsetSummoning = new Vector2(1f, 0);
+                }
+                newPositionTmp = newPosition + offsetSummoning;
                 GameObject summoned = Instantiate(
                 summonableAlly,
                 newPositionTmp,
                 new Quaternion(0f, 0f, 0f, 0f),
-                summonedParent);
-                if (i % 2 == 0)
-                {
-                    offsetSummoning = new Vector2(0f, 1f);
-                }
-                else if (i % 3 == 0)
-                {
-                    offsetSummoning = new Vector2(-1f, 0f);
-                }
-                newPositionTmp = newPosition + offsetSummoning;
-                Debug.Log(newPositionTmp);
+                summonedParent); 
                 summonedControler.summons.Add(summoned.GetComponent<Summoned>());
             }
         }
