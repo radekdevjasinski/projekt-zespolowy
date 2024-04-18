@@ -18,7 +18,6 @@ public class DungeonRoom
     public Vector2Int pos;
     public RoomType roomType;
     public GameObject gameObject;
-    public GameObject[] doors;
 
     public DungeonRoom(int id, Vector2Int pos, RoomType roomType)
     {
@@ -73,6 +72,14 @@ public class DungeonRoom
                     doors[i].CloseDoor();
                 }
             }
+        }
+    }
+    public void CloseAllDoors()
+    {
+        Door[] doors = gameObject.transform.GetComponentsInChildren<Door>();
+        foreach (Door door in doors)
+        {
+            door.CloseDoor();
         }
     }
 }
