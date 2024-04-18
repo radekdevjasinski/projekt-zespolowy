@@ -53,6 +53,14 @@ public abstract class Projectile : MonoBehaviour
             onHit(colider.gameObject);
             kill();
         }
+        if (colider.gameObject.TryGetComponent<KnightController>(out KnightController knightController))
+        {
+            if (this.onhitAudio != null)
+                SoundManager.instance.playSound(this.onhitAudio, transform.position);
+            knightController.TakeDamage(this.baseDamage);
+            kill();
+            Debug.Log("damaged " + this.baseDamage);
+        }
     }
 
     protected abstract void onHit(GameObject obj);

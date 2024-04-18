@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    protected float healthPoints = 20f; //punkty ¿ycia wrogów
-    protected float currentHealthPoints;
-    protected float visionRange = 1f; //zasiêg widzenia wrogów
-    protected float damage = 1f; //damage wrogów per hit
-    protected float speed = 1f; //szybkosc wroga
+    [SerializeField] protected float healthPoints = 200f; //punkty ¿ycia wrogów
+    [SerializeField] protected float currentHealthPoints;
+    [SerializeField] protected float visionRange = 1f; //zasiêg widzenia wrogów
+    [SerializeField] protected int damage = 1; //damage wrogów per hit
+    [SerializeField] protected float speed = 1f; //szybkosc wroga
 
     private float changeDirectionTimer = 3f; //czas po którym zmieniamy kierunek ruchu
     protected float timer;
