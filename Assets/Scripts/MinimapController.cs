@@ -20,7 +20,7 @@ public class MiniMapController : MonoBehaviour
 
     public DungeonGenerator dungeonGenerator;
 
-    public TeleportToNextRoom teleportScript;
+    public PlayerTeleporter teleportScript;
     private Vector2Int lastPlayerRoomPos;
 
     void Start()
@@ -37,7 +37,7 @@ public class MiniMapController : MonoBehaviour
         playerIcon.transform.SetParent(transform);
         playerIcon.rectTransform.sizeDelta = new Vector2(iconSize, iconSize);
 
-        teleportScript = FindObjectOfType<TeleportToNextRoom>();
+        teleportScript = FindObjectOfType<PlayerTeleporter>();
 
         DungeonRoom startRoom = new DungeonRoom(0, Vector2Int.zero, RoomType.STARTROOM);
         lastPlayerRoomPos = startRoom.pos;
