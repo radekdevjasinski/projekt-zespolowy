@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 
 public class MiniMapController : MonoBehaviour
 {
@@ -15,11 +16,12 @@ public class MiniMapController : MonoBehaviour
     private Image playerIcon;
 
     private Dictionary<RoomType, Sprite> roomIconsDict = new Dictionary<RoomType, Sprite>();
-    private List<Image> roomIcons = new List<Image>();
-
-    private Vector2 lastPlayerPos;
+    private Dictionary<Vector2Int, Image> roomIcons = new Dictionary<Vector2Int, Image>();
 
     public DungeonGenerator dungeonGenerator;
+
+    public TeleportToNextRoom teleportScript;
+    private Vector2Int lastPlayerRoomPos;
 
     void Start()
     {
@@ -34,30 +36,56 @@ public class MiniMapController : MonoBehaviour
         playerIcon.sprite = roomIconSprite;
         playerIcon.transform.SetParent(transform);
         playerIcon.rectTransform.sizeDelta = new Vector2(iconSize, iconSize);
+
+        teleportScript = FindObjectOfType<TeleportToNextRoom>();
+
+        DungeonRoom startRoom = new DungeonRoom(0, Vector2Int.zero, RoomType.STARTROOM);
+        lastPlayerRoomPos = startRoom.pos;
+
+        StartCoroutine(DelayedDrawMiniMap(startRoom));
     }
 
-    void DrawMiniMap()
-{
-    foreach (DungeonRoom room in dungeonGenerator.rooms)
+    public void DrawMiniMap(DungeonRoom currentPlayerRoom)
     {
-        Vector2 miniMapPos = new Vector2(room.pos.x * (iconSize + roomSpacing), room.pos.y * (iconSize + roomSpacing));
+        Debug.Log("Rysuje");
+        ClearMiniMap();
 
-        // Sprawdź odległość pomiędzy graczem a pokojem
-        float distanceToPlayer = Vector2.Distance(player.transform.position, miniMapPos);
-
-        // Sprawdź, czy pokój mieści się w zasięgu widoku minimapy
-        if (distanceToPlayer <= miniMapRect.rect.width / 2f) // Załóżmy, że minimapa jest kwadratem
+        foreach (DungeonRoom room in dungeonGenerator.rooms)
         {
-            Image roomIcon = new GameObject("RoomIcon").AddComponent<Image>();
-            roomIcon.sprite = GetRoomSprite(room.roomType);
-            roomIcon.transform.SetParent(transform);
-            roomIcon.rectTransform.sizeDelta = new Vector2(iconSize, iconSize);
-            roomIcon.rectTransform.anchoredPosition = miniMapPos;
+            Vector2Int roomPos = room.pos;
 
-            roomIcons.Add(roomIcon);
+            Vector2Int playerRoomPos = currentPlayerRoom.pos;
+            Vector2 miniMapPos = new Vector2((roomPos.x - playerRoomPos.x) * (iconSize + roomSpacing), (roomPos.y - playerRoomPos.y) * (iconSize + roomSpacing));
+
+            Vector2 roomIconSize = new Vector2(iconSize, iconSize);
+            if (currentPlayerRoom == room)
+            {
+                roomIconSize *= 2f;
+            }
+
+            if (IsInMiniMapArea(miniMapPos))
+            {
+                Image roomIcon = new GameObject("RoomIcon").AddComponent<Image>();
+                roomIcon.sprite = GetRoomSprite(room.roomType);
+                roomIcon.transform.SetParent(transform);
+                roomIcon.rectTransform.sizeDelta = roomIconSize;
+                roomIcon.rectTransform.anchoredPosition = miniMapPos;
+
+                roomIcons.Add(roomPos, roomIcon);
+            }
         }
     }
-}
+
+
+
+    void ClearMiniMap()
+    {
+        foreach (KeyValuePair<Vector2Int, Image> pair in roomIcons)
+        {
+            Destroy(pair.Value.gameObject);
+        }
+        roomIcons.Clear();
+    }
 
     Sprite GetRoomSprite(RoomType roomType)
     {
@@ -67,27 +95,34 @@ public class MiniMapController : MonoBehaviour
             return roomIconSprite;
     }
 
+    bool IsInMiniMapArea(Vector2 position)
+    {
+        bool isInArea = Mathf.Abs(position.x) <= miniMapRect.rect.width / 2f && Mathf.Abs(position.y) <= miniMapRect.rect.height / 2f;
+
+        return isInArea;
+    }
+
+    IEnumerator DelayedDrawMiniMap(DungeonRoom startRoom)
+    {
+        yield return null;
+
+        DrawMiniMap(startRoom);
+    }
+
     void Update()
     {
-        if (dungeonGenerator.rooms.Count > 0 && roomIcons.Count == 0)
+        if (teleportScript.activePlayerRoom == null)
         {
-            DrawMiniMap();
+            teleportScript.activePlayerRoom = new DungeonRoom(0, Vector2Int.zero, RoomType.STARTROOM);
         }
 
-        Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-        Vector2 playerRoomPos = new Vector2(Mathf.Round(playerPos.x / (iconSize + roomSpacing)), Mathf.Round(playerPos.y / (iconSize + roomSpacing)));
+        DungeonRoom currentPlayerRoom = teleportScript.activePlayerRoom;
 
-        Vector2 playerIconPos = new Vector2(playerRoomPos.x * (iconSize + roomSpacing), playerRoomPos.y * (iconSize + roomSpacing));
-        playerIcon.rectTransform.anchoredPosition = playerIconPos;
-
-        if (playerRoomPos != lastPlayerPos)
+        if (currentPlayerRoom.pos != lastPlayerRoomPos)
         {
-            Vector2 mapMove = lastPlayerPos - playerRoomPos;
-            foreach (Image roomIcon in roomIcons)
-            {
-                roomIcon.rectTransform.anchoredPosition += mapMove * (iconSize + roomSpacing);
-            }
-            lastPlayerPos = playerRoomPos;
+            DrawMiniMap(currentPlayerRoom);
+
+            lastPlayerRoomPos = currentPlayerRoom.pos;
         }
     }
 }
