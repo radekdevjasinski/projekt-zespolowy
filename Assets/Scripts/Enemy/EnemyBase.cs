@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     protected float healthPoints = 20f; //punkty ¿ycia wrogów
-    protected float currentHealthPoints;
+    [SerializeField] protected float currentHealthPoints;
     protected float visionRange = 1f; //zasiêg widzenia wrogów
     protected float damage = 1f; //damage wrogów per hit
     protected float speed = 1f; //szybkosc wroga

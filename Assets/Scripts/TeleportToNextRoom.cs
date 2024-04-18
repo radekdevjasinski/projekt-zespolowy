@@ -8,7 +8,11 @@ public class TeleportToNextRoom : MonoBehaviour
     private DungeonRoom activePlayerRoom;
     private void Start()
     {
-        dungeonGenerator = GameObject.Find("Dungeon").GetComponent<DungeonGenerator>();
+        if(dungeonGenerator == null)//mia³êm tyutaj b³¹d z jakiegoœ powodu
+        {
+            //dungeonGenerator = GameObject.Find("Dungeon").GetComponent<DungeonGenerator>();
+        }
+       
     }
     public void Teleport(Vector2 triggerPos)
     {
