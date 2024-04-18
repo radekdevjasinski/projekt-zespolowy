@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class ArcherPatrol : MonoBehaviour
+public class ArcherPatrol : EnemyBase
 {
     private Rigidbody2D rb;
     private bool facingRight = true;
-    [SerializeField]private float moveSpeed = 1f; // Prêdkoœæ poruszania siê
+    private Animator animator;
+    [SerializeField]private float moveSpeed = 1f;
 
-    // Start is called before the first frame update
+    [SerializeField]private bool isShooting;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(moveSpeed, rb.velocity.y); // Ustawienie sk³adowej Y na zero
+        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        animator = GetComponentInChildren<Animator>();
+        EnemyBase enemy = GetComponent<EnemyBase>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        animator.SetBool("isShooting", isShooting);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -29,6 +32,18 @@ public class ArcherPatrol : MonoBehaviour
             FlipSprite();
             ChangeDirection();
         }
+    }
+    public void SetVelocityToZero()
+    {
+        rb.velocity = Vector2.zero;
+        isShooting = true;
+        
+    }
+    public void SetVelocity()
+    {
+        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        isShooting = false;
+
     }
 
     private void FlipSprite()
@@ -41,7 +56,9 @@ public class ArcherPatrol : MonoBehaviour
 
     private void ChangeDirection()
     {
-        moveSpeed *= -1; // Zmiana kierunku ruchu przez zmianê znaku prêdkoœci
-        rb.velocity = new Vector2(moveSpeed, rb.velocity.y); // Ustawienie nowej prêdkoœci
+        moveSpeed *= -1;
+        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
     }
+
+
 }

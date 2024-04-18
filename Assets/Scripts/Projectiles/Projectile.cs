@@ -53,6 +53,13 @@ public abstract class Projectile : MonoBehaviour
             onHit(colider.gameObject);
             kill();
         }
+        if (colider.gameObject.TryGetComponent<ArcherPatrol>(out ArcherPatrol archerPatrol))
+        {
+            if (this.onhitAudio != null)
+                SoundManager.instance.playSound(this.onhitAudio, transform.position);
+            archerPatrol.TakeDamage(this.baseDamage);
+            kill();
+        }
     }
 
     protected abstract void onHit(GameObject obj);

@@ -30,6 +30,11 @@ public class EnemyShooting : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerInRange = true;
+            ArcherPatrol archerPatrol = GetComponentInParent<ArcherPatrol>();
+            if (archerPatrol)
+            {
+                archerPatrol.SetVelocityToZero();
+            }
         }
     }
 
@@ -37,7 +42,15 @@ public class EnemyShooting : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerInRange = false;
+            if (!Physics2D.OverlapCircle(transform.position, 0.1f, LayerMask.GetMask("Player")))
+            {
+                playerInRange = false;
+                ArcherPatrol archerPatrol = GetComponentInParent<ArcherPatrol>();
+                if (archerPatrol)
+                {
+                    archerPatrol.SetVelocity();
+                }
+            }
         }
     }
 

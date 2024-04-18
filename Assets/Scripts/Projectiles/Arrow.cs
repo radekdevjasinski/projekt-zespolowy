@@ -15,11 +15,14 @@ public class Arrow : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Hp hp = collision.gameObject.GetComponent<Hp>();
-        //if (hp != null)
-        //{
-        //    hp.TakeDamage(attack);
-        //}
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerEntityController playerController = collision.gameObject.GetComponent<PlayerEntityController>();
+            if (playerController)
+            {
+                playerController.dealDamage(attack);
+            }
+        }
         Destroy(gameObject);
     }
 
