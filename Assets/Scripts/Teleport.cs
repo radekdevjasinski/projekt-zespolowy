@@ -9,7 +9,7 @@ public class Teleport : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameObject.Find("Player").GetComponent<TeleportToNextRoom>().Teleport(direction);
+            GameObject.Find("Player").GetComponent<PlayerTeleporter>().Teleport(direction);
         }
     }
 }

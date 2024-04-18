@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleportToNextRoom : MonoBehaviour
+public class PlayerTeleporter : MonoBehaviour
 {
     public DungeonRoom activePlayerRoom;
     private DungeonGenerator dungeonGenerator;
+    private TurnOffControls turnOffControls;
     public float distanceFromDoor = 1f;
+    public float controlsOffTime = 0.25f;
     private void Start()
     {
         dungeonGenerator = GameObject.Find("Dungeon").GetComponent<DungeonGenerator>();
+        turnOffControls = GetComponent<TurnOffControls>();
+
     }
     public void Teleport(Vector2 triggerPos)
     {
@@ -40,9 +44,24 @@ public class TeleportToNextRoom : MonoBehaviour
                 {
                     Vector3 destination = activeDoor.transform.position + new Vector3(triggerPos.x * distanceFromDoor, triggerPos.y * distanceFromDoor, 0);
                     this.gameObject.transform.position = destination;
+                    activePlayerRoom.CloseAllDoors();
+                    turnOffControls.controlsOn = false;
+                    StartCoroutine(TurnOnControls());
                 }
                 break;
             }
+        }
+    }
+    IEnumerator TurnOnControls()
+    {
+        yield return new WaitForSeconds(controlsOffTime);
+        turnOffControls.controlsOn = true;
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            activePlayerRoom.OpenRightDoors(dungeonGenerator.rooms);
         }
     }
 
