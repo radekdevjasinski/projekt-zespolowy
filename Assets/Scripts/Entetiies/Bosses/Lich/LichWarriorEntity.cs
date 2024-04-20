@@ -48,7 +48,7 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
 
     #region StageOneBehaviour
     [Header("Zombie Stage 1")]
-    [SerializeField] private float delayBetweenMinionSpawn;
+    [SerializeField] private float timeToSummonMinon;
     [SerializeField] private int minionToSpawn;
     [SerializeField] private GameObject minionSummon;
     [SerializeField] private float sleepTime;
@@ -58,11 +58,12 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     public void StartZombieSummon()
     {
         Debug.Log("Start Zobmie SUmmon");
+        float delayBetweenMinionSpawn = timeToSummonMinon / minionToSpawn;
         for (int i = 0; i < minionToSpawn; i++)
         {
             Invoke("summonMinion",delayBetweenMinionSpawn*i);
         }
-        Invoke("stopZombieSummon", minionToSpawn * delayBetweenMinionSpawn);
+        Invoke("stopZombieSummon", timeToSummonMinon);
 
     }
 
@@ -100,7 +101,7 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     private void goSleep()
     {
         Debug.Log("GoSleep");
-        bossFightController.destroyShield();
+        //bossFightController.destroyShield();
         this.animator.SetBool("IsSleeping", true);
         Invoke("wakeUp", sleepTime);
     }
@@ -125,8 +126,9 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     [Header("Stage 2 attacks")]
     [SerializeField] 
     private int actionsPerBehaviour=0;
-    [SerializeField]
-    private int BehaviourPerPhaze = 0;
+    //[SerializeField]
+    //private int BehaviourPerPhaze = 0;
+    [SerializeField] private int minonsToSpawnOnStage2=3;
     [SerializeField]
     private float ActionCoolDown = 0;
 
@@ -189,13 +191,13 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
          
             currentActiveBehaviour = getRandomBehaviour();
             currentAction = 1;
-            if (currentBehavioutNumber >= BehaviourPerPhaze)
-            {
-                this.goSleep();
-                currentAction = 0;
-                currentBehavioutNumber = 0;
-                return;
-            }
+            //if (currentBehavioutNumber >= BehaviourPerPhaze)
+            //{
+            //    this.goSleep();
+            //    currentAction = 0;
+            //    currentBehavioutNumber = 0;
+            //    return;
+            //}
         }
         
 
@@ -227,6 +229,11 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
         }
 
      
+    }
+    private void adjustParamtersForStage2()
+    {
+        this.minionToSpawn = minonsToSpawnOnStage2;
+
     }
 
     private IEnumerator shoot(float time,int numbber)
@@ -272,18 +279,19 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     private float newCooldown;
     [SerializeField]
     private int newAmountOfActionPerBehaviour;
-    [SerializeField]
-    private int newAmountBehavioutPerPhases;
+    //[SerializeField]
+    //private int newAmountBehavioutPerPhases;
     [SerializeField]
     private float newSleepTime;
-
+    [SerializeField] private int minonsToSpawnOnStage3 = 3;
     private void adjustParamtersForStage3()
     {
         Debug.Log("Adjust for stage3");
         this.timeToMoveBetwwenPoints = newMovemntTime;
         this.ActionCoolDown = newCooldown;
         this.actionsPerBehaviour = newAmountOfActionPerBehaviour;
-        this.BehaviourPerPhaze = newAmountBehavioutPerPhases;
+        //this.BehaviourPerPhaze = newAmountBehavioutPerPhases;
+        this.minionToSpawn = minonsToSpawnOnStage3;
         this.sleepTime=newSleepTime;
         this.currentAction = 0;
         this.currentBehavioutNumber = 0;
@@ -337,10 +345,16 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     {
     
       animator.SetInteger("Stage",this.animator.GetInteger("Stage")+1);
-      if (this.animator.GetInteger("Stage") == 2)
+      if (this.animator.GetInteger("Stage") == 1)
+          adjustParamtersForStage2();
+        if (this.animator.GetInteger("Stage") == 2)
           adjustParamtersForStage3();
       Debug.Log("Lich Stage increase: " + this.animator.GetInteger("Stage"));
     }
 
- 
+
+    public void destroyShield()
+    {
+      bossFightController.destroyShield();
+    }
 }
