@@ -67,7 +67,6 @@ public class PlayerActionsController : MonoBehaviour
         {
             canShoot = false;
 
-
             Vector3 startPosition = new Vector3(
                 transform.position.x + collider.bounds.size.x * 1.4f * direction.x,
                 transform.position.y + collider.bounds.size.y * 1.4f * direction.y,

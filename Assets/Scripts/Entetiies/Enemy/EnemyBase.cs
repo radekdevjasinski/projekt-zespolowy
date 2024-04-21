@@ -14,7 +14,7 @@ public class EnemyBase : MonoBehaviour
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         currentHealthPoints = healthPoints;
         rb = GetComponent<Rigidbody2D>();

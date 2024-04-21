@@ -26,17 +26,16 @@ public class PlayerControler : MonoBehaviour
     private InputAction dropEquiped;
     private InputAction mousePress;
     private InputAction mousePosition;
-    private InputAction useAbilityOne;
 
- 
- 
+
+
     private void Awake()
     {
-       
-        this.controls =new Controls();
-        this.playerMovementController=this.GetComponent<PlayerMovementController>();
-        this.playerActionsController= this.GetComponent<PlayerActionsController>();
-        this.playerAttributesController= this.GetComponent<PlayerAttributesController>();
+
+        this.controls = new Controls();
+        this.playerMovementController = this.GetComponent<PlayerMovementController>();
+        this.playerActionsController = this.GetComponent<PlayerActionsController>();
+        this.playerAttributesController = this.GetComponent<PlayerAttributesController>();
     }
 
     void OnEnable()
@@ -52,7 +51,7 @@ public class PlayerControler : MonoBehaviour
         shoot.performed += ctx => { OnShoot(ctx.ReadValue<Vector2>()); };
         shoot.canceled += ctx => { OnCancelShoot(); };
 
-        useActivatedItem=this.controls.Player.UseActivatedItem;
+        useActivatedItem = this.controls.Player.UseActivatedItem;
         useActivatedItem.performed += ctx => { OnUseActivatedItem(); };
         useActivatedItem.canceled += ctx => { OnCancelUseActivatedItem(); };
 
@@ -75,12 +74,8 @@ public class PlayerControler : MonoBehaviour
         mousePosition = this.controls.Player.MousePostion;
         mousePosition.performed += ctx => { OnMousePostion(ctx.ReadValue<Vector2>()); };
 
-        useAbilityOne = this.controls.Player.UseAbilityOne;
-        useAbilityOne.performed += ctx => { OnUseAbilityOne(); };
-        useAbilityOne.canceled += ctx => { OnCancelUseAbilityOne(); };
-
     }
-    
+
     void OnDisable()
     {
         this.controls.Player.Disable();
@@ -104,18 +99,18 @@ public class PlayerControler : MonoBehaviour
     }
     void OnCancelShoot()
     {
-       // Debug.Log("cancel shoot: ");
+        // Debug.Log("cancel shoot: ");
         this.playerActionsController.setIsShooting(false);
-      
+
     }
 
     void OnUseActivatedItem()
     {
-        //Debug.Log("UseActivatedItem" );
+        Debug.Log("UseActivatedItem");
     }
     void OnCancelUseActivatedItem()
     {
-        //Debug.Log("CancelActivatedItem");
+        Debug.Log("CancelActivatedItem");
     }
     void OnUseSingleItem()
     {
@@ -123,7 +118,7 @@ public class PlayerControler : MonoBehaviour
     }
     void OnCancelUseSingleItem()
     {
-        //Debug.Log("CancelSingleItem");
+        Debug.Log("CancelSingleItem");
     }
     void OnPut()
     {
@@ -132,25 +127,15 @@ public class PlayerControler : MonoBehaviour
     }
     void OnCancelPut()
     {
-        //Debug.Log("Cancel On put");
+        Debug.Log("Cancel On put");
     }
     void OnDropEquiped()
     {
-        //Debug.Log("DropEquiped");
+        Debug.Log("DropEquiped");
     }
     void OnCancelDropEquiped()
     {
-        //Debug.Log("Cancel DropEquiped");
-    }
-
-    void OnUseAbilityOne()
-    {
-        playerActionsController.UseAbilityOne();
-    }
-
-    void OnCancelUseAbilityOne()
-    {
-        Debug.Log("Cancel On useAbilityOne");
+        Debug.Log("Cancel DropEquiped");
     }
 
 
@@ -161,13 +146,13 @@ public class PlayerControler : MonoBehaviour
     }
 
 
- 
+
     void OnMouseLeftPress()
     {
         this.playerActionsController.setLeftMousePress(true);
         this.playerActionsController.setShootingDirectionFromMouse();
         this.playerActionsController.setIsShooting(true);
-        
+
     }
 
 
@@ -178,4 +163,13 @@ public class PlayerControler : MonoBehaviour
         this.playerActionsController.setIsShooting(false);
     }
 
+    public void lockInput()
+    {
+        controls.Disable();
+    }
+
+    public void unlockInput()
+    {
+        controls.Enable();
+    }
 }

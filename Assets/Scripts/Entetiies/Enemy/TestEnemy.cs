@@ -8,9 +8,8 @@ public class TestEnemy : EnemyBase
         Move();
         if (IsWithinRange())
         {
-            killImidielty();
+            //killImidielty();
         }
     }
-
 
 }

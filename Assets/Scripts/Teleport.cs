@@ -9,8 +9,7 @@ public class Teleport : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("teleport enter");
-            GameObject.Find("Player").GetComponent<TeleportToNextRoom>().Teleport(direction);
+            GameObject.Find("Player").GetComponent<PlayerTeleporter>().Teleport(direction);
         }
     }
 }

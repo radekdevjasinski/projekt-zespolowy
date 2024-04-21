@@ -60,6 +60,7 @@ public abstract class Projectile : MonoBehaviour
             knightController.TakeDamage(this.baseDamage);
             kill();
             Debug.Log("damaged " + this.baseDamage);
+        }
         if (colider.gameObject.TryGetComponent<ArcherPatrol>(out ArcherPatrol archerPatrol))
         {
             if (this.onhitAudio != null)

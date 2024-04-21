@@ -75,6 +75,14 @@ public class DungeonRoom
             }
         }
     }
+    public void CloseAllDoors()
+    {
+        Door[] doors = gameObject.transform.GetComponentsInChildren<Door>();
+        foreach (Door door in doors)
+        {
+            door.CloseDoor();
+        }
+    }
 }
 public class DungeonGenerator : MonoBehaviour
 {
