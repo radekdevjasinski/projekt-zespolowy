@@ -26,7 +26,7 @@ public class SoundManager : MonoBehaviour
     public void playSound(Transform parent,GameObject soundObject, Vector3 postion)
     {
         GameObject soundGameObjet = Instantiate(soundObject, postion, new Quaternion(0, 0, 0, 0), parent);
-        Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name);
+        //Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name);
         AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
         DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
     }
@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
     public GameObject playLoop(Transform parent, GameObject loopSOundPrefab)
     {
         GameObject soundGameObjet = Instantiate(loopSOundPrefab, parent.position, new Quaternion(0, 0, 0, 0), parent);
-        Debug.Log("play loop sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name);
+        //Debug.Log("play loop sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name);
         AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
         audio.Play();
         return soundGameObjet;
