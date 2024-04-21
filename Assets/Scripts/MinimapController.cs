@@ -32,11 +32,6 @@ public class MiniMapController : MonoBehaviour
 
         miniMapRect = GetComponent<RectTransform>();
 
-        playerIcon = new GameObject("PlayerIcon").AddComponent<Image>();
-        playerIcon.sprite = roomIconSprite;
-        playerIcon.transform.SetParent(transform);
-        playerIcon.rectTransform.sizeDelta = new Vector2(iconSize, iconSize);
-
         teleportScript = FindObjectOfType<PlayerTeleporter>();
 
         DungeonRoom startRoom = new DungeonRoom(0, Vector2Int.zero, RoomType.STARTROOM);
