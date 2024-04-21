@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4076066762930841539}
   - component: {fileID: 4097388504459678811}
+  - component: {fileID: 1263343930448841438}
   m_Layer: 7
   m_Name: Torch
   m_TagString: Collider
@@ -169,6 +170,22 @@ PolygonCollider2D:
       - {x: 0.62488204, y: -0.0018679202}
       - {x: 0.29361117, y: 0.553648}
   m_UseDelaunayMesh: 0
+--- !u!114 &1263343930448841438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3294202784045024801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &7690770588117398050
 GameObject:
   m_ObjectHideFlags: 0
