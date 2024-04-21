@@ -107,6 +107,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""29674dd5-1572-4ea4-97ca-357d63d28284"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -307,6 +316,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""UseAbilityOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b078887-8257-4ec6-ad6b-4f161acb58c5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -324,6 +344,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_MousePress = m_Player.FindAction("MousePress", throwIfNotFound: true);
         m_Player_MousePostion = m_Player.FindAction("MousePostion", throwIfNotFound: true);
         m_Player_UseAbilityOne = m_Player.FindAction("UseAbilityOne", throwIfNotFound: true);
+        m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -394,6 +415,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MousePress;
     private readonly InputAction m_Player_MousePostion;
     private readonly InputAction m_Player_UseAbilityOne;
+    private readonly InputAction m_Player_PauseMenu;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -407,6 +429,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @MousePress => m_Wrapper.m_Player_MousePress;
         public InputAction @MousePostion => m_Wrapper.m_Player_MousePostion;
         public InputAction @UseAbilityOne => m_Wrapper.m_Player_UseAbilityOne;
+        public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -443,6 +466,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @UseAbilityOne.started += instance.OnUseAbilityOne;
             @UseAbilityOne.performed += instance.OnUseAbilityOne;
             @UseAbilityOne.canceled += instance.OnUseAbilityOne;
+            @PauseMenu.started += instance.OnPauseMenu;
+            @PauseMenu.performed += instance.OnPauseMenu;
+            @PauseMenu.canceled += instance.OnPauseMenu;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -474,6 +500,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @UseAbilityOne.started -= instance.OnUseAbilityOne;
             @UseAbilityOne.performed -= instance.OnUseAbilityOne;
             @UseAbilityOne.canceled -= instance.OnUseAbilityOne;
+            @PauseMenu.started -= instance.OnPauseMenu;
+            @PauseMenu.performed -= instance.OnPauseMenu;
+            @PauseMenu.canceled -= instance.OnPauseMenu;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -502,5 +531,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMousePress(InputAction.CallbackContext context);
         void OnMousePostion(InputAction.CallbackContext context);
         void OnUseAbilityOne(InputAction.CallbackContext context);
+        void OnPauseMenu(InputAction.CallbackContext context);
     }
 }
