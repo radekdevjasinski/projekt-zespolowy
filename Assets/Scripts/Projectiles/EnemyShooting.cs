@@ -8,8 +8,8 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] float fireRate = 0.25f;
     [SerializeField] Transform player;
 
-    private float nextFireTime;
     private bool playerInRange = false;
+    private bool canShoot = true;
 
     void Start()
     {
@@ -18,13 +18,18 @@ public class EnemyShooting : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Time.time >= nextFireTime)
+        if (playerInRange && canShoot)
         {
             Shoot();
-            nextFireTime = Time.time + fireRate;
+            canShoot = false;
+            StartCoroutine(shootCooldown());
         }
     }
-
+    IEnumerator shootCooldown()
+    {
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

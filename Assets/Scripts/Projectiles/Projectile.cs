@@ -57,7 +57,7 @@ public abstract class Projectile : MonoBehaviour
         {
             if (this.onhitAudio != null)
                 SoundManager.instance.playSound(this.onhitAudio, transform.position);
-            knightController.reviceDamage(this.baseDamage);
+            knightController.dealDamage(this.baseDamage);
             kill();
             Debug.Log("damaged " + this.baseDamage);
         }
@@ -65,7 +65,7 @@ public abstract class Projectile : MonoBehaviour
         {
             if (this.onhitAudio != null)
                 SoundManager.instance.playSound(this.onhitAudio, transform.position);
-            archerPatrol.reviceDamage(this.baseDamage);
+            archerPatrol.dealDamage(this.baseDamage);
             kill();
         }
     }

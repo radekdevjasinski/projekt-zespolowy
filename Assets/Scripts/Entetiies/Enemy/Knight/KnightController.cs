@@ -15,8 +15,9 @@ public class KnightController : EnemyBase
     private KnightPathfinding knightPathfinding;
     bool isAttacking = false;
     bool isMoving = true;
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         timer = attackSpeed;
         currentHealthPoints = maxHelathPoints;
         damage = 1;
@@ -62,7 +63,7 @@ public class KnightController : EnemyBase
         if (rb != null)
         {
             knightPathfinding.Move();
-            animator.SetFloat("moveX",forceDirection.x);
+            animator.SetFloat("moveX", forceDirection.x);
             animator.SetFloat("moveY", forceDirection.y);
             animator.Play("Move");
         }
@@ -92,7 +93,7 @@ public class KnightController : EnemyBase
 
     public override void reviceDamage(float damage)
     {
-        currentHealthPoints -= damage;
+        base.reviceDamage(damage);
         damageController.TakeDamage();
     }
 

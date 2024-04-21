@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.AI.Navigation;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum RoomType
 {
@@ -98,7 +98,7 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject[] shopPrefabs;
 
     public List<DungeonRoom> rooms = new List<DungeonRoom>();
-    public NavMeshSurface navMeshSurface;
+    public NavigationBake navigationBake;
 
     void Start()
     {
@@ -134,6 +134,7 @@ public class DungeonGenerator : MonoBehaviour
         {
             room.OpenRightDoors(rooms);
         }
+        navigationBake.BakeNavMesh();
     }
     List<Vector2Int> CalculateFreeRooms()
     {
@@ -171,6 +172,7 @@ public class DungeonGenerator : MonoBehaviour
 
             }
         }
+        
     }
 
 }

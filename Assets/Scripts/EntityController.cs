@@ -6,10 +6,6 @@ using static UnityEngine.Rendering.DebugUI;
 
 abstract public class EntityController<TH> : MonoBehaviour
 {
-
-
-    
-
     //protected float groundDragBase = 30f;
 
     //abstract public void resetDrag();
