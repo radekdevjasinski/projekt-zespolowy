@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ContinueButton : MonoBehaviour
 {
-    public int sceneIndexToContinue = 1; 
+    public int continueScene = 1; 
     public void ContinueGame()
     {
-        SceneManager.LoadScene(sceneIndexToContinue);
+        SceneManager.LoadScene(continueScene);
     }
 }
