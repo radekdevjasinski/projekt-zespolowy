@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private Transform playerTransform;
+    [SerializeField]
+    private Transform followPoint;
 
-    private void Awake()
-    {
-        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
-    }
+
     void Update()
     {
-        if (playerTransform != null)
+        if (followPoint != null)
         {
-            Vector3 moveTo = playerTransform.position;
+            Vector3 moveTo = followPoint.position;
             this.transform.position = new Vector3(moveTo.x, moveTo.y, -10);
         }
 
+    }
+
+    public Transform getFollowPoint()
+    {
+        return followPoint;
+    }
+
+    public void setFollowPoint(Transform newfollowPoint)
+    {
+        this.followPoint = newfollowPoint;
     }
 }

@@ -13,8 +13,8 @@ public class BasicProjectile : Projectile
 
     protected override void onHit(GameObject obj)
     {
-        EntityController entityController;
-        if (obj.TryGetComponent<EntityController>(out entityController))
+        EntityController<float> entityController;
+        if (obj.TryGetComponent<EntityController<float>>(out entityController))
         {
             entityController.dealDamage(this.baseDamage);
         }

@@ -1623,6 +1623,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7774781971445117430, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     m_RemovedGameObjects: []
@@ -2670,6 +2674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990c35ae695843b4e8558a325115830b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followPoint: {fileID: 262766657}
 --- !u!212 &519420034
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11545,6 +11550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff7d3c9af1d99049ac473abf9139829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BasicAmbientSounds: {fileID: 8660298434160436912, guid: e72b00879d562ea4eae2315d69a2cfe3, type: 3}
 --- !u!1001 &1376335166
 PrefabInstance:
   m_ObjectHideFlags: 0
