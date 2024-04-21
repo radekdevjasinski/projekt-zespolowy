@@ -24,13 +24,11 @@ public class KnightController : EnemyBase
         animator = GetComponent<Animator>();
         knightPathfinding = GetComponent<KnightPathfinding>();
         knightPathfinding.agent.speed = this.speed;
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntityController>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerEntityController>();
     }
 
     void FixedUpdate()
     {
-        animator.SetBool("isAttacking", isAttacking);
-        animator.SetBool("isMoving", isMoving);
         if (isMoving && !IsWithinRange())
         {
             Move();
@@ -44,6 +42,7 @@ public class KnightController : EnemyBase
                 isAttacking = true;
                 isMoving = false;
                 Attack();
+                animator.SetTrigger("isAttacking");
             }
             else
             {
@@ -59,7 +58,6 @@ public class KnightController : EnemyBase
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         Vector2 targetPosition = (Vector2)playerTransform.position + direction;
         Vector2 forceDirection = (targetPosition - (Vector2)transform.position).normalized;
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
             knightPathfinding.Move();

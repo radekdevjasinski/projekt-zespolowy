@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class KnightPathfinding : MonoBehaviour
 {
-    [SerializeField] Transform target;
+    Transform target;
     public NavMeshAgent agent;
 
     private void Start()
