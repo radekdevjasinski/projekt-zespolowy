@@ -71,7 +71,7 @@ public class DungeonRoom
                 }
                 else
                 {
-                    doors[i].CloseDoor();
+                    doors[i].HideDoor();
                 }
             }
         }
@@ -81,7 +81,10 @@ public class DungeonRoom
         Door[] doors = gameObject.transform.GetComponentsInChildren<Door>();
         foreach (Door door in doors)
         {
-            door.CloseDoor();
+            if (door.doorState == DoorState.OPENED)
+            {
+                door.CloseDoor();
+            }
         }
     }
 }
@@ -111,7 +114,6 @@ public class DungeonGenerator : MonoBehaviour
 
         for (int i = 0; i < allRooms; i++)
         {
-            Debug.Log("roomCount: " + roomCount + " : rooms: " + rooms.Count);
             freeRooms = CalculateFreeRooms();
             if (roomCount > 0)
             {

@@ -13,12 +13,10 @@ public class KnightController : EnemyBase
     public DamageController damageController;
     private Animator animator;
     private KnightPathfinding knightPathfinding;
-    bool isAttacking = false;
-    bool isMoving = true;
+    private bool canAttack = true;
     protected override void Start()
     {
         base.Start();
-        timer = attackSpeed;
         currentHealthPoints = maxHelathPoints;
         damage = 1;
         animator = GetComponent<Animator>();
@@ -29,29 +27,25 @@ public class KnightController : EnemyBase
 
     void FixedUpdate()
     {
-        if (isMoving && !IsWithinRange())
+        if (!IsWithinRange())
         {
             Move();
         }
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        if (IsWithinRange() & canAttack)
         {
-            timer = attackSpeed;
-            if (IsWithinRange())
-            {
-                isAttacking = true;
-                isMoving = false;
-                Attack();
-                animator.SetTrigger("isAttacking");
-            }
-            else
-            {
-                isAttacking = false;
-                isMoving = true;
-            }
-        }
-    }
+            Attack();
+            animator.SetTrigger("isAttacking");
+            canAttack = false;
+            StartCoroutine(attackCooldown());
 
+        }
+
+    }
+    IEnumerator attackCooldown()
+    {
+        yield return new WaitForSeconds(attackSpeed);
+        canAttack = true;
+    }
     protected override void Move()
     {
         Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;

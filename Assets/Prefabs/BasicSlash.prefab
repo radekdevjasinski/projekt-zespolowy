@@ -86,7 +86,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 1
-  baseLifeTime: 0.5
+  baseLifeTime: 0.1
   projectileTimeMultiplayer: 0.2
   onShootAudio: {fileID: 8559890285010858849, guid: 7a94e912402d6ca4f9f22a59115dddf8, type: 3}
   onhitAudio: {fileID: 8559890285010858849, guid: e3d0bf125168e764a81e51c0dfbca010, type: 3}
