@@ -1,39 +1,44 @@
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : EntityController<float>
 {
-    [SerializeField] protected float healthPoints = 200f; //punkty ¿ycia wrogów
-    [SerializeField] protected float currentHealthPoints;
-    [SerializeField] protected float visionRange = 1f; //zasiêg widzenia wrogów
-    [SerializeField] protected int damage = 1; //damage wrogów per hit
-    [SerializeField] protected float speed = 1f; //szybkosc wroga
+    [SerializeField]
+    protected const float maxHelathPoints = 20f; //punkty ?ycia wrog?w
+    protected float currentHealthPoints;
+    protected float visionRange = 1f; //zasi?g widzenia wrog?w
+    protected int damage = 1; //damage wrog?w per hit
+    protected float speed = 1f; //szybkosc wroga
 
-    private float changeDirectionTimer = 3f; //czas po którym zmieniamy kierunek ruchu
+    private float changeDirectionTimer = 3f; //czas po kt?rym zmieniamy kierunek ruchu
     protected float timer;
     private Vector2 randomDirection;
     private Rigidbody2D rb;
 
+
+    private Transform playerTransform;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        currentHealthPoints = healthPoints;
+        currentHealthPoints = maxHelathPoints;
         rb = GetComponent<Rigidbody2D>();
         timer = changeDirectionTimer;
         GetRandomDirection();
+        Debug.Log("get player transofrm");
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
 
-    //metoda która sprawnia ¿e wróg otrzymuje obra¿enia, bêdzie wywo³ywana gdy wróg otrzyma dmg
-    public virtual void TakeDamage(float damage)
+    //metoda kt?ra sprawnia ?e wr?g otrzymuje obra?enia, b?dzie wywo?ywana gdy wr?g otrzyma dmg
+
+
+    public override void reviceDamage(float damage)
     {
-        if (currentHealthPoints <= 0) //je¿eli ¿ycie wroga bêdzie mniejsze lub rowne 0 to ginie
-        {
-            Die();
-        }
-        currentHealthPoints -= damage;
+        Debug.Log("enemy recive damage, now: " + this.getHealth());
+        currentHealthPoints -= damage; //sprawdzenie smeirci jest w klasie bazowej
     }
 
-    //metoda do poruszania siê wroga (domyœlnie randomowo)
+    //metoda do poruszania si? wroga (domy?lnie randomowo)
     protected virtual void Move()
     {
         rb.MovePosition(rb.position + randomDirection * speed * Time.deltaTime);
@@ -45,7 +50,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    //metoda do zmiany kierunku poruszania siê wroga
+    //metoda do zmiany kierunku poruszania si? wroga
     protected virtual void GetRandomDirection()
     {
         float angle = Random.Range(0f, 2f * Mathf.PI);
@@ -54,7 +59,7 @@ public class EnemyBase : MonoBehaviour
         randomDirection = new Vector2(x, y).normalized;
     }
 
-    //metoda do sprawdzania kolizji ze œcianami
+    //metoda do sprawdzania kolizji ze ?cianami
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
@@ -66,14 +71,15 @@ public class EnemyBase : MonoBehaviour
     //metoda do sprawdzenia czy gracz jest w zasiegu wroga
     protected virtual bool IsWithinRange()
     {
-        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        // (przeniseion wyszukiwanie obekitu player do zmiennej globlanej aby nie trzeba bylo szukac do update) 
+        Debug.Log("Is within range");
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
-        return distanceToPlayer <= visionRange; //jeœli dystans od gracza dp wroga jest mniejszy
-        //lub równy polu widzenia to zwracamy albo true albo false
+        return distanceToPlayer <= visionRange; //je?li dystans od gracza dp wroga jest mniejszy
+        //lub r?wny polu widzenia to zwracamy albo true albo false
     }
 
-    //metoda, który niszczy obiekt wroga
-    protected virtual void Die()
+    //metoda, kt?ry niszczy obiekt wroga
+    protected override void onDie()
     {
         Destroy(gameObject);
     }
@@ -81,6 +87,19 @@ public class EnemyBase : MonoBehaviour
     //metoda do ataku przeciwnika
     protected virtual void Attack()
     {
-        //za³o¿enie ¿e ka¿dy rodzaj wroga ma inny sposób ataku
+        //za?o?enie ?e ka?dy rodzaj wroga ma inny spos?b ataku
     }
+
+
+    protected override float getHealth()
+    {
+        return currentHealthPoints;
+    }
+
+    protected override float getMaxHealth()
+    {
+        return maxHelathPoints;
+    }
+
+
 }

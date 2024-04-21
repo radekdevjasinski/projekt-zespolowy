@@ -335,7 +335,7 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
         return 1;
     }
 
-    protected override void reviceDamage(float damage)
+    public override void reviceDamage(float damage)
     {
       // this entity does not recive dagme
     }

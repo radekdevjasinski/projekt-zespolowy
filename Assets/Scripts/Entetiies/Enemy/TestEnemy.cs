@@ -8,7 +8,7 @@ public class TestEnemy : EnemyBase
         Move();
         if (IsWithinRange())
         {
-            Die();
+            killImidielty();
         }
     }
 

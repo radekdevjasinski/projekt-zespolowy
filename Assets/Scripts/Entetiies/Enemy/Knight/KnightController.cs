@@ -18,7 +18,7 @@ public class KnightController : EnemyBase
     void Start()
     {
         timer = attackSpeed;
-        currentHealthPoints = healthPoints;
+        currentHealthPoints = maxHelathPoints;
         damage = 1;
         animator = GetComponent<Animator>();
         knightPathfinding = GetComponent<KnightPathfinding>();
@@ -90,12 +90,8 @@ public class KnightController : EnemyBase
         return distanceToPlayer <= attackRange;
     }
 
-    public override void TakeDamage(float damage)
+    public override void reviceDamage(float damage)
     {
-        if (currentHealthPoints <= 0) 
-        {
-            Die();
-        }
         currentHealthPoints -= damage;
         damageController.TakeDamage();
     }

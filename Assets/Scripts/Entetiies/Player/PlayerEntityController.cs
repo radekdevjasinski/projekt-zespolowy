@@ -34,7 +34,7 @@ public class PlayerEntityController : EntityController<int>
         throw new NotImplementedException(); // no heatlh limit for player
     }
 
-    protected override void reviceDamage(int damage)
+    public override void reviceDamage(int damage)
     {
         this.GetComponent<PlayerAttributesController>().increaseHealth(-damage);
         //GameObject HpBar = GameObject.Find("HpBar");

@@ -51,7 +51,7 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
 
 
 
-    protected override void reviceDamage(float damage)
+    public override void reviceDamage(float damage)
     {
         this.health-=damage;
         this.bossUIHelathBar.updateSlider(this.health,this.maxHealth);

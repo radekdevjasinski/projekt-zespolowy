@@ -400,10 +400,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1786199462}
     m_Modifications:
-    - target: {fileID: 401049615517089916, guid: d4b892e898ee5754c95e66693dec31e5, type: 3}
-      propertyPath: skipStartSequnace
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3454423971384584238, guid: d4b892e898ee5754c95e66693dec31e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -443,18 +439,6 @@ PrefabInstance:
     - target: {fileID: 3454423971384584238, guid: d4b892e898ee5754c95e66693dec31e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3696642711705368772, guid: d4b892e898ee5754c95e66693dec31e5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3696642711705368772, guid: d4b892e898ee5754c95e66693dec31e5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6269343781592025842, guid: d4b892e898ee5754c95e66693dec31e5, type: 3}
-      propertyPath: m_ContactCaptureLayers.m_Bits
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6731866519351943996, guid: d4b892e898ee5754c95e66693dec31e5, type: 3}
       propertyPath: m_Name
@@ -650,10 +634,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1786199462}
     m_Modifications:
-    - target: {fileID: 3203944582975471556, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
-      propertyPath: playerClass
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4319326301353448314, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
       propertyPath: m_Name
       value: Player

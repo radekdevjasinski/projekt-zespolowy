@@ -68,5 +68,5 @@ abstract public class EntityController<TH> : MonoBehaviour
     protected abstract TH getHealth();
     protected abstract TH getMaxHealth();
 
-    protected abstract void reviceDamage(TH damage);
+    public abstract void reviceDamage(TH damage);
 }
