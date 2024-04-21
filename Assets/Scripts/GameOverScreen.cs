@@ -7,6 +7,9 @@ public class GameOverScreen : MonoBehaviour
 {
     [SerializeField]
     public GameObject gameOverScreen;
+
+    public int menuScene = 0;
+
     public void Setup()
     {
         gameOverScreen.SetActive(true);
@@ -14,5 +17,14 @@ public class GameOverScreen : MonoBehaviour
     public void RestartButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene(menuScene);
+    }
+    public void QuitGame()
+    {
+        Debug.Log("Quitting game");
+        Application.Quit();
     }
 }
