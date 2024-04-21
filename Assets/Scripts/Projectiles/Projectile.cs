@@ -6,10 +6,9 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
 
-
     void Awake()
     {
-        Debug.Log("Porjectile awake: "+this.GetComponent<Collider2D>().isTrigger );
+        //Debug.Log("Porjectile awake: "+this.GetComponent<Collider2D>().isTrigger );
     }
 
     //Modifers
@@ -18,7 +17,7 @@ public abstract class Projectile : MonoBehaviour
 
     //base Attributes
     [Header("atrributes")]
-    [SerializeField] protected float baseDamage;
+    [SerializeField] protected int baseDamage;
     [SerializeField] private float baseLifeTime=0.5f;
     [SerializeField] private float projectileTimeMultiplayer=0.2f;
 
@@ -46,8 +45,8 @@ public abstract class Projectile : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D colider)
     {
-        Debug.Log("collsion: "+ colider.tag);
-        if (colider.CompareTag("Collider") || colider.CompareTag("Enemy") || colider.CompareTag("Entity") ||(colider.CompareTag("Player")& !wasShootByPlayer))
+        //Debug.Log("collsion: "+ colider.tag);
+        if (colider.CompareTag("Collider") || colider.CompareTag("Entity") ||(colider.CompareTag("Player")& !wasShootByPlayer))
         {
             if (this.onhitAudio!= null)
                 SoundManager.instance.playSound(this.onhitAudio,transform.position);
