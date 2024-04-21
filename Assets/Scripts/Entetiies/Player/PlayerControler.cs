@@ -26,6 +26,7 @@ public class PlayerControler : MonoBehaviour
     private InputAction dropEquiped;
     private InputAction mousePress;
     private InputAction mousePosition;
+    private InputAction useAbilityOne;
 
  
  
@@ -73,6 +74,10 @@ public class PlayerControler : MonoBehaviour
 
         mousePosition = this.controls.Player.MousePostion;
         mousePosition.performed += ctx => { OnMousePostion(ctx.ReadValue<Vector2>()); };
+
+        useAbilityOne = this.controls.Player.UseAbilityOne;
+        useAbilityOne.performed += ctx => { OnUseAbilityOne(); };
+        useAbilityOne.canceled += ctx => { OnCancelUseAbilityOne(); };
 
     }
     
@@ -136,6 +141,16 @@ public class PlayerControler : MonoBehaviour
     void OnCancelDropEquiped()
     {
         //Debug.Log("Cancel DropEquiped");
+    }
+
+    void OnUseAbilityOne()
+    {
+        playerActionsController.UseAbilityOne();
+    }
+
+    void OnCancelUseAbilityOne()
+    {
+        Debug.Log("Cancel On useAbilityOne");
     }
 
 

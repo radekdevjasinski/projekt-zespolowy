@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "UseAbilityOne",
+                    "type": "Button",
+                    "id": "84c81e4b-c54e-4fc8-ae9f-7d5916a7f448",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -265,6 +274,17 @@
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "debec71f-3ef1-456f-9a68-bb93f974c9aa",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseAbilityOne",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

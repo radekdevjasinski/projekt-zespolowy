@@ -98,6 +98,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UseAbilityOne"",
+                    ""type"": ""Button"",
+                    ""id"": ""84c81e4b-c54e-4fc8-ae9f-7d5916a7f448"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -287,6 +296,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""debec71f-3ef1-456f-9a68-bb93f974c9aa"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseAbilityOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -303,6 +323,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_DropEquiped = m_Player.FindAction("DropEquiped", throwIfNotFound: true);
         m_Player_MousePress = m_Player.FindAction("MousePress", throwIfNotFound: true);
         m_Player_MousePostion = m_Player.FindAction("MousePostion", throwIfNotFound: true);
+        m_Player_UseAbilityOne = m_Player.FindAction("UseAbilityOne", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -372,6 +393,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_DropEquiped;
     private readonly InputAction m_Player_MousePress;
     private readonly InputAction m_Player_MousePostion;
+    private readonly InputAction m_Player_UseAbilityOne;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -384,6 +406,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @DropEquiped => m_Wrapper.m_Player_DropEquiped;
         public InputAction @MousePress => m_Wrapper.m_Player_MousePress;
         public InputAction @MousePostion => m_Wrapper.m_Player_MousePostion;
+        public InputAction @UseAbilityOne => m_Wrapper.m_Player_UseAbilityOne;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -417,6 +440,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MousePostion.started += instance.OnMousePostion;
             @MousePostion.performed += instance.OnMousePostion;
             @MousePostion.canceled += instance.OnMousePostion;
+            @UseAbilityOne.started += instance.OnUseAbilityOne;
+            @UseAbilityOne.performed += instance.OnUseAbilityOne;
+            @UseAbilityOne.canceled += instance.OnUseAbilityOne;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -445,6 +471,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MousePostion.started -= instance.OnMousePostion;
             @MousePostion.performed -= instance.OnMousePostion;
             @MousePostion.canceled -= instance.OnMousePostion;
+            @UseAbilityOne.started -= instance.OnUseAbilityOne;
+            @UseAbilityOne.performed -= instance.OnUseAbilityOne;
+            @UseAbilityOne.canceled -= instance.OnUseAbilityOne;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -472,5 +501,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnDropEquiped(InputAction.CallbackContext context);
         void OnMousePress(InputAction.CallbackContext context);
         void OnMousePostion(InputAction.CallbackContext context);
+        void OnUseAbilityOne(InputAction.CallbackContext context);
     }
 }

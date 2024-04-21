@@ -8,8 +8,13 @@ public class PlayerActionsController : MonoBehaviour
 {
     [Header("Putting")]
     [SerializeField] private GameObject puttableItem;
+    [Header("Slashing")]
+    [SerializeField] private GameObject slashableItem;
     [Header("Shooting")]
     [SerializeField] private GameObject shootableItem;
+    [Header("Summoning")]
+    [SerializeField] private GameObject summonableAlly;
+    [SerializeField] private SummonedControler summonedControler;
     [SerializeField] private float shootSpeed;
     [SerializeField] private float shootAttributeMultiplayer=1;
 
@@ -17,6 +22,7 @@ public class PlayerActionsController : MonoBehaviour
     [SerializeField] private float shootCooldownAttributeMultiplayer;
     private Transform shootParent;
     private Transform puttedParent;
+    private Transform summonedParent;
     [Header("Single item use")] 
     [SerializeField] private GameObject singleUseItem;
     [Header("Activated item use")]
@@ -27,6 +33,8 @@ public class PlayerActionsController : MonoBehaviour
     bool isMouseLeftPressed;
     bool isShootButtonPress;
     Vector2 worldMousePositon;
+    Vector2 offsetSummoning = new Vector2(1f, 0f);
+
 
     //components
     Collider2D collider;
@@ -42,6 +50,7 @@ public class PlayerActionsController : MonoBehaviour
         this.collider=GetComponent<Collider2D>();
         shootParent = GameObject.Find("Projectiles").transform;
         puttedParent = GameObject.Find("Putted").transform;
+        summonedParent = GameObject.Find("Summoned").transform;
         animator = this.gameObject.GetComponent<Animator>();
         playerAttributes = this.gameObject.GetComponent<PlayerAttributesController>();
     }
@@ -50,6 +59,97 @@ public class PlayerActionsController : MonoBehaviour
     {
         udpateMouseShoot();
     }
+    #region Slashing
+    
+    private void Slash()
+    {
+        if (canShoot)
+        {
+            canShoot = false;
+
+
+            Vector3 startPosition = new Vector3(
+                transform.position.x + collider.bounds.size.x * 1.4f * direction.x,
+                transform.position.y + collider.bounds.size.y * 1.4f * direction.y,
+                0f);
+
+            Debug.Log(direction);
+            GameObject slashable = Instantiate(
+                slashableItem,
+                 startPosition,
+               new Quaternion(0f, 0f, 0f, 0f),
+               shootParent
+               );
+            slashable.GetComponent<Projectile>().setupProjectileParams(
+                playerAttributes.Damage,
+                playerAttributes.Range
+                );
+            RotateSword(slashable);
+
+            slashable.GetComponent<Projectile>().setWasShootByPlayer(true);
+            Invoke("resetShootingCooldDown", shootCooldown / (1 + playerAttributes.FireRate * shootCooldownAttributeMultiplayer));
+        }
+    }
+
+    private void RotateSword(GameObject slashable)
+    {
+        if (direction == new Vector2(-1f, 0))
+        {
+            slashable.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+        }
+        if (direction == new Vector2(0, -1f))
+        {
+            slashable.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+        }
+        if (direction == new Vector2(1f, 0))
+        {
+            slashable.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+        }
+    }
+
+    public void UseAbilityOne()
+    {
+        if(summonedControler.summons.Count == 0)
+        {
+            int i;
+            Vector2 newPosition = (Vector2)this.transform.position;
+            for (i = 1; i <= 2; i++)
+            {
+                Vector2 newPositionTmp = newPosition;
+                if (i % 2 == 0)
+                {
+                    offsetSummoning = new Vector2(-1f, 0f);
+                }
+                else if (i % 3 == 0)
+                {
+                    offsetSummoning = new Vector2(1f, 0);
+                }
+                newPositionTmp = newPosition + offsetSummoning;
+                GameObject summoned = Instantiate(
+                summonableAlly,
+                newPositionTmp,
+                new Quaternion(0f, 0f, 0f, 0f),
+                summonedParent); 
+                summonedControler.summons.Add(summoned.GetComponent<Summoned>());
+            }
+        }
+        else
+        {
+            if(summonedControler.summonedStance == SummonedStance.Defense)
+            {
+                summonedControler.summonedStance = SummonedStance.Aggresive;
+            }
+            else
+            {
+                summonedControler.summonedStance = SummonedStance.Defense;
+            }
+        }
+       
+    }
+
+
+
+    #endregion
 
     #region Shooting
 
@@ -85,19 +185,19 @@ public class PlayerActionsController : MonoBehaviour
     private void resetShootingCooldDown()
     {
     this.canShoot = true;
-   
-        if(isShooting)
-            this.shoot();
+
+        if (isShooting)
+        {
+            ClassActionSelection();
+        }
     }
 
     public void setIsShooting(bool state,Vector2 direction)
     {
-        
- 
         this.isShooting=state;
         this.direction = direction;
-        if(state)
-        this.shoot();
+        if (state)
+            ClassActionSelection();
     }
 
 
@@ -107,10 +207,7 @@ public class PlayerActionsController : MonoBehaviour
     if(isMouseLeftPressed)
         {
             this.setShootingDirectionFromMouse();
-        }
-     
-        
-      
+        } 
     }
 
     public void setWorldMousePostion(Vector2 pos)
@@ -152,8 +249,28 @@ public class PlayerActionsController : MonoBehaviour
     {
         animator.SetBool("Shooting", state);
         this.isShooting = state;
-        if(state)
+       
+        if (state)
+        {
+            ClassActionSelection();
+        }
+
+    }
+
+    private void ClassActionSelection()
+    {
+        if (GetComponent<PlayerAttributesController>().GetPlayerClass() == PlayerClass.Warrior)
+        {
+            this.Slash();
+        }
+        if (GetComponent<PlayerAttributesController>().GetPlayerClass() == PlayerClass.Archer)
+        {
             this.shoot();
+        }
+        if (GetComponent<PlayerAttributesController>().GetPlayerClass() == PlayerClass.Mage)
+        {
+            this.shoot();
+        }
     }
 
     internal void setShootingDirectionFromMouse()

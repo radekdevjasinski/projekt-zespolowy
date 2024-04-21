@@ -18,7 +18,7 @@ public class Chest : MonoBehaviour
 
     private void OpenChest()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             isOpen = true;
             int quantityItems = Random.Range(3, 5);
