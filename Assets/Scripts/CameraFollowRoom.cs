@@ -31,13 +31,13 @@ public class CameraFollowRoom : MonoBehaviour
             switch (activePlayerRoom.roomType)
             {
                 case RoomType.BOSSROOM:
-                    GetComponent<Camera>().orthographicSize = bossRoomCameraSize;
+                    GetComponentInChildren<Camera>().orthographicSize = bossRoomCameraSize;
                     break;
                 case RoomType.SHOPROOM:
-                    GetComponent<Camera>().orthographicSize = smallRoomCameraSize;
+                    GetComponentInChildren<Camera>().orthographicSize = smallRoomCameraSize;
                     break ;
                 default:
-                    GetComponent<Camera>().orthographicSize = mediumRoomCameraSize;
+                    GetComponentInChildren<Camera>().orthographicSize = mediumRoomCameraSize;
                     break;
             }
         }

@@ -193,9 +193,9 @@ public class PlayerActionsController : MonoBehaviour
 
     public void setIsShooting(bool state,Vector2 direction)
     {
-        this.isShooting=state;
+        this.isShooting = state;
         this.direction = direction;
-        if (state)
+        if (state && canShoot)
             ClassActionSelection();
     }
 
@@ -248,12 +248,10 @@ public class PlayerActionsController : MonoBehaviour
     {
         animator.SetBool("Shooting", state);
         this.isShooting = state;
-       
-        if (state)
+        if (state && canShoot)
         {
             ClassActionSelection();
         }
-
     }
 
     private void ClassActionSelection()
