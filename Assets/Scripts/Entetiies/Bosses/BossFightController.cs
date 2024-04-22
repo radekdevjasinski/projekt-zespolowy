@@ -22,7 +22,7 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
     private GameObject Player;
     private LichBossStartSequance lichBossStartSequance;
     private Collider2D fightMap;
-
+    private BossEntityController boss;
     private void Awake()
     {
       
@@ -31,6 +31,7 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
         lichBossStartSequance = this.GetComponent<LichBossStartSequance>();
         Player = GameObject.Find("Player");
         fightMap = transform.Find("FightMap").GetComponent<Collider2D>();
+
     }
 
 
@@ -89,11 +90,14 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
 
     public void summonShield()
     {
+
         this.lichBossStartSequance.summonShield();
+        
     }
 
     public void destroyShield()
     {
+        
        Destroy(this.lichBossStartSequance.getSummoneShield().gameObject);
     }
 

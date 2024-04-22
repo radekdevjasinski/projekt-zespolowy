@@ -16,7 +16,7 @@ public class PlaySoundOnStart : MonoBehaviour
     private void playSound()
     {
         if(thisAsParent)
-        SoundManager.instance.playSound(this.transform,sound,transform.position);
+        SoundManager.instance.playSound(this.transform,sound);
         else
         {
             SoundManager.instance.playSound(this.sound, transform.position);

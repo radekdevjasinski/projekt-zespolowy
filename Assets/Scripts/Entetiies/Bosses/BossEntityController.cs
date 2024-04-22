@@ -11,7 +11,7 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
     private float health;
     [SerializeField] private GameObject healthBar;
     private GameObject healthBarInstnace;
-    
+
     private Animator animator;
 
     override protected float getMaxHealth()
