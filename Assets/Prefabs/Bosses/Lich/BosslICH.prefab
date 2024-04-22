@@ -269,12 +269,12 @@ MonoBehaviour:
   particleDeathLoading: {fileID: 9110553342523879051, guid: 5ee64b1f82571a94ead6dbecfb874c5a, type: 3}
   rageSound: {fileID: 8559890285010858849, guid: a540c75f9d0baba4cb95db1510e7efd7, type: 3}
   timeToSummonMinon: 1
-  minionToSpawn: 5
+  minionToSpawn: 2
   minionSummon: {fileID: 7945528964406659908, guid: d645231aca2a8804ebca041755a05dda, type: 3}
   sleepTime: 5
   timeToMoveBetwwenPoints: 0.6
   actionsPerBehaviour: 2
-  minonsToSpawnOnStage2: 6
+  minonsToSpawnOnStage2: 4
   ActionCoolDown: 0.2
   LichDropBurst: {fileID: 2944750994736841635, guid: 6dd50ce442f2ccb4f993aeedd11fb1e9, type: 3}
   LichProejctile: {fileID: 7265897654611131455, guid: de8a91cf6488e4440aa201351aa5bee6, type: 3}
@@ -286,7 +286,7 @@ MonoBehaviour:
   newCooldown: 0.1
   newAmountOfActionPerBehaviour: 4
   newSleepTime: 3
-  minonsToSpawnOnStage3: 3
+  minonsToSpawnOnStage3: 5
 --- !u!114 &5965425660611701450
 MonoBehaviour:
   m_ObjectHideFlags: 0

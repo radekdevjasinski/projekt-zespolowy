@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 3747560810997127324}
   - component: {fileID: 3778152328323427029}
   - component: {fileID: 5313097871846991758}
+  - component: {fileID: 2543630209505844439}
   m_Layer: 10
   m_Name: EnemyKnight
   m_TagString: Enemy
@@ -85,7 +86,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.8016809, y: 1.8016809, z: 1.8016809}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3854799281777737779}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7630908884428725672
@@ -106,7 +108,7 @@ MonoBehaviour:
   visionRange: 1
   damage: 1
   speed: 1.5
-  LockMovement: 1
+  LockMovement: 0
   attackSpeed: 2
   attackRange: 1
   playerController: {fileID: 0}
@@ -309,3 +311,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2543630209505844439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700270595183996481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614542572c11bef459e46129b605a979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

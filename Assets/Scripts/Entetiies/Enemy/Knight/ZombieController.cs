@@ -10,7 +10,6 @@ public class ZombieController : EnemyBase
     public PlayerEntityController playerController;
     public float attackSpeedModifier = 1;
     public float attackRangeModifier = 1;
-    public DamageController damageController;
     private Animator animator;
     private KnightPathfinding knightPathfinding;
     private bool canAttack = true;
@@ -90,7 +89,6 @@ public class ZombieController : EnemyBase
     public override void reviceDamage(float damage)
     {
         base.reviceDamage(damage);
-        damageController.TakeDamage();
     }
 
     public void Modify(float mod)
