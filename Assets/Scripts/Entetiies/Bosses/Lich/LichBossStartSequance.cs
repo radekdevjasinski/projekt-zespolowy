@@ -29,7 +29,7 @@ public class LichBossStartSequance : MonoBehaviour
 
     public void summonCrystal()
     {
-        summonedCrystal = Instantiate(crystal, cystalSummonPosition,true).transform;
+        summonedCrystal = Instantiate(crystal, cystalSummonPosition,false).transform;
     }
     void summonBoss()
     {
