@@ -53,12 +53,4 @@ public class PlayerTeleporter : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            activePlayerRoom.OpenRightDoors(dungeonGenerator.rooms);
-        }
-    }
-
 }

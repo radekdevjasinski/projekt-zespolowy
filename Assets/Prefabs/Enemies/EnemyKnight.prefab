@@ -108,9 +108,9 @@ MonoBehaviour:
   visionRange: 1
   damage: 1
   speed: 1.5
-  LockMovement: 0
+  LockMovement: 1
   attackSpeed: 2
-  attackRange: 1
+  attackRange: 0.9
   playerController: {fileID: 0}
   attackSpeedModifier: 1
   attackRangeModifier: 1
