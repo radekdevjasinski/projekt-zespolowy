@@ -7,7 +7,7 @@ public class LichRoomStartSequance : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        Debug.Log("Lich Boss Fight Sequance Start");
+        //Debug.Log("Lich Boss Fight Sequance Start");
          animator.GetComponent<BossFightController>().attachCameraToBossRoomCamera();
          animator.GetComponent<BossFightController>().lockPlayer();
     }
@@ -15,7 +15,7 @@ public class LichRoomStartSequance : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Lich Boss Fight Sequance Start stop");
+        //Debug.Log("Lich Boss Fight Sequance Start stop");
         animator.GetComponent<BossFightController>().deattachCameraToBossRoomCamera();
         animator.GetComponent<BossFightController>().unlockPlayer();
     }

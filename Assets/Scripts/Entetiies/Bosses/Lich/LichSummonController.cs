@@ -8,7 +8,7 @@ public class LichSummonController : MonoBehaviour
     [SerializeField] private GameObject appearEffect;
     void Start()
     {
-        Debug.Log("apepar lich");
+        //Debug.Log("apepar lich");
         if (appearEffect != null)
             Instantiate(appearEffect, this.transform, false);
     }

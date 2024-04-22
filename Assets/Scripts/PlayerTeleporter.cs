@@ -43,6 +43,7 @@ public class PlayerTeleporter : MonoBehaviour
                 if (activeDoor != null)
                 {
                     Vector3 destination = activeDoor.transform.position + new Vector3(triggerPos.x, (triggerPos.y  * distanceFromDoorY), 0);
+                    destination.z = 0;
                     this.gameObject.transform.position = destination;
                     levelDesigner.PrepareRoom(activePlayerRoom, controlsOffTime);
 

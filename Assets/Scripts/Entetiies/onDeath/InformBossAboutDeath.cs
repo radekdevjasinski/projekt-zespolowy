@@ -15,7 +15,7 @@ public class InformBossAboutDeath : MonoBehaviour, DeathSeuance
 
     public void onDeath()
     {
-        Debug.Log("trying informing boss aout death");
+        //Debug.Log("trying informing boss aout death");
         if (minionBoss != null)
         {
             Debug.Log("informing boss aout death");

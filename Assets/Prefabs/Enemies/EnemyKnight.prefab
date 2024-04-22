@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1004739236500410538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3854799281777737779}
+  - component: {fileID: 8057803383726954604}
+  m_Layer: 10
+  m_Name: PathFinding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3854799281777737779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004739236500410538}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8402586096595448631}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8057803383726954604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004739236500410538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1700270595183996481
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,14 +58,15 @@ GameObject:
   m_Component:
   - component: {fileID: 8402586096595448631}
   - component: {fileID: 7630908884428725672}
-  - component: {fileID: 1320661508210613075}
+  - component: {fileID: 1207081814184334663}
+  - component: {fileID: 4683617349981052872}
   - component: {fileID: 6568979143390308138}
   - component: {fileID: 1698213432018383868}
   - component: {fileID: 7377575881783247420}
   - component: {fileID: 3747560810997127324}
   - component: {fileID: 3778152328323427029}
   - component: {fileID: 5313097871846991758}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyKnight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -51,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5d40f48dec1f74a8cb223a768b256d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invulnerable: 0
   maxHelathPoints: 5
   currentHealthPoints: 0
   visionRange: 1
@@ -62,8 +112,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   attackSpeedModifier: 1
   attackRangeModifier: 1
-  damageController: {fileID: 1320661508210613075}
---- !u!114 &1320661508210613075
+--- !u!114 &1207081814184334663
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,13 +121,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1700270595183996481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c64db6dcbc148784a9e1329fdba5d8d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 86fa930315ffaaf4f89a76371a9198b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  soundOnDamage: {fileID: 8559890285010858849, guid: 8d4509f5cb95254418545960483c7bcc, type: 3}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
+--- !u!114 &4683617349981052872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700270595183996481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc5149182e712a4a87b4a2f9f596c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8559890285010858849, guid: dd9044b3d653d7943969218c24a43bdf, type: 3}
 --- !u!50 &6568979143390308138
 Rigidbody2D:
   serializedVersion: 4
@@ -172,7 +232,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

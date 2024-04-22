@@ -30,7 +30,7 @@ public abstract class Projectile : MonoBehaviour
     public void setupProjectileParams(int damageModifer, int rangeModifer)
     {
         if(onShootAudio!=null)
-            SoundManager.instance.playSound(this.onShootAudio,transform.position);
+            SoundManager.instance.playSound(this.onShootAudio,this.transform.position);
         this.damageModifer = damageModifer;
         this.rangeModifer = rangeModifer;
         Invoke("kill", baseLifeTime+ (rangeModifer* projectileTimeMultiplayer));
@@ -46,26 +46,11 @@ public abstract class Projectile : MonoBehaviour
     protected void OnTriggerEnter2D(Collider2D colider)
     {
         //Debug.Log("collsion: "+ colider.tag);
-        if (colider.CompareTag("Collider") || colider.CompareTag("Entity") ||(colider.CompareTag("Player")& !wasShootByPlayer))
+        if (colider.CompareTag("Collider") || colider.CompareTag("Entity") || colider.CompareTag("Enemy") || (colider.CompareTag("Player")& !wasShootByPlayer))
         {
             if (this.onhitAudio!= null)
                 SoundManager.instance.playSound(this.onhitAudio,transform.position);
             onHit(colider.gameObject);
-            kill();
-        }
-        if (colider.gameObject.TryGetComponent<KnightController>(out KnightController knightController))
-        {
-            if (this.onhitAudio != null)
-                SoundManager.instance.playSound(this.onhitAudio, transform.position);
-            knightController.dealDamage(this.baseDamage);
-            kill();
-            Debug.Log("damaged " + this.baseDamage);
-        }
-        if (colider.gameObject.TryGetComponent<ArcherPatrol>(out ArcherPatrol archerPatrol))
-        {
-            if (this.onhitAudio != null)
-                SoundManager.instance.playSound(this.onhitAudio, transform.position);
-            archerPatrol.dealDamage(this.baseDamage);
             kill();
         }
     }

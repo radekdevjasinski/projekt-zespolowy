@@ -788,6 +788,7 @@ GameObject:
   - component: {fileID: 5200630278595363392}
   - component: {fileID: 2353075453713893914}
   - component: {fileID: 6774825739186839263}
+  - component: {fileID: 3845570507715896498}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -2949,6 +2950,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &3845570507715896498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4433476509139566104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &4927985220550808907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,6 +3270,7 @@ GameObject:
   - component: {fileID: 5581587857279062916}
   - component: {fileID: 3609703770682189188}
   - component: {fileID: 1191806978851369530}
+  - component: {fileID: 3955702133254738049}
   m_Layer: 0
   m_Name: Top
   m_TagString: Collider
@@ -4262,6 +4280,22 @@ CompositeCollider2D:
   m_OffsetDistance: 0
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 5411494771972110744}
+--- !u!114 &3955702133254738049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411494771972110744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &5800981280360252369
 GameObject:
   m_ObjectHideFlags: 0

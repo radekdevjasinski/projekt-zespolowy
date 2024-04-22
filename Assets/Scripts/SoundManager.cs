@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
+            Debug.LogError("TWo instances of sound manager");
             Destroy(this);
         }
         else
@@ -28,20 +29,20 @@ public class SoundManager : MonoBehaviour
     public void playSound(GameObject soundObject, Vector3 postion)
     {
         playSound(this.transform, soundObject, postion);
-        //Debug.Log("play sound: " + soundObject.GetComponent<AudioSource>().clip.name);
+        //Debug.Log("play sound: " + soundObject.GetComponent<AudioSource>().clip.name + " ini postion: "+ postion);
     }
     public void playSound(Transform parent, GameObject soundObject, Vector3 postion)
     {
-        GameObject soundGameObjet = Instantiate(soundObject, postion, new Quaternion(0, 0, 0, 0), parent);
-        Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name);
+        GameObject soundGameObjet = Instantiate(soundObject, new Vector3(postion.x,postion.y,0), new Quaternion(0, 0, 0, 0), parent);
+        Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name+ " at positon: "+ soundGameObjet.transform.position);
         AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
-        DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
+        //DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
     }
 
     public void playSound(Transform parent, GameObject soundObject)
     {
         GameObject soundGameObjet = Instantiate(soundObject, parent.position, new Quaternion(0, 0, 0, 0), parent);
-        Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name);
+        //Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name);
         AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
         DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
     }
@@ -56,6 +57,8 @@ public class SoundManager : MonoBehaviour
 
     public void setAmbient(GameObject ambientPack)
     {
+
+        Debug.Log("set ambient: "+ ambientPack.name);
         if (this.ActiveAmbient != null)
         {
             Destroy(this.ActiveAmbient);

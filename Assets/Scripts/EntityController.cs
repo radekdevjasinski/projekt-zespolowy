@@ -15,6 +15,8 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
     //abstract public void setGroundSpeedAffect(float f);
     [SerializeField]
     private bool invulnerable = false;
+
+    private bool isAlive = true;
     private float converToFloat(TH val)
     {
         //if (typeof(float).IsAssignableFrom(typeof(TH)))
@@ -38,7 +40,8 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
         {
             runOnDamageBehaviour();
             this.reviceDamage(baseDamage);
-            if (converToFloat(this.getHealth()) <= 0.0f)
+            Debug.Log("Recived damage: "+ baseDamage+" to: "+ this.getHealth());
+            if (converToFloat(this.getHealth()) <= 0.0f && isAlive==true)
             {
                 killImidielty();
             }
@@ -47,12 +50,14 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
 
     public void killImidielty()
     {
+        isAlive = false;
         this.onDie();
         runDeathSequanceElemnts();
     }
 
     protected void runDeathSequanceElemnts()
     {
+        Debug.Log("----------runDeathSequanceElemnts");
         foreach (DeathSeuance var in this.GetComponents<DeathSeuance>())
         {
             var.onDeath();
