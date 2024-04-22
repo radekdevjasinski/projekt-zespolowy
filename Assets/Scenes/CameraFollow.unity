@@ -521,7 +521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1780974077749885163, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
       propertyPath: orthographic size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2311578155921040913, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
       propertyPath: m_Enabled
@@ -3606,7 +3606,7 @@ MonoBehaviour:
   m_Follow: {fileID: 299050556}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

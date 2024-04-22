@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using System.Collections;
 using UnityEngine;
 
 public class CameraFollowRoom : MonoBehaviour
@@ -38,32 +39,36 @@ public class CameraFollowRoom : MonoBehaviour
             switch (activePlayerRoom.roomType)
             {
                 case RoomType.BOSSROOM:
-                    bossRoomCamera.gameObject.SetActive(true);
-
-                    GameObject bossRoomPrefab = GameObject.FindGameObjectWithTag("LichBossRoom");
-                    if (bossRoomPrefab != null)
-                    {
-                        PolygonCollider2D roomCollider = bossRoomPrefab.GetComponentInChildren<PolygonCollider2D>();
-                        if (roomCollider != null)
-                        {
-                            bossRoomCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = roomCollider;
-                        }
-                        else
-                        {
-                            Debug.LogError("Nie znaleziono Collidera 2D w LichBossRoom.");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogError("Nie znaleziono prefaba LichBossRoom na scenie.");
-                    }
-
+                    StartCoroutine(DelayedCameraActivation(0.4f));
                     break;
                 default:
                     bossRoomCamera.gameObject.SetActive(false);
                     mainCamera.GetComponent<Camera>().orthographicSize = activePlayerRoom.roomType == RoomType.SHOPROOM ? smallRoomCameraSize : mediumRoomCameraSize;
                     break;
             }
+        }
+    }
+
+    IEnumerator DelayedCameraActivation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        bossRoomCamera.gameObject.SetActive(true);
+        GameObject bossRoomPrefab = GameObject.FindGameObjectWithTag("LichBossRoom");
+        if (bossRoomPrefab != null)
+        {
+            PolygonCollider2D roomCollider = bossRoomPrefab.GetComponentInChildren<PolygonCollider2D>();
+            if (roomCollider != null)
+            {
+                bossRoomCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = roomCollider;
+            }
+            else
+            {
+                Debug.LogError("Nie znaleziono Collidera 2D w LichBossRoom.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Nie znaleziono prefaba LichBossRoom na scenie.");
         }
     }
 }
