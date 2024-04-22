@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
-public class KnightController : EnemyBase
+public class ZombieController : EnemyBase
 {
     [SerializeField] private float attackSpeed = 3;
     [SerializeField] private float attackRange = 1.5f;
@@ -36,7 +36,7 @@ public class KnightController : EnemyBase
             if (IsWithinRange() & canAttack)
             {
                 Attack();
-                animator.SetTrigger("isAttacking");
+                //animator.SetTrigger("isAttacking");
                 canAttack = false;
                 StartCoroutine(attackCooldown());
 
@@ -74,7 +74,7 @@ public class KnightController : EnemyBase
             if (collider.CompareTag("Player"))
             {
                 playerController.dealDamage(damage);
-                animator.Play("Attack");
+                //animator.Play("Attack");
                 Debug.Log("Hitted Player");
             }
         }

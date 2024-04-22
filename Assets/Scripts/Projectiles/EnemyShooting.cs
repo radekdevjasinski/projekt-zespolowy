@@ -7,6 +7,7 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] GameObject prefab;
     [SerializeField] float fireRate = 0.25f;
     [SerializeField] Transform player;
+    [SerializeField] EnemyBase enemy;
 
     private bool playerInRange = false;
     private bool canShoot = true;
@@ -14,16 +15,21 @@ public class EnemyShooting : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        enemy = GetComponent<ArcherPatrol>();
     }
 
     void Update()
     {
-        if (playerInRange && canShoot)
+        if (!enemy.LockMovement)
         {
-            Shoot();
-            canShoot = false;
-            StartCoroutine(shootCooldown());
+            if (playerInRange && canShoot)
+            {
+                Shoot();
+                canShoot = false;
+                StartCoroutine(shootCooldown());
+            }
         }
+        
     }
     IEnumerator shootCooldown()
     {

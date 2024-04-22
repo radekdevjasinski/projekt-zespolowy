@@ -7,14 +7,13 @@ public class PlayerTeleporter : MonoBehaviour
 {
     public DungeonRoom activePlayerRoom;
     private DungeonGenerator dungeonGenerator;
-    private TurnOffControls turnOffControls;
-    public float distanceFromDoor = 1f;
+    private LevelDesigner levelDesigner;
+    public float distanceFromDoorY = 1.25f;
     public float controlsOffTime = 0.25f;
     private void Start()
     {
         dungeonGenerator = GameObject.Find("Dungeon").GetComponent<DungeonGenerator>();
-        turnOffControls = GetComponent<TurnOffControls>();
-
+        levelDesigner = GameObject.Find("Dungeon").GetComponent<LevelDesigner>();
     }
     public void Teleport(Vector2 triggerPos)
     {
@@ -43,21 +42,16 @@ public class PlayerTeleporter : MonoBehaviour
                 }
                 if (activeDoor != null)
                 {
-                    Vector3 destination = activeDoor.transform.position + new Vector3(triggerPos.x * distanceFromDoor, triggerPos.y * distanceFromDoor, 0);
+                    Vector3 destination = activeDoor.transform.position + new Vector3(triggerPos.x, (triggerPos.y  * distanceFromDoorY), 0);
                     this.gameObject.transform.position = destination;
-                    activePlayerRoom.CloseAllDoors();
-                    turnOffControls.controlsOn = false;
-                    StartCoroutine(TurnOnControls());
+                    levelDesigner.PrepareRoom(activePlayerRoom, controlsOffTime);
+
                 }
                 break;
             }
         }
     }
-    IEnumerator TurnOnControls()
-    {
-        yield return new WaitForSeconds(controlsOffTime);
-        turnOffControls.controlsOn = true;
-    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

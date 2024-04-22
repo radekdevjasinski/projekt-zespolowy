@@ -12,6 +12,7 @@ public class EnemyBase : EntityController<float>
     protected float timer;
     private Vector2 randomDirection;
     protected Rigidbody2D rb;
+    public bool LockMovement = true;
 
 
     private Transform playerTransform;
@@ -40,13 +41,17 @@ public class EnemyBase : EntityController<float>
     //metoda do poruszania si? wroga (domy?lnie randomowo)
     protected virtual void Move()
     {
-        rb.MovePosition(rb.position + randomDirection * speed * Time.deltaTime);
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        if (!LockMovement)
         {
-            GetRandomDirection();
-            timer = changeDirectionTimer;
+            rb.MovePosition(rb.position + randomDirection * speed * Time.deltaTime);
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                GetRandomDirection();
+                timer = changeDirectionTimer;
+            }
         }
+        
     }
 
     //metoda do zmiany kierunku poruszania si? wroga
@@ -81,12 +86,17 @@ public class EnemyBase : EntityController<float>
     protected override void onDie()
     {
         Destroy(gameObject);
+        GameObject.Find("Dungeon").GetComponent<LevelDesigner>().EnemyDied();
     }
 
     //metoda do ataku przeciwnika
     protected virtual void Attack()
     {
-        //za?o?enie ?e ka?dy rodzaj wroga ma inny spos?b ataku
+        if (!LockMovement)
+        {
+            //za?o?enie ?e ka?dy rodzaj wroga ma inny spos?b ataku//za?o?enie ?e ka?dy rodzaj wroga ma inny spos?b ataku//za?o?enie ?e ka?dy rodzaj wroga ma inny spos?b ataku//za?o?enie ?e ka?dy rodzaj wroga ma inny spos?b ataku//za?o?enie ?e ka?dy rodzaj wroga ma inny spos?b ataku//za?o?enie ?e ka?dy rodzaj wroga ma inny spos?b ataku
+        }
+
     }
 
 

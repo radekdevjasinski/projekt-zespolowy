@@ -246,11 +246,21 @@ public class PlayerActionsController : MonoBehaviour
 
     internal void setIsShooting(bool state)
     {
-        animator.SetBool("Shooting", state);
-        this.isShooting = state;
-        if (state && canShoot)
+        if (state)
         {
-            ClassActionSelection();
+            animator.ResetTrigger("Shooting");
+            if (canShoot)
+            {
+                this.isShooting = state;
+                
+                animator.SetTrigger("Shooting");
+                ClassActionSelection();
+            }
+            
+        }
+        else
+        {
+            this.isShooting = state;
         }
     }
 

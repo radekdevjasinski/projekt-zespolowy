@@ -36,7 +36,8 @@ public class PlayerEntityController : EntityController<int>
 
     public override void reviceDamage(int damage)
     {
-        this.GetComponent<PlayerAttributesController>().increaseHealth(-damage);
+        GetComponent<PlayerAttributesController>().increaseHealth(-damage);
+        GetComponent<DamageController>().TakeDamage();
         GameObject HpBar = GameObject.Find("HpBar");
         HpBar.GetComponent<HealtHeartBar>().DrawHearts();    //health bar turned off for testing purposes
     }

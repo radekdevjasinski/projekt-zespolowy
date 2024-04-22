@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: af330a0dadb543e4e8ceb9d6cf979839, type: 3}
+  m_Sprite: {fileID: -1545569979, guid: ce00d107aefde6f4c89df5acfd69d40a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 8163005650284522512}
   - component: {fileID: 5745296312801078995}
   - component: {fileID: 6558554150140107763}
-  - component: {fileID: 4550055232620742561}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -341,18 +340,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceFromDoor: 1
   controlsOffTime: 0.25
---- !u!114 &4550055232620742561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4319326301353448314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bbc994c8a687094e93115ffcc4d2a79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlsOn: 1
-  playerControler: {fileID: 0}
-  animator: {fileID: 0}

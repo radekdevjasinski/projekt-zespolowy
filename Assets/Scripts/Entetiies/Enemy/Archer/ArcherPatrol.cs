@@ -21,8 +21,16 @@ public class ArcherPatrol : EnemyBase
         damageController = GetComponent<DamageController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        if (!LockMovement)
+        {
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
         animator.SetBool("isShooting", isShooting);
     }
 

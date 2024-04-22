@@ -19,13 +19,15 @@ public class DungeonRoom
     public Vector2Int pos;
     public RoomType roomType;
     public GameObject gameObject;
-    public GameObject[] doors;
+    public int enemiesCount;
+
 
     public DungeonRoom(int id, Vector2Int pos, RoomType roomType)
     {
         this.id = id;
         this.pos = pos;
         this.roomType = roomType;
+        enemiesCount = 0;
     }
 
     public List<Vector2Int> freeSpots(List<DungeonRoom> rooms)
@@ -55,6 +57,7 @@ public class DungeonRoom
         {
             Vector2Int[] directions = { new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(1, 0), new Vector2Int(0, -1) };
             Door[] doors = gameObject.transform.GetComponentsInChildren<Door>();
+            Teleport[] triggers = gameObject.transform.GetComponentsInChildren<Teleport>();
             for (int i = 0; i < directions.Length; i++)
             {
                 bool taken = false;
@@ -68,10 +71,15 @@ public class DungeonRoom
                 if (taken)
                 {
                     doors[i].OpenDoor();
+                    triggers[i].active = true;
+                    doors[i].gameObject.GetComponent<Collider2D>().enabled = false;
+
                 }
                 else
                 {
                     doors[i].HideDoor();
+                    triggers[i].active = false;
+                    doors[i].gameObject.GetComponent<Collider2D>().enabled = true;
                 }
             }
         }
@@ -79,13 +87,21 @@ public class DungeonRoom
     public void CloseAllDoors()
     {
         Door[] doors = gameObject.transform.GetComponentsInChildren<Door>();
-        foreach (Door door in doors)
+        Teleport[] triggers = gameObject.transform.GetComponentsInChildren<Teleport>();
+        for (int i = 0; i < doors.Length; i++)
         {
-            if (door.doorState == DoorState.OPENED)
+            if (doors[i].doorState == DoorState.OPENED)
             {
-                door.CloseDoor();
+                doors[i].CloseDoor();
+                triggers[i].active = false;
+                doors[i].gameObject.GetComponent<Collider2D>().enabled = true;
             }
         }
+    }
+    public void CountEnemies()
+    {
+        AddEnemy[] enemies = gameObject.transform.GetComponentsInChildren<AddEnemy>();
+        enemiesCount = enemies.Length;
     }
 }
 public class DungeonGenerator : MonoBehaviour
@@ -96,6 +112,7 @@ public class DungeonGenerator : MonoBehaviour
     public int shopRoomCount;
     public int bossRoomCount;
 
+    public GameObject[] startRoomPrefabs;
     public GameObject[] roomPrefabs;
     public GameObject[] bossPrefabs;
     public GameObject[] shopPrefabs;
@@ -106,7 +123,7 @@ public class DungeonGenerator : MonoBehaviour
     void Start()
     {
         int allRooms = roomCount + shopRoomCount + bossRoomCount;
-        List<Vector2Int> freeRooms = new List<Vector2Int>();
+        List<Vector2Int> freeRooms;
 
 
         rooms.Add(new DungeonRoom(0, new Vector2Int(0, 0), RoomType.STARTROOM));
@@ -155,10 +172,9 @@ public class DungeonGenerator : MonoBehaviour
             switch(rooms[i].roomType)
             {
                 case RoomType.STARTROOM:
-                    rooms[i].gameObject = Instantiate(roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Length)], this.gameObject.transform);
+                    rooms[i].gameObject = Instantiate(startRoomPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)], this.gameObject.transform);
                     rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
                     break;
-
                 case RoomType.ROOM:
                     rooms[i].gameObject = Instantiate(roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Length)], this.gameObject.transform);
                     rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
@@ -173,8 +189,8 @@ public class DungeonGenerator : MonoBehaviour
                     break;
 
             }
+            rooms[i].CountEnemies();
         }
-        
     }
 
 }
