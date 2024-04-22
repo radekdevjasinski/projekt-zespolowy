@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using Cinemachine;
 using UnityEngine;
 
 public class CameraFollowRoom : MonoBehaviour
@@ -11,13 +10,21 @@ public class CameraFollowRoom : MonoBehaviour
     public float smallRoomCameraSize = 3;
     public float bossRoomCameraSize = 8;
     public float mediumRoomCameraSize = 4;
+
+    [Header("Cameras")]
+    public GameObject mainCamera;
+    public CinemachineVirtualCamera bossRoomCamera;
+
     [Header("SwipeAnimation")]
     public float smoothTime = 0.25f;
     private Vector3 velocity = Vector3.zero;
+
     private void Start()
     {
         dungeonGenerator = GameObject.Find("Dungeon").GetComponent<DungeonGenerator>();
         player = GameObject.Find("Player");
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, -11);
     }
 
     void Update()
@@ -31,16 +38,32 @@ public class CameraFollowRoom : MonoBehaviour
             switch (activePlayerRoom.roomType)
             {
                 case RoomType.BOSSROOM:
-                    GetComponentInChildren<Camera>().orthographicSize = bossRoomCameraSize;
+                    bossRoomCamera.gameObject.SetActive(true);
+
+                    GameObject bossRoomPrefab = GameObject.FindGameObjectWithTag("LichBossRoom");
+                    if (bossRoomPrefab != null)
+                    {
+                        PolygonCollider2D roomCollider = bossRoomPrefab.GetComponentInChildren<PolygonCollider2D>();
+                        if (roomCollider != null)
+                        {
+                            bossRoomCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = roomCollider;
+                        }
+                        else
+                        {
+                            Debug.LogError("Nie znaleziono Collidera 2D w prefabrykacie LichBossRoom.");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("Nie znaleziono prefabrykatu LichBossRoom na scenie.");
+                    }
+
                     break;
-                case RoomType.SHOPROOM:
-                    GetComponentInChildren<Camera>().orthographicSize = smallRoomCameraSize;
-                    break ;
                 default:
-                    GetComponentInChildren<Camera>().orthographicSize = mediumRoomCameraSize;
+                    bossRoomCamera.gameObject.SetActive(false);
+                    mainCamera.GetComponent<Camera>().orthographicSize = activePlayerRoom.roomType == RoomType.SHOPROOM ? smallRoomCameraSize : mediumRoomCameraSize;
                     break;
             }
         }
-        
     }
 }
