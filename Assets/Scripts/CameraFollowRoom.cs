@@ -50,12 +50,12 @@ public class CameraFollowRoom : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogError("Nie znaleziono Collidera 2D w prefabrykacie LichBossRoom.");
+                            Debug.LogError("Nie znaleziono Collidera 2D w LichBossRoom.");
                         }
                     }
                     else
                     {
-                        Debug.LogError("Nie znaleziono prefabrykatu LichBossRoom na scenie.");
+                        Debug.LogError("Nie znaleziono prefaba LichBossRoom na scenie.");
                     }
 
                     break;
