@@ -26,7 +26,7 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
 
     public void rage()
     {
-        SoundManager.instance.playSound(this.transform,rageSound,new Vector3(0,0,0));
+        SoundManager.instance.playSound(this.transform,rageSound);
     }
 
 

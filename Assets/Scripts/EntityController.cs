@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-abstract public class EntityController<TH> : MonoBehaviour
+abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
 {
     //protected float groundDragBase = 30f;
 
@@ -13,7 +13,8 @@ abstract public class EntityController<TH> : MonoBehaviour
     //abstract public void setDrag(float drag);
 
     //abstract public void setGroundSpeedAffect(float f);
-
+    [SerializeField]
+    private bool invulnerable = false;
     private float converToFloat(TH val)
     {
         //if (typeof(float).IsAssignableFrom(typeof(TH)))
@@ -26,13 +27,21 @@ abstract public class EntityController<TH> : MonoBehaviour
         //}
     }
 
+    public void setIsInvurnable(bool state)
+    {
+        this.invulnerable = state;
+    }
+
     public void dealDamage(TH baseDamage)
     {
-        runOnDamageBehaviour();
-        this.reviceDamage(baseDamage);
-        if (converToFloat(this.getHealth()) <= 0.0f)
+        if (!this.invulnerable)
         {
-            killImidielty();
+            runOnDamageBehaviour();
+            this.reviceDamage(baseDamage);
+            if (converToFloat(this.getHealth()) <= 0.0f)
+            {
+                killImidielty();
+            }
         }
     }
 
@@ -65,4 +74,6 @@ abstract public class EntityController<TH> : MonoBehaviour
     protected abstract TH getMaxHealth();
 
     public abstract void reviceDamage(TH damage);
+
+
 }

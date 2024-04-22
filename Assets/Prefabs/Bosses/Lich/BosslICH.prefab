@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 6458709733792865934}
   - component: {fileID: 2753401136589441147}
   - component: {fileID: 506696395157851815}
-  - component: {fileID: 3468268825458569588}
+  - component: {fileID: 5965425660611701450}
   - component: {fileID: 6576860835382372549}
   m_Layer: 0
   m_Name: BosslICH
@@ -286,7 +286,7 @@ MonoBehaviour:
   newAmountOfActionPerBehaviour: 4
   newSleepTime: 3
   minonsToSpawnOnStage3: 3
---- !u!114 &3468268825458569588
+--- !u!114 &5965425660611701450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bde210d987d7f4989de3e2092ec85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 8559890285010858849, guid: d8d555a944944ed4bb637f084c349b5d, type: 3}
+  soundToPlay: {fileID: 8559890285010858849, guid: 41e0973bfade29340ae40b89f2163279, type: 3}
 --- !u!114 &6576860835382372549
 MonoBehaviour:
   m_ObjectHideFlags: 0

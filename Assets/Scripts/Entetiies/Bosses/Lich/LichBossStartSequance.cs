@@ -29,7 +29,7 @@ public class LichBossStartSequance : MonoBehaviour
 
     public void summonCrystal()
     {
-        summonedCrystal = Instantiate(crystal, cystalSummonPosition,true).transform;
+        summonedCrystal = Instantiate(crystal, cystalSummonPosition,false).transform;
     }
     void summonBoss()
     {
@@ -38,8 +38,11 @@ public class LichBossStartSequance : MonoBehaviour
 
     public void summonShield()
     {
-        if(summonedCrystal!=null)
-        summonedShield= Instantiate(Shield,  summonedCrystal.Find("shieldPosition").transform).transform;
+        if (summonedCrystal != null && summonedShield==null)
+        {
+            
+            summonedShield = Instantiate(Shield, summonedCrystal.Find("shieldPosition").transform).transform;
+        }
     }
 
     public void startSequanceImidielty()
@@ -54,4 +57,9 @@ public class LichBossStartSequance : MonoBehaviour
     {
         return summonedShield;
     }
+    public Transform getSummonedCrystal()
+    {
+        return summonedCrystal;
+    }
+
 }
