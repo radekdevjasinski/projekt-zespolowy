@@ -12,7 +12,7 @@ public class LichWarriorStageOneIdleBehaviour : StateMachineBehaviour
 
      override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Stage one idle Enter");
+        //Debug.Log("Stage one idle Enter");
         this.animator=animator;
         if(!animator.GetComponent<LichWarriorEntity>().getIsWaiting())
             goToSpawingZombie();
@@ -22,9 +22,9 @@ public class LichWarriorStageOneIdleBehaviour : StateMachineBehaviour
 
     private void goToSpawingZombie()
     {
-        Debug.Log("go to spawing ing zombie: "+ animator.GetBool(AnimatorSpawiningZombieState));
+        //Debug.Log("go to spawing ing zombie: "+ animator.GetBool(AnimatorSpawiningZombieState));
         animator.SetBool(AnimatorSpawiningZombieState,true);
-        Debug.Log(" zombie: " + animator.GetBool(AnimatorSpawiningZombieState));
+        //Debug.Log(" zombie: " + animator.GetBool(AnimatorSpawiningZombieState));
     }
 
     

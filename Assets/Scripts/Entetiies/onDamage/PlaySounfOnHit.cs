@@ -8,6 +8,6 @@ public class PlaySounfOnHit : MonoBehaviour, OnDamage
     public void onDamage()
     {
         Debug.Log("On damge sound: "+ transform.name);
-        SoundManager.instance.playSound(this.transform, this.sound, this.transform.position);
+        SoundManager.instance.playSound(this.transform, this.sound);
     }
 }

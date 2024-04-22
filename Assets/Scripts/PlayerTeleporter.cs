@@ -44,6 +44,7 @@ public class PlayerTeleporter : MonoBehaviour
                 if (activeDoor != null)
                 {
                     Vector3 destination = activeDoor.transform.position + new Vector3(triggerPos.x * distanceFromDoor, triggerPos.y * distanceFromDoor, 0);
+                    destination.z = 0;
                     this.gameObject.transform.position = destination;
                     activePlayerRoom.CloseAllDoors();
                     turnOffControls.controlsOn = false;

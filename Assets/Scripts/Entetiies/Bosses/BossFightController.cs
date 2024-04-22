@@ -39,7 +39,7 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
 
     public void startFight()
     {
-        Debug.Log("Start Fight");
+        //Debug.Log("Start Fight");
        if(battleAmbient!=null)
            SoundManager.instance.setAmbient(battleAmbient);
         if(skipStartSequnace)
@@ -127,7 +127,7 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
 
     public void addStageDependentElement(StageDeprndentElements var)
     {
-        Debug.Log("add stage depende elelmt: ");
+        //Debug.Log("add stage depende elelmt: ");
         this.stageDependentElements.Add(var);
     }
 
@@ -175,7 +175,7 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
         {
             if (var.CompareTag("Map"))
             {
-                Debug.Log("Correct collsion wih: " + var.name);
+                //Debug.Log("Correct collsion wih: " + var.name);
 
                 state = true;
 
@@ -184,7 +184,7 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
             {
                 if (var.CompareTag("Collider"))
                 {
-                    Debug.Log("False collsion wih: " + var.name);
+                    //Debug.Log("False collsion wih: " + var.name);
 
                     state = false;
                     break;

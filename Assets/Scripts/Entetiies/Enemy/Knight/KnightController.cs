@@ -10,7 +10,6 @@ public class KnightController : EnemyBase
     public PlayerEntityController playerController;
     public float attackSpeedModifier = 1;
     public float attackRangeModifier = 1;
-    public DamageController damageController;
     private Animator animator;
     private KnightPathfinding knightPathfinding;
     private bool canAttack = true;
@@ -83,11 +82,7 @@ public class KnightController : EnemyBase
         return distanceToPlayer <= attackRange;
     }
 
-    public override void reviceDamage(float damage)
-    {
-        base.reviceDamage(damage);
-        damageController.TakeDamage();
-    }
+
 
     public void Modify(float mod)
     {

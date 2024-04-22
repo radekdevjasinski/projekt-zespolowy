@@ -57,7 +57,7 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
 
     public void StartZombieSummon()
     {
-        Debug.Log("Start Zobmie SUmmon");
+        //Debug.Log("Start Zobmie SUmmon");
         float delayBetweenMinionSpawn = timeToSummonMinon / minionToSpawn;
         for (int i = 0; i < minionToSpawn; i++)
         {
@@ -80,10 +80,10 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
         currentAmountOfMinons++;
         Vector2 pos= bossFightController.getRandomPostionOnBossMap(0.1f);
         GameObject minion = Instantiate(this.minionSummon, new Vector3(pos.x, pos.y,0) , new Quaternion(), this.minionsParent);
-        Debug.Log("Set mionn bsses");
+        //Debug.Log("Set mionn bsses");
         foreach (InformBossAboutDeath VARIABLE in minion.GetComponentsInChildren<InformBossAboutDeath>())
         {
-            Debug.Log("Set mionn boss for : "+ VARIABLE.name);
+            //Debug.Log("Set mionn boss for : "+ VARIABLE.name);
             VARIABLE.setMinionBoss(this);
         }
     }
@@ -322,7 +322,6 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
 
     public void destroy()
     {
-        runDeathSequanceElemnts();
         Destroy(this.gameObject);
     }
     protected override float getHealth()

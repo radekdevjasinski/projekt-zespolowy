@@ -77,7 +77,7 @@ public class PlayerActionsController : MonoBehaviour
                 slashableItem,
                  startPosition,
                new Quaternion(0f, 0f, 0f, 0f),
-               shootParent
+               this.transform
                );
             slashable.GetComponent<Projectile>().setupProjectileParams(
                 playerAttributes.Damage,

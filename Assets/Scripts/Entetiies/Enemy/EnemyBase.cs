@@ -23,7 +23,7 @@ public class EnemyBase : EntityController<float>
         rb = GetComponent<Rigidbody2D>();
         timer = changeDirectionTimer;
         GetRandomDirection();
-        Debug.Log("get player transofrm");
+        //Debug.Log("get player transofrm");
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -33,7 +33,7 @@ public class EnemyBase : EntityController<float>
 
     public override void reviceDamage(float damage)
     {
-        Debug.Log("enemy recive damage, now: " + this.getHealth());
+        //Debug.Log("enemy recive damage, now: " + this.getHealth());
         currentHealthPoints -= damage; //sprawdzenie smeirci jest w klasie bazowej
     }
 
@@ -71,7 +71,7 @@ public class EnemyBase : EntityController<float>
     protected virtual bool IsWithinRange()
     {
         // (przeniseion wyszukiwanie obekitu player do zmiennej globlanej aby nie trzeba bylo szukac do update) 
-        Debug.Log("Is within range");
+        //Debug.Log("Is within range");
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
         return distanceToPlayer <= visionRange; //je?li dystans od gracza dp wroga jest mniejszy
         //lub r?wny polu widzenia to zwracamy albo true albo false

@@ -7,8 +7,7 @@ public class ArcherPatrol : EnemyBase
 {
     private bool facingRight = true;
     private Animator animator;
-    private DamageController damageController;
-    [SerializeField]private float moveSpeed = 1f;
+   [SerializeField]private float moveSpeed = 1f;
 
     [SerializeField]private bool isShooting;
 
@@ -18,7 +17,7 @@ public class ArcherPatrol : EnemyBase
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         animator = GetComponentInChildren<Animator>();
         EnemyBase enemy = GetComponent<EnemyBase>();
-        damageController = GetComponent<DamageController>();
+
     }
 
     void Update()
@@ -60,10 +59,6 @@ public class ArcherPatrol : EnemyBase
         moveSpeed *= -1;
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
     }
-    public override void reviceDamage(float damage)
-    {
-        base.reviceDamage(damage);
-        damageController.TakeDamage();
-    }
+
 
 }

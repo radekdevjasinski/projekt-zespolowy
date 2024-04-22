@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 6
   m_Sprite: {fileID: 371916814, guid: 7756d6cbb6826f340abb8cf722dd7eb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2461171e8f13f9b41bb83d3fc1298561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invulnerable: 0
   particleDeathLoading: {fileID: 9110553342523879051, guid: 5ee64b1f82571a94ead6dbecfb874c5a, type: 3}
   rageSound: {fileID: 8559890285010858849, guid: a540c75f9d0baba4cb95db1510e7efd7, type: 3}
   timeToSummonMinon: 1

@@ -21,7 +21,7 @@ public class LichBossStartSequance : MonoBehaviour
 
     public void startSequance()
     {
-        Debug.Log("startSequance");
+        //Debug.Log("startSequance");
         Invoke("summonCrystal", cystalAppearTimeOffset);
         Invoke("summonBoss",  bossSummonTimeOffset);
         Invoke("summonShield", shieldSummonTimeOffset);

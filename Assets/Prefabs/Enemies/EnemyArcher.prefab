@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 4857716584864461413}
   - component: {fileID: 9048070933644295339}
   - component: {fileID: 6738985878000628668}
-  - component: {fileID: 6127542705942909849}
+  - component: {fileID: 4137274974151607951}
+  - component: {fileID: 3931102442901405770}
   m_Layer: 3
   m_Name: EnemyArcher
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14bfa240704d6014cb1b5f55629cb94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invulnerable: 0
   maxHelathPoints: 2
   currentHealthPoints: 0
   visionRange: 1
@@ -133,7 +135,7 @@ MonoBehaviour:
   prefab: {fileID: 5690387314472056995, guid: 5b7984decf360e64e8f4ef7defd64585, type: 3}
   fireRate: 1
   player: {fileID: 0}
---- !u!114 &6127542705942909849
+--- !u!114 &4137274974151607951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,11 +144,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 504798309044270833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c64db6dcbc148784a9e1329fdba5d8d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cc5149182e712a4a87b4a2f9f596c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  soundOnDamage: {fileID: 8559890285010858849, guid: 8d4509f5cb95254418545960483c7bcc, type: 3}
+  sound: {fileID: 8559890285010858849, guid: 8d4509f5cb95254418545960483c7bcc, type: 3}
+--- !u!114 &3931102442901405770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504798309044270833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fa930315ffaaf4f89a76371a9198b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
 --- !u!1 &8707845190505267780
