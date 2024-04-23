@@ -39,7 +39,7 @@ public class CameraFollowRoom : MonoBehaviour
             switch (activePlayerRoom.roomType)
             {
                 case RoomType.BOSSROOM:
-                    StartCoroutine(DelayedCameraActivation(0.4f));
+                    StartCoroutine(DelayedCameraActivation(0.28f));
                     break;
                 default:
                     bossRoomCamera.gameObject.SetActive(false);
