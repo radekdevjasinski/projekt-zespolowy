@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,10 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
     private LichBossStartSequance lichBossStartSequance;
     private Collider2D fightMap;
     private BossEntityController boss;
+
+
+    private CinemachineVirtualCamera bossRoomCamera;
+
     private void Awake()
     {
       
@@ -32,6 +37,7 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
         Player = GameObject.Find("Player");
         fightMap = transform.Find("FightMap").GetComponent<Collider2D>();
 
+        bossRoomCamera = GameObject.Find("BossRoomCamera").GetComponent<CinemachineVirtualCamera>();
     }
 
 
@@ -65,14 +71,17 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
     private Transform previousCameraAttachment;
     public void attachCameraToBossRoomCamera()
     {
-        previousCameraAttachment = CameraController.Instance.GetComponent<CameraFollow>().getFollowPoint();
+        /*previousCameraAttachment = CameraController.Instance.GetComponent<CameraFollow>().getFollowPoint();
         this.cameraFollowPoint.transform.position = previousCameraAttachment.position;
-        CameraController.Instance.GetComponent<CameraFollow>().setFollowPoint(this.cameraFollowPoint);
+        CameraController.Instance.GetComponent<CameraFollow>().setFollowPoint(this.cameraFollowPoint);*/
+
+        bossRoomCamera.GetComponent<CinemachineVirtualCamera>().m_Follow = cameraFollowPoint;
     }
 
     public void deattachCameraToBossRoomCamera()
     {
-        CameraController.Instance.GetComponent<CameraFollow>().setFollowPoint(previousCameraAttachment);
+        //CameraController.Instance.GetComponent<CameraFollow>().setFollowPoint(previousCameraAttachment);
+        bossRoomCamera.GetComponent<CinemachineVirtualCamera>().m_Follow = Player.transform;
     }
     #endregion
 

@@ -521,7 +521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1780974077749885163, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
       propertyPath: orthographic size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2311578155921040913, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
       propertyPath: m_Enabled
@@ -1460,6 +1460,7 @@ MonoBehaviour:
   mediumRoomCameraSize: 4
   mainCamera: {fileID: 1875649845}
   bossRoomCamera: {fileID: 1750609773}
+  transitionDone: 0
   smoothTime: 0.25
 --- !u!4 &392334717 stripped
 Transform:
@@ -1800,6 +1801,7 @@ MonoBehaviour:
   mediumRoomCameraSize: 4
   mainCamera: {fileID: 0}
   bossRoomCamera: {fileID: 0}
+  transitionDone: 0
   smoothTime: 0.25
 --- !u!1 &537548720 stripped
 GameObject:
@@ -3159,8 +3161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomSpace: 50
-  roomCount: 9
-  shopRoomCount: 1
+  roomCount: 0
+  shopRoomCount: 0
   bossRoomCount: 1
   roomPrefabs:
   - {fileID: 5690942790177299855, guid: fed5116736d8a4c40982a3b550f73dcf, type: 3}
@@ -3561,6 +3563,7 @@ GameObject:
   - component: {fileID: 1750609772}
   - component: {fileID: 1750609773}
   - component: {fileID: 1750609774}
+  - component: {fileID: 1750609775}
   m_Layer: 0
   m_Name: BossRoomCamera
   m_TagString: Untagged
@@ -3606,7 +3609,7 @@ MonoBehaviour:
   m_Follow: {fileID: 299050556}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -3638,6 +3641,31 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_Damping: 0.5
   m_MaxWindowSize: -1
+--- !u!114 &1750609775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750609771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e62c82b3be64042ac529dee964cc2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowImage: 1
+  m_Image: {fileID: 2800000, guid: 4adc26dced8650347a38664cfb626920, type: 3}
+  m_Aspect: 2
+  m_Alpha: 1
+  m_Center: {x: 0, y: 0}
+  m_Rotation: {x: 0, y: 0, z: 0}
+  m_Scale: {x: 1, y: 1}
+  m_SyncScale: 1
+  m_MuteCamera: 0
+  m_SplitView: 0
+  m_RenderMode: 0
+  m_SortingOrder: 12
+  m_PlaneDistance: 100
 --- !u!1001 &1847894756
 PrefabInstance:
   m_ObjectHideFlags: 0
