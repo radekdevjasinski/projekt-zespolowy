@@ -144,7 +144,7 @@ public class DungeonGenerator : MonoBehaviour
             }
             else if (bossRoomCount > 0)
             {
-                rooms.Add(new DungeonRoom(roomCount, freeRooms[UnityEngine.Random.Range(0, freeRooms.Count)], RoomType.BOSSROOM));
+                AddBossRoom(freeRooms);
                 bossRoomCount--;
             }
         }
@@ -191,6 +191,21 @@ public class DungeonGenerator : MonoBehaviour
             }
             rooms[i].CountEnemies();
         }
+    }
+    void AddBossRoom(List<Vector2Int> freeSpots)
+    {
+        float bestDistance = 0;
+        Vector2Int spot = Vector2Int.zero;
+        for (int i = 0; i < freeSpots.Count; i++)
+        {
+            float distance = Vector2Int.Distance(freeSpots[i], Vector2Int.zero);
+            if (distance > bestDistance)
+            {
+                bestDistance = distance;
+                spot = freeSpots[i];
+            }
+        }
+        rooms.Add(new DungeonRoom(roomCount, spot, RoomType.BOSSROOM));
     }
 
 }

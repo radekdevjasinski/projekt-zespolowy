@@ -40,6 +40,12 @@ public class PlayerEntityController : EntityController<int>
         GameObject HpBar = GameObject.Find("HpBar");
         HpBar.GetComponent<HealtHeartBar>().DrawHearts();    //health bar turned off for testing purposes
     }
+    public void heal()
+    {
+        GetComponent<PlayerAttributesController>().resetHealth();
+        GameObject HpBar = GameObject.Find("HpBar");
+        HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+    }
 
     protected override int getHealth()
     {
@@ -49,7 +55,9 @@ public class PlayerEntityController : EntityController<int>
 
     protected override void onDie()
     {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        GetComponent<PlayerControler>().lockInput();
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
         GameObject gameOverScreen = GameObject.Find("GameOver");
         gameOverScreen.GetComponent<GameOverScreen>().Setup();
 

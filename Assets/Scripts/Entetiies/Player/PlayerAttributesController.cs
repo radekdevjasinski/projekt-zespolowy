@@ -20,6 +20,7 @@ public class PlayerAttributesController : MonoBehaviour
     }
 
     //Attributes
+  [SerializeField] private int MaxHealth=6;
   [SerializeField] private int health=6;
   [SerializeField] private int speed=0;
   [SerializeField] private int fireRate=0;
@@ -60,6 +61,11 @@ public class PlayerAttributesController : MonoBehaviour
    {
        this.health+= change;
    }
+
+    public void resetHealth()
+    {
+        this.health = MaxHealth;
+    }
 
    public void increaseSpeed(int change)
    {
