@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class NpcActionCOnversation : NPCConversation
 {
@@ -12,9 +13,9 @@ public class NpcActionCOnversation : NPCConversation
     [SerializeField]
     private int possibleActions = 1;
     [SerializeField]
-    private string[] failedActionDialogues;
+    private LocalizedString[] failedActionDialogues;
     [SerializeField]
-    private string[] outOfActionsDialogues;
+    private LocalizedString[] outOfActionsDialogues;
     protected override void StartConversation()
     {
         if (possibleActions > 0)

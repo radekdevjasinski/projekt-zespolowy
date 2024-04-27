@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization;
 
 public class NPCConversation : MonoBehaviour
 {
     [SerializeField]  private TMP_Text dialogueText;
-    [SerializeField] private string[] eneterDialogues;
+    [SerializeField] private LocalizedString [] eneterDialogues;
     void Start()
     {
         dialogueText = GameObject.Find("Text NPC").GetComponent<TMP_Text>();
@@ -15,8 +16,12 @@ public class NPCConversation : MonoBehaviour
     {
         dialogueText.text=text;
     }
+    public void setDialogeText(LocalizedString text)
+    {
+        setDialogeText(text.GetLocalizedString());
+            }
 
-    private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {

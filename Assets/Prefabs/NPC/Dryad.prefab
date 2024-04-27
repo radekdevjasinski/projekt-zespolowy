@@ -96,13 +96,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 0}
   eneterDialogues:
-  - "Ofiaruj\u0119 ci \u0142ask\u0119 natury"
-  - "Natura zawsze ci pomorz\u0119"
+  - m_TableReference:
+      m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
+    m_TableEntryReference:
+      m_KeyId: 56036216832
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   possibleActions: 1
   failedActionDialogues:
-  - "Jeste\u015B w p\u0142eni si\u0142"
+  - m_TableReference:
+      m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
+    m_TableEntryReference:
+      m_KeyId: 630437761024
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   outOfActionsDialogues:
-  - "Musisz da\u0107 naturze odpocz\u0105\u0107"
+  - m_TableReference:
+      m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
+    m_TableEntryReference:
+      m_KeyId: 392700416000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!61 &4302882059299914143
 BoxCollider2D:
   m_ObjectHideFlags: 0

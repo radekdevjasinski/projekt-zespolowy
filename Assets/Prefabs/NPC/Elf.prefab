@@ -141,12 +141,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 0}
   eneterDialogues:
-  - "Pomog\u0119 ci rycerzu!"
+  - m_TableReference:
+      m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
+    m_TableEntryReference:
+      m_KeyId: 576440291328
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   possibleActions: 1
   failedActionDialogues:
-  - twoja kondycja jest nie zawodna
+  - m_TableReference:
+      m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
+    m_TableEntryReference:
+      m_KeyId: 630437761024
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   outOfActionsDialogues:
-  - Potrzebuje kawy
+  - m_TableReference:
+      m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
+    m_TableEntryReference:
+      m_KeyId: 708284043264
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &5413801720418456025
 MonoBehaviour:
   m_ObjectHideFlags: 0
