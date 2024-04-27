@@ -7,14 +7,23 @@ public class NPCConversation : MonoBehaviour
 {
     [SerializeField]  private TMP_Text dialogueText;
     [SerializeField] private LocalizedString [] eneterDialogues;
-    void Start()
+    protected virtual void Start()
     {
         dialogueText = GameObject.Find("Text NPC").GetComponent<TMP_Text>();
-    }
+        if(dialogueText==null)
+        {
+            Debug.Log("dialoge txt is null");
+            throw new System.Exception("Couldnt find npc dialog");
+        }
+        else
+        {
+            Debug.Log("dialoge txt not null");
+        }
+        }
 
     public void setDialogeText(string text)
     {
-        dialogueText.text=text;
+        dialogueText.SetText(text);
     }
     public void setDialogeText(LocalizedString text)
     {
