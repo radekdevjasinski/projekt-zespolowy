@@ -75,8 +75,8 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
 
     protected abstract void onDie();
 
-    protected abstract TH getHealth();
-    protected abstract TH getMaxHealth();
+    public abstract TH getHealth();
+    public abstract TH getMaxHealth();
 
     public abstract void reviceDamage(TH damage);
 

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2216498702509069544}
   - component: {fileID: 1765766924810166496}
-  - component: {fileID: 5827115936454383986}
+  - component: {fileID: 258129463966031519}
   - component: {fileID: 4302882059299914143}
-  - component: {fileID: 9017154261905889222}
+  - component: {fileID: 7440153236176249009}
+  - component: {fileID: 601328842830731772}
   m_Layer: 0
   m_Name: Dryad
   m_TagString: NPC
@@ -81,7 +82,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2.3026514}
   m_EdgeRadius: 0
---- !u!114 &5827115936454383986
+--- !u!114 &258129463966031519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,12 +91,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 40409051551482411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5636ed1a2ee800242b05e26a8678cade, type: 3}
+  m_Script: {fileID: 11500000, guid: a7299b525396f1c4ba94aba136f662a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 0}
-  dialogues:
-  - "Ofiaruj\u0119 Ci \u0142ask\u0119 natury!"
+  eneterDialogues:
+  - "Ofiaruj\u0119 ci \u0142ask\u0119 natury"
+  - "Natura zawsze ci pomorz\u0119"
+  possibleActions: 1
+  failedActionDialogues:
+  - "Jeste\u015B w p\u0142eni si\u0142"
+  outOfActionsDialogues:
+  - "Musisz da\u0107 naturze odpocz\u0105\u0107"
 --- !u!61 &4302882059299914143
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,7 +148,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.526456, y: 0.8942572}
   m_EdgeRadius: 0
---- !u!114 &9017154261905889222
+--- !u!114 &7440153236176249009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,9 +157,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 40409051551482411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5295df011a1d7f34fa1482e6951856d1, type: 3}
+  m_Script: {fileID: 11500000, guid: d993b1ae4e836d64eac7910beca46b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &601328842830731772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40409051551482411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df6bb8bf963a845b9c99c404cf3d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8559890285010858849, guid: 127d4bd9b7722f24da18ff2b4af6b84c, type: 3}
 --- !u!1 &7634792553859149022
 GameObject:
   m_ObjectHideFlags: 0

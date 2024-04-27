@@ -4,12 +4,16 @@ using TMPro;
 
 public class NPCConversation : MonoBehaviour
 {
-    public TMP_Text dialogueText;
-    public string[] dialogues;
-
+    [SerializeField]  private TMP_Text dialogueText;
+    [SerializeField] private string[] eneterDialogues;
     void Start()
     {
         dialogueText = GameObject.Find("Text NPC").GetComponent<TMP_Text>();
+    }
+
+    public void setDialogeText(string text)
+    {
+        dialogueText.text=text;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,7 +21,7 @@ public class NPCConversation : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             StartConversation();
-            GetComponent<NPCSpells>().HealPlayer();
+            
         }
     }
 
@@ -28,15 +32,18 @@ public class NPCConversation : MonoBehaviour
             EndConversation();
         }
     }
-    void StartConversation()
+    protected virtual void StartConversation()
     {
-        dialogueText.text = dialogues[Random.Range(0, dialogues.Length)];
+        setDialogeText(eneterDialogues[Random.Range(0, eneterDialogues.Length)]);
 
     }
 
     void EndConversation()
     {
-        dialogueText.text = "";
+        setDialogeText ("");
 
     }
+
+
+
 }

@@ -7,6 +7,14 @@ using UnityEngine;
 public class PlayerEntityController : EntityController<int>
 {
 
+    private PlayerAttributesController playerAttributesController;
+
+    protected void Awake()
+    {
+        playerAttributesController = GetComponent<PlayerAttributesController>();
+    }
+
+
     // Code Functionality from previous Entity controller
     // that included also gorund affected behaviour
     // I left if there was a need for changing behaviour based on ground later
@@ -29,9 +37,11 @@ public class PlayerEntityController : EntityController<int>
     //  this.GetComponent<PlayerMovementController>().setGroundSpeedAffect(f);
     //}
 
-    protected override int getMaxHealth()
+    public override int getMaxHealth()
     {
-        throw new NotImplementedException(); // no heatlh limit for player
+        return playerAttributesController.getMaxHealth();
+
+
     }
 
     public override void reviceDamage(int damage)
@@ -47,10 +57,10 @@ public class PlayerEntityController : EntityController<int>
         HpBar.GetComponent<HealtHeartBar>().DrawHearts();
     }
 
-    protected override int getHealth()
+    public override int getHealth()
     {
         return
-            this.GetComponent<PlayerAttributesController>().Health;
+           playerAttributesController.Health;
     }
 
     protected override void onDie()

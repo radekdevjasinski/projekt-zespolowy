@@ -108,6 +108,12 @@ public class PlayerAttributesController : MonoBehaviour
     {
         this.playerClass = change;
     }
+    public int getMaxHealth()
+    {
+        return MaxHealth;
+    }
+
+
     public void increase(attributes attrib, int change)
    {
        switch (attrib)

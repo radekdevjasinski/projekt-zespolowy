@@ -100,12 +100,12 @@ public class EnemyBase : EntityController<float>
     }
 
 
-    protected override float getHealth()
+    public override float getHealth()
     {
         return currentHealthPoints;
     }
 
-    protected override float getMaxHealth()
+    public override float getMaxHealth()
     {
         return maxHelathPoints;
     }

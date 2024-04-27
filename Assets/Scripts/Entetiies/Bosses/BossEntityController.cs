@@ -14,7 +14,7 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
 
     private Animator animator;
 
-    override protected float getMaxHealth()
+    override public float getMaxHealth()
     {
         return maxHealth;
     }
@@ -44,7 +44,7 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
         Destroy(healthBarInstnace.gameObject);
     }
 
-    protected override float getHealth()
+    public override float getHealth()
     {
         return this.health;
     }
