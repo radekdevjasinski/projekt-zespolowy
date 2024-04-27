@@ -66,11 +66,28 @@ public class NpcTrader : NPCConversation
 
     private itemToTrade getRandomItem()
     {
-        throw new NotImplementedException();
+        float randsum = 0;
+        foreach(ranadomItem itempos in randomItems)
+        {
+            randsum += itempos.procentChanceFactor;
+        }
+        float procentFactor = UnityEngine.Random.Range(0,randsum);
+        //Debug.Log("procentFactor: " + procentFactor);
+        float procentCount = 0;
+        foreach(ranadomItem itempos in randomItems)
+        {
+            procentCount += itempos.procentChanceFactor;
+            //Debug.Log("procentCount: " + procentCount);
+            if (procentCount >= procentFactor)
+                return itempos.item;
+        }
+        return randomItems[randomItems.Length-1].item;
+
     }
 
     private void setItemOnPostion(Transform itemToTradeLocation, itemToTrade item)
     {
+        //Debug.Log("settign up item in shop: " + item.itemToBeBought.name);
         removeAllChildren(itemToTradeLocation);
         GameObject gameObject = Instantiate(itemTradeBase, itemToTradeLocation);
         gameObject.GetComponent<TradeObject>().setupTrade(item.itemToBeBought, item.basePrice, soundOnBuy);

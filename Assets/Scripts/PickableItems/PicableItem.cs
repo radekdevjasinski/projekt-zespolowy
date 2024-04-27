@@ -34,7 +34,6 @@ public abstract class PicableItem : EnterableObjects
 
     private void onItemPickUp(GameObject gameobject)
     {
-        Debug.Log("on item pick");
         IonItemPickUP[] picks = GetComponents<IonItemPickUP>();
         foreach (IonItemPickUP pick in picks)
         {
