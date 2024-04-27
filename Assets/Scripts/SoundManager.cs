@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
     public void playSound(Transform parent, GameObject soundObject, Vector3 postion)
     {
         GameObject soundGameObjet = Instantiate(soundObject, new Vector3(postion.x,postion.y,0), new Quaternion(0, 0, 0, 0), parent);
-        Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name+ " at positon: "+ soundGameObjet.transform.position);
+        //Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name+ " at positon: "+ soundGameObjet.transform.position);
         AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
         //DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
     }

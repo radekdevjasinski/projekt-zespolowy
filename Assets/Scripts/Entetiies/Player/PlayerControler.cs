@@ -26,7 +26,7 @@ public class PlayerControler : MonoBehaviour
     private InputAction dropEquiped;
     private InputAction mousePress;
     private InputAction mousePosition;
-
+    private InputAction useHealthPotion;
 
 
     private void Awake()
@@ -74,6 +74,13 @@ public class PlayerControler : MonoBehaviour
         mousePosition = this.controls.Player.MousePostion;
         mousePosition.performed += ctx => { OnMousePostion(ctx.ReadValue<Vector2>()); };
 
+        useHealthPotion=this.controls.Player.UseHealthPotion;
+        useHealthPotion.performed += ctx => { OnHealthPotionUse(); };
+    }
+
+    private void OnHealthPotionUse()
+    {
+        playerActionsController.useHealthPotion();
     }
 
     void OnDisable()

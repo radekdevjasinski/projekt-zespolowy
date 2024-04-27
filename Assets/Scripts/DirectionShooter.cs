@@ -18,7 +18,7 @@ public class DirectionShooter : MonoBehaviour
 
     private void shoot()
     {
-        Debug.Log("Shoot");
+        //Debug.Log("Shoot");
         Vector3 startPosition = this.shootPoint.position;
         GameObject shootable = Instantiate(
             projectile,

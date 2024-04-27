@@ -56,6 +56,12 @@ public class PlayerEntityController : EntityController<int>
         GameObject HpBar = GameObject.Find("HpBar");
         HpBar.GetComponent<HealtHeartBar>().DrawHearts();
     }
+    public void heal(int amount)
+    {
+        GetComponent<PlayerAttributesController>().increaseHealth(amount);
+        GameObject HpBar = GameObject.Find("HpBar");
+        HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+    }
 
     public override int getHealth()
     {

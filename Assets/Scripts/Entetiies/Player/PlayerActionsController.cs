@@ -11,7 +11,8 @@ public class PlayerActionsController : MonoBehaviour
     //controllers
      PlayerAttributesController playerAttributes;
      PlayerItemsController playerItemsController;
-    [Header("Putting")]
+    PlayerEntityController playerEntityController;
+   [Header("Putting")]
     [SerializeField] private GameObject puttableItem;
     [Header("Slashing")]
     [SerializeField] private GameObject slashableItem;
@@ -57,7 +58,7 @@ public class PlayerActionsController : MonoBehaviour
         animator = this.gameObject.GetComponent<Animator>();
         playerAttributes = this.gameObject.GetComponent<PlayerAttributesController>();
         playerItemsController = this.gameObject.GetComponent<PlayerItemsController>();
-
+        playerEntityController = this.gameObject.GetComponent<PlayerEntityController>();
     }
 
     void Update()
@@ -307,6 +308,28 @@ public class PlayerActionsController : MonoBehaviour
         }
 
     }
+
+
+    #endregion
+
+
+    #region healthPotion
+    [Header("health potion")]
+    [SerializeField]
+    GameObject healthPotionSound;
+
+    public void useHealthPotion()
+    {
+        Debug.Log("try use health potion");
+        if(playerItemsController.getHelathPotion()>0 && playerEntityController.getHealth()<playerEntityController.getMaxHealth())
+        {
+            if (healthPotionSound != null)
+                SoundManager.instance.playSound(transform, healthPotionSound);
+            playerEntityController.heal(1);
+            playerItemsController.removeHelathPotion(1);
+        }
+    }
+
 
 
     #endregion

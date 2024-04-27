@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 8163005650284522512}
   - component: {fileID: 5745296312801078995}
   - component: {fileID: 6558554150140107763}
-  - component: {fileID: 4550055232620742561}
   - component: {fileID: 2858716696440689670}
   - component: {fileID: 5057400597476377839}
   m_Layer: 9
@@ -208,6 +207,7 @@ MonoBehaviour:
   shootCooldown: 0.4
   shootCooldownAttributeMultiplayer: 0
   singleUseItem: {fileID: 0}
+  healthPotionSound: {fileID: 8559890285010858849, guid: 2df9544a14ea9e542a3d06b76ec29653, type: 3}
 --- !u!114 &3203944582975471556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerClass: 2
+  MaxHealth: 6
   health: 6
   speed: 0
   fireRate: 0
@@ -322,6 +323,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88bdba1110d3584b9a3d14d67a53e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coins: 0
+  keys: 0
+  heathPotions: 0
+  bombs: 0
 --- !u!81 &5745296312801078995
 AudioListener:
   m_ObjectHideFlags: 0
@@ -342,23 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f743c0d2cff0aa4cb796d244314361f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceFromDoor: 1
+  distanceFromDoorY: 1.25
   controlsOffTime: 0.25
---- !u!114 &4550055232620742561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4319326301353448314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bbc994c8a687094e93115ffcc4d2a79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlsOn: 1
-  playerControler: {fileID: 0}
-  animator: {fileID: 0}
 --- !u!114 &2858716696440689670
 MonoBehaviour:
   m_ObjectHideFlags: 0
