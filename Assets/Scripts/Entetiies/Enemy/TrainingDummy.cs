@@ -21,7 +21,7 @@ public class TrainingDummy : EntityController<float>
 
     public override void reviceDamage(float damage)
     {
-        Debug.Log("dummy recived damgage: " +damage)
+        Debug.Log("dummy recived damgage: " + damage);
         health -= damage;
     }
 

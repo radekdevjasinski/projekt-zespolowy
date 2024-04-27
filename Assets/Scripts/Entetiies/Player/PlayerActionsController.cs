@@ -4,8 +4,13 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerItemsController))]
+[RequireComponent(typeof(PlayerAttributesController))]
 public class PlayerActionsController : MonoBehaviour
 {
+    //controllers
+     PlayerAttributesController playerAttributes;
+     PlayerItemsController playerItemsController;
     [Header("Putting")]
     [SerializeField] private GameObject puttableItem;
     [Header("Slashing")]
@@ -41,8 +46,6 @@ public class PlayerActionsController : MonoBehaviour
     private Animator animator;
 
 
-    //controllers
-    private PlayerAttributesController playerAttributes;
 
     private void Awake()
     {
@@ -53,6 +56,8 @@ public class PlayerActionsController : MonoBehaviour
         summonedParent = GameObject.Find("Summoned").transform;
         animator = this.gameObject.GetComponent<Animator>();
         playerAttributes = this.gameObject.GetComponent<PlayerAttributesController>();
+        playerItemsController = this.gameObject.GetComponent<PlayerItemsController>();
+
     }
 
     void Update()
@@ -290,13 +295,16 @@ public class PlayerActionsController : MonoBehaviour
 
     public void putObject()
     {
-
-        GameObject shootable = Instantiate(
-            puttableItem,
-            this.transform.position,
-            new Quaternion(0f, 0f, 0f, 0f),
-            puttedParent
-        );
+        if (playerItemsController.getBombs() > 0)
+        {
+            GameObject shootable = Instantiate(
+                puttableItem,
+                this.transform.position,
+                new Quaternion(0f, 0f, 0f, 0f),
+                puttedParent
+            );
+            playerItemsController.removeBombs(1);
+        }
 
     }
 
