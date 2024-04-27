@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7921011776745283753}
   - component: {fileID: 4084532252108822104}
   - component: {fileID: 1501948920253078549}
+  - component: {fileID: -8013207234236160401}
   m_Layer: 0
   m_Name: powerful_crossbow_of_power
   m_TagString: Item
@@ -47,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd39c2f49908a4478a46908df275add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onItemPickSound: {fileID: 0}
   Attributes:
   - attribute: 1
     factor: -15
@@ -115,6 +115,19 @@ CircleCollider2D:
   m_Offset: {x: 0.0013834238, y: 0.01130259}
   serializedVersion: 2
   m_Radius: 0.20586431
+--- !u!114 &-8013207234236160401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5112259435028361392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610a32f2da325444883f93f2cdfe7315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onItemPickSound: {fileID: 8559890285010858849, guid: 9c74542c4b3f1e24cbf3ebe37c66b3a9, type: 3}
 --- !u!1 &8790889830464099917
 GameObject:
   m_ObjectHideFlags: 0

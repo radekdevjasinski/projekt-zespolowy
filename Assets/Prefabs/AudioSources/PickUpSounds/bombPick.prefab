@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2138503407467294097}
   - component: {fileID: 8201263119018750138}
   m_Layer: 0
-  m_Name: potionPick
+  m_Name: bombPick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 8559890285010858849}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.66, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3d63b09cb9cb4144391d94ae83a50a22, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 34e0ed1f4a4d7ab4392e085f6fb9e5f5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
