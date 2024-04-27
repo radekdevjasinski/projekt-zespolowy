@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerItemsController : MonoBehaviour
 {
+    [SerializeField]
     private int coins = 0;
 
     public void addCoins(int coins)

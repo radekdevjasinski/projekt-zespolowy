@@ -16,7 +16,8 @@ public class PlayerAttributesController : MonoBehaviour
         PROJECTILE_SPEED,
         LUCK,
         PHYSICALRESISTANCE,
-        MAGICALRESISTANCE
+        MAGICALRESISTANCE,
+        ARMOR
     }
 
     //Attributes
@@ -116,6 +117,7 @@ public class PlayerAttributesController : MonoBehaviour
 
     public void increase(attributes attrib, int change)
    {
+ 
        switch (attrib)
        {
             case attributes.HEALTH: this.increaseHealth(change); break;
@@ -128,7 +130,23 @@ public class PlayerAttributesController : MonoBehaviour
             case attributes.PHYSICALRESISTANCE: this.increasePhysicalResistance(change); break;
             case attributes.MAGICALRESISTANCE: this.increaseMagicalResistance(change);break;
        }
-   }
+        Debug.Log("increase: " + attrib + " with " + change+ " to overall value: "+ getAtrib(attrib));
+    }
 
-
+    private float getAtrib(attributes attrib)
+    {
+        switch (attrib)
+        {
+            case attributes.HEALTH: return (float)health; break;
+            case attributes.DAMAGE: return (float)damage; break;
+            case attributes.FIRE_RATE: return (float)fireRate; break;
+            case attributes.LUCK: return (float)luck;  break;
+            case attributes.PROJECTILE_SPEED: return (float)projectileSpeed; break;
+            case attributes.RANGE: return (float)range; break;
+            case attributes.SPEED: return (float)speed; break;
+            case attributes.PHYSICALRESISTANCE: return (float)physicalResistance; break;
+            case attributes.MAGICALRESISTANCE: return (float)magicalResistance; break;
+        }
+        return -1;
+    }
 }
