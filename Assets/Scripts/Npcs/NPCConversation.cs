@@ -3,27 +3,24 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Localization;
 
+[RequireComponent(typeof(DialogController))]
 public class NPCConversation : MonoBehaviour
 {
-    [SerializeField]  private TMP_Text dialogueText;
+    private DialogController dialogController;
     [SerializeField] private LocalizedString [] eneterDialogues;
+
+    private void Awake()
+    {
+        dialogController = GetComponent<DialogController>();
+    }
     protected virtual void Start()
     {
-        dialogueText = GameObject.Find("Text NPC").GetComponent<TMP_Text>();
-        if(dialogueText==null)
-        {
-            Debug.Log("dialoge txt is null");
-            throw new System.Exception("Couldnt find npc dialog");
-        }
-        else
-        {
-            Debug.Log("dialoge txt not null");
-        }
+        
         }
 
     public void setDialogeText(string text)
     {
-        dialogueText.SetText(text);
+        dialogController.SetText(text);
     }
     public void setDialogeText(LocalizedString text)
     {

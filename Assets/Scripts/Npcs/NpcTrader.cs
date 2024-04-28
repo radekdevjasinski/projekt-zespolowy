@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Localization;
+using static UnityEditor.Progress;
 
 public class NpcTrader : NPCConversation
 {
@@ -11,7 +12,7 @@ public class NpcTrader : NPCConversation
     private GameObject itemTradeBase;
     [SerializeField] private GameObject soundOnBuy;
     [Serializable]
-    struct itemToTrade
+    public struct itemToTrade
     {
         [SerializeField] public GameObject itemToBeBought;
         [SerializeField] public int basePrice;
@@ -31,11 +32,11 @@ public class NpcTrader : NPCConversation
         [SerializeField] public float procentChanceFactor;
     }
 
- [SerializeField] private itemPosition[] itemPostions;
+     [SerializeField] private itemPosition[] itemPostions;
     [SerializeField] private ranadomItem[] randomItems;
+    [SerializeField] private LocalizedString[] outOfStockDialog;
 
-
-
+    private int itemSeeling;
 
 
     override protected void Start()
@@ -48,6 +49,7 @@ public class NpcTrader : NPCConversation
     {
         foreach(itemPosition itempos in itemPostions)
         {
+            itemSeeling++;
             setupItemPosition(itempos);
         }
     }
@@ -90,7 +92,7 @@ public class NpcTrader : NPCConversation
         Debug.Log("settign up item in wshop: " + item.itemToBeBought.name);
         removeAllChildren(itemToTradeLocation);
         GameObject gameObject = Instantiate(itemTradeBase, itemToTradeLocation);
-        gameObject.GetComponent<TradeObject>().setupTrade(item.itemToBeBought, item.basePrice, soundOnBuy);
+        gameObject.GetComponent<TradeObject>().setupTrade(item.itemToBeBought, item.basePrice, soundOnBuy, () => { onItemBought(item); });
     }
 
     private void removeAllChildren(Transform parent)
@@ -103,5 +105,23 @@ public class NpcTrader : NPCConversation
                 Destroy(child);
             }
         }
+    }
+
+
+
+    public void onItemBought(itemToTrade item)
+    {
+        itemSeeling--;
+        setDialogeText(item.onBoughtDialog[UnityEngine.Random.Range(0, item.onBoughtDialog.Length)]);
+        Debug.Log("ITEM Bought: "+ item.itemToBeBought.name + " now have : "+ itemSeeling);
+    }
+
+
+    protected override void StartConversation()
+    {
+        if(itemSeeling>0)
+        base.StartConversation();
+        else
+            setDialogeText(outOfStockDialog[UnityEngine.Random.Range(0, outOfStockDialog.Length)]);
     }
 }
