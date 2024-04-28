@@ -72,7 +72,7 @@ public class PlayerEntityController : EntityController<int>
     protected override void onDie()
     {
         //Destroy(this.gameObject);
-        GetComponent<PlayerControler>().lockInput();
+        GetComponent<IplayerControllerInterface>().lockInput();
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         GameObject gameOverScreen = GameObject.Find("GameOver");
         gameOverScreen.GetComponent<GameOverScreen>().Setup();
