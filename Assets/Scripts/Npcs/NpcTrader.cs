@@ -75,12 +75,12 @@ public class NpcTrader : NPCConversation
             randsum += itempos.procentChanceFactor;
         }
         float procentFactor = UnityEngine.Random.Range(0,randsum);
-        Debug.Log("procentFactor: " + procentFactor);
+        //Debug.Log("procentFactor: " + procentFactor);
         float procentCount = 0;
         foreach(ranadomItem itempos in randomItems)
         {
             procentCount += itempos.procentChanceFactor;
-            Debug.Log("procentCount: " + procentCount);
+            //Debug.Log("procentCount: " + procentCount);
             if (procentCount >= procentFactor)
                 return itempos.item;
         }
@@ -90,7 +90,7 @@ public class NpcTrader : NPCConversation
 
     private void setItemOnPostion(Transform itemToTradeLocation, itemToTrade item)
     {
-        Debug.Log("settign up item in wshop: " + item.itemToBeBought.name);
+        //Debug.Log("settign up item in wshop: " + item.itemToBeBought.name);
         removeAllChildren(itemToTradeLocation);
         GameObject gameObject = Instantiate(itemTradeBase, itemToTradeLocation);
         gameObject.GetComponent<TradeObject>().setupTrade(item.itemToBeBought, item.basePrice, soundOnBuy, () => { onItemBought(item); });
@@ -114,7 +114,7 @@ public class NpcTrader : NPCConversation
     {
         itemSeeling--;
         setDialogeText(item.onBoughtDialog[UnityEngine.Random.Range(0, item.onBoughtDialog.Length)]);
-        Debug.Log("ITEM Bought: "+ item.itemToBeBought.name + " now have : "+ itemSeeling);
+        //Debug.Log("ITEM Bought: "+ item.itemToBeBought.name + " now have : "+ itemSeeling);
     }
 
 

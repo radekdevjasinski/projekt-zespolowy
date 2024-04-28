@@ -8,7 +8,7 @@ using UnityEngine;
 public class DialogController : MonoBehaviour
 {
     [SerializeField] private TMP_Text dialogueText;
-    [SerializeField] private float characterSpeed=0.1f;
+    [SerializeField] private float characterSpeed= 0.04f;
     [SerializeField] private GameObject mumblePack;
     private RandomLoopSoundControls musicLoopSoundControls;
     private IEnumerator coroutine;
