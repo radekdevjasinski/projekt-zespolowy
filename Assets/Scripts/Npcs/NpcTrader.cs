@@ -93,7 +93,16 @@ public class NpcTrader : NPCConversation
         //Debug.Log("settign up item in wshop: " + item.itemToBeBought.name);
         removeAllChildren(itemToTradeLocation);
         GameObject gameObject = Instantiate(itemTradeBase, itemToTradeLocation);
-        gameObject.GetComponent<TradeObject>().setupTrade(item.itemToBeBought, item.basePrice, soundOnBuy, () => { onItemBought(item); });
+        GameObject objSold= gameObject.GetComponent<TradeObject>().setupTrade(item.itemToBeBought, item.basePrice, soundOnBuy, () => { onItemBought(item); });
+
+        IonItemPickUP[] onItmepikc=GetComponents<IonItemPickUP>();
+        //Debug.Log("tring add compeonts");
+        foreach(IonItemPickUP var in onItmepikc)
+        {
+            //Debug.Log("Adding component: "+ var.GetType());
+            objSold.AddComponent(var.GetType());
+        }
+
     }
 
     private void removeAllChildren(Transform parent)
@@ -113,6 +122,7 @@ public class NpcTrader : NPCConversation
     public void onItemBought(itemToTrade item)
     {
         itemSeeling--;
+        if(item.onBoughtDialog.Length>0)
         setDialogeText(item.onBoughtDialog[UnityEngine.Random.Range(0, item.onBoughtDialog.Length)]);
         //Debug.Log("ITEM Bought: "+ item.itemToBeBought.name + " now have : "+ itemSeeling);
     }
@@ -124,5 +134,19 @@ public class NpcTrader : NPCConversation
         base.StartConversation();
         else
             setDialogeText(outOfStockDialog[UnityEngine.Random.Range(0, outOfStockDialog.Length)]);
+    }
+
+    internal void removeShop()
+    {
+        foreach(itemPosition pos in itemPostions)
+        {
+            Transform[] children=pos.itemToTradeLocation.GetComponentsInChildren<Transform>();
+            foreach (Transform child in children)
+            {
+                if(pos.itemToTradeLocation!=child.transform)
+                Destroy(child.gameObject);
+            }
+        }
+        itemSeeling = 0;
     }
 }

@@ -31,7 +31,7 @@ public class TradeObject : MonoBehaviour
       
     }
 
-    internal void setupTrade(GameObject objectToTrade, int basePrice, GameObject soundOnBuy, Action fucntion)
+    internal GameObject setupTrade(GameObject objectToTrade, int basePrice, GameObject soundOnBuy, Action fucntion)
     {
         objectToBeBought = Instantiate(objectToTrade, this.transform);
         objectToBeBought.AddComponent<DestroyParentOnPick>();
@@ -40,5 +40,6 @@ public class TradeObject : MonoBehaviour
         objectToBeBought.AddComponent<PlaySoundOnPickUP>().setAudio(soundOnBuy);
         objectToBeBought.AddComponent<RunFunctionOnPick>().addFunction(fucntion);
         textMesh.SetText(basePrice + " g");
+        return objectToBeBought;
     }
 }
