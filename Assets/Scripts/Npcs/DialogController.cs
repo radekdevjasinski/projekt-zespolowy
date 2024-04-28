@@ -9,14 +9,17 @@ public class DialogController : MonoBehaviour
 {
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private float characterSpeed=0.1f;
+    [SerializeField] private GameObject mumblePack;
+    private RandomLoopSoundControls musicLoopSoundControls;
     private IEnumerator coroutine;
     internal void SetText(string text)
     {
         if(coroutine != null)
         {
-
+            musicLoopSoundControls.stopSound();
             StopCoroutine(coroutine);
         }
+        musicLoopSoundControls.playSound();
         coroutine = applyText(text);
         StartCoroutine(coroutine);
 
@@ -34,6 +37,8 @@ public class DialogController : MonoBehaviour
         {
             Debug.Log("dialoge txt not null");
         }
+        if (mumblePack != null)
+            musicLoopSoundControls= SoundManager.instance.playRandomLoop(transform, mumblePack);
     }
 
     private IEnumerator applyText(String txt)
@@ -46,7 +51,7 @@ public class DialogController : MonoBehaviour
             dialogueText.text += txt[i];
            yield return new WaitForSeconds(characterSpeed);
         }
-       
+        musicLoopSoundControls.stopSound();
     }
 
 
