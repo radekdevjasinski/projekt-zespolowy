@@ -223,15 +223,15 @@ MonoBehaviour:
   playerClass: 2
   MaxHealth: 6
   health: 6
-  speed: 0
-  fireRate: 0
-  damage: 0
-  range: 0
-  projectileSpeed: 0
-  luck: 0
-  power: 0
-  physicalResistance: 0
-  magicalResistance: 0
+  speed: 1
+  fireRate: 1
+  damage: 1
+  range: 1
+  projectileSpeed: 1
+  luck: 1
+  power: 1
+  physicalResistance: 1
+  magicalResistance: 1
 --- !u!61 &1466470207816159611
 BoxCollider2D:
   m_ObjectHideFlags: 0

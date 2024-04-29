@@ -13,7 +13,7 @@ public class AttributesAffectItem : PicableItem
         [SerializeField]
         [Range(-100, 100)]
         [Tooltip("in proecent")]
-        public int factor;
+        public float factor;
     }
 
 
@@ -26,7 +26,7 @@ public class AttributesAffectItem : PicableItem
 
         foreach (attributeToEdit attributeToEdit in Attributes)
         {
-            controller.increase(attributeToEdit.attribute, (int)(attributeToEdit.factor));
+            controller.increaseWithlimit(attributeToEdit.attribute, ((float)attributeToEdit.factor));
         }
 
     }

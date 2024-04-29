@@ -50,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
   - attribute: 2
-    factor: 10
-  - attribute: 0
+    factor: 0.1
+  - attribute: 10
     factor: -2
 --- !u!50 &4084532252108822104
 Rigidbody2D:

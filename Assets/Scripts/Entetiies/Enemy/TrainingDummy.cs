@@ -27,6 +27,6 @@ public class TrainingDummy : EntityController<float>
 
     protected override void onDie()
     {
-     
+     Destroy(gameObject);
     }
 }

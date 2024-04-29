@@ -33,7 +33,7 @@ public class PlayerMovementController : MonoBehaviour
 
     void FixedUpdate()
     {
-;        rb.AddForce( moveValue*groundSpeedAffect * baseSpeed*(1+(sppedAttributeMultiplayer*playerAttributesController.Speed)));
+;        rb.AddForce( moveValue*groundSpeedAffect * baseSpeed*(sppedAttributeMultiplayer*playerAttributesController.Speed));
     }
   
 

@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Attributes:
-  - attribute: 0
-    factor: 20
+  - attribute: 1
+    factor: 0.2
   - attribute: 3
-    factor: -10
+    factor: -0.1
 --- !u!50 &4084532252108822104
 Rigidbody2D:
   serializedVersion: 4
