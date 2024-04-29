@@ -482,59 +482,6 @@ MonoBehaviour:
         m_LocalVariables: []
     procentChanceFactor: 1
   - item:
-      itemToBeBought: {fileID: 5112259435028361392, guid: 1dfb0d3261a1ea3468a77e26e024fae4, type: 3}
-      basePrice: 7
-      onBoughtDialog:
-      - m_TableReference:
-          m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
-        m_TableEntryReference:
-          m_KeyId: 337985224888320
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-      - m_TableReference:
-          m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
-        m_TableEntryReference:
-          m_KeyId: 518931249156096
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-      - m_TableReference:
-          m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
-        m_TableEntryReference:
-          m_KeyId: 519075671625728
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-      - m_TableReference:
-          m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
-        m_TableEntryReference:
-          m_KeyId: 519133871788032
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-      - m_TableReference:
-          m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
-        m_TableEntryReference:
-          m_KeyId: 519180034297856
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-      - m_TableReference:
-          m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
-        m_TableEntryReference:
-          m_KeyId: 519260736901120
-          m_Key: 
-        m_FallbackState: 0
-        m_WaitForCompletion: 0
-        m_LocalVariables: []
-    procentChanceFactor: 1
-  - item:
       itemToBeBought: {fileID: 5112259435028361392, guid: b380d7a6fddf13141992288568755ff4, type: 3}
       basePrice: 8
       onBoughtDialog:

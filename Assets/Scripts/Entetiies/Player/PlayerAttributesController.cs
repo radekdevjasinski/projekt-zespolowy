@@ -17,7 +17,8 @@ public class PlayerAttributesController : MonoBehaviour
         LUCK,
         PHYSICALRESISTANCE,
         MAGICALRESISTANCE,
-        ARMOR
+        ARMOR,
+        MAX_HEALTH
     }
 
     //Attributes
@@ -113,7 +114,10 @@ public class PlayerAttributesController : MonoBehaviour
     {
         return MaxHealth;
     }
-
+    public void increaseMaxHealth(float change)
+    {
+        this.MaxHealth +=(int)change;
+    }
 
     public void increase(attributes attrib, int change)
    {
@@ -129,7 +133,9 @@ public class PlayerAttributesController : MonoBehaviour
             case attributes.SPEED: this.increaseSpeed(change); break;
             case attributes.PHYSICALRESISTANCE: this.increasePhysicalResistance(change); break;
             case attributes.MAGICALRESISTANCE: this.increaseMagicalResistance(change);break;
-       }
+            case attributes.MAX_HEALTH: this.increaseMaxHealth(change); break;
+
+        }
         Debug.Log("increase: " + attrib + " with " + change+ " to overall value: "+ getAtrib(attrib));
     }
 
@@ -146,6 +152,7 @@ public class PlayerAttributesController : MonoBehaviour
             case attributes.SPEED: return (float)speed; break;
             case attributes.PHYSICALRESISTANCE: return (float)physicalResistance; break;
             case attributes.MAGICALRESISTANCE: return (float)magicalResistance; break;
+            case attributes.MAX_HEALTH: return (float)getMaxHealth() ; break;
         }
         return -1;
     }
