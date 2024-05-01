@@ -46,6 +46,7 @@ public class PlayerEntityController : EntityController<int>
 
     public override void reviceDamage(int damage)
     {
+        Debug.Log("player recived dmg: "+ damage);
         GetComponent<PlayerAttributesController>().increaseHealth(-damage);
         GameObject HpBar = GameObject.Find("HpBar");
         HpBar.GetComponent<HealtHeartBar>().DrawHearts();    //health bar turned off for testing purposes
@@ -72,8 +73,14 @@ public class PlayerEntityController : EntityController<int>
     protected override void onDie()
     {
         //Destroy(this.gameObject);
-        GetComponent<IplayerControllerInterface>().lockInput();
-        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        //locinkg probby should be glgobla I thinkg it might be impleted through some sotpiing interface but it need more thought
+        IplayerControllerInterface iplayer= GetComponent<IplayerControllerInterface>();
+        if (iplayer != null)
+        {
+            iplayer.lockInput();
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
+        }
+
         GameObject gameOverScreen = GameObject.Find("GameOver");
         gameOverScreen.GetComponent<GameOverScreen>().Setup();
 

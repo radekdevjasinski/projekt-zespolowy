@@ -19,6 +19,7 @@ public class HealtHeartBar : MonoBehaviour
     }
     public void DrawHearts()
     {
+        Debug.Log("drawign heats: "+ playerAttributesController.Health);
         health = playerAttributesController.Health;
         ClearHearts();
         int maxHealthReminder = maxHealth % 2;

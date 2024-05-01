@@ -60,8 +60,10 @@ public class PlayerAttributesController : MonoBehaviour
    //setters
    public void increaseHealth(int change)
    {
+       Debug.Log("increaseHealth befoore: "+ health);
        this.health+= change;
-   }
+       Debug.Log("increaseHealth after: " + health);
+    }
 
     public void resetHealth()
     {
