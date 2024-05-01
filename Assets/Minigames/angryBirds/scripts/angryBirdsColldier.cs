@@ -20,7 +20,7 @@ public class angryBirdsColldier : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("OnCollisionEnter2D: "+col.relativeVelocity.magnitude);
+        //Debug.Log("OnCollisionEnter2D: "+col.relativeVelocity.magnitude);
         float force = col.relativeVelocity.magnitude *
                       col.otherCollider.attachedRigidbody.mass;
         if (force  >= forceResistance)

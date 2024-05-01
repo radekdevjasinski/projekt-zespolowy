@@ -16,12 +16,19 @@ public class ThrowSlighShotController : MonoBehaviour
 
     private void Awake()
     {
-
+        Debug.Log("Awake");
         this.controls = new Controls();
+    }
+
+    private void Start()
+    {
+        Debug.Log("Start");
         shototerActionContrrller = GetComponent<SlingShototerActionContrrller>();
+
     }
     void OnEnable()
     {
+        Debug.Log("OnEnable");
         this.controls.Player.Enable();
 
         mouseClick = this.controls.Player.MousePress;
@@ -33,6 +40,11 @@ public class ThrowSlighShotController : MonoBehaviour
         mousePosition.performed += ctx => { OnMousePostion(ctx.ReadValue<Vector2>()); };
 
     }
+
+    void OnDisable()
+    {
+        this.controls.Player.Disable();
+    }
     void OnMousePostion(Vector2 pos)
     {
         this.shototerActionContrrller.setWorldMousePostion(Camera.main.ScreenToWorldPoint(pos));
@@ -42,14 +54,27 @@ public class ThrowSlighShotController : MonoBehaviour
     private void onClick()
     {
         Debug.Log("click");
+        if (this.shototerActionContrrller == null)
+        {
+            this.shototerActionContrrller = GetComponent<SlingShototerActionContrrller>();
+        }
         this.shototerActionContrrller.setIsHolding();;
     }
 
     private void onCancelClick()
     {
         Debug.Log("CancelClick");
+        if (this.shototerActionContrrller == null)
+        {
+            this.shototerActionContrrller = GetComponent<SlingShototerActionContrrller>();
+        }
         this.shototerActionContrrller.shoot();
     }
 
+    private void onDestroy()
+    {
+        controls.Disable();
+        controls.Dispose();
+    }
   
 }

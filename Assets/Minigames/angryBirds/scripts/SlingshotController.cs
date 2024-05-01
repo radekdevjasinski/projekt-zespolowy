@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SlingshotController : MonoBehaviour
@@ -28,7 +29,7 @@ public class SlingshotController : MonoBehaviour
             ammo.Enqueue(amuni);
         }
 
-        throwSligh = throwObject.GetComponent<SlingShototerActionContrrller>();
+        throwSligh = throwObject.GetOrAddComponent<SlingShototerActionContrrller>();
         reload();
     }
 
