@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZombieController : EnemyBase
 {
-    [SerializeField] private float attackSpeed = 3;
+    [SerializeField] private float attackSpeed = 0;
     [SerializeField] private float attackRange = 1.5f;
     public PlayerEntityController playerController;
     public float attackSpeedModifier = 1;
@@ -12,6 +12,8 @@ public class ZombieController : EnemyBase
     private Animator animator;
     private KnightPathfinding knightPathfinding;
     private bool canAttack = true;
+    private Knockback knockback;
+
     protected override void Start()
     {
         base.Start();
@@ -21,6 +23,7 @@ public class ZombieController : EnemyBase
         knightPathfinding = GetComponent<KnightPathfinding>();
         knightPathfinding.agent.speed = this.speed;
         playerController = GameObject.Find("Player").GetComponent<PlayerEntityController>();
+        knockback = GetComponent<Knockback>();
     }
 
     void FixedUpdate()
@@ -40,9 +43,13 @@ public class ZombieController : EnemyBase
 
             }
         }
-        
-
     }
+
+    public void ApplyKnockback(Vector2 direction)
+    {
+        knockback?.ApplyKnockback(direction);
+    }
+
     IEnumerator attackCooldown()
     {
         yield return new WaitForSeconds(attackSpeed);
@@ -50,17 +57,17 @@ public class ZombieController : EnemyBase
     }
     protected override void Move()
     {
-        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
-        Vector2 targetPosition = (Vector2)playerTransform.position + direction;
-        Vector2 forceDirection = (targetPosition - (Vector2)transform.position).normalized;
-        if (rb != null)
-        {
-            knightPathfinding.Move();
-            animator.SetFloat("moveX", forceDirection.x);
-            animator.SetFloat("moveY", forceDirection.y);
-            animator.Play("Move");
-        }
+            Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            Vector2 direction = (playerTransform.position - transform.position).normalized;
+            Vector2 targetPosition = (Vector2)playerTransform.position + direction;
+            Vector2 forceDirection = (targetPosition - (Vector2)transform.position).normalized;
+            if (rb != null)
+            {
+                knightPathfinding.Move();
+                animator.SetFloat("moveX", forceDirection.x);
+                animator.SetFloat("moveY", forceDirection.y);
+                animator.Play("Move");
+            }
     }
 
     protected override void Attack()
@@ -72,8 +79,8 @@ public class ZombieController : EnemyBase
             if (collider.CompareTag("Player"))
             {
                 playerController.dealDamage(damage);
-                //animator.Play("Attack");
-                Debug.Log("Hitted Player");
+                ApplyKnockback((transform.position - collider.transform.position ).normalized);
+                Debug.Log("Hit Player and applied knockback");
             }
         }
     }
@@ -85,9 +92,10 @@ public class ZombieController : EnemyBase
         return distanceToPlayer <= attackRange;
     }
 
-    public override void reviceDamage(float damage)
+    protected override void onDie()
     {
-        base.reviceDamage(damage);
+        Debug.Log("play");
+        base.onDie();
     }
 
     public void Modify(float mod)

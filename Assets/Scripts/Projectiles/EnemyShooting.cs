@@ -71,6 +71,6 @@ public class EnemyShooting : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         GameObject bullet = Instantiate(prefab, transform.position, rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = direction * 10f;
+        bullet.GetComponent<Rigidbody2D>().velocity = direction*10f;
     }
 }
