@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour
     public void setAmbient(GameObject ambientPack)
     {
 
-        Debug.Log("set ambient: "+ ambientPack.name);
+        //Debug.Log("set ambient: "+ ambientPack.name);
         if (this.ActiveAmbient != null)
         {
             Destroy(this.ActiveAmbient);

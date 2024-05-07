@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3294523954058067650}
   - component: {fileID: 2604071949880450399}
-  - component: {fileID: 8884320747920516613}
   - component: {fileID: -8288844783226212290}
   - component: {fileID: 2442308819438031744}
   - component: {fileID: 139396527524896825}
@@ -58,23 +57,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8884320747920516613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3773922116334073188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f576059e5634ca419721a19932a383f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseDamage: 1
-  baseLifeTime: 2
-  projectileTimeMultiplayer: 0.2
-  onShootAudio: {fileID: 8559890285010858849, guid: dbe81658b616326448c9b283fe82ae02, type: 3}
-  onhitAudio: {fileID: 0}
 --- !u!114 &-8288844783226212290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +69,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ffca169dbe985408bb838a3a4642c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  baseDamage: 1
+  baseLifeTime: 3
+  projectileTimeMultiplayer: 0.2
+  onShootAudio: {fileID: 8559890285010858849, guid: dbe81658b616326448c9b283fe82ae02, type: 3}
+  onhitAudio: {fileID: 0}
+  moveSpeed: 3
   animationSpeed: 2
 --- !u!50 &2442308819438031744
 Rigidbody2D:

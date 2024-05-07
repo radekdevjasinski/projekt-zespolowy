@@ -11,15 +11,10 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] float baseSpeed;
     [SerializeField] private float sppedAttributeMultiplayer = 1;
 
+    private float speed;
     private Rigidbody2D rb;
-    private GameObject bombs;
-    public GameObject bombPrefab;
     private Vector2 moveValue;
-    private Vector2 shootValue;
     private Animator animator;
-    public float speed;
-    public float shootSpeed = 0.5f;
-    private float timer = 0f;
     private float groundSpeedAffect= 1f;
     void Awake()
     {
@@ -31,9 +26,13 @@ public class PlayerMovementController : MonoBehaviour
 
 
 
+    void Update()
+    {
+        speed = groundSpeedAffect * baseSpeed * (1 + (sppedAttributeMultiplayer * playerAttributesController.Speed));
+    }
     void FixedUpdate()
     {
-;        rb.AddForce( moveValue*groundSpeedAffect * baseSpeed*(1+(sppedAttributeMultiplayer*playerAttributesController.Speed)));
+;        rb.AddForce( moveValue * speed );
     }
   
 
@@ -49,5 +48,12 @@ public class PlayerMovementController : MonoBehaviour
     {
         this.groundSpeedAffect = val;
     }
-
+    public float getSpeed()
+    {
+        return speed;
+    }
+    public Vector2 getMoveValue()
+    {
+        return moveValue;
+    }
 }

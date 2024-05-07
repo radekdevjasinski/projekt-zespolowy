@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerActionsController : MonoBehaviour
@@ -17,7 +15,6 @@ public class PlayerActionsController : MonoBehaviour
     [SerializeField] private SummonedControler summonedControler;
     [SerializeField] private float shootSpeed;
     [SerializeField] private float shootAttributeMultiplayer=1;
-
     [SerializeField] private float shootCooldown;
     [SerializeField] private float shootCooldownAttributeMultiplayer;
     private Transform shootParent;
@@ -29,38 +26,70 @@ public class PlayerActionsController : MonoBehaviour
     //states
     bool canShoot;
     bool isShooting;
+    bool isDashing;
     Vector2 direction;
     bool isMouseLeftPressed;
     bool isShootButtonPress;
     Vector2 worldMousePositon;
     Vector2 offsetSummoning = new Vector2(1f, 0f);
+    [Header("Dashing")]
+    [SerializeField] private float defaulDashSpeed = 35f;
+    [SerializeField] private float invulnerabilityTime = 1f;
+
+    private float dashSpeed;
+    private Vector2 dashDir;
+    private float dashDrop = 5f;
+
+
+
 
 
     //components
     Collider2D collider;
+    Rigidbody2D rigidbody2D;
     private Animator animator;
 
 
     //controllers
     private PlayerAttributesController playerAttributes;
+    private PlayerMovementController playerMovementController;
+    private PlayerEntityController playerEntityController;
+
 
     private void Awake()
     {
+        playerAttributes = this.gameObject.GetComponent<PlayerAttributesController>();
+        playerMovementController = this.gameObject.GetComponent<PlayerMovementController>();
+        playerEntityController = this.gameObject.GetComponent<PlayerEntityController>();
+        animator = this.gameObject.GetComponent<Animator>();
         canShoot = true;
-        this.collider=GetComponent<Collider2D>();
+        collider = GetComponent<Collider2D>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
         shootParent = GameObject.Find("Projectiles").transform;
         puttedParent = GameObject.Find("Putted").transform;
         summonedParent = GameObject.Find("Summoned").transform;
-        animator = this.gameObject.GetComponent<Animator>();
-        playerAttributes = this.gameObject.GetComponent<PlayerAttributesController>();
     }
 
     void Update()
     {
         udpateMouseShoot();
+
+        if (isDashing)
+        {
+            dashSpeed -= dashSpeed * dashDrop * Time.deltaTime;
+
+            if (dashSpeed <= playerMovementController.getSpeed())
+            {
+                isDashing = false;
+                playerEntityController.setIsInvurnable(false);
+
+            }
+        }
     }
+
+
     #region Slashing
-    
+
     private void Slash()
     {
         if (canShoot)
@@ -72,7 +101,6 @@ public class PlayerActionsController : MonoBehaviour
                 transform.position.y + collider.bounds.size.y * 1.4f * direction.y,
                 0f);
 
-            Debug.Log(direction);
             GameObject slashable = Instantiate(
                 slashableItem,
                  startPosition,
@@ -147,6 +175,33 @@ public class PlayerActionsController : MonoBehaviour
     }
 
 
+
+    #endregion
+
+    #region Dashing
+
+    public void Dash()
+    {
+        dashDir = playerMovementController.getMoveValue();
+        if (!isDashing && (dashDir.x != 0 || dashDir.y != 0))
+        {
+            isDashing = true;
+            dashSpeed = defaulDashSpeed;
+            playerEntityController.setIsInvurnable(true);
+            StartCoroutine(invulnerabilityTimer());
+            PerformDash();
+        }
+    }
+    IEnumerator invulnerabilityTimer()
+    {
+        yield return new WaitForSeconds(invulnerabilityTime);
+        playerEntityController.setIsInvurnable(false);
+
+    }
+    void PerformDash()
+    {
+        rigidbody2D.velocity = dashDir * dashSpeed;
+    }
 
     #endregion
 

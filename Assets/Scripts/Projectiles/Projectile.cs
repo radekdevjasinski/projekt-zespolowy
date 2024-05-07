@@ -37,7 +37,7 @@ public abstract class Projectile : MonoBehaviour
     }
 
 
-    private void kill()
+    protected virtual void kill()
     {
         OnDestroyed();
         Destroy(this.gameObject);

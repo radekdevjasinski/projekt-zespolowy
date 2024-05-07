@@ -46,6 +46,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""2ecd05fc-f3d8-4601-af14-9597b6822287"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""UseActivatedItem"",
                     ""type"": ""Button"",
                     ""id"": ""6e3b7bb8-d981-4e6d-9ba0-b28420df4d36"",
@@ -177,7 +186,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""eb750020-0681-4a2b-a286-62a7d133377e"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -327,6 +336,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""PauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8363631c-fe69-4425-8472-be58ca82f057"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7bf9fb54-e816-4d4c-8a26-c593560bc4b5"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -337,6 +368,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_UseActivatedItem = m_Player.FindAction("UseActivatedItem", throwIfNotFound: true);
         m_Player_Put = m_Player.FindAction("Put", throwIfNotFound: true);
         m_Player_UseSingleItem = m_Player.FindAction("UseSingleItem", throwIfNotFound: true);
@@ -408,6 +440,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_UseActivatedItem;
     private readonly InputAction m_Player_Put;
     private readonly InputAction m_Player_UseSingleItem;
@@ -422,6 +455,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @UseActivatedItem => m_Wrapper.m_Player_UseActivatedItem;
         public InputAction @Put => m_Wrapper.m_Player_Put;
         public InputAction @UseSingleItem => m_Wrapper.m_Player_UseSingleItem;
@@ -445,6 +479,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
             @UseActivatedItem.started += instance.OnUseActivatedItem;
             @UseActivatedItem.performed += instance.OnUseActivatedItem;
             @UseActivatedItem.canceled += instance.OnUseActivatedItem;
@@ -479,6 +516,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
             @UseActivatedItem.started -= instance.OnUseActivatedItem;
             @UseActivatedItem.performed -= instance.OnUseActivatedItem;
             @UseActivatedItem.canceled -= instance.OnUseActivatedItem;
@@ -524,6 +564,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
         void OnUseActivatedItem(InputAction.CallbackContext context);
         void OnPut(InputAction.CallbackContext context);
         void OnUseSingleItem(InputAction.CallbackContext context);

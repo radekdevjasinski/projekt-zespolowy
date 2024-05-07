@@ -26,6 +26,7 @@ public class PlayerControler : MonoBehaviour
     private InputAction dropEquiped;
     private InputAction mousePress;
     private InputAction mousePosition;
+    private InputAction dash;
 
 
 
@@ -74,6 +75,10 @@ public class PlayerControler : MonoBehaviour
         mousePosition = this.controls.Player.MousePostion;
         mousePosition.performed += ctx => { OnMousePostion(ctx.ReadValue<Vector2>()); };
 
+        dash = this.controls.Player.Dash;
+        dash.performed += ctx => { OnDash(); };
+        dash.canceled += ctx => { OnCancelDash();  };
+
     }
 
     void OnDisable()
@@ -101,6 +106,15 @@ public class PlayerControler : MonoBehaviour
     {
         // Debug.Log("cancel shoot: ");
         this.playerActionsController.setIsShooting(false);
+
+    }
+    void OnDash()
+    {
+        playerActionsController.Dash();
+    }
+
+    void OnCancelDash()
+    {
 
     }
 

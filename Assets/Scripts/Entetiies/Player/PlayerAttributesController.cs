@@ -9,19 +9,19 @@ public class PlayerAttributesController : MonoBehaviour
     //enum
     public enum attributes{
         HEALTH,
+        ARMOR,
         SPEED,
         FIRE_RATE,
         DAMAGE,
         RANGE,
         PROJECTILE_SPEED,
-        LUCK,
-        PHYSICALRESISTANCE,
-        MAGICALRESISTANCE
+        LUCK
     }
 
     //Attributes
   [SerializeField] private int MaxHealth=6;
   [SerializeField] private int health=6;
+  [SerializeField] private int armor=2;
   [SerializeField] private int speed=0;
   [SerializeField] private int fireRate=0;
   [SerializeField] private int damage=0;
@@ -29,11 +29,10 @@ public class PlayerAttributesController : MonoBehaviour
   [SerializeField] private int projectileSpeed=0;
   [SerializeField] private int luck=0;
   [SerializeField] private int power=0;
-  [SerializeField] private float physicalResistance = 0;
-  [SerializeField] private float magicalResistance = 0;
 
    //getters
    public int Health => health;
+   public int Armor => armor;
 
    public int Speed => speed;
 
@@ -47,8 +46,6 @@ public class PlayerAttributesController : MonoBehaviour
 
    public int Luck => luck;
 
-   public float PhysicalResistance => physicalResistance;
-   public float MagicalResistance => magicalResistance;
 
    public PlayerClass GetPlayerClass()
     {
@@ -61,13 +58,15 @@ public class PlayerAttributesController : MonoBehaviour
    {
        this.health+= change;
    }
-
     public void resetHealth()
     {
         this.health = MaxHealth;
     }
-
-   public void increaseSpeed(int change)
+    public void increaseArmor(int change)
+    {
+        this.armor += change;
+    }
+    public void increaseSpeed(int change)
    {
         this.speed+= change;
    }
@@ -93,17 +92,6 @@ public class PlayerAttributesController : MonoBehaviour
    {
         this.luck += change;
    }
-    
-   public void increasePhysicalResistance(float change)
-   {
-        this.physicalResistance += change;
-   }
-
-   public void increaseMagicalResistance(float change)
-   {
-        this.magicalResistance += change;
-   }
-
    public void setPlayerClass(PlayerClass change)
     {
         this.playerClass = change;
@@ -114,13 +102,12 @@ public class PlayerAttributesController : MonoBehaviour
        {
             case attributes.HEALTH: this.increaseHealth(change); break;
             case attributes.DAMAGE: this.increaseDamage(change); break;
+            case attributes.ARMOR: this.increaseArmor(change); break;
             case attributes.FIRE_RATE: this.increaseFireRate(change); break;
             case attributes.LUCK: this.increaseLuck(change); break;
             case attributes.PROJECTILE_SPEED: this.increaseProjectileSpeed(change); break;
             case attributes.RANGE: this.increaseRange(change); break;
             case attributes.SPEED: this.increaseSpeed(change); break;
-            case attributes.PHYSICALRESISTANCE: this.increasePhysicalResistance(change); break;
-            case attributes.MAGICALRESISTANCE: this.increaseMagicalResistance(change);break;
        }
    }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerEntityController : EntityController<int>
 {
-
+    private PlayerAttributesController playerAttributesController;
     // Code Functionality from previous Entity controller
     // that included also gorund affected behaviour
     // I left if there was a need for changing behaviour based on ground later
@@ -28,7 +28,10 @@ public class PlayerEntityController : EntityController<int>
     //{
     //  this.GetComponent<PlayerMovementController>().setGroundSpeedAffect(f);
     //}
-
+    void Start()
+    {
+        playerAttributesController = GetComponent<PlayerAttributesController>();
+    }
     protected override int getMaxHealth()
     {
         throw new NotImplementedException(); // no heatlh limit for player
@@ -36,21 +39,39 @@ public class PlayerEntityController : EntityController<int>
 
     public override void reviceDamage(int damage)
     {
-        GetComponent<PlayerAttributesController>().increaseHealth(-damage);
-        GameObject HpBar = GameObject.Find("HpBar");
-        HpBar.GetComponent<HealtHeartBar>().DrawHearts();    //health bar turned off for testing purposes
+        if (playerAttributesController.Armor > 0)
+        {
+            playerAttributesController.increaseArmor(-damage);
+            GameObject ArmorBar = GameObject.Find("ArmorBar");
+            ArmorBar.GetComponent<ArmorBar>().DrawArmor();
+        }
+        else
+        {
+            playerAttributesController.increaseHealth(-damage);
+            GameObject HpBar = GameObject.Find("HpBar");
+            HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+        }
+        
     }
     public void heal()
     {
-        GetComponent<PlayerAttributesController>().resetHealth();
+        playerAttributesController.resetHealth();
         GameObject HpBar = GameObject.Find("HpBar");
         HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+    }
+
+    public void addArmor(int amount)
+    {
+        playerAttributesController.increaseArmor(amount);
+        GameObject ArmorBar = GameObject.Find("ArmorBar");
+        ArmorBar.GetComponent<ArmorBar>().DrawArmor();
+
     }
 
     protected override int getHealth()
     {
         return
-            this.GetComponent<PlayerAttributesController>().Health;
+            playerAttributesController.Health;
     }
 
     protected override void onDie()
