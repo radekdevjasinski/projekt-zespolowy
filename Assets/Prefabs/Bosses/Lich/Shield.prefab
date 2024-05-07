@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6075731506786271459}
   - component: {fileID: 8687106554226855703}
   - component: {fileID: 2744364628010838206}
+  - component: {fileID: 504019761039398275}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Collider
@@ -142,6 +143,22 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!208 &504019761039398275
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845359998596621047}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.5, y: 1, z: 1.5}
+  m_MoveThreshold: 0
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0
 --- !u!1 &6008546293665116668
 GameObject:
   m_ObjectHideFlags: 0
