@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-    [SerializeField] private float knockbackForce = 10f;
-    [SerializeField] private float knockbackDuration = 0.2f;
+    [SerializeField] private float knockbackForce = 5f;
+    [SerializeField] private float knockbackDuration = 0.1f;
+    private float currentKnockbackForce;
+
+    private void Awake()
+    {
+        currentKnockbackForce = knockbackForce;
+    }
+
+    private void ResetForce()
+    {
+        currentKnockbackForce = knockbackForce;
+    }
+
 
     public void ApplyKnockback(Vector2 direction)
     {
@@ -18,7 +30,9 @@ public class Knockback : MonoBehaviour
         if (rb != null)
         {
             rb.velocity = Vector2.zero;
-            rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+            ResetForce();
+            currentKnockbackForce *= rb.mass;
+            rb.AddForce(direction * currentKnockbackForce, ForceMode2D.Impulse);
             yield return new WaitForSeconds(knockbackDuration);
             rb.velocity = Vector2.zero;
         }

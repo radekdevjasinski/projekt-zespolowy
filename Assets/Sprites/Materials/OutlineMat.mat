@@ -58,9 +58,10 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 2.8566763, g: 0, b: 0, a: 0}
-    - _OutlineColor2: {r: 5.0984874, g: 2.8763165, b: 2.8763165, a: 0}
+    - _OutlineColor: {r: 0, g: 3.0314329, b: 1.0076218, a: 0}
+    - _OutlineColor2: {r: 0, g: 3.1030507, b: 6.8068814, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TexColor: {r: 2.4253688, g: 1.8441954, b: 1.9873577, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3781086217525399236
 MonoBehaviour:

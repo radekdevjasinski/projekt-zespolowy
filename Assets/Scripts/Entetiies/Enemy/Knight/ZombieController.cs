@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieController : EnemyBase
+public class ZombieController : EnemyBase, OnDamage
 {
     [SerializeField] private float attackSpeed = 0;
     [SerializeField] private float attackRange = 1.5f;
@@ -72,14 +72,13 @@ public class ZombieController : EnemyBase
 
     protected override void Attack()
     {
-        PlayerAttributesController playerAttributesController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttributesController>();
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attackRange);
         foreach (Collider2D collider in colliders)
         {
             if (collider.CompareTag("Player"))
             {
                 playerController.dealDamage(damage);
-                ApplyKnockback((transform.position - collider.transform.position ).normalized);
+                ApplyKnockback((transform.position - collider.transform.position).normalized);
                 Debug.Log("Hit Player and applied knockback");
             }
         }
@@ -94,7 +93,6 @@ public class ZombieController : EnemyBase
 
     protected override void onDie()
     {
-        Debug.Log("play");
         base.onDie();
     }
 
@@ -104,5 +102,10 @@ public class ZombieController : EnemyBase
         attackRangeModifier = mod;
         attackSpeed *= attackSpeedModifier;
         attackRange *= attackRangeModifier;
+    }
+
+    public void onDamage()
+    {
+        ApplyKnockback((transform.position - playerController.gameObject.transform.position).normalized);
     }
 }
