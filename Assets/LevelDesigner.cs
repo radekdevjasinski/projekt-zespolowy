@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelDesigner : MonoBehaviour
 {
+    private ChestSpawner chestSpawner;
     private PlayerTeleporter playerTeleporter;
     private GameObject player;
     private DungeonGenerator dungeonGenerator;
@@ -12,6 +13,7 @@ public class LevelDesigner : MonoBehaviour
         player = GameObject.Find("Player");
         playerTeleporter = player.GetComponent<PlayerTeleporter>();
         dungeonGenerator = gameObject.GetComponent<DungeonGenerator>();
+        chestSpawner = GetComponent<ChestSpawner>();
     }
     public void PrepareRoom(DungeonRoom activePlayerRoom, float controlsOffTime)
     {
@@ -61,6 +63,10 @@ public class LevelDesigner : MonoBehaviour
             if (playerTeleporter.activePlayerRoom.enemiesCount <= 0)
             {
                 playerTeleporter.activePlayerRoom.OpenRightDoors(dungeonGenerator.rooms);
+                if(chestSpawner != null)
+                {
+                    chestSpawner.SpawnChest(playerTeleporter.activePlayerRoom.gameObject);
+                }
             }
         }
     }

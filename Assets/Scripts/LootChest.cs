@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LootChest : ActivatableObject
 {
-    [SerializeField] private GameObject[] loot;
+    [SerializeField] public GameObject[] loot;
     private bool isOpened = false;
     protected override void onActivate(GameObject player)
     {
