@@ -32,10 +32,6 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
         animator = GetComponent<Animator>();
     }
 
-
-
-
-
     protected override void onDie()
     {
         
@@ -55,6 +51,16 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
     {
         this.health-=damage;
         this.bossUIHelathBar.updateSlider(this.health,this.maxHealth);
+        if ((float)this.getHealth() / this.getMaxHealth() * 100 < this.bossFightController.getNextStageBarrier())
+        {
+            this.bossFightController.increaseStage();
+        }
+
+    }
+    public override void reviceDamage(float damage, Vector2 damageDirection)
+    {
+        this.health -= damage;
+        this.bossUIHelathBar.updateSlider(this.health, this.maxHealth);
         if ((float)this.getHealth() / this.getMaxHealth() * 100 < this.bossFightController.getNextStageBarrier())
         {
             this.bossFightController.increaseStage();
