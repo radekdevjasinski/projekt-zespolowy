@@ -28,18 +28,57 @@ public class PlayerEntityController : EntityController<int>
     //{
     //  this.GetComponent<PlayerMovementController>().setGroundSpeedAffect(f);
     //}
-
+    [SerializeField] private float invincLength = 1;
+    private Rigidbody2D rb;
+    public bool isKnocked;
+    [SerializeField] private float knockbackForce = 20f;
+    [SerializeField] private float knockbackDuration = 1f;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+    private void Update()
+    {
+        if (invincCount > 0)
+        {
+            invincCount -= Time.deltaTime;
+        }
+    }
     protected override int getMaxHealth()
     {
         throw new NotImplementedException(); // no heatlh limit for player
     }
 
-    public override void reviceDamage(int damage)
+    public override void reviceDamage(int damage, Vector2 damageDirection)
     {
+        invincCount = invincLength;
+
+        // Odwracamy kierunek odrzutu
+        Vector2 knockbackDirection = -damageDirection.normalized;
+
+        StartCoroutine(HitKnockback(knockbackDirection));
+
         GetComponent<PlayerAttributesController>().increaseHealth(-damage);
         GameObject HpBar = GameObject.Find("HpBar");
-        HpBar.GetComponent<HealtHeartBar>().DrawHearts();    //health bar turned off for testing purposes
+        HpBar.GetComponent<HealtHeartBar>().DrawHearts();
     }
+    public override void reviceDamage(int damage)
+    {
+
+    }
+    protected virtual IEnumerator HitKnockback(Vector2 knockbackDirection)
+    {
+        isKnocked = true;
+
+
+        rb.velocity = knockbackDirection * knockbackForce;
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        isKnocked = false;
+    }
+
+
     public void heal()
     {
         GetComponent<PlayerAttributesController>().resetHealth();
