@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ChestSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-
     [Header("chests")]
     [SerializeField] private GameObject smallChest;
     [SerializeField] private GameObject bigChest;
@@ -57,16 +56,15 @@ public class ChestSpawner : MonoBehaviour
             }
             else
             {
-                //CreateBigChest()
+                CreateBigChest();
             }
         }
     }
 
     private Vector2 CreatePosition()
     {
-        return new Vector2(player.transform.position.x,player.transform.position.y);
-        //Renderer renderer = currentRoom.GetComponent<Renderer>();
-        //return new Vector2(renderer.bounds.size.x/2, renderer.bounds.size.y/2);
+        TilemapRenderer renderer = currentRoom.transform.GetChild(0).GetComponent<TilemapRenderer>();
+        return new Vector2(currentRoom.transform.position.x + (renderer.bounds.size.x/2), currentRoom.transform.position.y + (renderer.bounds.size.y/2));
     }
 
     private GameObject SellectNewItem()
@@ -86,7 +84,6 @@ public class ChestSpawner : MonoBehaviour
     }
     private void CreateSmallChest()
     {
-        Debug.Log("chest");
         newCreatedChest = Instantiate(smallChest, CreatePosition(), Quaternion.identity, transform);
         int randomAmountOfItems = Random.Range(minItemsAmountChest, maxItemsAmountChest+1);
         LootChest lootChest = newCreatedChest.GetComponent<LootChest>();
@@ -98,6 +95,13 @@ public class ChestSpawner : MonoBehaviour
     }
     private void CreateBigChest()
     {
-        newCreatedChest = Instantiate(bigChest, CreatePosition(), Quaternion.identity);
+        newCreatedChest = Instantiate(bigChest, CreatePosition(), Quaternion.identity, transform);
+        int randomAmountOfItems = Random.Range(minItemsAmountChest, maxItemsAmountChest + 1);
+        LootChest lootChest = newCreatedChest.GetComponent<LootChest>();
+        lootChest.loot = new GameObject[randomAmountOfItems];
+        for (int i = 0; i < randomAmountOfItems; i++)
+        {
+            lootChest.loot[i] = coin;
+        }
     }
 }
