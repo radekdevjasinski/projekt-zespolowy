@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 2154207469038489493}
   - component: {fileID: 2502102191718129792}
   - component: {fileID: 3807240024540317457}
+  - component: {fileID: -5301047475546238744}
+  - component: {fileID: -4079667887820198014}
   m_Layer: 10
   m_Name: VampireRanged
   m_TagString: Enemy
@@ -188,6 +190,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paritcleObject: {fileID: 6309108944778430266, guid: 160acc1f049637148b3063faba27276e, type: 3}
+--- !u!195 &-5301047475546238744
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7565231181986983422}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-4079667887820198014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7565231181986983422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20be1e3ca23ccc4098c31d2d868cfab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: -5301047475546238744}
 --- !u!1 &8500410981368610303
 GameObject:
   m_ObjectHideFlags: 0
