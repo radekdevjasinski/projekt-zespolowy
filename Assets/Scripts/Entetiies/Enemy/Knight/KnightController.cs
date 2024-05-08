@@ -71,7 +71,8 @@ public class KnightController : EnemyBase
         {
             if (collider.CompareTag("Player"))
             {
-                playerController.dealDamage(damage);
+                Vector2 damageDirection = -(collider.transform.position - transform.position).normalized;
+                playerController.dealDamage(damage, damageDirection);
                 animator.Play("Attack");
                 Debug.Log("Hitted Player");
             }

@@ -71,7 +71,8 @@ public class ZombieController : EnemyBase
         {
             if (collider.CompareTag("Player"))
             {
-                playerController.dealDamage(damage);
+                Vector2 damageDirection = (collider.transform.position - transform.position).normalized;
+                playerController.dealDamage(damage, damageDirection);
                 //animator.Play("Attack");
                 Debug.Log("Hitted Player");
             }
@@ -85,9 +86,9 @@ public class ZombieController : EnemyBase
         return distanceToPlayer <= attackRange;
     }
 
-    public override void reviceDamage(float damage)
+    public override void reviceDamage(float damage, Vector2 damageDirection)
     {
-        base.reviceDamage(damage);
+        base.reviceDamage(damage, damageDirection);
     }
 
     public void Modify(float mod)
