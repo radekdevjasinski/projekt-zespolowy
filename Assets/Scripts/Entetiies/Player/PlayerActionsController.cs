@@ -13,6 +13,7 @@ public class PlayerActionsController : MonoBehaviour
     [Header("Summoning")]
     [SerializeField] private GameObject summonableAlly;
     [SerializeField] private SummonedControler summonedControler;
+    [Header("Attacking")]
     [SerializeField] private float shootSpeed;
     [SerializeField] private float shootAttributeMultiplayer=1;
     [SerializeField] private float shootCooldown;
@@ -33,8 +34,20 @@ public class PlayerActionsController : MonoBehaviour
     Vector2 worldMousePositon;
     Vector2 offsetSummoning = new Vector2(1f, 0f);
     [Header("Dashing")]
+    public GameObject dashSound;
     [SerializeField] private float defaulDashSpeed = 35f;
     [SerializeField] private float invulnerabilityTime = 1f;
+
+    [Header("Stamina")]
+    [SerializeField] private float staminaRefillCooldown = 1f;
+    [SerializeField] private float staminaRefillRate = 1f;
+    [SerializeField] private float shootStaminaCost = 1f;
+    [SerializeField] private float dashStaminaCost = 2f;
+    [SerializeField] private float staminaActionThreshold = 0.2f;
+
+    private bool staminaRefilling = true;
+    private float staminaTimer;
+
 
     private float dashSpeed;
     private Vector2 dashDir;
@@ -74,6 +87,7 @@ public class PlayerActionsController : MonoBehaviour
     {
         udpateMouseShoot();
 
+        //dashing
         if (isDashing)
         {
             dashSpeed -= dashSpeed * dashDrop * Time.deltaTime;
@@ -85,6 +99,22 @@ public class PlayerActionsController : MonoBehaviour
 
             }
         }
+
+        //stamina refill
+        if (staminaTimer > 0)
+        {
+            staminaRefilling = false;
+            staminaTimer -= Time.deltaTime;
+        }
+        else
+        {
+            staminaRefilling = true;
+        }
+
+        if (staminaRefilling)
+        {
+            playerAttributes.increaseStamina(Time.deltaTime * staminaRefillRate);
+        }
     }
 
 
@@ -92,7 +122,7 @@ public class PlayerActionsController : MonoBehaviour
 
     private void Slash()
     {
-        if (canShoot)
+        if (canShoot && playerAttributes.Stamina > staminaActionThreshold)
         {
             canShoot = false;
 
@@ -115,7 +145,13 @@ public class PlayerActionsController : MonoBehaviour
 
             slashable.GetComponent<Projectile>().setWasShootByPlayer(true);
             Invoke("resetShootingCooldDown", shootCooldown / (1 + playerAttributes.FireRate * shootCooldownAttributeMultiplayer));
+
+            MakeStaminaAction(shootStaminaCost);
         }
+    }
+    public float getShootCooldown()
+    {
+        return shootCooldown;
     }
 
     private void RotateSword(GameObject slashable)
@@ -183,13 +219,16 @@ public class PlayerActionsController : MonoBehaviour
     public void Dash()
     {
         dashDir = playerMovementController.getMoveValue();
-        if (!isDashing && (dashDir.x != 0 || dashDir.y != 0))
+        if (!isDashing && (dashDir.x != 0 || dashDir.y != 0) && playerAttributes.Stamina > staminaActionThreshold)
         {
             isDashing = true;
             dashSpeed = defaulDashSpeed;
             playerEntityController.setIsInvurnable(true);
             StartCoroutine(invulnerabilityTimer());
             PerformDash();
+            MakeStaminaAction(dashStaminaCost);
+            SoundManager.instance.playSound(transform, dashSound);
+
         }
     }
     IEnumerator invulnerabilityTimer()
@@ -201,6 +240,11 @@ public class PlayerActionsController : MonoBehaviour
     void PerformDash()
     {
         rigidbody2D.velocity = dashDir * dashSpeed;
+    }
+    void MakeStaminaAction (float staminaCost)
+    {
+        playerAttributes.increaseStamina(-staminaCost);
+        staminaTimer = staminaRefillCooldown;
     }
 
     #endregion
@@ -301,10 +345,10 @@ public class PlayerActionsController : MonoBehaviour
 
     internal void setIsShooting(bool state)
     {
+        //animator.ResetTrigger("Shooting");
         if (state)
         {
-            animator.ResetTrigger("Shooting");
-            if (canShoot)
+            if (canShoot && playerAttributes.Stamina > staminaActionThreshold)
             {
                 this.isShooting = state;
                 

@@ -9,6 +9,7 @@ public class PlayerAttributesController : MonoBehaviour
     //enum
     public enum attributes{
         HEALTH,
+        STAMINA,
         ARMOR,
         SPEED,
         FIRE_RATE,
@@ -21,6 +22,8 @@ public class PlayerAttributesController : MonoBehaviour
     //Attributes
   [SerializeField] private int MaxHealth=6;
   [SerializeField] private int health=6;
+  [SerializeField] private float MaxStamina = 6;
+  [SerializeField] private float stamina=6;
   [SerializeField] private int armor=2;
   [SerializeField] private int speed=0;
   [SerializeField] private int fireRate=0;
@@ -33,17 +36,12 @@ public class PlayerAttributesController : MonoBehaviour
    //getters
    public int Health => health;
    public int Armor => armor;
-
+   public float Stamina => stamina;
    public int Speed => speed;
-
    public int FireRate => fireRate;
-
    public int Damage => damage;
-
    public int Range => range;
-
    public int ProjectileSpeed => projectileSpeed;
-
    public int Luck => luck;
 
 
@@ -61,6 +59,16 @@ public class PlayerAttributesController : MonoBehaviour
     public void resetHealth()
     {
         this.health = MaxHealth;
+    }
+    public void increaseStamina(float change)
+    {
+        if (this.stamina + change >= this.MaxStamina)
+            stamina = this.MaxStamina;
+        else if (this.stamina + change <= 0)
+            stamina = 0;
+        else
+            stamina += change;
+        
     }
     public void increaseArmor(int change)
     {
@@ -101,6 +109,7 @@ public class PlayerAttributesController : MonoBehaviour
        switch (attrib)
        {
             case attributes.HEALTH: this.increaseHealth(change); break;
+            case attributes.STAMINA: this.increaseStamina(change); break;
             case attributes.DAMAGE: this.increaseDamage(change); break;
             case attributes.ARMOR: this.increaseArmor(change); break;
             case attributes.FIRE_RATE: this.increaseFireRate(change); break;

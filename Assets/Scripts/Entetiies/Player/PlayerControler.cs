@@ -28,7 +28,8 @@ public class PlayerControler : MonoBehaviour
     private InputAction mousePosition;
     private InputAction dash;
 
-
+    //player can hold attack
+    private bool attackStared;
 
     private void Awake()
     {
@@ -49,8 +50,8 @@ public class PlayerControler : MonoBehaviour
 
 
         shoot = this.controls.Player.Shoot;
-        shoot.performed += ctx => { OnShoot(ctx.ReadValue<Vector2>()); };
-        shoot.canceled += ctx => { OnCancelShoot(); };
+        shoot.started += ctx => { OnShoot(ctx.ReadValue<Vector2>()); };
+        shoot.performed += ctx => { OnCancelShoot(); };
 
         useActivatedItem = this.controls.Player.UseActivatedItem;
         useActivatedItem.performed += ctx => { OnUseActivatedItem(); };
@@ -102,11 +103,11 @@ public class PlayerControler : MonoBehaviour
         this.playerActionsController.setShootingDiretion(direction);
         this.playerActionsController.setIsShooting(true);
     }
+
     void OnCancelShoot()
     {
         // Debug.Log("cancel shoot: ");
         this.playerActionsController.setIsShooting(false);
-
     }
     void OnDash()
     {
