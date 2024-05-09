@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UseHealthPotion",
+                    "type": "Button",
+                    "id": "d0237ad2-0dbe-4d78-b34e-2ab4e3c65ebe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -334,6 +343,12 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "id": "d3af9d6c-78fd-4c00-8502-a785fce5df13",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseHealthPotion",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

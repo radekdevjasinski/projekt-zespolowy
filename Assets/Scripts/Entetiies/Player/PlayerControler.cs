@@ -27,9 +27,11 @@ public class PlayerControler : MonoBehaviour
     private InputAction mousePress;
     private InputAction mousePosition;
     private InputAction dash;
+    private InputAction useHealthPotion;
 
     //player can hold attack
     private bool attackStared;
+
 
     private void Awake()
     {
@@ -80,6 +82,13 @@ public class PlayerControler : MonoBehaviour
         dash.performed += ctx => { OnDash(); };
         dash.canceled += ctx => { OnCancelDash();  };
 
+        useHealthPotion=this.controls.Player.UseHealthPotion;
+        useHealthPotion.performed += ctx => { OnHealthPotionUse(); };
+    }
+
+    private void OnHealthPotionUse()
+    {
+        playerActionsController.useHealthPotion();
     }
 
     void OnDisable()

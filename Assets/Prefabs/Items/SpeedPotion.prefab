@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd64b296593aaa84e92e807853e1ab73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onItemPickSound: {fileID: 8559890285010858849, guid: e2605c15d4525ff43ae04ba014884344, type: 3}
   soundOnUse: {fileID: 8559890285010858849, guid: 2df9544a14ea9e542a3d06b76ec29653, type: 3}
   affect: {fileID: 1050784282026274484, guid: aaa18462c30edc44fa0b7aeb18fb910b, type: 3}
 --- !u!50 &7193693008144084962
@@ -194,7 +193,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f134454d3b58aec429d5ab6b3930b7c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -12,8 +12,8 @@ public abstract class Projectile : MonoBehaviour
     }
 
     //Modifers
-    private int damageModifer;
-    private int rangeModifer;
+    protected float damageModifer;
+    protected float rangeModifer;
 
     //base Attributes
     [Header("atrributes")]
@@ -27,7 +27,7 @@ public abstract class Projectile : MonoBehaviour
 
     private bool wasShootByPlayer = false;
     //sets attribures, has to be activated to remove later projectile
-    public void setupProjectileParams(int damageModifer, int rangeModifer)
+    public void setupProjectileParams(float damageModifer, float rangeModifer)
     {
         if(onShootAudio!=null)
             SoundManager.instance.playSound(this.onShootAudio,this.transform.position);

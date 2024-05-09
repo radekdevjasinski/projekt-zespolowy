@@ -16,7 +16,7 @@ public class BasicProjectile : Projectile
         EntityController<float> entityController;
         if (obj.TryGetComponent<EntityController<float>>(out entityController))
         {
-            entityController.dealDamage(this.baseDamage);
+            entityController.dealDamage(this.baseDamage*damageModifer);
         }
         //throw new System.NotImplementedException();
     }

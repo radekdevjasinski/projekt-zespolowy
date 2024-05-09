@@ -207,6 +207,7 @@ MonoBehaviour:
   shootCooldown: 0.5
   shootCooldownAttributeMultiplayer: 0
   singleUseItem: {fileID: 0}
+  healthPotionSound: {fileID: 8559890285010858849, guid: 2df9544a14ea9e542a3d06b76ec29653, type: 3}
 --- !u!114 &3203944582975471556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,15 +223,15 @@ MonoBehaviour:
   playerClass: 0
   MaxHealth: 6
   health: 6
-  speed: 0
-  fireRate: 0
-  damage: 0
-  range: 0
-  projectileSpeed: 0
-  luck: 0
-  power: 0
-  physicalResistance: 0
-  magicalResistance: 0
+  speed: 1
+  fireRate: 1
+  damage: 1
+  range: 1
+  projectileSpeed: 1
+  luck: 1
+  power: 1
+  physicalResistance: 1
+  magicalResistance: 1
 --- !u!61 &1466470207816159611
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -322,6 +323,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88bdba1110d3584b9a3d14d67a53e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coins: 0
+  keys: 0
+  heathPotions: 0
+  bombs: 0
 --- !u!81 &5745296312801078995
 AudioListener:
   m_ObjectHideFlags: 0

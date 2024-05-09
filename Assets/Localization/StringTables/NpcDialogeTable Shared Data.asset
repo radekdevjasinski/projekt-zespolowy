@@ -1,0 +1,216 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: NpcDialogeTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: NpcDialogeTable
+  m_TableCollectionNameGuidString: c22beb5b6e9c3844188bf5f1cf273d9c
+  m_Entries:
+  - m_Id: 56036216832
+    m_Key: Driad_Healing_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 243903287296
+    m_Key: Driad_Failed_Healing_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 392700416000
+    m_Key: Driad_Need_Rest_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 576440291328
+    m_Key: Elf_Healing_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 630437761024
+    m_Key: Elf_Failed_Healing_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 708284043264
+    m_Key: Elf_Need_Rest_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 337706551136256
+    m_Key: Goblin_buy_book_of_slowness_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 337842152984576
+    m_Key: Goblin_buy_horn_of_unperfection_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 337914718638080
+    m_Key: Goblin_buy_poison_potion_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 337985224888320
+    m_Key: Goblin_buy_arrow_of_choas_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338033463578624
+    m_Key: Goblin_buy_book_of_speed_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338124790353920
+    m_Key: Goblin_buy_decterity_dagger_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338187444867072
+    m_Key: Goblin_buy_shoes_of_speed_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338251949068288
+    m_Key: Goblin_buy_amulet__of_durability_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338307364212736
+    m_Key: Goblin_buy_arcane_Whisper_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338361420402688
+    m_Key: Goblin_buy_holy_grale_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338407230590976
+    m_Key: Goblin_buy_amulet_of_frost_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338472850477056
+    m_Key: Goblin_buy_crossbow_power_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338525065367552
+    m_Key: Goblin_buy_quick_claw_of_weakness_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338596368535552
+    m_Key: Goblin_buy_key_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338671551434752
+    m_Key: Goblin_buy_hp_potion_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338772265062400
+    m_Key: Goblin_buy_bomb_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338810810716160
+    m_Key: Goblin_out_of_stock_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 461438221340672
+    m_Key: Dwarf_entry_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 461973603274752
+    m_Key: Dwarf_entry_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462086480384000
+    m_Key: Dwarf_entry_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462202075402240
+    m_Key: Dwarf_entry_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462279615500288
+    m_Key: Dwarf_entry_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462396481392640
+    m_Key: Dwarf_general_buy_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462479939653632
+    m_Key: Dwarf_general_buy_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462547023351808
+    m_Key: Dwarf_general_buy_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462590736388096
+    m_Key: Dwarf_general_buy_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462648496148480
+    m_Key: Dwarf_general_buy_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462762816098304
+    m_Key: dwarf_outOfStock_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462860673404928
+    m_Key: dwarf_outOfStock_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462907037241344
+    m_Key: dwarf_outOfStock_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 462966575386624
+    m_Key: dwarf_outOfStock_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518310752210944
+    m_Key: Goblin_entry_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518411109322752
+    m_Key: Goblin_entry_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518490016763904
+    m_Key: Goblin_entry_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518556819443712
+    m_Key: Goblin_entry_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518637907922944
+    m_Key: Goblin_entry_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518931249156096
+    m_Key: Goblin_universal_buy_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 519075671625728
+    m_Key: Goblin_universal_buy_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 519133871788032
+    m_Key: Goblin_universal_buy_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 519180034297856
+    m_Key: Goblin_universal_buy_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 519260736901120
+    m_Key: Goblin_universal_buy_5
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7536419451344781336
+  references:
+    version: 2
+    RefIds:
+    - rid: 7536419451344781336
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714197742660

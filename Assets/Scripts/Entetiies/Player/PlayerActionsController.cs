@@ -2,9 +2,15 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerItemsController))]
+[RequireComponent(typeof(PlayerAttributesController))]
 public class PlayerActionsController : MonoBehaviour
 {
-    [Header("Putting")]
+    //controllers
+     PlayerAttributesController playerAttributes;
+     PlayerItemsController playerItemsController;
+    PlayerEntityController playerEntityController;
+   [Header("Putting")]
     [SerializeField] private GameObject puttableItem;
     [Header("Slashing")]
     [SerializeField] private GameObject slashableItem;
@@ -74,6 +80,7 @@ public class PlayerActionsController : MonoBehaviour
         playerAttributes = this.gameObject.GetComponent<PlayerAttributesController>();
         playerMovementController = this.gameObject.GetComponent<PlayerMovementController>();
         playerEntityController = this.gameObject.GetComponent<PlayerEntityController>();
+        playerItemsController = this.gameObject.GetComponent<PlayerItemsController>();
         animator = this.gameObject.GetComponent<Animator>();
         canShoot = true;
         collider = GetComponent<Collider2D>();
@@ -81,6 +88,8 @@ public class PlayerActionsController : MonoBehaviour
         shootParent = GameObject.Find("Projectiles").transform;
         puttedParent = GameObject.Find("Putted").transform;
         summonedParent = GameObject.Find("Summoned").transform;
+        animator = this.gameObject.GetComponent<Animator>();
+        
     }
 
     void Update()
@@ -145,8 +154,8 @@ public class PlayerActionsController : MonoBehaviour
 
             slashable.GetComponent<Projectile>().setWasShootByPlayer(true);
             Invoke("resetShootingCooldDown", shootCooldown / (1 + playerAttributes.FireRate * shootCooldownAttributeMultiplayer));
-
             MakeStaminaAction(shootStaminaCost);
+
         }
     }
     public float getShootCooldown()
@@ -275,7 +284,7 @@ public class PlayerActionsController : MonoBehaviour
                 );
             shootable.GetComponent<Projectile>().setWasShootByPlayer(true);
             shootable.GetComponent<Rigidbody2D>().AddForce(direction * shootSpeed *(1+playerAttributes.ProjectileSpeed) , ForceMode2D.Impulse);
-            Invoke("resetShootingCooldDown", shootCooldown/(1+playerAttributes.FireRate* shootCooldownAttributeMultiplayer));
+            Invoke("resetShootingCooldDown", shootCooldown/playerAttributes.FireRate);
         }
     }
 
@@ -389,15 +398,40 @@ public class PlayerActionsController : MonoBehaviour
 
     public void putObject()
     {
-
-        GameObject shootable = Instantiate(
-            puttableItem,
-            this.transform.position,
-            new Quaternion(0f, 0f, 0f, 0f),
-            puttedParent
-        );
+        if (playerItemsController.getBombs() > 0)
+        {
+            GameObject shootable = Instantiate(
+                puttableItem,
+                this.transform.position,
+                new Quaternion(0f, 0f, 0f, 0f),
+                puttedParent
+            );
+            playerItemsController.removeBombs(1);
+        }
 
     }
+
+
+    #endregion
+
+
+    #region healthPotion
+    [Header("health potion")]
+    [SerializeField]
+    GameObject healthPotionSound;
+
+    public void useHealthPotion()
+    {
+        Debug.Log("try use health potion");
+        if(playerItemsController.getHelathPotion()>0 && playerEntityController.getHealth()<playerEntityController.getMaxHealth())
+        {
+            if (healthPotionSound != null)
+                SoundManager.instance.playSound(transform, healthPotionSound);
+            playerEntityController.heal(1);
+            playerItemsController.removeHelathPotion(1);
+        }
+    }
+
 
 
     #endregion

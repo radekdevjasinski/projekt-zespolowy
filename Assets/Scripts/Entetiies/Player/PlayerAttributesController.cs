@@ -15,34 +15,47 @@ public class PlayerAttributesController : MonoBehaviour
         FIRE_RATE,
         DAMAGE,
         RANGE,
-        PROJECTILE_SPEED,
-        LUCK
+        PROJECTILE_SPEED,// currently not used, not sure about future implemenation
+        LUCK,// currently not used, not sure about future implemenation
+        PHYSICALRESISTANCE,// currently not used, not sure about future implemenation
+        MAGICALRESISTANCE,// currently not used, not sure about future implemenation
+        MAX_HEALTH
     }
 
     //Attributes
-  [SerializeField] private int MaxHealth=6;
-  [SerializeField] private int health=6;
-  [SerializeField] private float MaxStamina = 6;
-  [SerializeField] private float stamina=6;
-  [SerializeField] private int armor=2;
-  [SerializeField] private int speed=0;
-  [SerializeField] private int fireRate=0;
-  [SerializeField] private int damage=0;
-  [SerializeField] private int range=0;
-  [SerializeField] private int projectileSpeed=0;
-  [SerializeField] private int luck=0;
-  [SerializeField] private int power=0;
+    [SerializeField] private int MaxHealth=6;
+    [SerializeField] private int health=6;
+    [SerializeField] private float MaxStamina = 6;
+    [SerializeField] private float stamina=6;
+    [SerializeField] private int armor=2;
+    [SerializeField] private float speed =0;
+    [SerializeField] private float fireRate=0;
+    [SerializeField] private float damage=0;
+    [SerializeField] private float range =0;
+    [SerializeField] private float projectileSpeed = 0; //currently not used, not sure about future implemenation
+    [SerializeField] private float luck = 0; //currently not used, not sure about future implemenation
+    [SerializeField] private float power = 0;// currently not used, not sure about future implemenation
+    [SerializeField] private float physicalResistance = 0;// currently not used, not sure about future implemenation
+    [SerializeField] private float magicalResistance = 0;// currently not used, not sure about future implemenation
 
-   //getters
-   public int Health => health;
-   public int Armor => armor;
-   public float Stamina => stamina;
-   public int Speed => speed;
-   public int FireRate => fireRate;
-   public int Damage => damage;
-   public int Range => range;
-   public int ProjectileSpeed => projectileSpeed;
-   public int Luck => luck;
+    //getters
+    public int Health => health;
+    
+    public int Armor => armor;
+    
+    public float Stamina => stamina;
+
+   public float Speed => speed;
+
+   public float FireRate => fireRate;
+
+   public float Damage => damage;
+
+   public float Range => range;
+
+   public float ProjectileSpeed => projectileSpeed;
+
+   public float Luck => luck;
 
 
    public PlayerClass GetPlayerClass()
@@ -51,10 +64,11 @@ public class PlayerAttributesController : MonoBehaviour
     }
 
 
-   //setters
-   public void increaseHealth(int change)
+    //setters
+    public void increaseHealth(float change)
    {
-       this.health+= change;
+       Debug.Log("increase ahtlh withL: "+ change);
+       this.health+=(int) change;
    }
     public void resetHealth()
     {
@@ -74,38 +88,73 @@ public class PlayerAttributesController : MonoBehaviour
     {
         this.armor += change;
     }
-    public void increaseSpeed(int change)
+
+    private void increaseSpeed(float change)
    {
         this.speed+= change;
    }
 
-   public void increaseFireRate(int change)
+   private void increaseFireRate(float change)
    {
     this.fireRate+= change;
    }
 
-   public void increaseDamage(int change)
+   private void increaseDamage(float change)
    {
     this.damage += change;
    }
-   public void increaseRange(int change)
+   private void increaseRange(float change)
    {
         this.range += change;
    }
-   public void increaseProjectileSpeed(int change)
+   private void increaseProjectileSpeed(float change)
    {
     this.projectileSpeed += change;
    }
-   public void increaseLuck(int change)
+   private void increaseLuck(float change)
    {
         this.luck += change;
    }
-   public void setPlayerClass(PlayerClass change)
+   private void increasePhysicalResistance(float change)
+   {
+        this.physicalResistance += change;
+   }
+
+   private void increaseMagicalResistance(float change)
+   {
+        this.magicalResistance += change;
+   }
+
+   private void setPlayerClass(PlayerClass change)
     {
         this.playerClass = change;
     }
-    public void increase(attributes attrib, int change)
+    public int getMaxHealth()
+    {
+        return MaxHealth;
+    }
+    private void increaseMaxHealth(float change)
+    {
+        this.MaxHealth +=(int)change;
+        if (Health + (int)change < 1)
+            health = 1;
+        else
+        {
+            increaseHealth((int)change);
+        }
+    }
+    public int getArmor()
+    {
+        return armor;
+    }
+    private void increaseArmor(int change)
+    {
+        
+        this.armor += (int)change;
+    }
+    private void increase(attributes attrib, float change)
    {
+ 
        switch (attrib)
        {
             case attributes.HEALTH: this.increaseHealth(change); break;
@@ -117,8 +166,71 @@ public class PlayerAttributesController : MonoBehaviour
             case attributes.PROJECTILE_SPEED: this.increaseProjectileSpeed(change); break;
             case attributes.RANGE: this.increaseRange(change); break;
             case attributes.SPEED: this.increaseSpeed(change); break;
-       }
-   }
+            case attributes.PHYSICALRESISTANCE: this.increasePhysicalResistance(change); break;
+            case attributes.MAGICALRESISTANCE: this.increaseMagicalResistance(change);break;
+            case attributes.MAX_HEALTH: this.increaseMaxHealth(change); break;
 
+        }
+        Debug.Log("increase: " + attrib + " with " + change+ " to overall value: "+ getAtrib(attrib));
+    }
 
+    public void increaseWithlimit(attributes attrib, float change)
+    {
+        Debug.Log("trying to incease: " + attrib + " with " + change);
+
+        switch (attrib)
+        {
+            case attributes.HEALTH: increase(attrib, change); ; return;
+            case attributes.MAX_HEALTH:  if(getMaxHealth()+change<1) setAttrib(attributes.MAX_HEALTH,1); else increaseMaxHealth(change); return;
+            case attributes.ARMOR: if (getArmor() + change < 0) setAttrib(attributes.ARMOR, 0); else increaseArmor((int)change); return;
+            default:
+                if (getAtrib(attrib) + change < 0.1)
+                {
+                    setAttrib(attrib, 0.1f);
+                }
+                else
+                {
+                    increase(attrib, change);
+                }
+                return;
+        }
+      
+      
+    }
+
+    private void setAttrib(attributes attrib, float val)
+    {
+        switch (attrib)
+        {
+            case attributes.HEALTH: health=(int)val; break;
+            case attributes.DAMAGE: damage=val; break;
+            case attributes.FIRE_RATE: fireRate=val; break;
+            case attributes.LUCK: luck=val; break;
+            case attributes.PROJECTILE_SPEED: projectileSpeed=val; break;
+            case attributes.RANGE: range=val; break;
+            case attributes.SPEED: speed = val; break;
+            case attributes.PHYSICALRESISTANCE: physicalResistance=val; break;
+            case attributes.MAGICALRESISTANCE: magicalResistance=val; break;
+            case attributes.MAX_HEALTH: MaxHealth=(int)val; break;
+
+        }
+    }
+
+    private float getAtrib(attributes attrib)
+    {
+        switch (attrib)
+        {
+            case attributes.HEALTH: return (float)health; break;
+            case attributes.DAMAGE: return (float)damage; break;
+            case attributes.FIRE_RATE: return (float)fireRate; break;
+            case attributes.LUCK: return (float)luck;  break;
+            case attributes.PROJECTILE_SPEED: return (float)projectileSpeed; break;
+            case attributes.RANGE: return (float)range; break;
+            case attributes.SPEED: return (float)speed; break;
+            case attributes.PHYSICALRESISTANCE: return (float)physicalResistance; break;
+            case attributes.MAGICALRESISTANCE: return (float)magicalResistance; break;
+            case attributes.MAX_HEALTH: return (float)getMaxHealth() ; break;
+        }
+        return -1;
+    }
 }

@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3608018661869265470}
   - component: {fileID: 3769961082692163126}
-  - component: {fileID: 8939301228802338724}
   - component: {fileID: 1686101526350755657}
-  - component: {fileID: 2967004679316406723}
+  - component: {fileID: 1306236128470816687}
+  - component: {fileID: 5413801720418456025}
+  - component: {fileID: 1056500733117088343}
+  - component: {fileID: 907088096192251100}
   m_Layer: 0
   m_Name: Elf
   m_TagString: NPC
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3197375250991396093}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.198, z: -10}
+  m_LocalPosition: {x: 0, y: 0.198, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -81,21 +83,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 28.649618, y: 28.720085}
   m_EdgeRadius: 0
---- !u!114 &8939301228802338724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3197375250991396093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5636ed1a2ee800242b05e26a8678cade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueText: {fileID: 0}
-  dialogues:
-  - "Pomog\u0119 Ci ryczerzu!"
 --- !u!61 &1686101526350755657
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,7 +128,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.384702, y: 10.401582}
   m_EdgeRadius: 0
---- !u!114 &2967004679316406723
+--- !u!114 &1306236128470816687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,9 +137,80 @@ MonoBehaviour:
   m_GameObject: {fileID: 3197375250991396093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5295df011a1d7f34fa1482e6951856d1, type: 3}
+  m_Script: {fileID: 11500000, guid: a7299b525396f1c4ba94aba136f662a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eneterDialogues:
+  - m_TableReference:
+      m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
+    m_TableEntryReference:
+      m_KeyId: 576440291328
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  possibleActions: 1
+  failedActionDialogues:
+  - m_TableReference:
+      m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
+    m_TableEntryReference:
+      m_KeyId: 630437761024
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  outOfActionsDialogues:
+  - m_TableReference:
+      m_TableCollectionName: GUID:c22beb5b6e9c3844188bf5f1cf273d9c
+    m_TableEntryReference:
+      m_KeyId: 708284043264
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &5413801720418456025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3197375250991396093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d993b1ae4e836d64eac7910beca46b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1056500733117088343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3197375250991396093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36df6bb8bf963a845b9c99c404cf3d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8559890285010858849, guid: 127d4bd9b7722f24da18ff2b4af6b84c, type: 3}
+--- !u!114 &907088096192251100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3197375250991396093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b527e96feba4a4bb210995677b648f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 0}
+  characterSpeed: 0.04
+  mumblePack: {fileID: 3149398475952838957, guid: 46d7cd400f94fe1499e046a8f95e7283, type: 3}
 --- !u!1 &3394406843505597757
 GameObject:
   m_ObjectHideFlags: 0

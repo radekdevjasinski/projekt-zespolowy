@@ -28,7 +28,7 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
-        speed = groundSpeedAffect * baseSpeed * (1 + (sppedAttributeMultiplayer * playerAttributesController.Speed));
+        speed = groundSpeedAffect * baseSpeed*(sppedAttributeMultiplayer*playerAttributesController.Speed);
     }
     void FixedUpdate()
     {

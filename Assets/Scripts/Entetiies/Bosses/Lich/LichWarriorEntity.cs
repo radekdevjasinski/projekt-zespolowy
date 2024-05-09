@@ -325,12 +325,12 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     {
         Destroy(this.gameObject);
     }
-    protected override float getHealth()
+    public override float getHealth()
     {
         return 0;
     }
 
-    protected override float getMaxHealth()
+    public override float getMaxHealth()
     {
         return 1;
     }

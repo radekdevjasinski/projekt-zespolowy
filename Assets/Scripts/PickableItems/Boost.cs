@@ -5,14 +5,14 @@ using UnityEngine;
 public class Boost : PicableItem
 {
 
-    [SerializeField] private int value;
+    [SerializeField] private float value;
     [SerializeField] private PlayerAttributesController.attributes attribute;
 
 
 
     protected override void onItemPick(GameObject obj)
     {
-        obj.GetComponent<PlayerAttributesController>().increase(attribute, value);
+        obj.GetComponent<PlayerAttributesController>().increaseWithlimit(attribute, value);
     }
 
 
