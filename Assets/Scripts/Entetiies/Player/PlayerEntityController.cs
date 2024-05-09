@@ -9,9 +9,16 @@ public class PlayerEntityController : EntityController<int>
 
     private PlayerAttributesController playerAttributesController;
 
+    [SerializeField] private float invincLength = 1;
+    private Rigidbody2D rb;
+    public bool isKnocked;
+    [SerializeField] private float knockbackForce = 20f;
+    [SerializeField] private float knockbackDuration = 1f;
+
     protected void Awake()
     {
         playerAttributesController = GetComponent<PlayerAttributesController>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
@@ -36,15 +43,8 @@ public class PlayerEntityController : EntityController<int>
     //{
     //  this.GetComponent<PlayerMovementController>().setGroundSpeedAffect(f);
     //}
-    [SerializeField] private float invincLength = 1;
-    private Rigidbody2D rb;
-    public bool isKnocked;
-    [SerializeField] private float knockbackForce = 20f;
-    [SerializeField] private float knockbackDuration = 1f;
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    
+
     private void Update()
     {
         if (invincCount > 0)
@@ -52,7 +52,7 @@ public class PlayerEntityController : EntityController<int>
             invincCount -= Time.deltaTime;
         }
     }
-    protected override int getMaxHealth()
+    public override int getMaxHealth()
     {
         return playerAttributesController.getMaxHealth();
 

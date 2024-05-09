@@ -25,6 +25,11 @@ public class TrainingDummy : EntityController<float>
         health -= damage;
     }
 
+    public override void reviceDamage(float damage, Vector2 damageDirection)
+    {
+        //throw new System.NotImplementedException();
+    }
+
     protected override void onDie()
     {
      Destroy(gameObject);
