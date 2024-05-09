@@ -147,11 +147,6 @@ public class PlayerAttributesController : MonoBehaviour
     {
         return armor;
     }
-    private void increaseArmor(int change)
-    {
-        
-        this.armor += (int)change;
-    }
     private void increase(attributes attrib, float change)
    {
  
@@ -160,7 +155,7 @@ public class PlayerAttributesController : MonoBehaviour
             case attributes.HEALTH: this.increaseHealth(change); break;
             case attributes.STAMINA: this.increaseStamina(change); break;
             case attributes.DAMAGE: this.increaseDamage(change); break;
-            case attributes.ARMOR: this.increaseArmor(change); break;
+            case attributes.ARMOR: this.increaseArmor((int)change); break;
             case attributes.FIRE_RATE: this.increaseFireRate(change); break;
             case attributes.LUCK: this.increaseLuck(change); break;
             case attributes.PROJECTILE_SPEED: this.increaseProjectileSpeed(change); break;

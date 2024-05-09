@@ -10,7 +10,8 @@ public class PlayerActionsController : MonoBehaviour
      PlayerAttributesController playerAttributes;
      PlayerItemsController playerItemsController;
     PlayerEntityController playerEntityController;
-   [Header("Putting")]
+    PlayerMovementController playerMovementController;
+    [Header("Putting")]
     [SerializeField] private GameObject puttableItem;
     [Header("Slashing")]
     [SerializeField] private GameObject slashableItem;
@@ -67,12 +68,6 @@ public class PlayerActionsController : MonoBehaviour
     Collider2D collider;
     Rigidbody2D rigidbody2D;
     private Animator animator;
-
-
-    //controllers
-    private PlayerAttributesController playerAttributes;
-    private PlayerMovementController playerMovementController;
-    private PlayerEntityController playerEntityController;
 
 
     private void Awake()
