@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LootChest : ActivatableObject
 {
-    [SerializeField] public GameObject[] loot;
+    [SerializeField] public List <GameObject> loot;
     private GameObject player;
     [SerializeField] private bool isBigChest;
     [SerializeField] private Sprite openChest;

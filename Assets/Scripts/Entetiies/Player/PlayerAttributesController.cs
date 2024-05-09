@@ -67,9 +67,10 @@ public class PlayerAttributesController : MonoBehaviour
     //setters
     public void increaseHealth(float change)
    {
-       Debug.Log("increase ahtlh withL: "+ change);
-       this.health+=(int) change;
-   }
+       this.health += (int) change;
+        GameObject HpBar = GameObject.Find("HpBar");
+        HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+    }
     public void resetHealth()
     {
         this.health = MaxHealth;
@@ -87,6 +88,8 @@ public class PlayerAttributesController : MonoBehaviour
     public void increaseArmor(int change)
     {
         this.armor += change;
+        GameObject ArmorBar = GameObject.Find("ArmorBar");
+        ArmorBar.GetComponent<ArmorBar>().DrawArmor();
     }
 
     private void increaseSpeed(float change)
@@ -142,6 +145,8 @@ public class PlayerAttributesController : MonoBehaviour
         {
             increaseHealth((int)change);
         }
+        GameObject HpBar = GameObject.Find("HpBar");
+        HpBar.GetComponent<HealtHeartBar>().DrawHearts();
     }
     public int getArmor()
     {
@@ -167,6 +172,7 @@ public class PlayerAttributesController : MonoBehaviour
 
         }
         Debug.Log("increase: " + attrib + " with " + change+ " to overall value: "+ getAtrib(attrib));
+
     }
 
     public void increaseWithlimit(attributes attrib, float change)
@@ -189,9 +195,10 @@ public class PlayerAttributesController : MonoBehaviour
                 }
                 return;
         }
-      
-      
-    }
+
+        
+
+}
 
     private void setAttrib(attributes attrib, float val)
     {

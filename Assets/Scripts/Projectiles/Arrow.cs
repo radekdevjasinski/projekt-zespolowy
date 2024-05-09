@@ -29,11 +29,11 @@ public class Arrow : MonoBehaviour
             PlayerEntityController playerController = collision.gameObject.GetComponent<PlayerEntityController>();
             if (playerController)
             {
-                Vector2 damageDirection = -rb.velocity.normalized;
-                playerController.dealDamage(attack, damageDirection);
+                //Vector2 damageDirection = -rb.velocity.normalized;
+                playerController.dealDamage(attack);
             }
         }
-        if(collision.gameObject.tag != "Enemy")
+        if(collision.gameObject != spawningEnemy)
         {
             Destroy(gameObject);
         }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1501948920253078549}
   - component: {fileID: 3432707851260725105}
   m_Layer: 0
-  m_Name: posion_potion
+  m_Name: poisoned_potion
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Attributes:
-  - attribute: 2
+  - attribute: 11
+    factor: -1
+  - attribute: 4
     factor: 0.1
-  - attribute: 10
-    factor: -2
 --- !u!50 &4084532252108822104
 Rigidbody2D:
   serializedVersion: 4

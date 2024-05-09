@@ -42,7 +42,7 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
 
     public void dealDamage(TH baseDamage, Vector2 damageDirection)
     {
-        if (!this.invulnerable && this.invincCount<=0)
+        if (!this.invulnerable && this.invincCount <=0 )
         {
             runOnDamageBehaviour();
             this.reviceDamage(baseDamage, damageDirection);

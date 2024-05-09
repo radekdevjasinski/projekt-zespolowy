@@ -82,6 +82,20 @@ public class PlayerEntityController : EntityController<int>
     }
     public override void reviceDamage(int damage)
     {
+        if (playerAttributesController.Armor > 0)
+        {
+            playerAttributesController.increaseArmor(-damage);
+            GameObject ArmorBar = GameObject.Find("ArmorBar");
+            ArmorBar.GetComponent<ArmorBar>().DrawArmor();
+        }
+        else
+        {
+            playerAttributesController.increaseHealth(-damage);
+            GameObject HpBar = GameObject.Find("HpBar");
+            HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+        }
+
+        invincCount = invincLength;
 
     }
     protected virtual IEnumerator HitKnockback(Vector2 knockbackDirection)

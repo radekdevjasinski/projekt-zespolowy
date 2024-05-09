@@ -24,7 +24,6 @@ public class PlayerActionsController : MonoBehaviour
     [SerializeField] private float shootSpeed;
     [SerializeField] private float shootAttributeMultiplayer=1;
     [SerializeField] private float shootCooldown;
-    [SerializeField] private float shootCooldownAttributeMultiplayer;
     private Transform shootParent;
     private Transform puttedParent;
     private Transform summonedParent;
@@ -59,9 +58,6 @@ public class PlayerActionsController : MonoBehaviour
     private float dashSpeed;
     private Vector2 dashDir;
     private float dashDrop = 5f;
-
-
-
 
 
     //components
@@ -148,7 +144,7 @@ public class PlayerActionsController : MonoBehaviour
             RotateSword(slashable);
 
             slashable.GetComponent<Projectile>().setWasShootByPlayer(true);
-            Invoke("resetShootingCooldDown", shootCooldown / (1 + playerAttributes.FireRate * shootCooldownAttributeMultiplayer));
+            Invoke("resetShootingCooldDown", shootCooldown / (1 + playerAttributes.FireRate));
             MakeStaminaAction(shootStaminaCost);
 
         }
@@ -279,7 +275,7 @@ public class PlayerActionsController : MonoBehaviour
                 );
             shootable.GetComponent<Projectile>().setWasShootByPlayer(true);
             shootable.GetComponent<Rigidbody2D>().AddForce(direction * shootSpeed *(1+playerAttributes.ProjectileSpeed) , ForceMode2D.Impulse);
-            Invoke("resetShootingCooldDown", shootCooldown/playerAttributes.FireRate);
+            Invoke("resetShootingCooldDown", shootCooldown/(1 + playerAttributes.FireRate));
         }
     }
 

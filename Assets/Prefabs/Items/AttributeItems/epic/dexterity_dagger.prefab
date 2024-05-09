@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Attributes:
-  - attribute: 1
+  - attribute: 4
     factor: 0.2
-  - attribute: 10
+  - attribute: 11
     factor: -1
 --- !u!50 &4084532252108822104
 Rigidbody2D:
@@ -155,7 +155,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3914346731871655489}
@@ -201,7 +201,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4c634cabf54485347956eb3cc222126e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c085d4e0308afa408fc1550a883013d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

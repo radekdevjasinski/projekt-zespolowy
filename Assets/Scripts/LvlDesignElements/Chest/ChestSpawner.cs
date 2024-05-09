@@ -15,7 +15,7 @@ public class ChestSpawner : MonoBehaviour
     [SerializeField] private GameObject key;
     [SerializeField] private GameObject potion;
 
-    [Header("normal Items")]
+    [Header("Items")]
     [SerializeField] private List<GameObject> items = new List<GameObject>();
 
     [Header("random Chance")]
@@ -87,21 +87,27 @@ public class ChestSpawner : MonoBehaviour
         newCreatedChest = Instantiate(smallChest, CreatePosition(), Quaternion.identity, transform);
         int randomAmountOfItems = Random.Range(minItemsAmountChest, maxItemsAmountChest+1);
         LootChest lootChest = newCreatedChest.GetComponent<LootChest>();
-        lootChest.loot = new GameObject[randomAmountOfItems];
+        lootChest.loot = new List<GameObject>();
         for(int i = 0; i < randomAmountOfItems; i++)
         {
-            lootChest.loot[i] = SellectNewItem();
+            lootChest.loot.Add(SellectNewItem());
         }
     }
     private void CreateBigChest()
     {
         newCreatedChest = Instantiate(bigChest, CreatePosition(), Quaternion.identity, transform);
-        int randomAmountOfItems = Random.Range(minItemsAmountChest, maxItemsAmountChest + 1);
+        int randomAmountOfItems = Random.Range(minItemsAmountChest, maxItemsAmountChest + 5);
         LootChest lootChest = newCreatedChest.GetComponent<LootChest>();
-        lootChest.loot = new GameObject[randomAmountOfItems];
+        lootChest.loot = new List<GameObject>();
         for (int i = 0; i < randomAmountOfItems; i++)
         {
-            lootChest.loot[i] = coin;
+            lootChest.loot.Add(SellectNewItem());
         }
+        GameObject randomItem = items[Random.Range(0, items.Count)];
+        if (randomItem != null)
+        {
+            lootChest.loot.Add(randomItem);
+        }
+
     }
 }
