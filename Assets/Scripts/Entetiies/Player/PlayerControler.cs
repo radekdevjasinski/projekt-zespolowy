@@ -26,8 +26,10 @@ public class PlayerControler : MonoBehaviour
     private InputAction dropEquiped;
     private InputAction mousePress;
     private InputAction mousePosition;
+    private InputAction dash;
 
-
+    //player can hold attack
+    private bool attackStared;
 
     private void Awake()
     {
@@ -48,8 +50,8 @@ public class PlayerControler : MonoBehaviour
 
 
         shoot = this.controls.Player.Shoot;
-        shoot.performed += ctx => { OnShoot(ctx.ReadValue<Vector2>()); };
-        shoot.canceled += ctx => { OnCancelShoot(); };
+        shoot.started += ctx => { OnShoot(ctx.ReadValue<Vector2>()); };
+        shoot.performed += ctx => { OnCancelShoot(); };
 
         useActivatedItem = this.controls.Player.UseActivatedItem;
         useActivatedItem.performed += ctx => { OnUseActivatedItem(); };
@@ -74,6 +76,10 @@ public class PlayerControler : MonoBehaviour
         mousePosition = this.controls.Player.MousePostion;
         mousePosition.performed += ctx => { OnMousePostion(ctx.ReadValue<Vector2>()); };
 
+        dash = this.controls.Player.Dash;
+        dash.performed += ctx => { OnDash(); };
+        dash.canceled += ctx => { OnCancelDash();  };
+
     }
 
     void OnDisable()
@@ -97,10 +103,19 @@ public class PlayerControler : MonoBehaviour
         this.playerActionsController.setShootingDiretion(direction);
         this.playerActionsController.setIsShooting(true);
     }
+
     void OnCancelShoot()
     {
         // Debug.Log("cancel shoot: ");
         this.playerActionsController.setIsShooting(false);
+    }
+    void OnDash()
+    {
+        playerActionsController.Dash();
+    }
+
+    void OnCancelDash()
+    {
 
     }
 

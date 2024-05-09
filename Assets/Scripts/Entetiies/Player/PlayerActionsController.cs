@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerActionsController : MonoBehaviour
@@ -15,9 +13,9 @@ public class PlayerActionsController : MonoBehaviour
     [Header("Summoning")]
     [SerializeField] private GameObject summonableAlly;
     [SerializeField] private SummonedControler summonedControler;
+    [Header("Attacking")]
     [SerializeField] private float shootSpeed;
     [SerializeField] private float shootAttributeMultiplayer=1;
-
     [SerializeField] private float shootCooldown;
     [SerializeField] private float shootCooldownAttributeMultiplayer;
     private Transform shootParent;
@@ -29,41 +27,102 @@ public class PlayerActionsController : MonoBehaviour
     //states
     bool canShoot;
     bool isShooting;
+    bool isDashing;
     Vector2 direction;
     bool isMouseLeftPressed;
     bool isShootButtonPress;
     Vector2 worldMousePositon;
     Vector2 offsetSummoning = new Vector2(1f, 0f);
+    [Header("Dashing")]
+    public GameObject dashSound;
+    [SerializeField] private float defaulDashSpeed = 35f;
+    [SerializeField] private float invulnerabilityTime = 1f;
+
+    [Header("Stamina")]
+    [SerializeField] private float staminaRefillCooldown = 1f;
+    [SerializeField] private float staminaRefillRate = 1f;
+    [SerializeField] private float shootStaminaCost = 1f;
+    [SerializeField] private float dashStaminaCost = 2f;
+    [SerializeField] private float staminaActionThreshold = 0.2f;
+
+    private bool staminaRefilling = true;
+    private float staminaTimer;
+
+
+    private float dashSpeed;
+    private Vector2 dashDir;
+    private float dashDrop = 5f;
+
+
+
 
 
     //components
     Collider2D collider;
+    Rigidbody2D rigidbody2D;
     private Animator animator;
 
 
     //controllers
     private PlayerAttributesController playerAttributes;
+    private PlayerMovementController playerMovementController;
+    private PlayerEntityController playerEntityController;
+
 
     private void Awake()
     {
+        playerAttributes = this.gameObject.GetComponent<PlayerAttributesController>();
+        playerMovementController = this.gameObject.GetComponent<PlayerMovementController>();
+        playerEntityController = this.gameObject.GetComponent<PlayerEntityController>();
+        animator = this.gameObject.GetComponent<Animator>();
         canShoot = true;
-        this.collider=GetComponent<Collider2D>();
+        collider = GetComponent<Collider2D>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
         shootParent = GameObject.Find("Projectiles").transform;
         puttedParent = GameObject.Find("Putted").transform;
         summonedParent = GameObject.Find("Summoned").transform;
-        animator = this.gameObject.GetComponent<Animator>();
-        playerAttributes = this.gameObject.GetComponent<PlayerAttributesController>();
     }
 
     void Update()
     {
         udpateMouseShoot();
+
+        //dashing
+        if (isDashing)
+        {
+            dashSpeed -= dashSpeed * dashDrop * Time.deltaTime;
+
+            if (dashSpeed <= playerMovementController.getSpeed())
+            {
+                isDashing = false;
+                playerEntityController.setIsInvurnable(false);
+
+            }
+        }
+
+        //stamina refill
+        if (staminaTimer > 0)
+        {
+            staminaRefilling = false;
+            staminaTimer -= Time.deltaTime;
+        }
+        else
+        {
+            staminaRefilling = true;
+        }
+
+        if (staminaRefilling)
+        {
+            playerAttributes.increaseStamina(Time.deltaTime * staminaRefillRate);
+        }
     }
+
+
     #region Slashing
-    
+
     private void Slash()
     {
-        if (canShoot)
+        if (canShoot && playerAttributes.Stamina > staminaActionThreshold)
         {
             canShoot = false;
 
@@ -72,7 +131,6 @@ public class PlayerActionsController : MonoBehaviour
                 transform.position.y + collider.bounds.size.y * 1.4f * direction.y,
                 0f);
 
-            Debug.Log(direction);
             GameObject slashable = Instantiate(
                 slashableItem,
                  startPosition,
@@ -87,7 +145,13 @@ public class PlayerActionsController : MonoBehaviour
 
             slashable.GetComponent<Projectile>().setWasShootByPlayer(true);
             Invoke("resetShootingCooldDown", shootCooldown / (1 + playerAttributes.FireRate * shootCooldownAttributeMultiplayer));
+
+            MakeStaminaAction(shootStaminaCost);
         }
+    }
+    public float getShootCooldown()
+    {
+        return shootCooldown;
     }
 
     private void RotateSword(GameObject slashable)
@@ -147,6 +211,41 @@ public class PlayerActionsController : MonoBehaviour
     }
 
 
+
+    #endregion
+
+    #region Dashing
+
+    public void Dash()
+    {
+        dashDir = playerMovementController.getMoveValue();
+        if (!isDashing && (dashDir.x != 0 || dashDir.y != 0) && playerAttributes.Stamina > staminaActionThreshold)
+        {
+            isDashing = true;
+            dashSpeed = defaulDashSpeed;
+            playerEntityController.setIsInvurnable(true);
+            StartCoroutine(invulnerabilityTimer());
+            PerformDash();
+            MakeStaminaAction(dashStaminaCost);
+            SoundManager.instance.playSound(transform, dashSound);
+
+        }
+    }
+    IEnumerator invulnerabilityTimer()
+    {
+        yield return new WaitForSeconds(invulnerabilityTime);
+        playerEntityController.setIsInvurnable(false);
+
+    }
+    void PerformDash()
+    {
+        rigidbody2D.velocity = dashDir * dashSpeed;
+    }
+    void MakeStaminaAction (float staminaCost)
+    {
+        playerAttributes.increaseStamina(-staminaCost);
+        staminaTimer = staminaRefillCooldown;
+    }
 
     #endregion
 
@@ -246,10 +345,10 @@ public class PlayerActionsController : MonoBehaviour
 
     internal void setIsShooting(bool state)
     {
+        //animator.ResetTrigger("Shooting");
         if (state)
         {
-            animator.ResetTrigger("Shooting");
-            if (canShoot)
+            if (canShoot && playerAttributes.Stamina > staminaActionThreshold)
             {
                 this.isShooting = state;
                 
