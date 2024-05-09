@@ -10,6 +10,7 @@ public class MiniMapController : MonoBehaviour
     public Sprite startRoomIconSprite;
     public Sprite shopRoomIconSprite;
     public Sprite bossRoomIconSprite;
+    public Sprite unknownRoomSprite;
     public float iconSize = 15f;
     public float roomSpacing = 18f;
     private RectTransform miniMapRect;
@@ -62,6 +63,10 @@ public class MiniMapController : MonoBehaviour
             {
                 Image roomIcon = new GameObject("RoomIcon").AddComponent<Image>();
                 roomIcon.sprite = GetRoomSprite(room.roomType);
+                if (!room.visited)
+                {
+                    roomIcon.sprite = unknownRoomSprite;
+                }
                 roomIcon.transform.SetParent(transform);
                 roomIcon.rectTransform.sizeDelta = roomIconSize;
                 roomIcon.rectTransform.anchoredPosition = miniMapPos;
@@ -115,6 +120,8 @@ public class MiniMapController : MonoBehaviour
 
         if (currentPlayerRoom.pos != lastPlayerRoomPos)
         {
+            dungeonGenerator.EnterRoom(currentPlayerRoom);
+
             DrawMiniMap(currentPlayerRoom);
 
             lastPlayerRoomPos = currentPlayerRoom.pos;

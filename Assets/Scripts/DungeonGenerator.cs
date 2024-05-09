@@ -20,6 +20,7 @@ public class DungeonRoom
     public RoomType roomType;
     public GameObject gameObject;
     public int enemiesCount;
+    public bool visited;
 
 
     public DungeonRoom(int id, Vector2Int pos, RoomType roomType)
@@ -28,6 +29,7 @@ public class DungeonRoom
         this.pos = pos;
         this.roomType = roomType;
         enemiesCount = 0;
+        visited = false;
     }
 
     public List<Vector2Int> freeSpots(List<DungeonRoom> rooms)
@@ -126,7 +128,7 @@ public class DungeonGenerator : MonoBehaviour
         List<Vector2Int> freeRooms;
 
 
-        rooms.Add(new DungeonRoom(0, new Vector2Int(0, 0), RoomType.STARTROOM));
+        rooms.Add(new DungeonRoom(0, new Vector2Int(0, 0), RoomType.STARTROOM) { visited = true });
 
 
         for (int i = 0; i < allRooms; i++)
@@ -155,6 +157,15 @@ public class DungeonGenerator : MonoBehaviour
         }
         navigationBake.BakeNavMesh();
     }
+
+    public void EnterRoom(DungeonRoom room)
+    {
+        if (!room.visited)
+        {
+            room.visited = true;
+        }
+    }
+
     List<Vector2Int> CalculateFreeRooms()
     {
         List<Vector2Int> freeRooms = new List<Vector2Int>();
