@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class LootChest : ActivatableObject
 {
-    [SerializeField] private GameObject[] loot;
+    [SerializeField] public GameObject[] loot;
+    private GameObject player;
+    [SerializeField] private bool isBigChest;
+    [SerializeField] private Sprite openChest;
+    private SpriteRenderer renderer;
     private bool isOpened = false;
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        renderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+    }
     protected override void onActivate(GameObject player)
     {
         if (!isOpened)
         {
-            isOpened=true;
-            Debug.Log("chest open");
-            dropLoot();
+            if (isBigChest)
+            {
+                if (player.GetComponent<PlayerItemsController>().getKeys()>=1)
+                {
+                    isOpened = true;
+                    renderer.sprite = openChest;
+                    player.GetComponent<PlayerItemsController>().removeKey(1);
+                    dropLoot();
+                }
+            }
+            else
+            {
+                isOpened = true;
+                renderer.sprite = openChest;
+                dropLoot();
+            }
         }
     }
 

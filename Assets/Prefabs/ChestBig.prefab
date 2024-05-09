@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8572500634817268765}
   - component: {fileID: 2265212753465251157}
   m_Layer: 7
-  m_Name: Chest
+  m_Name: ChestBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   - {fileID: 5112259435028361392, guid: f0a71b1dbbe90e6478f68b62f9e01c32, type: 3}
   - {fileID: 5112259435028361392, guid: f0a71b1dbbe90e6478f68b62f9e01c32, type: 3}
   - {fileID: 5112259435028361392, guid: f0a71b1dbbe90e6478f68b62f9e01c32, type: 3}
-  isBigChest: 0
+  isBigChest: 1
   openChest: {fileID: 21300000, guid: 8eac1514cd780f04dac37f291860dcb3, type: 3}
 --- !u!114 &2265212753465251157
 MonoBehaviour:
@@ -223,7 +223,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 4b90dc4de69414246b6b2f2b23bdeb79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 26f4467d98503674cbece78f94eb1385, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
