@@ -32,6 +32,11 @@ public class EnemyBase : EntityController<float>
     //metoda kt?ra sprawnia ?e wr?g otrzymuje obra?enia, b?dzie wywo?ywana gdy wr?g otrzyma dmg
 
 
+    public override void reviceDamage(float damage, Vector2 damageDirection)
+    {
+        //Debug.Log("enemy recive damage, now: " + this.getHealth());
+        currentHealthPoints -= damage; //sprawdzenie smeirci jest w klasie bazowej
+    }
     public override void reviceDamage(float damage)
     {
         //Debug.Log("enemy recive damage, now: " + this.getHealth());
