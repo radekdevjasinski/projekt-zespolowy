@@ -63,7 +63,7 @@ public class LevelDesigner : MonoBehaviour
             if (playerTeleporter.activePlayerRoom.enemiesCount <= 0)
             {
                 playerTeleporter.activePlayerRoom.OpenRightDoors(dungeonGenerator.rooms);
-                if(chestSpawner != null)
+                if(chestSpawner != null && playerTeleporter.activePlayerRoom.roomType != RoomType.BOSSROOM)
                 {
                     chestSpawner.SpawnChest(playerTeleporter.activePlayerRoom.gameObject);
                 }
