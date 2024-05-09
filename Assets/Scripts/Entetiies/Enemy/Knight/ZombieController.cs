@@ -12,6 +12,7 @@ public class ZombieController : EnemyBase, OnDamage
     private Animator animator;
     private KnightPathfinding knightPathfinding;
     private bool canAttack = true;
+    private bool isInRange = false;
     private Knockback knockback;
 
     protected override void Start()
@@ -25,10 +26,9 @@ public class ZombieController : EnemyBase, OnDamage
         playerController = GameObject.Find("Player").GetComponent<PlayerEntityController>();
         knockback = GetComponent<Knockback>();
     }
-
     void FixedUpdate()
     {
-        if (!LockMovement)
+        /*if (!LockMovement)
         {
             if (!IsWithinRange())
             {
@@ -42,12 +42,23 @@ public class ZombieController : EnemyBase, OnDamage
                 StartCoroutine(attackCooldown());
 
             }
+        }*/
+        if (!LockMovement)
+        {
+            Move();
+            if (isInRange & canAttack)
+            {
+                Attack();
+                //animator.SetTrigger("isAttacking");
+                canAttack = false;
+                StartCoroutine(attackCooldown());
+            }
         }
     }
 
-    public void ApplyKnockback(Vector2 direction)
+    public void ApplyKnockback(Vector2 direction, float knockbackForce, float knockbackDuration)
     {
-        knockback?.ApplyKnockback(direction);
+        knockback?.ApplyKnockback(direction, knockbackForce, knockbackDuration);
     }
 
     IEnumerator attackCooldown()
@@ -72,18 +83,34 @@ public class ZombieController : EnemyBase, OnDamage
 
     protected override void Attack()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attackRange);
+        /*Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attackRange);
         foreach (Collider2D collider in colliders)
         {
             if (collider.CompareTag("Player"))
             {
                 playerController.dealDamage(damage);
-                ApplyKnockback((transform.position - collider.transform.position).normalized);
+                ApplyKnockback((transform.position - collider.transform.position).normalized, knockback.knockbackForceAttacking, knockback.knockbackDurationAttacking);
                 Debug.Log("Hit Player and applied knockback");
             }
+        }*/
+        playerController.dealDamage(damage);
+        ApplyKnockback((transform.position - GameObject.Find("Player").transform.position).normalized, knockback.knockbackForceAttacking, knockback.knockbackDurationAttacking);
+        Debug.Log("Hit Player and applied knockback");
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isInRange = true;
         }
     }
-
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isInRange = false;
+        }
+    }
     protected override bool IsWithinRange()
     {
         Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -106,6 +133,6 @@ public class ZombieController : EnemyBase, OnDamage
 
     public void onDamage()
     {
-        ApplyKnockback((transform.position - playerController.gameObject.transform.position).normalized);
+        ApplyKnockback((transform.position - playerController.gameObject.transform.position).normalized, knockback.knockbackForceAttacked, knockback.knockbackDurationAttacked);
     }
 }

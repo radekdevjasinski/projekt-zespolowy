@@ -6,11 +6,13 @@ public class EnemyShooting : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
     [SerializeField] float fireRate = 0.25f;
-    [SerializeField] Transform player;
-    [SerializeField] EnemyBase enemy;
+    [SerializeField] float shootPower = 7f;
+    EnemyBase enemy;
+    Transform player;
 
     private bool playerInRange = false;
     private bool canShoot = true;
+
 
     void Start()
     {
@@ -76,6 +78,6 @@ public class EnemyShooting : MonoBehaviour
         {
             arrow.SetSpawningEnemy(this.gameObject);
         }
-        bullet.GetComponent<Rigidbody2D>().velocity = direction*10f;
+        bullet.GetComponent<Rigidbody2D>().velocity = direction* shootPower;
     }
 }

@@ -32,7 +32,7 @@ public class Arrow : MonoBehaviour
                 playerController.dealDamage(attack);
             }
         }
-        if(collision.gameObject != spawningEnemy)
+        if(collision.gameObject.tag != "Enemy")
         {
             Destroy(gameObject);
         }

@@ -81,7 +81,7 @@ MonoBehaviour:
   invulnerable: 0
   maxHelathPoints: 2
   currentHealthPoints: 0
-  visionRange: 1
+  visionRange: 2
   damage: 1
   speed: 1
   LockMovement: 1
@@ -101,8 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5690387314472056995, guid: 5b7984decf360e64e8f4ef7defd64585, type: 3}
   fireRate: 1
-  player: {fileID: 0}
-  enemy: {fileID: 0}
+  shootPower: 3
 --- !u!61 &6065801611092090227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -329,4 +328,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.2
+  m_Radius: 2

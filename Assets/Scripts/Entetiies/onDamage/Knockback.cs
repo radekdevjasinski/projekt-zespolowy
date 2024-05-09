@@ -4,33 +4,30 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-    [SerializeField] private float knockbackForce = 5f;
-    [SerializeField] private float knockbackDuration = 0.1f;
+    [Header("Attacking")]
+    public float knockbackForceAttacking = 5f;
+    public float knockbackDurationAttacking = 0.1f;
+    [Header("Attacked")]
+    public float knockbackForceAttacked = 5f;
+    public float knockbackDurationAttacked = 0.1f;
     private float currentKnockbackForce;
 
     private void Awake()
     {
-        currentKnockbackForce = knockbackForce;
+        currentKnockbackForce = knockbackForceAttacked;
     }
-
-    private void ResetForce()
+    public void ApplyKnockback(Vector2 direction, float knockbackForce, float knockbackDuration)
     {
-        currentKnockbackForce = knockbackForce;
+        StartCoroutine(DoKnockback(direction, knockbackForce, knockbackDuration));
     }
 
-
-    public void ApplyKnockback(Vector2 direction)
-    {
-        StartCoroutine(DoKnockback(direction));
-    }
-
-    private IEnumerator DoKnockback(Vector2 direction)
+    private IEnumerator DoKnockback(Vector2 direction, float knockbackForce, float knockbackDuration)
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
             rb.velocity = Vector2.zero;
-            ResetForce();
+            currentKnockbackForce = knockbackForce;
             currentKnockbackForce *= rb.mass;
             rb.AddForce(direction * currentKnockbackForce, ForceMode2D.Impulse);
             yield return new WaitForSeconds(knockbackDuration);
