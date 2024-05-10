@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Localization;
-using static UnityEditor.Progress;
-
-
 public class NpcTrader : NPCConversation
 {
     [SerializeField]

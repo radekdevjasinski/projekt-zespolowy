@@ -4289,13 +4289,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: TraingingDummy
       objectReference: {fileID: 0}
-    - target: {fileID: 7593108116955148545, guid: 2b6382d7e940b9348afd527e06991baf, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 1700270595183996481, guid: 2b6382d7e940b9348afd527e06991baf, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7593108116955148545, guid: 2b6382d7e940b9348afd527e06991baf, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593108116955148545, guid: 2b6382d7e940b9348afd527e06991baf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8402586096595448631, guid: 2b6382d7e940b9348afd527e06991baf, type: 3}
       propertyPath: m_LocalPosition.x
