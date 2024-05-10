@@ -144,7 +144,7 @@ public class PlayerActionsController : MonoBehaviour
             RotateSword(slashable);
 
             slashable.GetComponent<Projectile>().setWasShootByPlayer(true);
-            Invoke("resetShootingCooldDown", shootCooldown / (1 + playerAttributes.FireRate));
+            Invoke("resetShootingCooldDown", shootCooldown / (1 * playerAttributes.FireRate));
             MakeStaminaAction(shootStaminaCost);
 
         }
@@ -275,7 +275,7 @@ public class PlayerActionsController : MonoBehaviour
                 );
             shootable.GetComponent<Projectile>().setWasShootByPlayer(true);
             shootable.GetComponent<Rigidbody2D>().AddForce(direction * shootSpeed *(1+playerAttributes.ProjectileSpeed) , ForceMode2D.Impulse);
-            Invoke("resetShootingCooldDown", shootCooldown/(1 + playerAttributes.FireRate));
+            Invoke("resetShootingCooldDown", shootCooldown/(1 * playerAttributes.FireRate));
         }
     }
 

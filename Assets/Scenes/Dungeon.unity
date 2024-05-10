@@ -1699,7 +1699,7 @@ MonoBehaviour:
   startRoomIconSprite: {fileID: 21300000, guid: 5d3af7e472b55cf4c8f1fe8be33ef230, type: 3}
   shopRoomIconSprite: {fileID: 21300000, guid: 27afa4267b68ffc4fb545dd3360d6aa3, type: 3}
   bossRoomIconSprite: {fileID: 21300000, guid: f240924923c5f8246b24ef9fe5bcbc5c, type: 3}
-  unknownRoomSprite: {fileID: 0}
+  unknownRoomSprite: {fileID: 21300000, guid: 9f89a80db7b9df742b39863ffc4f0a49, type: 3}
   iconSize: 10
   roomSpacing: 20
   dungeonGenerator: {fileID: 1527894856}
@@ -1955,6 +1955,10 @@ PrefabInstance:
     - target: {fileID: 3820755006469177855, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
       propertyPath: m_Name
       value: CameraHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820755006469177855, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8526364038659339696, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3539,7 +3543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomSpace: 50
-  roomCount: 9
+  roomCount: 11
   shopRoomCount: 1
   bossRoomCount: 1
   startRoomPrefabs:
@@ -3554,6 +3558,8 @@ MonoBehaviour:
   shopPrefabs:
   - {fileID: 6196426667538248293, guid: 67dc316a507c2ea48951e4cd2021d8af, type: 3}
   - {fileID: 6196426667538248293, guid: 9652b63be6a915e4cbf9fe7677747766, type: 3}
+  - {fileID: 6196426667538248293, guid: b4b4b41d09a48d247b59f1727a81da1f, type: 3}
+  - {fileID: 6196426667538248293, guid: eb12f75df4aa6b245b684d47723f0533, type: 3}
   navigationBake: {fileID: 646683195}
 --- !u!114 &1527894857
 MonoBehaviour:

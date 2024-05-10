@@ -9,12 +9,14 @@ public class Slash : Projectile
     public float animationSpeed;
     private Rigidbody2D rb;
     private Animator animator;
+    PlayerAttributesController playerAttributesController;
     void Start()
     {
+        playerAttributesController = GameObject.Find("Player").GetComponent<PlayerAttributesController>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        rb.velocity = transform.up * moveSpeed;
+        rb.velocity = transform.up * (moveSpeed * playerAttributesController.Range);
         animator.speed = animationSpeed;
     }
 
@@ -28,7 +30,8 @@ public class Slash : Projectile
         EntityController<float> entityController;
         if (obj.TryGetComponent<EntityController<float>>(out entityController))
         {
-            entityController.dealDamage(this.baseDamage);
+            
+            entityController.dealDamage(playerAttributesController.Damage);
         }
     }
 
