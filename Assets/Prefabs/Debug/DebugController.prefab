@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "as\u200B"
+  m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -254,8 +254,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7493927728284844361}
   m_HandleRect: {fileID: 8213468630220416146}
   m_Direction: 2
-  m_Value: 0.029069178
-  m_Size: 0.15515523
+  m_Value: 1
+  m_Size: 0.8417134
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -326,57 +326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis nisi
-    tellus. Ut vulputate porttitor malesuada. Ut dapibus mi sed purus blandit lobortis.
-    Quisque ultricies auctor lorem vel bibendum. Proin tempor orci mauris, nec dictum
-    turpis sagittis et. Cras vitae tempus eros, sit amet eleifend elit. Ut volutpat
-    quis enim quis vulputate. Etiam sed dolor at metus elementum porttitor ac at
-    ligula. Etiam non risus ac magna rutrum pharetra et id augue. Sed faucibus dolor
-    felis, vitae malesuada eros vestibulum mattis. Nam vehicula lectus erat, hendrerit
-    feugiat mauris hendrerit ut.
-
-    
-
-    Donec faucibus quam id leo consequat,
-    eget mattis mauris maximus. Sed lacinia nunc eu diam elementum, eu pretium tortor
-    mattis. Nullam ipsum massa, ultrices et tempor a, aliquet eu arcu. Fusce lacus
-    urna, accumsan et diam non, viverra dapibus ex. Donec pellentesque euismod purus
-    quis pulvinar. Ut ornare egestas condimentum. Sed id mauris ac nisi lacinia pulvinar.
-
-    
-
-    Class
-    aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-    Phasellus eros odio, aliquam interdum accumsan sed, elementum a elit. Nunc consectetur
-    turpis volutpat egestas pellentesque. Nunc interdum vulputate mi ut sodales.
-    Proin eleifend lectus ipsum, luctus cursus metus eleifend non. Quisque sodales
-    vitae augue eget pretium. Cras pharetra turpis in urna dictum vestibulum. Nunc
-    et tellus consectetur, consectetur turpis at, vulputate diam.
-
-    
-
-    Nullam
-    efficitur condimentum sapien ac suscipit. Sed ut convallis urna. Curabitur feugiat
-    vitae ligula eu semper. Integer congue sollicitudin sagittis. Aliquam eu dapibus
-    lacus, sit amet posuere nulla. Nunc non interdum orci, a malesuada nisl. Quisque
-    tellus urna, tempor in elementum eu, lacinia eget ex. Donec quam odio, pharetra
-    vitae gravida id, fermentum non metus. Curabitur aliquam molestie ullamcorper.
-    Morbi tincidunt accumsan nisi, ut suscipit metus ultrices nec. In lacus tortor,
-    interdum sit amet varius eu, aliquam sed diam. Nulla ullamcorper, lorem at finibus
-    varius, tellus tortor eleifend neque, volutpat vestibulum tellus nibh eu ipsum.
-    Nullam ut velit eu arcu molestie condimentum. In quis luctus massa, in luctus
-    arcu.
-
-    
-
-    Vestibulum pretium ultrices purus quis maximus. Donec porttitor
-    leo ac purus scelerisque, vitae dapibus ex bibendum. Nulla luctus tortor neque,
-    et fermentum eros condimentum non. Vivamus euismod nisl at gravida lobortis.
-    Morbi posuere feugiat quam, eget dapibus dolor ultricies non. Phasellus pretium
-    metus lacus, nec scelerisque dolor eleifend non. Integer ultricies non nunc at
-    suscipit. Etiam sit amet lectus velit. Aenean sit amet ligula ultricies, porta
-    enim quis, tempor massa. Nullam eleifend diam id lectus tempor, nec porttitor
-    diam sodales. Curabitur nec libero posuere, finibus nulla non, pulvinar felis. '
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -771,7 +721,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3488720275836826778}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -784,7 +734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter text...
+  m_text: Enter command...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1083,7 +1033,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4294250110925039271}
   m_HandleRect: {fileID: 4102699444818097930}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1138,7 +1088,7 @@ Canvas:
   m_GameObject: {fileID: 5298584901601208330}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1150,7 +1100,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 500
   m_TargetDisplay: 0
 --- !u!114 &3516431879000628717
 MonoBehaviour:
@@ -1488,7 +1438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -124.39993}
+  m_AnchoredPosition: {x: -0.000043034554, y: -107.4}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &7054235886021728960
@@ -1507,7 +1457,7 @@ MonoBehaviour:
     m_Left: 14
     m_Right: 33
     m_Top: 0
-    m_Bottom: 20
+    m_Bottom: 30
   m_ChildAlignment: 6
   m_Spacing: 13.13
   m_ChildForceExpandWidth: 1
@@ -1694,7 +1644,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: as
+  m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0

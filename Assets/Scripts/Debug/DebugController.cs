@@ -4,25 +4,24 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(CommandHandler))]
 public class DebugController : MonoBehaviour
 {
     [SerializeField] private TMP_Text textOuptut;
     [SerializeField] private TMP_InputField textInput;
 
     private Controls controls;
-
     private InputAction Enter;
     private InputAction OpenConsole;
-
     private Transform Canvas;
-
+    private CommandHandler commandHandler;
 
     private void Awake()
     {
         controls = new Controls();
         Canvas=transform.Find("Canvas");
         Canvas.gameObject.active = false;
-       
+        commandHandler = GetComponent<CommandHandler>();
     }
 
     void OnEnable()
@@ -60,6 +59,7 @@ public class DebugController : MonoBehaviour
             string input = textInput.text;
             textInput.text = "";
             textOuptut.text +="\n"+ input;
+            textOuptut.text += "\n" + commandHandler.handleCommand(input);
             textInput.ActivateInputField();
         }
     }
