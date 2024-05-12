@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControler : MonoBehaviour
+public class PlayerControler : MonoBehaviour, Ipausable
 {
 
     private Controls controls;
@@ -195,5 +195,15 @@ public class PlayerControler : MonoBehaviour
     public void unlockInput()
     {
         controls.Enable();
+    }
+
+    public void pause()
+    {
+        controls.Player.Disable();
+    }
+
+    public void resume()
+    {
+        controls.Player.Enable();
     }
 }

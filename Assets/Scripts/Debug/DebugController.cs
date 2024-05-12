@@ -46,9 +46,12 @@ public class DebugController : MonoBehaviour
         if (Canvas.gameObject.active)
         {
             textInput.ActivateInputField();
+            GameControler.instance.pauseGame();
         }
         else
         {
+            GameControler.instance.resumeGame();
+
             textInput.DeactivateInputField();
         }
     }
