@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class CommandHandler : MonoBehaviour
 {
     private HashSet<CommandBase> _commands;
     private CommandHelper commandHelper;
+    [SerializeField] private LayerMask npcLayerMask;
+
     private void Awake()
     {
         commandsSetup();
@@ -127,7 +130,64 @@ public class CommandHandler : MonoBehaviour
             }
             return "ghost mode OFF";
         }));
+        _commands.Add(new ActionCommand("flash", "sets speed of player to 3", "ghost", () =>
+        {
+            return commandHelper.setAttribute(3, PlayerAttributesController.attributes.SPEED);
+        }));
 
+
+        _commands.Add(new ArgumentCommand<float>("setspeed", "set attribute speed", "setspeed {amount}", (float val) =>
+        {
+            return commandHelper.setAttribute(val, PlayerAttributesController.attributes.SPEED);
+            }));
+        _commands.Add(new ArgumentCommand<float>("sethealth", "set player health", "sethealth {amount}", (float val) =>
+        {
+            return commandHelper.setAttribute(val, PlayerAttributesController.attributes.HEALTH);
+        }));
+        _commands.Add(new ArgumentCommand<float>("setdamage", "sets how much player deals damage", "setdamage {amount}", (float val) =>
+        {
+            return commandHelper.setAttribute(val, PlayerAttributesController.attributes.DAMAGE);
+        }));
+        _commands.Add(new ArgumentCommand<float>("setfirerate", "sets how fast player is able to attack", "setfirerate {amount}", (float val) =>
+        {
+            return commandHelper.setAttribute(val, PlayerAttributesController.attributes.FIRE_RATE);
+        }));
+
+        _commands.Add(new ActionCommand("heal", "heals player to max health", "heal", () =>
+        {
+            commandHelper.getPlayer().GetComponent<PlayerAttributesController>().resetHealth();
+            return "healed player fully";
+        }));
+        _commands.Add(new ActionCommand("skip", "teleports player to boss room", "skip", () =>
+        {
+            
+            return "not impemented";
+        }));
+        _commands.Add(new ActionCommand("alohomora", "opens all doors in current roomo", "alohomora", () =>
+        {
+
+            return "not impemented";
+        }));
+        _commands.Add(new ActionCommand("haggle", "resets trades with nearby npc", "haggle", () =>
+        {
+            Collider2D[] objectsNearby=new Collider2D[20];
+           ContactFilter2D contactFilter = new ContactFilter2D();
+           contactFilter.layerMask = npcLayerMask;
+           int amt= Physics2D.OverlapCircle(commandHelper.getPlayer().transform.position, 5, contactFilter, objectsNearby);
+           Debug.Log("player postion nearby " + commandHelper.getPlayer().transform.position);
+            Debug.Log("Object nearby " + amt);
+           amt = 0;
+            foreach (Collider2D var in objectsNearby)
+            {
+                NpcTrader trader;
+                if (var!=null && var.CompareTag("NPC") && var.TryGetComponent<NpcTrader>(out trader))
+                {
+                    amt++;
+                    trader.resetItems(); ;
+                }
+            }
+            return "resets trades for "+ amt+" npcs";
+        }));
     }
 
 
@@ -135,8 +195,8 @@ public class CommandHandler : MonoBehaviour
     public string handleCommand(string input)
     {
         input=input.ToLower();
-        try
-        {
+        //try
+        //{
             CommandBase command;
             string[] splits = input.Split(' ');
             if (_commands.TryGetValue(new CommandBase(splits[0]), out command))
@@ -150,14 +210,18 @@ public class CommandHandler : MonoBehaviour
                 {
                     return (command as ArgumentCommand<int>).invoke(Int32.Parse(splits[1]));
                 }
+                if (command as ArgumentCommand<float> != null)
+                {
+                    return (command as ArgumentCommand<float>).invoke(float.Parse(splits[1]));
+                }
             }
             
 
-    }
-        catch (Exception e)
-        {
-            return "Exception: "+ e.Message;
-        }
+    //}
+    //    catch (Exception e)
+    //    {
+    //        return "Exception: "+ e.Message;
+    //    }
 
 return "command not found, you can enter help";
     }

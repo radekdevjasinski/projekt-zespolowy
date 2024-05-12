@@ -106,10 +106,10 @@ public class NpcTrader : NPCConversation
     {
         if(parent.childCount>0)
         {
-            Transform[] children = parent.GetComponentsInChildren<Transform>();
-            foreach (Transform child in children)
+           
+            foreach (Transform child in parent)
             {
-                Destroy(child);
+                Destroy(child.gameObject);
             }
         }
     }

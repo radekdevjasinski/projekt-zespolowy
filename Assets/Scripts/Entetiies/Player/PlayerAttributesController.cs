@@ -200,7 +200,7 @@ public class PlayerAttributesController : MonoBehaviour
 
 }
 
-    private void setAttrib(attributes attrib, float val)
+    public void setAttrib(attributes attrib, float val)
     {
         switch (attrib)
         {
@@ -218,7 +218,7 @@ public class PlayerAttributesController : MonoBehaviour
         }
     }
 
-    private float getAtrib(attributes attrib)
+    public float getAtrib(attributes attrib)
     {
         switch (attrib)
         {
@@ -235,4 +235,6 @@ public class PlayerAttributesController : MonoBehaviour
         }
         return -1;
     }
+
+
 }
