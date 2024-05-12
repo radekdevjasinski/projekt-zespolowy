@@ -61,7 +61,7 @@ public class DebugController : MonoBehaviour
             string input = textInput.text;
             textInput.text = "";
             textOuptut.text +="\n"+ input;
-            textOuptut.text += "\n" + commandHandler.handleCommand(input)+'\n' ;
+            textOuptut.text += "\n" + commandHandler.handleCommand(input) ;
             LayoutRebuilder.ForceRebuildLayoutImmediate(scrollView.content);
             textInput.ActivateInputField();
         }

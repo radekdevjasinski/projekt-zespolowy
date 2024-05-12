@@ -108,7 +108,25 @@ public class CommandHandler : MonoBehaviour
 
         }));
 
-
+        _commands.Add(new ActionCommand("god", "makes player invurnable/vurnable to damage", "godmode", () =>
+        {
+            commandHelper.getPlayer().GetComponent<PlayerItemsController>().GetComponent<PlayerEntityController>().setIsInvurnable(!commandHelper.getPlayer().GetComponent<PlayerItemsController>().GetComponent<PlayerEntityController>().getIsInvurnable());
+            if (commandHelper.getPlayer().GetComponent<PlayerItemsController>().GetComponent<PlayerEntityController>()
+                .getIsInvurnable())
+            {
+                return "god mode ON";
+            }
+            return "god mode OFF";
+        }));
+        _commands.Add(new ActionCommand("ghost", "removes collsion from player", "ghost", () =>
+        {
+            commandHelper.getPlayer().GetComponent<Collider2D>().enabled = !commandHelper.getPlayer().GetComponent<Collider2D>().enabled;
+            if (!commandHelper.getPlayer().GetComponent<Collider2D>().enabled)
+            {
+                return "ghost mode ON";
+            }
+            return "ghost mode OFF";
+        }));
 
     }
 

@@ -101,6 +101,9 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
 
     public abstract void reviceDamage(TH damage, Vector2 damageDirection);
     public abstract void reviceDamage(TH damage);
-
+    public bool getIsInvurnable()
+    {
+        return this.invulnerable;
+    }
 
 }
