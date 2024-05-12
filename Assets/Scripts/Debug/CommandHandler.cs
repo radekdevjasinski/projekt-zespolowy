@@ -158,16 +158,7 @@ public class CommandHandler : MonoBehaviour
             commandHelper.getPlayer().GetComponent<PlayerAttributesController>().resetHealth();
             return "healed player fully";
         }));
-        _commands.Add(new ActionCommand("skip", "teleports player to boss room", "skip", () =>
-        {
-            
-            return "not impemented";
-        }));
-        _commands.Add(new ActionCommand("alohomora", "opens all doors in current roomo", "alohomora", () =>
-        {
 
-            return "not impemented";
-        }));
         _commands.Add(new ActionCommand("haggle", "resets trades with nearby npc", "haggle", () =>
         {
             Collider2D[] objectsNearby=new Collider2D[20];
@@ -188,6 +179,22 @@ public class CommandHandler : MonoBehaviour
             }
             return "resets trades for "+ amt+" npcs";
         }));
+
+
+
+        // currently not implented due to problem with dungeon generator
+
+        //_commands.Add(new ActionCommand("skip", "teleports player to boss room", "skip", () =>
+        //{
+
+        //    return "not impemented";
+        //}));
+        //_commands.Add(new ActionCommand("alohomora", "opens all doors in current roomo", "alohomora", () =>
+        //{
+
+        //    return "not impemented ";
+        //}));
+
     }
 
 
