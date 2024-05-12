@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CommandHandler))]
 public class DebugController : MonoBehaviour
 {
     [SerializeField] private TMP_Text textOuptut;
     [SerializeField] private TMP_InputField textInput;
-
+    [SerializeField] private ScrollRect scrollView;
     private Controls controls;
     private InputAction Enter;
     private InputAction OpenConsole;
@@ -22,6 +23,7 @@ public class DebugController : MonoBehaviour
         Canvas=transform.Find("Canvas");
         Canvas.gameObject.active = false;
         commandHandler = GetComponent<CommandHandler>();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(Canvas as RectTransform);
     }
 
     void OnEnable()
@@ -60,8 +62,7 @@ public class DebugController : MonoBehaviour
             textInput.text = "";
             textOuptut.text +="\n"+ input;
             textOuptut.text += "\n" + commandHandler.handleCommand(input)+'\n' ;
-        
-            textOuptut.SetText(textOuptut.text);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(scrollView.content);
             textInput.ActivateInputField();
         }
     }

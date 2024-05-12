@@ -29,7 +29,7 @@ public class CommandBase
 
     public override string ToString()
     {
-        return id + " - " + description + "\n[ " + usage + " ]";
+        return id + " - " + description + "\n[ " + usage + " ]\n";
     }
 
     public override int GetHashCode()

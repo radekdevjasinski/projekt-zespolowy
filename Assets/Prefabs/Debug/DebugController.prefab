@@ -592,7 +592,19 @@ MonoBehaviour:
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6648095099899077340}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
 --- !u!1 &3478858470397756648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOuptut: {fileID: 1497237121475253752}
   textInput: {fileID: 4805172530669128993}
+  scrollView: {fileID: 61796145671067947}
 --- !u!114 &4881307000339160448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1483,7 +1496,7 @@ MonoBehaviour:
     m_Left: 14
     m_Right: 33
     m_Top: 0
-    m_Bottom: 30
+    m_Bottom: 0
   m_ChildAlignment: 6
   m_Spacing: 13.13
   m_ChildForceExpandWidth: 1
