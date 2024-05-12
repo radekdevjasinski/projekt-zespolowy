@@ -59,7 +59,9 @@ public class DebugController : MonoBehaviour
             string input = textInput.text;
             textInput.text = "";
             textOuptut.text +="\n"+ input;
-            textOuptut.text += "\n" + commandHandler.handleCommand(input);
+            textOuptut.text += "\n" + commandHandler.handleCommand(input)+'\n' ;
+        
+            textOuptut.SetText(textOuptut.text);
             textInput.ActivateInputField();
         }
     }

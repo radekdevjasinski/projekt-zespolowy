@@ -30,15 +30,85 @@ public class CommandHandler : MonoBehaviour
             return sb.ToString();
         }));
 
-        _commands.Add(new ActionCommand("help", "Prints list of all possible commands", "help", () =>
+        _commands.Add(new ActionCommand("cashback", "adds 10 coins to player","cashback", () =>
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (CommandBase com in _commands)
-            {
-                sb.Append(com + "\n");
-            }
-            return sb.ToString();
+            commandHelper.getPlayer().GetComponent<PlayerItemsController>().addCoins(10);
+            return "Added 10 coins";
         }));
+        _commands.Add(new ActionCommand("nobel", "adds 10 bombs to player", "nobel", () =>
+        {
+            commandHelper.getPlayer().GetComponent<PlayerItemsController>().addBomb(10);
+            return "Added 10 bombs";
+        }));
+        _commands.Add(new ActionCommand("thief", "adds 10 keys to player", "thief", () =>
+        {
+            commandHelper.getPlayer().GetComponent<PlayerItemsController>().addKey(10);
+            return "Added 10 keys";
+        }));
+        _commands.Add(new ActionCommand("mercy", "adds 10 health potions to player", "mercy", () =>
+        {
+            commandHelper.getPlayer().GetComponent<PlayerItemsController>().addHelathPotion(10);
+            return "Added 10 keys";
+        }));
+
+        _commands.Add(new ArgumentCommand<int>("setcoins", "sets amount of coins Player has", "setcoins {amount}", (int val) =>
+        {
+            if (val >= 0)
+            {
+                commandHelper.getPlayer().GetComponent<PlayerItemsController>().addCoins(val-commandHelper.getPlayer().GetComponent<PlayerItemsController>().getCoinsAmount());
+                return "set coins to "+ val;
+
+            }
+            else
+            {
+                return "value should not be less tahn zero";
+            }
+
+        }));
+        _commands.Add(new ArgumentCommand<int>("setbombs", "sets amount of coins bombs has", "setbombs {amount}", (int val) =>
+        {
+            if (val >= 0)
+            {
+                commandHelper.getPlayer().GetComponent<PlayerItemsController>().addBomb(val - commandHelper.getPlayer().GetComponent<PlayerItemsController>().getBombs());
+                return "set bombs to " + val;
+
+            }
+            else
+            {
+                return "value should not be less tahn zero";
+            }
+
+        }));
+        _commands.Add(new ArgumentCommand<int>("setkeys", "sets amount of keys Player has", "setkeys {amount}", (int val) =>
+        {
+            if (val >= 0)
+            {
+                commandHelper.getPlayer().GetComponent<PlayerItemsController>().addKey(val - commandHelper.getPlayer().GetComponent<PlayerItemsController>().getKeys());
+                return "set keys to " + val;
+
+            }
+            else
+            {
+                return "value should not be less tahn zero";
+            }
+
+        }));
+        _commands.Add(new ArgumentCommand<int>("setpotions", "sets amount of health potions Player has", "setpotions {amount}", (int val) =>
+        {
+            if (val >= 0)
+            {
+                commandHelper.getPlayer().GetComponent<PlayerItemsController>().addHelathPotion(val - commandHelper.getPlayer().GetComponent<PlayerItemsController>().getHelathPotion());
+                return "set health potions to " + val;
+
+            }
+            else
+            {
+                return "value should not be less tahn zero";
+            }
+
+        }));
+
+
 
     }
 
@@ -50,15 +120,20 @@ public class CommandHandler : MonoBehaviour
         try
         {
             CommandBase command;
-            if (_commands.TryGetValue(new CommandBase(input), out command))
+            string[] splits = input.Split(' ');
+            if (_commands.TryGetValue(new CommandBase(splits[0]), out command))
             {
                 if (command as ActionCommand != null)
                 {
                     return (command as ActionCommand).invoke();
                 }
 
-                Debug.Log("foudn command");
-        }
+                if (command as ArgumentCommand<int> != null)
+                {
+                    return (command as ArgumentCommand<int>).invoke(Int32.Parse(splits[1]));
+                }
+            }
+            
 
     }
         catch (Exception e)
