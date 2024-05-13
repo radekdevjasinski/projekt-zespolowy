@@ -12,14 +12,17 @@ public class CommandHandler : MonoBehaviour
 {
     private HashSet<CommandBase> _commands;
     private CommandHelper commandHelper;
+    private IEnumerator corutine;
     [SerializeField] private LayerMask npcLayerMask;
     [SerializeField] private LayerMask doorsMask;
+    private DebugController debugController;
     private void Awake()
     {
         commandsSetup();
         commandHelper = GetComponent<CommandHelper>();
-    }
+         }
 
+ 
     private void commandsSetup()
     {
         _commands=new HashSet<CommandBase>();
@@ -153,13 +156,11 @@ public class CommandHandler : MonoBehaviour
         {
             return commandHelper.setAttribute(val, PlayerAttributesController.attributes.FIRE_RATE);
         }));
-
         _commands.Add(new ActionCommand("heal", "heals player to max health", "heal", () =>
         {
             commandHelper.getPlayer().GetComponent<PlayerAttributesController>().resetHealth();
             return "healed player fully";
         }));
-
         _commands.Add(new ActionCommand("haggle", "resets trades with nearby npc", "haggle", () =>
         {
             Collider2D[] objectsNearby=new Collider2D[20];
@@ -181,16 +182,6 @@ public class CommandHandler : MonoBehaviour
             }
             return "resets trades for "+ amt+" npcs";
         }));
-
-
-
-        // currently not implented due to problem with dungeon generator
-
-        //_commands.Add(new ActionCommand("skip", "teleports player to boss room", "skip", () =>
-        //{
-
-        //    return "not impemented";
-        //}));
         _commands.Add(new ActionCommand("alohomora", "opens nearby doors", "alohomora", () =>
         {
             Collider2D[] objectsNearby = new Collider2D[20];
@@ -222,6 +213,23 @@ public class CommandHandler : MonoBehaviour
              
             }
             return "opened " + doorsamt + " doors";
+        }));
+
+        _commands.Add(new ActionCommand("l", "teleport player to left room", "L/l", () =>
+        {
+            return commandHelper.teleportPlayer(new Vector2Int(-1, 0));
+        }));
+        _commands.Add(new ActionCommand("r", "teleport player to right room", "R/r", () =>
+        {
+            return commandHelper.teleportPlayer(new Vector2Int(1, 0));
+        }));
+        _commands.Add(new ActionCommand("u", "teleport player to up room", "U/u", () =>
+        {
+            return commandHelper.teleportPlayer(new Vector2Int(0, 1));
+        }));
+        _commands.Add(new ActionCommand("d", "teleport player to down room", "D/d", () =>
+        {
+            return commandHelper.teleportPlayer(new Vector2Int(0, -1));
         }));
 
     }
@@ -261,5 +269,7 @@ public class CommandHandler : MonoBehaviour
 
 return "command not found, you can enter help";
     }
+
+   
 
 }

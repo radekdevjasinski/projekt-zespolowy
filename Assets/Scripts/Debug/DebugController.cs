@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(CommandHandler))]
+
 public class DebugController : MonoBehaviour
 {
     [SerializeField] private TMP_Text textOuptut;
@@ -42,17 +42,16 @@ public class DebugController : MonoBehaviour
     private void onOpenConsole()
     {
         Debug.Log("Open console");
-        Canvas.gameObject.active = !Canvas.gameObject.active;
-        if (Canvas.gameObject.active)
+       
+        if (!Canvas.gameObject.active)
         {
+            Canvas.gameObject.active = true;
             textInput.ActivateInputField();
             GameControler.instance.pauseGame();
         }
         else
         {
-            GameControler.instance.resumeGame();
-
-            textInput.DeactivateInputField();
+           hideConsole();
         }
     }
 
@@ -76,5 +75,10 @@ public class DebugController : MonoBehaviour
 
         
     }
-
+    public void hideConsole()
+    {
+        GameControler.instance.resumeGame();
+        Canvas.gameObject.active = false;
+        textInput.DeactivateInputField();
+    }
 }
