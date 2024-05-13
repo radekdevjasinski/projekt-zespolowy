@@ -598,6 +598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blast
       objectReference: {fileID: 0}
+    - target: {fileID: 1687361918987310775, guid: 80bf835b798aac34c96c7680dcec9755, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5471927175661593042, guid: 80bf835b798aac34c96c7680dcec9755, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.36
@@ -5360,7 +5364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.3831
+      value: -107.39927
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
