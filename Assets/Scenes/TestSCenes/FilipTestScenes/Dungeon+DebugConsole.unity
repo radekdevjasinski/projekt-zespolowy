@@ -3594,9 +3594,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomSpace: 50
-  roomCount: 0
-  shopRoomCount: 5
-  bossRoomCount: 0
+  roomCount: 10
+  shopRoomCount: 0
+  bossRoomCount: 1
   startRoomPrefabs:
   - {fileID: 5690942790177299855, guid: fed5116736d8a4c40982a3b550f73dcf, type: 3}
   roomPrefabs:
@@ -5360,7 +5360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.39998
+      value: -107.40001
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5393,6 +5393,10 @@ PrefabInstance:
     - target: {fileID: 2604264068697854038, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000017852746
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726447872462975134, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
+      propertyPath: doorsMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2804233077256087179, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y

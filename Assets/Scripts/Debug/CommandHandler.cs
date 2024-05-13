@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Localization.SmartFormat;
 using Exception = System.Exception;
 [RequireComponent(typeof(CommandHelper))]
 public class CommandHandler : MonoBehaviour
@@ -12,7 +13,7 @@ public class CommandHandler : MonoBehaviour
     private HashSet<CommandBase> _commands;
     private CommandHelper commandHelper;
     [SerializeField] private LayerMask npcLayerMask;
-
+    [SerializeField] private LayerMask doorsMask;
     private void Awake()
     {
         commandsSetup();
@@ -164,6 +165,7 @@ public class CommandHandler : MonoBehaviour
             Collider2D[] objectsNearby=new Collider2D[20];
            ContactFilter2D contactFilter = new ContactFilter2D();
            contactFilter.layerMask = npcLayerMask;
+    
            int amt= Physics2D.OverlapCircle(commandHelper.getPlayer().transform.position, 5, contactFilter, objectsNearby);
            Debug.Log("player postion nearby " + commandHelper.getPlayer().transform.position);
             Debug.Log("Object nearby " + amt);
@@ -189,11 +191,38 @@ public class CommandHandler : MonoBehaviour
 
         //    return "not impemented";
         //}));
-        //_commands.Add(new ActionCommand("alohomora", "opens all doors in current roomo", "alohomora", () =>
-        //{
-
-        //    return "not impemented ";
-        //}));
+        _commands.Add(new ActionCommand("alohomora", "opens nearby doors", "alohomora", () =>
+        {
+            Collider2D[] objectsNearby = new Collider2D[20];
+            ContactFilter2D contactFilter = new ContactFilter2D();
+            contactFilter.layerMask = doorsMask;
+            contactFilter.useTriggers = true;
+            int amt = Physics2D.OverlapCircle(commandHelper.getPlayer().transform.position, 5, contactFilter, objectsNearby);
+          
+          Debug.Log("Object nearby " + amt);
+          int doorsamt = 0;
+          
+            for (int i= 0; i < amt; i++)
+            {
+                Collider2D var= objectsNearby[i];
+                Debug.Log("Object nearby " + var!=null?var.name:"null");
+                Door doors;
+                Teleport teleport;
+                
+                if (var != null && var.TryGetComponent<Teleport>(out teleport))
+                {
+                    teleport.active = true;
+                    doorsamt++;
+                   
+                }
+                if (var != null && var.TryGetComponent<Door>(out doors))
+                {
+                 doors.OpenDoor();
+                }
+             
+            }
+            return "opened " + doorsamt + " doors";
+        }));
 
     }
 
