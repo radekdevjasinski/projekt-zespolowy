@@ -200,15 +200,9 @@ public class CommandHandler : MonoBehaviour
                 Door doors;
                 Teleport teleport;
                 
-                if (var != null && var.TryGetComponent<Teleport>(out teleport))
-                {
-                    teleport.active = true;
-                    doorsamt++;
-                   
-                }
                 if (var != null && var.TryGetComponent<Door>(out doors))
                 {
-                 doors.OpenDoor();
+                 doors.openDoor();
                 }
              
             }

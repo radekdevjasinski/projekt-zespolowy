@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor;
 using UnityEngine;
@@ -13,9 +17,8 @@ public enum RoomType
     SHOPROOM,
     BOSSROOM
 }
-public class DungeonRoom
+public class DungeonRoom 
 {
-    public int id;
     public Vector2Int pos;
     public RoomType roomType;
     public GameObject gameObject;
@@ -23,13 +26,13 @@ public class DungeonRoom
     public bool visited;
 
 
-    public DungeonRoom(int id, Vector2Int pos, RoomType roomType)
+    public DungeonRoom( Vector2Int pos, RoomType roomType)
     {
-        this.id = id;
         this.pos = pos;
         this.roomType = roomType;
         enemiesCount = 0;
         visited = false;
+        gameObject = null;
     }
 
     public List<Vector2Int> freeSpots(List<DungeonRoom> rooms)
@@ -53,62 +56,58 @@ public class DungeonRoom
         }
         return free;
     }
-    public void OpenRightDoors(List<DungeonRoom> rooms)
-    {
-        if (gameObject != null)
-        {
-            Vector2Int[] directions = { new Vector2Int(-1, 0), new Vector2Int(0, 1), new Vector2Int(1, 0), new Vector2Int(0, -1) };
-            Door[] doors = gameObject.transform.GetComponentsInChildren<Door>();
-            Teleport[] triggers = gameObject.transform.GetComponentsInChildren<Teleport>();
-            for (int i = 0; i < directions.Length; i++)
-            {
-                bool taken = false;
-                for (int j = 0; j < rooms.Count; j++)
-                {
-                    if (this.pos + directions[i] == rooms[j].pos)
-                    {
-                        taken = true;
-                    }
-                }
-                if (taken)
-                {
-                    doors[i].OpenDoor();
-                    triggers[i].active = true;
-                    doors[i].gameObject.GetComponent<Collider2D>().enabled = false;
 
-                }
-                else
-                {
-                    doors[i].HideDoor();
-                    triggers[i].active = false;
-                    doors[i].gameObject.GetComponent<Collider2D>().enabled = true;
-                }
-            }
-        }
-    }
-    public void CloseAllDoors()
-    {
-        Door[] doors = gameObject.transform.GetComponentsInChildren<Door>();
-        Teleport[] triggers = gameObject.transform.GetComponentsInChildren<Teleport>();
-        for (int i = 0; i < doors.Length; i++)
-        {
-            if (doors[i].doorState == DoorState.OPENED)
-            {
-                doors[i].CloseDoor();
-                triggers[i].active = false;
-                doors[i].gameObject.GetComponent<Collider2D>().enabled = true;
-            }
-        }
-    }
+
     public void CountEnemies()
     {
         AddEnemy[] enemies = gameObject.transform.GetComponentsInChildren<AddEnemy>();
         enemiesCount = enemies.Length;
     }
+
+    public override int GetHashCode()
+    {
+        return pos.GetHashCode();
+    }
+
+    public override bool Equals(object obj)
+    {
+        return base.Equals(obj);
+    }
+
+    public override string ToString()
+    {
+        return this.pos+": "+this.roomType;
+    }
+
+
 }
+
 public class DungeonGenerator : MonoBehaviour
 {
+    private static DungeonGenerator _instance;
+
+    public static DungeonGenerator instance
+    {
+        get => _instance;
+    }
+
+    private void Awake()
+    {
+        if (_instance != null)
+            throw new Exception("thereshould be only one instanece of dungeon geneartor");
+        _instance = this;
+    }
+
+
     public int roomSpace = 25;
+
+    private static readonly List<Vector2Int> directions = new List<Vector2Int>
+    {
+        new Vector2Int(0, 1),
+        new Vector2Int(-1, 0),
+        new Vector2Int(0, -1),
+        new Vector2Int(1, 0)
+    };
 
     public int roomCount;
     public int shopRoomCount;
@@ -119,104 +118,153 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject[] bossPrefabs;
     public GameObject[] shopPrefabs;
 
-    public List<DungeonRoom> rooms = new List<DungeonRoom>();
+    public Dictionary<Vector2Int,DungeonRoom> rooms = new Dictionary<Vector2Int, DungeonRoom>();
+    public HashSet<Vector2Int> freeSpots = new HashSet<Vector2Int>(){new Vector2Int(0,0)};
     public NavigationBake navigationBake;
+
+    public void addRoomBase(Vector2Int postion, RoomType type, bool visited = false)
+    {
+    
+        freeSpots.Remove(postion);
+        rooms.Add(postion,new DungeonRoom(postion, type) { visited = visited });
+        foreach (Vector2Int dir in directions)
+        {
+            if (!rooms.ContainsKey(dir+ postion))
+            {
+                freeSpots.Add(dir + postion);
+            }
+        }
+        //Debug.Log("free spts: " + string.Join(", ", freeSpots));
+        //Debug.Log("rooms: " + string.Join(", ",rooms.Keys));
+    }
+
 
     void Start()
     {
         int allRooms = roomCount + shopRoomCount + bossRoomCount;
-        List<Vector2Int> freeRooms;
 
-
-        rooms.Add(new DungeonRoom(0, new Vector2Int(0, 0), RoomType.STARTROOM) { visited = true });
-
-
+        addRoomBase(new Vector2Int(0, 0), RoomType.STARTROOM, true);
+ 
         for (int i = 0; i < allRooms; i++)
         {
-            freeRooms = CalculateFreeRooms();
+            Debug.Log("Adding room nr: "+ i);
             if (roomCount > 0)
             {
-                rooms.Add(new DungeonRoom(roomCount, freeRooms[UnityEngine.Random.Range(0, freeRooms.Count)], RoomType.ROOM));
+                Debug.Log("Adding room : room");
+                addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)),RoomType.ROOM);
                 roomCount--;
             }
             else if (shopRoomCount > 0)
             {
-                rooms.Add(new DungeonRoom(roomCount, freeRooms[UnityEngine.Random.Range(0, freeRooms.Count)], RoomType.SHOPROOM));
+                Debug.Log("Adding room : shop");
+                addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)), RoomType.SHOPROOM);
+
                 shopRoomCount--;
             }
             else if (bossRoomCount > 0)
             {
-                AddBossRoom(freeRooms);
+                Debug.Log("Adding room : boss");
+                Vector2Int positon = getFarthestOpenSpot();
+                addRoomBase(positon, RoomType.BOSSROOM);
                 bossRoomCount--;
             }
         }
         DrawRooms();
-        foreach (DungeonRoom room in rooms)
-        {
-            room.OpenRightDoors(rooms);
-        }
+        setupRooms();
         navigationBake.BakeNavMesh();
     }
 
+
+
+    void DrawRooms()
+    {
+
+        List<Vector2Int> keys = rooms.Keys.ToList();
+        //creates rooms
+        foreach (Vector2Int key in keys)
+        {
+            DungeonRoom item=rooms[key];
+            Debug.Log("Drawign room: "+ item);
+            GameObject roomPrefab= startRoomPrefabs[0];
+            switch (item.roomType)
+            {
+              case RoomType.STARTROOM:
+                  roomPrefab = startRoomPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)];
+
+                    break;
+                case RoomType.ROOM:
+                    roomPrefab = roomPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)];
+                    break;
+                case RoomType.BOSSROOM:
+                    roomPrefab = bossPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)]; break;
+                case RoomType.SHOPROOM:
+                    roomPrefab = shopPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)];
+                    break;
+            }
+            item.gameObject = Instantiate(roomPrefab, this.gameObject.transform);
+            item.gameObject.transform.position = new Vector3(item.pos.x * roomSpace, item.pos.y * roomSpace, 0);
+            rooms[key] = item;
+        }
+    }
+
+    void setupRooms()
+    {
+        List<Vector2Int> keys = rooms.Keys.ToList();
+        //setupRooms
+        foreach (Vector2Int key in keys)
+        {
+            DungeonRoom item = rooms[key];
+            item.gameObject.GetComponent<Room>().setupNewRoom(getRoomsAround(key),key);
+        }
+    }
+
+    //return table with room Configuration around that room in order left, up , right, down
+    DungeonRoom[] getRoomsAround(Vector2Int postion)
+    {
+        Vector2Int leftPositon = postion + new Vector2Int(-1, 0);
+        Vector2Int upPosition = postion + new Vector2Int(0, 1);
+        Vector2Int rightPositon = postion + new Vector2Int(1, 0);
+        Vector2Int downPosiotn = postion + new Vector2Int(0, -1);
+
+        return new DungeonRoom[]
+        {
+            rooms.ContainsKey(leftPositon) ? rooms[leftPositon] : null,
+            rooms.ContainsKey(upPosition) ? rooms[upPosition] : null,
+            rooms.ContainsKey(rightPositon) ? rooms[rightPositon] : null,
+            rooms.ContainsKey(downPosiotn) ? rooms[downPosiotn] : null
+        };
+    }
+
+
+    Vector2Int getFarthestOpenSpot()
+    {
+        float bestDistance = 0;
+        Vector2Int spot = freeSpots.OrderByDescending(x=>x.magnitude).First();
+        return spot;
+    }
+
+    #region Dungeon controls
+    Vector2Int currPlayerPOsiton=Vector2Int.zero;
+    public void onRoomEnter(Vector2Int positon)
+    {
+        EnterRoom(rooms[positon]);
+    }
     public void EnterRoom(DungeonRoom room)
     {
+        currPlayerPOsiton = room.pos;
         if (!room.visited)
         {
             room.visited = true;
         }
     }
 
-    List<Vector2Int> CalculateFreeRooms()
+    public DungeonRoom getCurrRoom()
     {
-        List<Vector2Int> freeRooms = new List<Vector2Int>();
-        for (int i = 0; i < rooms.Count; i++)
-        {
-            freeRooms.AddRange(rooms[i].freeSpots(rooms));
-        }
-        return freeRooms;
+        return rooms[currPlayerPOsiton];
     }
-    void DrawRooms()
-    {
-  
-        for (int i = 0; i < rooms.Count; i++)
-        {
-            switch(rooms[i].roomType)
-            {
-                case RoomType.STARTROOM:
-                    rooms[i].gameObject = Instantiate(startRoomPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)], this.gameObject.transform);
-                    rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
-                    break;
-                case RoomType.ROOM:
-                    rooms[i].gameObject = Instantiate(roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Length)], this.gameObject.transform);
-                    rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
-                    break;
-                case RoomType.BOSSROOM:
-                    rooms[i].gameObject = Instantiate(bossPrefabs[UnityEngine.Random.Range(0, bossPrefabs.Length)], this.gameObject.transform);
-                    rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
-                    break;
-                case RoomType.SHOPROOM:
-                    rooms[i].gameObject = Instantiate(shopPrefabs[UnityEngine.Random.Range(0, shopPrefabs.Length)], this.gameObject.transform);
-                    rooms[i].gameObject.transform.position = new Vector3(rooms[i].pos.x * roomSpace, rooms[i].pos.y * roomSpace, 0);
-                    break;
 
-            }
-            rooms[i].CountEnemies();
-        }
-    }
-    void AddBossRoom(List<Vector2Int> freeSpots)
-    {
-        float bestDistance = 0;
-        Vector2Int spot = Vector2Int.zero;
-        for (int i = 0; i < freeSpots.Count; i++)
-        {
-            float distance = Vector2Int.Distance(freeSpots[i], Vector2Int.zero);
-            if (distance > bestDistance)
-            {
-                bestDistance = distance;
-                spot = freeSpots[i];
-            }
-        }
-        rooms.Add(new DungeonRoom(roomCount, spot, RoomType.BOSSROOM));
-    }
+    #endregion
+
+
 
 }

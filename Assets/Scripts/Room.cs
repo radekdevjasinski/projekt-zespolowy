@@ -1,36 +1,77 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    [SerializeField] GameObject leftDoor;
-    [SerializeField] GameObject rightDoor;
-    [SerializeField] GameObject topDoor;
-    [SerializeField] GameObject bottomDoor;
+    [SerializeField] Door leftDoor;
+    [SerializeField] Door rightDoor;
+    [SerializeField] Door topDoor;
+    [SerializeField] Door bottomDoor;
+
+
+    private Vector2Int roomPositon;
+
+    bool alreadyEntered=false;
+
 
     public Vector2Int RoomIndex { get; set; }
 
-    public void OpenDoor(Vector2Int direction)
+    virtual public void  onEntry()
     {
-        if (direction == Vector2Int.up)
+        DungeonGenerator.instance.onRoomEnter(this.roomPositon);
+        if (!alreadyEntered)
         {
-            topDoor.SetActive(true);
+            //Debug.Log("first Entry");
+            foreach (IOnFirstEntryInRoom var in GetComponents<IOnFirstEntryInRoom>())
+            {
+                var.onFirstEntry(roomPositon);
+            }
+        }
+        alreadyEntered=true;
+    }
+
+    internal void setupNewRoom(DungeonRoom[] roomsAround, Vector2Int positon)
+    {
+        roomPositon = positon;
+        if (roomsAround[0] != null)
+        {
+            leftDoor.validateDoor();
+            leftDoor.openDoor();
+            leftDoor.setTeleportLocation(roomsAround[0].gameObject.GetComponent<Room>().rightDoor.getTeleport());
+        }
+        if (roomsAround[1] != null)
+        {
+            topDoor.validateDoor();
+            topDoor.openDoor();
+            topDoor.setTeleportLocation(roomsAround[1].gameObject.GetComponent<Room>().bottomDoor.getTeleport());
+
+        }
+        if (roomsAround[2] != null)
+        {
+            
+            rightDoor.validateDoor();
+            rightDoor.openDoor();
+            rightDoor.setTeleportLocation(roomsAround[2].gameObject.GetComponent<Room>().leftDoor.getTeleport());
+
+        }
+        if (roomsAround[3] != null)
+        {
+            bottomDoor.validateDoor();
+            bottomDoor.openDoor();
+            bottomDoor.setTeleportLocation(roomsAround[3].gameObject.GetComponent<Room>().topDoor.getTeleport());
+
         }
 
-        if (direction == Vector2Int.down)
-        {
-            bottomDoor.SetActive(true);
-        }
+    }
 
-        if (direction == Vector2Int.left)
-        {
-            leftDoor.SetActive(true);
-        }
+    public void closeAllDorrs()
+    {
+         leftDoor.closeDoor();
+        rightDoor.closeDoor();
+       topDoor.closeDoor();
+        bottomDoor.closeDoor();
 
-        if(direction == Vector2Int.right)
-        {
-            rightDoor.SetActive(true);
-        }
     }
 }

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class MiniMapController : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class MiniMapController : MonoBehaviour
 
     public DungeonGenerator dungeonGenerator;
 
-    public PlayerTeleporter teleportScript;
+    //public PlayerTeleporter teleportScript;
     private Vector2Int lastPlayerRoomPos;
 
     void Start()
@@ -33,9 +34,9 @@ public class MiniMapController : MonoBehaviour
 
         miniMapRect = GetComponent<RectTransform>();
 
-        teleportScript = FindObjectOfType<PlayerTeleporter>();
+        //teleportScript = FindObjectOfType<PlayerTeleporter>();
 
-        DungeonRoom startRoom = new DungeonRoom(0, Vector2Int.zero, RoomType.STARTROOM);
+        DungeonRoom startRoom = new DungeonRoom( Vector2Int.zero, RoomType.STARTROOM);
         lastPlayerRoomPos = startRoom.pos;
 
         StartCoroutine(DelayedDrawMiniMap(startRoom));
@@ -43,18 +44,19 @@ public class MiniMapController : MonoBehaviour
 
     public void DrawMiniMap(DungeonRoom currentPlayerRoom)
     {
-        Debug.Log("Rysuje");
+        //Debug.Log("Rysuje");
         ClearMiniMap();
 
-        foreach (DungeonRoom room in dungeonGenerator.rooms)
+        foreach ( KeyValuePair<Vector2Int,DungeonRoom> item in dungeonGenerator.rooms)
         {
+            DungeonRoom room = item.Value;
             Vector2Int roomPos = room.pos;
 
             Vector2Int playerRoomPos = currentPlayerRoom.pos;
             Vector2 miniMapPos = new Vector2((roomPos.x - playerRoomPos.x) * (iconSize + roomSpacing), (roomPos.y - playerRoomPos.y) * (iconSize + roomSpacing));
 
             Vector2 roomIconSize = new Vector2(iconSize, iconSize);
-            if (currentPlayerRoom == room)
+            if (currentPlayerRoom.Equals(room))
             {
                 roomIconSize *= 2f;
             }
@@ -111,12 +113,8 @@ public class MiniMapController : MonoBehaviour
 
     void Update()
     {
-        if (teleportScript.activePlayerRoom == null)
-        {
-            teleportScript.activePlayerRoom = new DungeonRoom(0, Vector2Int.zero, RoomType.STARTROOM);
-        }
-
-        DungeonRoom currentPlayerRoom = teleportScript.activePlayerRoom;
+        DungeonRoom currentPlayerRoom = DungeonGenerator.instance.getCurrRoom();
+ 
 
         if (currentPlayerRoom.pos != lastPlayerRoomPos)
         {

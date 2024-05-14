@@ -4,13 +4,58 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    public Vector2 direction;
-    public bool active = false;
+    [SerializeField] private Teleport secondTeleport;
+    [SerializeField] private float offset=5;
+    private Collider2D collider;
+
+    private void Awake()
+    {
+        collider = GetComponent<Collider2D>();
+    }
+
+    public bool isActve()
+    {
+        return collider.gameObject.active;
+    }
+
+    public void setIsActive(bool state)
+    {
+        collider.gameObject.SetActive(state);
+    }
+    
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && active)
+             Debug.Log("Teleprot to "+ secondTeleport);
+
+        if (collision.gameObject.CompareTag("Player") && isActve())
         {
-            GameObject.Find("Player").GetComponent<PlayerTeleporter>().Teleport(direction);
+            
+            Vector3 offsetVector = secondTeleport.transform.right;
+            offsetVector = new Vector3(offsetVector.y, -offsetVector.x, 0);
+
+            Debug.Log("second teleport positon: "+secondTeleport.transform.position);
+            Debug.Log("second local teleport positon: " + secondTeleport.transform.localPosition);
+            collision.gameObject.transform.position = secondTeleport.transform.position + offsetVector * offset;
+            Debug.Log("telpeort postion : " + secondTeleport.transform.position);
+
+            Debug.Log("OFfset vector: "+ offsetVector * offset);
+            secondTeleport.onTeleport();
+            //GameObject.Find("Player").GetComponent<PlayerTeleporter>().Teleport(direction);
         }
+    }
+
+    private void onTeleport()
+    {
+        foreach (IOnTeleport var in GetComponents<IOnTeleport>())
+        {
+            var.onTeleport();
+        }
+    }
+
+    public void setTeleport(Teleport teleport)
+    {
+
+        Debug.Log("seting teleport: "+ teleport.name+", "+teleport.transform.parent.name+", "+ teleport.transform.parent.transform.parent.name + ", " + teleport.transform.parent.transform.parent.transform.parent.GetComponent<Room>().transform.position);
+      secondTeleport=teleport;;
     }
 }

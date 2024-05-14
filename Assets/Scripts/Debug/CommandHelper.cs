@@ -44,8 +44,8 @@ public class CommandHelper : MonoBehaviour
 
     public string teleportPlayer(Vector2Int teleportVec)
     {
-        PlayerTeleporter playeretTeleporter = getPlayer().GetComponent<PlayerTeleporter>();
-        playeretTeleporter.Teleport(teleportVec);
+        //PlayerTeleporter playeretTeleporter = getPlayer().GetComponent<PlayerTeleporter>();
+        //playeretTeleporter.Teleport(teleportVec);
 
         return "telperrt " + teleportVec;
     }

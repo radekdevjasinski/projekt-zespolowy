@@ -32,8 +32,9 @@ public class CameraFollowRoom : MonoBehaviour
 
     void Update()
     {
-        activePlayerRoom = player.GetComponent<PlayerTeleporter>().activePlayerRoom;
-        if (activePlayerRoom != null)
+        activePlayerRoom = DungeonGenerator.instance.getCurrRoom();
+        //Debug.Log("active player room: " + activePlayerRoom);
+        if (activePlayerRoom.gameObject != null)
         {
             Vector2 roomPos = activePlayerRoom.pos * dungeonGenerator.roomSpace;
             transform.position = Vector3.SmoothDamp(transform.position,
