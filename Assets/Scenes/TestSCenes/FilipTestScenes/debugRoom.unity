@@ -4054,6 +4054,7 @@ MonoBehaviour:
   - {fileID: 6196426667538248293, guid: 67dc316a507c2ea48951e4cd2021d8af, type: 3}
   - {fileID: 6196426667538248293, guid: 9652b63be6a915e4cbf9fe7677747766, type: 3}
   navigationBake: {fileID: 646683195}
+  controlsOfTime: 0.8
 --- !u!114 &1527894857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4428,7 +4429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.39921
+      value: -107.39903
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y

@@ -32,7 +32,7 @@ public class SoundManager : MonoBehaviour
         GameObject soundGameObjet = playSound(this.transform, soundObject, postion);
         AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
         //Debug.Log("play sound: " + soundObject.GetComponent<AudioSource>().clip.name + " ini postion: "+ postion);
-        DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
+DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
     }
     public GameObject playSound(Transform parent, GameObject soundObject, Vector3 postion)
     {

@@ -193,12 +193,12 @@ public class DungeonGenerator : MonoBehaviour
 
                     break;
                 case RoomType.ROOM:
-                    roomPrefab = roomPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)];
+                    roomPrefab = roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Length)];
                     break;
                 case RoomType.BOSSROOM:
-                    roomPrefab = bossPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)]; break;
+                    roomPrefab = bossPrefabs[UnityEngine.Random.Range(0, bossPrefabs.Length)]; break;
                 case RoomType.SHOPROOM:
-                    roomPrefab = shopPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)];
+                    roomPrefab = shopPrefabs[UnityEngine.Random.Range(0, shopPrefabs.Length)];
                     break;
             }
             item.gameObject = Instantiate(roomPrefab, this.gameObject.transform);
