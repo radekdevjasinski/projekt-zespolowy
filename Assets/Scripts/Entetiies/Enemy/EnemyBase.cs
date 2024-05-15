@@ -91,7 +91,7 @@ public class EnemyBase : EntityController<float>
     protected override void onDie()
     {
         Destroy(gameObject);
-        GameObject.Find("Dungeon").GetComponent<LevelDesigner>().EnemyDied();
+
     }
 
     //metoda do ataku przeciwnika
