@@ -245,6 +245,12 @@ public class DungeonGenerator : MonoBehaviour
 
     #region Dungeon controls
     Vector2Int currPlayerPOsiton=Vector2Int.zero;
+    [SerializeField] private float controlsOfTime = 0.8f;
+
+    public float getControlsOFTime()
+    {
+        return controlsOfTime;
+    }
     public void onRoomEnter(Vector2Int positon)
     {
         EnterRoom(rooms[positon]);

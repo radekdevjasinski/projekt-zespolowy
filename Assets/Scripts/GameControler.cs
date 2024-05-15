@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameControler : MonoBehaviour
 {
     static private GameControler _instance;
+    private GameObject player;
+
 
     static public GameControler instance
     {
@@ -26,6 +28,9 @@ public class GameControler : MonoBehaviour
             throw new Exception("There can be only one instance of GameControler");
 
         }
+        player=GameObject.Find("Player");
+        if(player==null)
+            throw new Exception("couldn find player");
     }
 
 
@@ -47,5 +52,16 @@ public class GameControler : MonoBehaviour
         {
             pausable.resume(); ;
         }
+    }
+
+
+    public void pausePlayerControls()
+    {
+player.GetComponent<PlayerControler>().pause();
+    }
+
+    public void resumePlayerControls()
+    {
+        player.GetComponent<PlayerControler>().resume();
     }
 }

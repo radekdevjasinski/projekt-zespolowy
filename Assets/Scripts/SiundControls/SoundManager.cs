@@ -29,15 +29,18 @@ public class SoundManager : MonoBehaviour
     }
     public void playSound(GameObject soundObject, Vector3 postion)
     {
-        playSound(this.transform, soundObject, postion);
+        GameObject soundGameObjet = playSound(this.transform, soundObject, postion);
+        AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
         //Debug.Log("play sound: " + soundObject.GetComponent<AudioSource>().clip.name + " ini postion: "+ postion);
+        DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
     }
-    public void playSound(Transform parent, GameObject soundObject, Vector3 postion)
+    public GameObject playSound(Transform parent, GameObject soundObject, Vector3 postion)
     {
         GameObject soundGameObjet = Instantiate(soundObject, new Vector3(postion.x,postion.y,0), new Quaternion(0, 0, 0, 0), parent);
         //Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name+ " at positon: "+ soundGameObjet.transform.position);
         AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
         //DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
+        return soundGameObjet;
     }
 
     public void playSound(Transform parent, GameObject soundObject)

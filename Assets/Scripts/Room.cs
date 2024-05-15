@@ -24,12 +24,29 @@ public class Room : MonoBehaviour
         if (!alreadyEntered)
         {
             //Debug.Log("first Entry");
-            foreach (IOnFirstEntryInRoom var in GetComponents<IOnFirstEntryInRoom>())
-            {
-                var.onFirstEntry(roomPositon);
-            }
+            onFirstEntry();
+
+
         }
         alreadyEntered=true;
+    }
+
+    virtual public void onFirstEntry()
+    {
+        foreach (IOnFirstEntryInRoom var in GetComponents<IOnFirstEntryInRoom>())
+        {
+            var.onFirstEntry(roomPositon);
+        }
+        GameControler.instance.pausePlayerControls();
+        StartCoroutine(wakeUpRoutine(DungeonGenerator.instance.getControlsOFTime()));
+
+    }
+
+
+    protected virtual IEnumerator wakeUpRoutine(float controlsOfTime)
+    {
+        yield return new WaitForSeconds(controlsOfTime);
+        GameControler.instance.resumePlayerControls();
     }
 
     internal void setupNewRoom(DungeonRoom[] roomsAround, Vector2Int positon)
@@ -72,6 +89,16 @@ public class Room : MonoBehaviour
         rightDoor.closeDoor();
        topDoor.closeDoor();
         bottomDoor.closeDoor();
+
+    }
+
+    public void openAllDoors()
+    {
+        Debug.Log("OPening doots");
+        leftDoor.openDoor();
+        rightDoor.openDoor();
+        topDoor.openDoor();
+        bottomDoor.openDoor();
 
     }
 }

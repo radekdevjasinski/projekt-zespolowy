@@ -14,7 +14,7 @@ public abstract class ActivatableObject : MonoBehaviour
         if (collsion.collider.CompareTag("Player"))
         {
             if(onAcvtivationSound!=null)
-                SoundManager.instance.playSound(onAcvtivationSound,transform.position);
+                SoundManager.instance.playSound(transform, onAcvtivationSound);
             onActivate(collsion.collider.gameObject);
         }
     }

@@ -27,15 +27,14 @@ public class ChestSpawner : MonoBehaviour
     [SerializeField] private int maxItemsAmountChest;
 
     private GameObject newCreatedChest;
-    private GameObject currentRoom;
     private void Start()
     {
         spawnChestChance = minSpawnChestChance;
     }
-    public void SpawnChest(GameObject currentRoom)
+    public void SpawnChest()
     {
-        this.currentRoom = currentRoom;
-        int randomNumber=0;
+        Debug.Log("-------------Spawing chest");
+     int randomNumber=0;
 
         randomNumber = Random.Range(0, 101);
         if(randomNumber > spawnChestChance)
@@ -61,11 +60,7 @@ public class ChestSpawner : MonoBehaviour
         }
     }
 
-    private Vector2 CreatePosition()
-    {
-        TilemapRenderer renderer = currentRoom.transform.GetChild(0).GetComponent<TilemapRenderer>();
-        return new Vector2(currentRoom.transform.position.x + (renderer.bounds.size.x/2), currentRoom.transform.position.y + (renderer.bounds.size.y/2));
-    }
+
 
     private GameObject SellectNewItem()
     {
@@ -84,7 +79,8 @@ public class ChestSpawner : MonoBehaviour
     }
     private void CreateSmallChest()
     {
-        newCreatedChest = Instantiate(smallChest, CreatePosition(), Quaternion.identity, transform);
+        Debug.Log("create small chest");
+        newCreatedChest = Instantiate(smallChest, transform.position, Quaternion.identity, transform);
         int randomAmountOfItems = Random.Range(minItemsAmountChest, maxItemsAmountChest+1);
         LootChest lootChest = newCreatedChest.GetComponent<LootChest>();
         lootChest.loot = new List<GameObject>();
@@ -95,7 +91,8 @@ public class ChestSpawner : MonoBehaviour
     }
     private void CreateBigChest()
     {
-        newCreatedChest = Instantiate(bigChest, CreatePosition(), Quaternion.identity, transform);
+        Debug.Log("create Big chest");
+        newCreatedChest = Instantiate(bigChest, transform.position, Quaternion.identity, transform);
         int randomAmountOfItems = Random.Range(minItemsAmountChest, maxItemsAmountChest + 5);
         LootChest lootChest = newCreatedChest.GetComponent<LootChest>();
         lootChest.loot = new List<GameObject>();
