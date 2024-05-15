@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 7440153236176249009}
   - component: {fileID: 601328842830731772}
   - component: {fileID: 198186908196540544}
+  - component: {fileID: 5531204413862926939}
+  - component: {fileID: 2630494946122915443}
   m_Layer: 0
   m_Name: Dryad
   m_TagString: NPC
@@ -74,8 +76,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 15}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -162,8 +164,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 15}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -211,6 +213,43 @@ MonoBehaviour:
   dialogueText: {fileID: 0}
   characterSpeed: 0.04
   mumblePack: {fileID: 3149398475952838957, guid: 68ba5fb1f54c7a04ebe7bb611e89717e, type: 3}
+--- !u!95 &5531204413862926939
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40409051551482411}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c293d67815931d7428445ce7f208bf27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2630494946122915443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40409051551482411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2ce7d2537eec745a34d40fd4d75b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTimeBetweenActivation: 5
+  maxTimeBetweenActivation: 10
+  animationTriggers:
+  - ActivateRandomAction
 --- !u!1 &7634792553859149022
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,8 +276,8 @@ Transform:
   m_GameObject: {fileID: 7634792553859149022}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_LocalPosition: {x: 0.032, y: -0.046, z: 0}
+  m_LocalScale: {x: 1.45, y: 1.45, z: 1.45}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2216498702509069544}
@@ -283,15 +322,15 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 7ac9a4f653c138a4bb16190d6293cab3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2026868839282410213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1408522033995591747}
+  m_Layer: 0
+  m_Name: DiadLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1408522033995591747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026868839282410213}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.4106781, y: 1.2832642, z: -4.8946123}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6930258652170534073}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2943333373343597127
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,6 +992,7 @@ GameObject:
   - component: {fileID: 2329668304250210367}
   - component: {fileID: 5972620075868730356}
   - component: {fileID: 3223675573352395322}
+  - component: {fileID: 202491989698199142}
   m_Layer: 0
   m_Name: Room 4
   m_TagString: Untagged
@@ -991,6 +1023,7 @@ Transform:
   - {fileID: 3181731503960116180}
   - {fileID: 8754780441673924615}
   - {fileID: 8174608846421683631}
+  - {fileID: 1408522033995591747}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &3460958749548368591
@@ -1046,6 +1079,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestSpawner: {fileID: 8976574803490270454}
+--- !u!114 &202491989698199142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690942790177299855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38bfb32d2c27c1c4dbaa8ca2b7359319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appearChance: 0.498
+  driadLocation: {fileID: 1408522033995591747}
+  driadPrefab: {fileID: 6757223035640022053, guid: 50f072243bdf6af4c9b2f382dcab5576, type: 3}
 --- !u!1 &6409942110666168752
 GameObject:
   m_ObjectHideFlags: 0
