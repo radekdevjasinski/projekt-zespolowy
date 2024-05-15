@@ -24,13 +24,13 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
     private LichBossStartSequance lichBossStartSequance;
     private Collider2D fightMap;
     private BossEntityController boss;
-
+    private Room room;
 
     private CinemachineVirtualCamera bossRoomCamera;
 
     private void Awake()
     {
-      
+        room = transform.parent.GetComponent<Room>();
         this.BossFightRoomAniamtor = this.GetComponent<Animator>();
         activeCamera = this.activeCamera;
         lichBossStartSequance = this.GetComponent<LichBossStartSequance>();
@@ -46,7 +46,8 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
     public void startFight()
     {
         //Debug.Log("Start Fight");
-       if(battleAmbient!=null)
+        room.closeAllDorrs();;
+       if (battleAmbient!=null)
            SoundManager.instance.setAmbient(battleAmbient);
         if(skipStartSequnace)
             lichBossStartSequance.startSequanceImidielty();
@@ -63,6 +64,7 @@ public class BossFightController : MonoBehaviour, StageDeprndentElements
         this.BossFightRoomAniamtor.SetBool("duringFight", false);
         SoundManager.instance.revertToBasicAmbient();
         transform.Find("Boss").GetComponentInChildren<LichWarriorEntity>().dealDamage(1);
+        room.openAllDoors();
     }
 
 

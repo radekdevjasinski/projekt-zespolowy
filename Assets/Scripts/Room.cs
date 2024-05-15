@@ -29,6 +29,8 @@ public class Room : MonoBehaviour
 
         }
         alreadyEntered=true;
+        GameControler.instance.pausePlayerControls();
+        StartCoroutine(wakeUpRoutine(DungeonGenerator.instance.getControlsOFTime()));
     }
 
     virtual public void onFirstEntry()
@@ -37,8 +39,7 @@ public class Room : MonoBehaviour
         {
             var.onFirstEntry(roomPositon);
         }
-        GameControler.instance.pausePlayerControls();
-        StartCoroutine(wakeUpRoutine(DungeonGenerator.instance.getControlsOFTime()));
+       
 
     }
 

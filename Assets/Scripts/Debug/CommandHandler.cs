@@ -182,49 +182,49 @@ public class CommandHandler : MonoBehaviour
             }
             return "resets trades for "+ amt+" npcs";
         }));
-        _commands.Add(new ActionCommand("alohomora", "opens nearby doors", "alohomora", () =>
-        {
-            Collider2D[] objectsNearby = new Collider2D[20];
-            ContactFilter2D contactFilter = new ContactFilter2D();
-            contactFilter.layerMask = doorsMask;
-            contactFilter.useTriggers = true;
-            int amt = Physics2D.OverlapCircle(commandHelper.getPlayer().transform.position, 5, contactFilter, objectsNearby);
+        //_commands.Add(new ActionCommand("alohomora", "opens nearby doors", "alohomora", () =>
+        //{
+        //    Collider2D[] objectsNearby = new Collider2D[20];
+        //    ContactFilter2D contactFilter = new ContactFilter2D();
+        //    contactFilter.layerMask = doorsMask;
+        //    contactFilter.useTriggers = true;
+        //    int amt = Physics2D.OverlapCircle(commandHelper.getPlayer().transform.position, 5, contactFilter, objectsNearby);
           
-          Debug.Log("Object nearby " + amt);
-          int doorsamt = 0;
+        //  Debug.Log("Object nearby " + amt);
+        //  int doorsamt = 0;
           
-            for (int i= 0; i < amt; i++)
-            {
-                Collider2D var= objectsNearby[i];
-                Debug.Log("Object nearby " + var!=null?var.name:"null");
-                Door doors;
-                Teleport teleport;
+        //    for (int i= 0; i < amt; i++)
+        //    {
+        //        Collider2D var= objectsNearby[i];
+        //        Debug.Log("Object nearby " + var!=null?var.name:"null");
+        //        Door doors;
+        //        Teleport teleport;
                 
-                if (var != null && var.TryGetComponent<Door>(out doors))
-                {
-                 doors.openDoor();
-                }
+        //        if (var != null && var.TryGetComponent<Door>(out doors))
+        //        {
+        //         doors.openDoor();
+        //        }
              
-            }
-            return "opened " + doorsamt + " doors";
-        }));
+        //    }
+        //    return "opened " + doorsamt + " doors";
+        //}));
 
-        _commands.Add(new ActionCommand("l", "teleport player to left room", "L/l", () =>
-        {
-            return commandHelper.teleportPlayer(new Vector2Int(-1, 0));
-        }));
-        _commands.Add(new ActionCommand("r", "teleport player to right room", "R/r", () =>
-        {
-            return commandHelper.teleportPlayer(new Vector2Int(1, 0));
-        }));
-        _commands.Add(new ActionCommand("u", "teleport player to up room", "U/u", () =>
-        {
-            return commandHelper.teleportPlayer(new Vector2Int(0, 1));
-        }));
-        _commands.Add(new ActionCommand("d", "teleport player to down room", "D/d", () =>
-        {
-            return commandHelper.teleportPlayer(new Vector2Int(0, -1));
-        }));
+        //_commands.Add(new ActionCommand("l", "teleport player to left room", "L/l", () =>
+        //{
+        //    return commandHelper.teleportPlayer(new Vector2Int(-1, 0));
+        //}));
+        //_commands.Add(new ActionCommand("r", "teleport player to right room", "R/r", () =>
+        //{
+        //    return commandHelper.teleportPlayer(new Vector2Int(1, 0));
+        //}));
+        //_commands.Add(new ActionCommand("u", "teleport player to up room", "U/u", () =>
+        //{
+        //    return commandHelper.teleportPlayer(new Vector2Int(0, 1));
+        //}));
+        //_commands.Add(new ActionCommand("d", "teleport player to down room", "D/d", () =>
+        //{
+        //    return commandHelper.teleportPlayer(new Vector2Int(0, -1));
+        //}));
 
     }
 
