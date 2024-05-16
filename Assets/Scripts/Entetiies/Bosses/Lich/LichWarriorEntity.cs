@@ -216,6 +216,7 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     public void dropAttack()
     {
         Debug.Log("Drop Attack");
+        Camera.main.transform.parent.GetComponent<CameraController>().Shake();
         Instantiate(this.LichDropBurst,transform.position,new Quaternion(), transform.parent);
     }
 
