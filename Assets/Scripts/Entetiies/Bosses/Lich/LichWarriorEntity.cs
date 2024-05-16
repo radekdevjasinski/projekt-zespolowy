@@ -79,7 +79,7 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
     {
         currentAmountOfMinons++;
         Vector2 pos= bossFightController.getRandomPostionOnBossMap(0.1f);
-        GameObject minion = Instantiate(this.minionSummon, new Vector3(pos.x, pos.y,0) , new Quaternion(), this.minionsParent);
+        GameObject minion = Instantiate(this.minionSummon, new Vector3(pos.x, pos.y,0) , new Quaternion(0,0,0,0), this.minionsParent);
         minion.GetComponentInChildren<EnemyBase>().LockMovement = false;
         //Debug.Log("Set mionn bsses");
         foreach (InformBossAboutDeath VARIABLE in minion.GetComponentsInChildren<InformBossAboutDeath>())
