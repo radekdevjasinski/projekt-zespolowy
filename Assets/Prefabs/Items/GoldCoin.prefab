@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 3914346731871655489}
   - component: {fileID: 2752653569774903439}
   - component: {fileID: 4084532252108822104}
-  - component: {fileID: 4730839084660808821}
-  - component: {fileID: 3474717013247860456}
+  - component: {fileID: 7898505576428875462}
+  - component: {fileID: 3981276821777975708}
+  - component: {fileID: 711167698852541509}
   m_Layer: 0
-  m_Name: pickableHealthPostion
+  m_Name: GoldCoin
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +69,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.041975364, y: -0.034714065}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -79,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18054375, y: 0.19728698}
+  m_Size: {x: 0.4, y: 0.36900687}
   m_EdgeRadius: 0
 --- !u!50 &4084532252108822104
 Rigidbody2D:
@@ -108,19 +109,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &4730839084660808821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5112259435028361392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce5d0ffaa45f6a146a7511bf78a4e75a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3474717013247860456
+--- !u!114 &7898505576428875462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,7 +121,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610a32f2da325444883f93f2cdfe7315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onItemPickSound: {fileID: 8559890285010858849, guid: e2605c15d4525ff43ae04ba014884344, type: 3}
+  onItemPickSound: {fileID: 8559890285010858849, guid: a8d86a3cc2ebbe7459554123115f0c4c, type: 3}
+--- !u!114 &3981276821777975708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5112259435028361392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ed9b2112d0e174a9ef2d6f99dcb0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &711167698852541509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5112259435028361392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e1e0865c83db24895df2577fe7a61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8790889830464099917
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,8 +172,8 @@ Transform:
   m_GameObject: {fileID: 8790889830464099917}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -0.0477, z: 0}
-  m_LocalScale: {x: 0.73, y: 0.73, z: 0.73}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.76, y: 2.76, z: 2.76}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3914346731871655489}
@@ -206,7 +219,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d7c8c331eac4807439c276a2ef022d5a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da560ea8d4028594eb59a2763e1453cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

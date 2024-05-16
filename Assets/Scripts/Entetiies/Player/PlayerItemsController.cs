@@ -15,7 +15,8 @@ public class PlayerItemsController : MonoBehaviour
     private int heathPotions = 0;
     [SerializeField]
     private int bombs = 0;
-
+    [SerializeField]
+    private bool _hasGoldenCoin = false;
 
     private void Start()
     {
@@ -83,5 +84,13 @@ public class PlayerItemsController : MonoBehaviour
         return this.bombs;
     }
 
- 
+    internal void addGoldCoin()
+    {
+        _hasGoldenCoin = true;
+    }
+
+    internal bool hasGoldenCoin()
+    {
+        return _hasGoldenCoin;
+    }
 }
