@@ -253,6 +253,7 @@ public class DungeonGenerator : MonoBehaviour
     }
     public void onRoomEnter(Vector2Int positon)
     {
+        if(rooms.ContainsKey(positon))
         EnterRoom(rooms[positon]);
     }
     public void EnterRoom(DungeonRoom room)
