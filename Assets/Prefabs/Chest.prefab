@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5404662859432962888}
   - component: {fileID: 8572500634817268765}
   - component: {fileID: 2265212753465251157}
+  - component: {fileID: 8979218408513377047}
+  - component: {fileID: -1969567980225500053}
   m_Layer: 7
   m_Name: Chest
   m_TagString: Untagged
@@ -150,6 +152,42 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!95 &8979218408513377047
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932676392707000604}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 285cd7ca362125947bcb3dc39ed1162f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1969567980225500053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932676392707000604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fceac2094506b4182156c84c1a0e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8559890285010858849, guid: c8b7fbc43d6f3f542a41913680fdc768, type: 3}
+  timeOffset: 0.2
+  thisAsParent: 1
 --- !u!1 &4979296851817234970
 GameObject:
   m_ObjectHideFlags: 0

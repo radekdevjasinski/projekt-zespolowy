@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 198186908196540544}
   - component: {fileID: 5531204413862926939}
   - component: {fileID: 2630494946122915443}
+  - component: {fileID: 1848024766871969807}
   m_Layer: 0
   m_Name: Dryad
   m_TagString: NPC
@@ -250,6 +251,21 @@ MonoBehaviour:
   maxTimeBetweenActivation: 10
   animationTriggers:
   - ActivateRandomAction
+--- !u!114 &1848024766871969807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40409051551482411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fceac2094506b4182156c84c1a0e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8559890285010858849, guid: 8fc5bfe45b1d03048a3f2879d8e48d5f, type: 3}
+  timeOffset: 0
+  thisAsParent: 1
 --- !u!1 &7634792553859149022
 GameObject:
   m_ObjectHideFlags: 0

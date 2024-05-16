@@ -12,6 +12,11 @@ public class Door : MonoBehaviour
     public Sprite doorSprite;
     private Teleport teleport;
 
+
+
+    [SerializeField] private GameObject soundOnOpen;
+    [SerializeField] private GameObject soundOnclose;
+
     [SerializeField] private bool openOnstar=false;
     private Collider2D col;
     private SpriteRenderer renderer;
@@ -48,6 +53,8 @@ public class Door : MonoBehaviour
             Debug.Log("opening door");
             col.enabled = false;
             renderer.color = Color.black;
+            if (soundOnOpen != null)
+                SoundManager.instance.playSound(transform, soundOnOpen);
         }
     }
     public void closeDoor()
@@ -56,7 +63,10 @@ public class Door : MonoBehaviour
         {
             col.enabled = true;
             renderer.color = Color.white;
+            if (soundOnclose != null)
+                SoundManager.instance.playSound(transform, soundOnclose);
         }
+
     }
 
     public void setTeleportLocation(Teleport teleport)

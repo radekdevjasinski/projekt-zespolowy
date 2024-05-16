@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -19,12 +20,14 @@ public class ChestSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> items = new List<GameObject>();
 
     [Header("random Chance")]
-    [SerializeField] private int spawnChestChance;
-    [SerializeField] private int minSpawnChestChance;
-    [SerializeField] private int maxSpawnChestChance;
+    [SerializeField] private static int spawnChestChance=10;
+    [SerializeField] private static int minSpawnChestChance=10;
+    [SerializeField] private static int maxSpawnChestChance=70;
     [SerializeField] private int bigChestChance;
     [SerializeField] private int minItemsAmountChest;
     [SerializeField] private int maxItemsAmountChest;
+
+    [SerializeField] private bool ensureSpawn = false;
 
     private GameObject newCreatedChest;
     private void Start()
@@ -36,28 +39,32 @@ public class ChestSpawner : MonoBehaviour
         Debug.Log("-------------Spawing chest");
      int randomNumber=0;
 
-        randomNumber = Random.Range(0, 101);
-        if(randomNumber > spawnChestChance)
-        {
-            if (spawnChestChance < maxSpawnChestChance)
-            {
-                spawnChestChance += 10;
-            }
-        }
-        else
-        {
-            spawnChestChance = minSpawnChestChance;
-            randomNumber = Random.Range(0, 101);
+         randomNumber = Random.Range(0, 101);
+         if (randomNumber > spawnChestChance && !ensureSpawn)
+         {
+             if (spawnChestChance < maxSpawnChestChance)
+             {
+                 spawnChestChance += 10;
+                 Debug.Log("Enaching hcanes to " + spawnChestChance);
+             }
 
-            if(randomNumber > bigChestChance)
-            {
-                CreateSmallChest();
-            }
-            else
-            {
-                CreateBigChest();
-            }
-        }
+             Debug.Log("no chest usmmon: " + randomNumber + "> " + spawnChestChance +" == "+ensureSpawn);
+         }
+         else
+         {
+             spawnChestChance = minSpawnChestChance;
+             randomNumber = Random.Range(0, 101);
+
+             if (randomNumber > bigChestChance)
+             {
+                 CreateSmallChest();
+             }
+             else
+             {
+                 CreateBigChest();
+             }
+         }
+     
     }
 
 
