@@ -13,10 +13,14 @@ public abstract class ActivatableAreaObject : MonoBehaviour, IActivatableObject
         Debug.Log("Collsion: "+ collsion.collider.tag);
         if (collsion.collider.CompareTag("Player") && !isActivated())
         {
-            if(onAcvtivationSound!=null && activate(collsion.collider.gameObject))
+            if (onAcvtivationSound != null && activate(collsion.collider.gameObject))
+            {
                 SoundManager.instance.playSound(transform, onAcvtivationSound);
+                _isActivated = true;
+            }
+
             ;
-            _isActivated=true;
+            
         }
     }
 
