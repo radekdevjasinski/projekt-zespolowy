@@ -103,9 +103,9 @@ GameObject:
   - component: {fileID: 5309377172707359903}
   - component: {fileID: 8163005650284522512}
   - component: {fileID: 5745296312801078995}
-  - component: {fileID: 6558554150140107763}
   - component: {fileID: 2858716696440689670}
   - component: {fileID: 5057400597476377839}
+  - component: {fileID: 4313546953752896418}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -182,9 +182,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSpeed: 100
   sppedAttributeMultiplayer: 1
-  bombPrefab: {fileID: 0}
-  speed: 1
-  shootSpeed: 0.5
 --- !u!114 &6104499099234497951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,8 +202,15 @@ MonoBehaviour:
   shootSpeed: 5
   shootAttributeMultiplayer: 1
   shootCooldown: 0.5
-  shootCooldownAttributeMultiplayer: 0
   singleUseItem: {fileID: 0}
+  dashSound: {fileID: 0}
+  defaulDashSpeed: 35
+  invulnerabilityTime: 1
+  staminaRefillCooldown: 1
+  staminaRefillRate: 1
+  shootStaminaCost: 1
+  dashStaminaCost: 2
+  staminaActionThreshold: 0.2
   healthPotionSound: {fileID: 8559890285010858849, guid: 2df9544a14ea9e542a3d06b76ec29653, type: 3}
 --- !u!114 &3203944582975471556
 MonoBehaviour:
@@ -223,6 +227,9 @@ MonoBehaviour:
   playerClass: 0
   MaxHealth: 6
   health: 6
+  MaxStamina: 6
+  stamina: 6
+  armor: 2
   speed: 1
   fireRate: 1
   damage: 1
@@ -267,10 +274,10 @@ BoxCollider2D:
   m_Offset: {x: -0.001690045, y: -0.2575976}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -311,6 +318,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invulnerable: 0
+  invincLength: 1
+  isKnocked: 0
+  knockbackForce: 20
+  knockbackDuration: 1
 --- !u!114 &8163005650284522512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,10 +334,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88bdba1110d3584b9a3d14d67a53e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemUIPanel: {fileID: 0}
   coins: 0
   keys: 0
   heathPotions: 0
   bombs: 0
+  _hasGoldenCoin: 0
 --- !u!81 &5745296312801078995
 AudioListener:
   m_ObjectHideFlags: 0
@@ -335,20 +348,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4319326301353448314}
   m_Enabled: 1
---- !u!114 &6558554150140107763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4319326301353448314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f743c0d2cff0aa4cb796d244314361f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceFromDoorY: 1.25
-  controlsOffTime: 1
 --- !u!114 &2858716696440689670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,3 +375,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
+--- !u!114 &4313546953752896418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319326301353448314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2ce7d2537eec745a34d40fd4d75b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTimeBetweenActivation: 15
+  maxTimeBetweenActivation: 40
+  animationTriggers:
+  - playSword

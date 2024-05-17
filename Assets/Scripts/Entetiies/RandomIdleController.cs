@@ -19,6 +19,7 @@ public class RandomIdleController : MonoBehaviour
 
     public void invokerRandomIdle()
     {
+        //Debug.Log("inovke random indle");
         Invoke("activateRandomAnimation",Random.Range(minTimeBetweenActivation, maxTimeBetweenActivation));
     }
 
@@ -28,4 +29,9 @@ public class RandomIdleController : MonoBehaviour
         Animator.SetTrigger(animationTriggers[Random.Range(0,animationTriggers.Length)]);
     }
 
+    public void cancelRandomInvoker()
+    {
+        //Debug.Log("cancel random idle");
+       CancelInvoke("activateRandomAnimation");
+    }
 }
