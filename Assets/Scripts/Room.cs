@@ -107,4 +107,9 @@ public class Room : MonoBehaviour
     {
         return cameraRoomSize;
     }
+
+    public Door[] getDoors()
+    {
+        return new Door[] { leftDoor, topDoor, rightDoor, bottomDoor };
+    }
 }

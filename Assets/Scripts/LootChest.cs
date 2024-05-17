@@ -27,6 +27,7 @@ public class LootChest : ActivatableAreaObject
                     renderer.sprite = openChest;
                     player.GetComponent<PlayerItemsController>().removeKey(1);
                     dropLoot();
+                    return true;
                 }
             }
             else
@@ -35,7 +36,7 @@ public class LootChest : ActivatableAreaObject
                 renderer.sprite = openChest;
                 dropLoot();
             }
-            return true;
+           
         }
 
         return false;

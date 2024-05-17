@@ -42,11 +42,11 @@ public class CommandHelper : MonoBehaviour
 
     }
 
-    public string teleportPlayer(Vector2Int teleportVec)
+    public string teleportPlayer(int doorsIndex)
     {
         //PlayerTeleporter playeretTeleporter = getPlayer().GetComponent<PlayerTeleporter>();
         //playeretTeleporter.Teleport(teleportVec);
-
-        return "telperrt " + teleportVec;
+        DungeonGenerator.instance.getCurrRoom().gameObject.GetComponent<Room>().getDoors()[doorsIndex].getTeleport().teleport(getPlayer().gameObject);
+        return "telpeorted";
     }
 }
