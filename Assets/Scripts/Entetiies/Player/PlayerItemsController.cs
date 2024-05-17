@@ -93,4 +93,9 @@ public class PlayerItemsController : MonoBehaviour
     {
         return _hasGoldenCoin;
     }
+
+    internal void removeGoldCoin()
+    {
+        _hasGoldenCoin=false;
+    }
 }

@@ -24,7 +24,7 @@ public class RandomIdleController : MonoBehaviour
 
     private void activateRandomAnimation()
     {
-        Debug.Log("Random Idle activation");
+        //Debug.Log("Random Idle activation");
         Animator.SetTrigger(animationTriggers[Random.Range(0,animationTriggers.Length)]);
     }
 

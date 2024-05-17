@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c9a7428b1c6780748b980eae4201ac7d
+guid: 10b018d6437a2d34484370f4528d18de
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moneyPlacement_0
+      name: nymph_idle_blink_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 384788bf53f83f945a8c4817b213bdeb
-      internalID: 194633896
+      spriteID: 5cc4485ff93a7ba4eacd52114921216b
+      internalID: -1070586724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moneyPlacement_1
+      name: nymph_idle_blink_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +132,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29456113a0a136e489542877ec8b14d2
-      internalID: 508912598
+      spriteID: 051284699423f674e89e9df33f869a11
+      internalID: 1329643388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nymph_idle_blink_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19d4cca9204279e4099a786738e5c3c3
+      internalID: 1432709220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nymph_idle_blink_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a578d6c50b46e1458f326d5a543eb6b
+      internalID: 697331428
       vertices: []
       indices: 
       edges: []
@@ -149,8 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      moneyPlacement_0: 194633896
-      moneyPlacement_1: 508912598
+      nymph_idle_blink_0: -1070586724
+      nymph_idle_blink_1: 1329643388
+      nymph_idle_blink_2: 1432709220
+      nymph_idle_blink_3: 697331428
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
