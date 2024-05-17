@@ -113,16 +113,16 @@ public class MiniMapController : MonoBehaviour
 
     void Update()
     {
-        DungeonRoom currentPlayerRoom = DungeonGenerator.instance.getCurrRoom();
+        //DungeonRoom currentPlayerRoom = DungeonGenerator.instance.getCurrRoom();
  
 
-        if (currentPlayerRoom.pos != lastPlayerRoomPos)
-        {
-            dungeonGenerator.EnterRoom(currentPlayerRoom);
+        //if (currentPlayerRoom.pos != lastPlayerRoomPos)
+        //{
+        //    dungeonGenerator.EnterRoom(currentPlayerRoom);
 
-            DrawMiniMap(currentPlayerRoom);
+        //    DrawMiniMap(currentPlayerRoom);
 
-            lastPlayerRoomPos = currentPlayerRoom.pos;
-        }
+        //    lastPlayerRoomPos = currentPlayerRoom.pos;
+        //}
     }
 }
