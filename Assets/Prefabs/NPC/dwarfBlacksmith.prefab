@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1513753498367280358}
   - component: {fileID: 6750439124900936219}
   - component: {fileID: 2198247869543710817}
+  - component: {fileID: 3630886497609420933}
   m_Layer: 0
   m_Name: dwarfBlacksmith
   m_TagString: NPC
@@ -78,8 +79,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -119,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14341784, y: 0.1808424}
+  m_Offset: {x: 0.36102986, y: -4.303631}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.92489, y: 13.63695}
+  m_Size: {x: 7.916695, y: 13.027409}
   m_EdgeRadius: 0
 --- !u!114 &2945271907045184301
 MonoBehaviour:
@@ -437,6 +438,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c774391e454b24688b0268d4b810aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3630886497609420933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3197375250991396093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2ce7d2537eec745a34d40fd4d75b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTimeBetweenActivation: 20
+  maxTimeBetweenActivation: 50
+  animationTriggers:
+  - sweat
 --- !u!1 &3394406843505597757
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,8 +480,8 @@ Transform:
   m_GameObject: {fileID: 3394406843505597757}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.17, y: -0.91, z: 0}
+  m_LocalScale: {x: 10.09, y: 10.09, z: 10.09}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8193675676544043694}
@@ -510,7 +527,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 4ba87737d8ed37f4baf90ec1654532c6, type: 3}
+  m_Sprite: {fileID: -1636663414, guid: 6490c544ea4106f48ae141a23f191e91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -640,7 +657,7 @@ Transform:
   m_GameObject: {fileID: 5730644894195969900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: -5.1, z: 0}
+  m_LocalPosition: {x: 2.29, y: -5.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

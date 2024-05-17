@@ -8,10 +8,11 @@ public class NPCConversation : MonoBehaviour
 {
     private DialogController dialogController;
     [SerializeField] private LocalizedString [] eneterDialogues;
-
+    protected Animator Animator;
     private void Awake()
     {
         dialogController = GetComponent<DialogController>();
+        Animator=GetComponent<Animator>();
     }
     protected virtual void Start()
     {
@@ -46,13 +47,15 @@ public class NPCConversation : MonoBehaviour
     protected virtual void StartConversation()
     {
         setDialogeText(eneterDialogues[Random.Range(0, eneterDialogues.Length)]);
+       
 
     }
 
     void EndConversation()
     {
         setDialogeText ("");
-
+        if (Animator != null)
+            Animator.SetBool("isTalking", false);
     }
 
 

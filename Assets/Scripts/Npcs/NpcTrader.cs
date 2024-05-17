@@ -127,7 +127,9 @@ public class NpcTrader : NPCConversation
 
     protected override void StartConversation()
     {
-        if(itemSeeling>0)
+        if (Animator != null)
+            Animator.SetBool("isTalking", true);
+        if (itemSeeling>0)
         base.StartConversation();
         else
             setDialogeText(outOfStockDialog[UnityEngine.Random.Range(0, outOfStockDialog.Length)]);
