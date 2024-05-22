@@ -59,7 +59,7 @@ public class NarratorConversation : MonoBehaviour
             if (!beforeEnteringBoss)
             {
                 globalMessage = "Before Enetering Boss";
-                StartBeforeEnterBossConversation();
+                StartConversation(beforeEnterBossDialogues);
                 beforeEnteringBoss = true;
             }
         } else
@@ -71,52 +71,52 @@ public class NarratorConversation : MonoBehaviour
 
         if (gameStarted)
         {
-            StartConversation();
+            StartConversation(beginGameDialogues);
             gameStarted = false;
         }
 
         if (sellerAppear)
         {
-            StartSellerAppearConversation();
+            StartConversation(sellerDialogues);
             sellerAppear = false;
         }
 
         if (playerKilled)
         {
-            StartPlayerDeathConversation();
+            StartConversation(deathDialogues);
             playerKilled = false;
         }
 
         if (lichKilled)
         {
-            StartPlayerKillLichConversation();
+            StartConversation(killLichDialogues);
             lichKilled = false;
         }
 
         if (newItemAppear)
         {
-            StartNewItemConversation();
+            StartConversation(newItemDialogues);
             newItemAppear = false;
         }
 
         if (bossKilled)
         {
-            StartPlayerKillBossConversation();
+            StartConversation(killBossDialogues);
             bossKilled = false;
         }
         if (playerKilledByArcher)
         {
-            StartPlayerDeathByArcherConversation();
+            StartConversation(deathByArcherDialogues);
             playerKilledByArcher = false;
         }
         if (playerKilledByZombie)
         {
-            StartPlayerDeathByZombieConversation();
+            StartConversation(deathByZombieDialogues);
             playerKilledByZombie = false;
         }
         if (playerKilledByLich)
         {
-            StartPlayerDeathByLichConversation();
+            StartConversation(deathByLichDialogues);
             playerKilledByLich = false;
         }
     }
@@ -156,125 +156,18 @@ public class NarratorConversation : MonoBehaviour
         }
     }
 
-    protected virtual void StartConversation()
+    protected virtual void StartConversation(LocalizedString[] name)
     {
         dialogController.isTalking = true;
         previousMessage = currentMessage;
         do
         {
-            currentMessage = beginGameDialogues[Random.Range(0, beginGameDialogues.Length)];
+            currentMessage = name[Random.Range(0, name.Length)];
         } while (currentMessage == previousMessage);
 
         setDialogeText(currentMessage);
     }
 
-    protected virtual void StartPlayerDeathByLichConversation()
-    {
-        dialogController.isTalking = true;
-        previousMessage = currentMessage;
-        do
-        {
-            currentMessage = deathByLichDialogues[Random.Range(0, deathByLichDialogues.Length)];
-        } while (currentMessage == previousMessage);
-
-        setDialogeText(currentMessage);
-    }
-
-    protected virtual void StartPlayerDeathByArcherConversation()
-    {
-        dialogController.isTalking = true;
-        previousMessage = currentMessage;
-        do
-        {
-            currentMessage = deathByArcherDialogues[Random.Range(0, deathByArcherDialogues.Length)];
-        } while (currentMessage == previousMessage);
-
-        setDialogeText(currentMessage);
-    }
-
-    protected virtual void StartPlayerDeathByZombieConversation()
-    {
-        dialogController.isTalking = true;
-        previousMessage = currentMessage;
-        do
-        {
-            currentMessage = deathByZombieDialogues[Random.Range(0, deathByZombieDialogues.Length)];
-        } while (currentMessage == previousMessage);
-
-        setDialogeText(currentMessage);
-    }
-
-    protected virtual void StartPlayerDeathConversation()
-    {
-        dialogController.isTalking = true;
-        previousMessage = currentMessage;
-        do
-        {
-            currentMessage = deathDialogues[Random.Range(0, deathDialogues.Length)];
-        } while (currentMessage == previousMessage);
-
-        setDialogeText(currentMessage);
-    }
-
-    protected virtual void StartPlayerKillLichConversation()
-    {
-        dialogController.isTalking = true;
-        previousMessage = currentMessage;
-        do
-        {
-            currentMessage = killLichDialogues[Random.Range(0, killLichDialogues.Length)];
-        } while (currentMessage == previousMessage);
-
-        setDialogeText(currentMessage);
-    }
-
-    protected virtual void StartPlayerKillBossConversation()
-    {
-        dialogController.isTalking = true;
-        previousMessage = currentMessage;
-        do
-        {
-            currentMessage = killBossDialogues[Random.Range(0, killBossDialogues.Length)];
-        } while (currentMessage == previousMessage);
-
-        setDialogeText(currentMessage);
-    }
-
-    protected virtual void StartSellerAppearConversation()
-    {
-        dialogController.isTalking = true;
-        previousMessage = currentMessage;
-        do
-        {
-            currentMessage = sellerDialogues[Random.Range(0, sellerDialogues.Length)];
-        } while (currentMessage == previousMessage);
-
-        setDialogeText(currentMessage);
-    }
-
-    protected virtual void StartBeforeEnterBossConversation()
-    {
-        dialogController.isTalking = true;
-        previousMessage = currentMessage;
-        do
-        {
-            currentMessage = beforeEnterBossDialogues[Random.Range(0, beforeEnterBossDialogues.Length)];
-        } while (currentMessage == previousMessage);
-
-        setDialogeText(currentMessage);
-    }
-
-    protected virtual void StartNewItemConversation()
-    {
-        dialogController.isTalking = true;
-        previousMessage = currentMessage;
-        do
-        {
-            currentMessage = newItemDialogues[Random.Range(0, newItemDialogues.Length)];
-        } while (currentMessage == previousMessage);
-
-        setDialogeText(currentMessage);
-    }
 
     void EndConversation()
     {
