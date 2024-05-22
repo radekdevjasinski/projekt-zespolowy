@@ -34,7 +34,12 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
 
     protected override void onDie()
     {
-        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        NarratorConversation conversation = player.GetComponentInChildren<NarratorConversation>();
+        if (conversation != null)
+        {
+            conversation.lichKilled = true;
+        }
         bossFightController.stopFight();
         Destroy(this.gameObject);
         Destroy(healthBarInstnace.gameObject);

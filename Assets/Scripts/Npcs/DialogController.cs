@@ -12,6 +12,7 @@ public class DialogController : MonoBehaviour
     [SerializeField] private GameObject mumblePack;
     private RandomLoopSoundControls musicLoopSoundControls;
     private IEnumerator coroutine;
+
     internal void SetText(string text)
     {
         if(coroutine != null)

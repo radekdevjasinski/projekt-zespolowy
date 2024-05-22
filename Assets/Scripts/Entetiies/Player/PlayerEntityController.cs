@@ -98,6 +98,7 @@ public class PlayerEntityController : EntityController<int>
         invincCount = invincLength;
 
     }
+
     protected virtual IEnumerator HitKnockback(Vector2 knockbackDirection)
     {
         isKnocked = true;
@@ -141,10 +142,43 @@ public class PlayerEntityController : EntityController<int>
     protected override void onDie()
     {
         //Destroy(this.gameObject);
+        PlayerLastHitted playerLastHitted = GetComponent<PlayerLastHitted>();
+        if (playerLastHitted != null)
+        {
+            Debug.Log("Found Last Hitted object");
+            GameObject lastHittedObject = playerLastHitted.GetLastTouchedObject();
+            if (lastHittedObject != null)
+            {
+                Debug.Log("Ostatni obiekt, który dotkn¹³ gracza: " + lastHittedObject.name);
+                NarratorConversation conversation = transform.GetComponentInChildren<NarratorConversation>();
+                if (conversation != null)
+                {
+                    if (lastHittedObject.TryGetComponent<ZombieController>(out ZombieController component))
+                    {
+                        conversation.playerKilledByZombie = true;
+                    }
+                    else if ((lastHittedObject.TryGetComponent<EnemyShooting>(out EnemyShooting component1)) || 
+                        (lastHittedObject.TryGetComponent<Arrow>(out Arrow arrow)))
+                    {
+                        conversation.playerKilledByArcher = true;
+                    }
+                    else if (lastHittedObject.TryGetComponent<LichWarriorEntity>(out LichWarriorEntity component2))
+                    {
+                        conversation.playerKilledByLich = true;
+                    }
+                    else
+                    {
+                        conversation.playerKilled = true;
+                    }
+                }
+            }
+        } else
+        {
+            Debug.Log("Didnt found last hitted object");
+        }
         GetComponent<PlayerControler>().lockInput();
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         GameObject gameOverScreen = GameObject.Find("GameOver");
         gameOverScreen.GetComponent<GameOverScreen>().Setup();
-
     }
 }
