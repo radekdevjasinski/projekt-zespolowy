@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControler : MonoBehaviour, Ipausable
+public class PlayerControler : MonoBehaviour
 {
 
     private Controls controls;
@@ -41,7 +41,10 @@ public class PlayerControler : MonoBehaviour, Ipausable
         this.playerActionsController = this.GetComponent<PlayerActionsController>();
         this.playerAttributesController = this.GetComponent<PlayerAttributesController>();
     }
-
+    private void Update()
+    {
+        PauseGameControllToggle();
+    }
     void OnEnable()
     {
         this.controls.Player.Enable();
@@ -80,10 +83,11 @@ public class PlayerControler : MonoBehaviour, Ipausable
 
         dash = this.controls.Player.Dash;
         dash.performed += ctx => { OnDash(); };
-        dash.canceled += ctx => { OnCancelDash();  };
+        dash.canceled += ctx => { OnCancelDash(); };
 
-        useHealthPotion=this.controls.Player.UseHealthPotion;
+        useHealthPotion = this.controls.Player.UseHealthPotion;
         useHealthPotion.performed += ctx => { OnHealthPotionUse(); };
+
     }
 
     private void OnHealthPotionUse()
@@ -162,14 +166,22 @@ public class PlayerControler : MonoBehaviour, Ipausable
         Debug.Log("Cancel DropEquiped");
     }
 
-
+    void PauseGameControllToggle()
+    {
+        if (PauseMenuController.GameIsPaused)
+        {
+            this.controls.Player.Disable();
+        }
+        else
+        {
+            this.controls.Player.Enable();
+        }
+    }
 
     void OnMousePostion(Vector2 pos)
     {
         this.playerActionsController.setWorldMousePostion(Camera.main.ScreenToWorldPoint(pos));
     }
-
-
 
     void OnMouseLeftPress()
     {
@@ -178,8 +190,6 @@ public class PlayerControler : MonoBehaviour, Ipausable
         this.playerActionsController.setIsShooting(true);
 
     }
-
-
 
     void OnCancelMouseLeftPress()
     {
@@ -195,15 +205,5 @@ public class PlayerControler : MonoBehaviour, Ipausable
     public void unlockInput()
     {
         controls.Enable();
-    }
-
-    public void pause()
-    {
-        controls.Player.Disable();
-    }
-
-    public void resume()
-    {
-        controls.Player.Enable();
     }
 }

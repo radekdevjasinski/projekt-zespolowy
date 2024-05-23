@@ -14,7 +14,6 @@ public class PlayerEntityController : EntityController<int>
     public bool isKnocked;
     [SerializeField] private float knockbackForce = 20f;
     [SerializeField] private float knockbackDuration = 1f;
-
     protected void Awake()
     {
         playerAttributesController = GetComponent<PlayerAttributesController>();
@@ -141,10 +140,10 @@ public class PlayerEntityController : EntityController<int>
     protected override void onDie()
     {
         //Destroy(this.gameObject);
-        GetComponent<PlayerControler>().lockInput();
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         GameObject gameOverScreen = GameObject.Find("GameOver");
         gameOverScreen.GetComponent<GameOverScreen>().Setup();
-
+        Time.timeScale = 0;
+        PauseMenuController.GameIsPaused = true;
     }
 }
