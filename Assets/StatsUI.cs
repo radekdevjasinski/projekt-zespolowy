@@ -31,12 +31,12 @@ public class StatsUI : MonoBehaviour
 
     private void UpdateStatsUI()
     {
-        speedText.text = "Speed: " + playerAttributes.Speed.ToString("F2");
-        fireRateText.text = "Fire Rate: " + playerAttributes.FireRate.ToString("F2");
-        damageText.text = "Damage: " + playerAttributes.Damage.ToString("F2");
-        rangeText.text = "Range: " + playerAttributes.Range.ToString("F2");
-        projectileSpeedText.text = "Projectile Speed: " + playerAttributes.ProjectileSpeed.ToString("F2");
-        luckText.text = "Luck: " + playerAttributes.Luck.ToString("F2");
+        speedText.text = playerAttributes.Speed.ToString("F2");
+        fireRateText.text = playerAttributes.FireRate.ToString("F2");
+        damageText.text = playerAttributes.Damage.ToString("F2");
+        rangeText.text = playerAttributes.Range.ToString("F2");
+        projectileSpeedText.text = playerAttributes.ProjectileSpeed.ToString("F2");
+        luckText.text = playerAttributes.Luck.ToString("F2");
     }
 
     private void ToggleStatsPanel()
