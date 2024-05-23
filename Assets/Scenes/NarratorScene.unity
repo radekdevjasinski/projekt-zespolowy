@@ -1474,14 +1474,12 @@ PrefabInstance:
       propertyPath: itemUIPanel
       value: 
       objectReference: {fileID: 1679816644}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4313546953752896418, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8925325657811492800, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4319326301353448314, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 395048027}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
 --- !u!1 &395048003 stripped
 GameObject:
@@ -1504,19 +1502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4adcdf9ee30dbe4e8a67b0dd0ad0872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &395048027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 395048003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeee5da0483deb84f8d5e75dcacf6e25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastTouchedObject: {fileID: 0}
 --- !u!1 &432363574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1807,6 +1792,7 @@ MonoBehaviour:
   mediumRoomCameraSize: 4
   mainCamera: {fileID: 0}
   bossRoomCamera: {fileID: 0}
+  transitionDuration: 0
   transitionDone: 0
   smoothTime: 0.25
 --- !u!1001 &599823106
@@ -1939,6 +1925,7 @@ MonoBehaviour:
   mediumRoomCameraSize: 4
   mainCamera: {fileID: 599823108}
   bossRoomCamera: {fileID: 1701184056}
+  transitionDuration: 0
   transitionDone: 0
   smoothTime: 0.25
 --- !u!114 &599823111
@@ -2977,7 +2964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.4
+      value: -107.399994
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3757,12 +3744,10 @@ MonoBehaviour:
   - {fileID: 5112259435028361392, guid: a91ea1b360cf5b944a3b53da65774498, type: 3}
   - {fileID: 5112259435028361392, guid: a2336a88352f82847a0ece456f27ea50, type: 3}
   - {fileID: 5112259435028361392, guid: 055c57ca9f913274c9adf1a9d30b3fb9, type: 3}
-  spawnChestChance: 0
-  minSpawnChestChance: 40
-  maxSpawnChestChance: 70
   bigChestChance: 30
   minItemsAmountChest: 5
   maxItemsAmountChest: 10
+  ensureSpawn: 0
 --- !u!114 &1053878243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3997,10 +3982,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u015Basdad"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4024,7 +4009,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 56
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -7,6 +7,7 @@ public class NarratorDialogControler : MonoBehaviour
 {
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private float characterSpeed = 0.04f;
+    [SerializeField] private float pause = 2f;
     [SerializeField] private GameObject mumblePack;
     private RandomLoopSoundControls musicLoopSoundControls;
     private IEnumerator coroutine;
@@ -55,6 +56,7 @@ public class NarratorDialogControler : MonoBehaviour
             dialogueText.text += txt[i];
             yield return new WaitForSeconds(characterSpeed);
         }
+        yield return new WaitForSeconds(pause);
         musicLoopSoundControls.stopSound();
         isTalking = false;
     }
