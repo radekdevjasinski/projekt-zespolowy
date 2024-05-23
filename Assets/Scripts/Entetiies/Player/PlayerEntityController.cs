@@ -145,6 +145,7 @@ public class PlayerEntityController : EntityController<int>
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         GameObject gameOverScreen = GameObject.Find("GameOver");
         gameOverScreen.GetComponent<GameOverScreen>().Setup();
-
+        Time.timeScale = 0;
+        PauseMenuController.GameIsPaused = true;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
-    private static bool GameIsPaused = false;
+    public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public int menuScene = 0;
 
@@ -15,9 +15,12 @@ public class PauseMenuController : MonoBehaviour
     private void Awake()
     {
         controls = new Controls();
-        controls.Player.PauseMenu.performed += ctx => TogglePause();
+        controls.Player.PauseMenu.performed += ctx => TogglePause();    
     }
-
+    private void Update()
+    {
+        Debug.Log(GameIsPaused);
+    }
     private void OnEnable()
     {
         controls.Enable();
@@ -37,26 +40,33 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void ResumeGame()
-    {
+    {   
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        DisablePauseGame();
     }
 
     public void PauseGame()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        EnablePauseGame();
     }
 
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        EnablePauseGame();
         SceneManager.LoadScene(menuScene);
     }
-
+    public void EnablePauseGame()
+    {
+        GameIsPaused = true;
+    }
+    public void DisablePauseGame()
+    {
+        GameIsPaused = false;
+    }
     public void QuitGame()
     {
         Debug.Log("Quitting game");
