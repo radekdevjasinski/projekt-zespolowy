@@ -4,6 +4,7 @@ public class VolumeSlider : MonoBehaviour
 {
     public SoundManager soundManager;
     public float sensitivity = 0.5f;
+    public float setVolume = 0.5f;
     public Transform leftLimit;
     public Transform rightLimit;
 
@@ -16,6 +17,11 @@ public class VolumeSlider : MonoBehaviour
         {
             Debug.LogError("SoundManager not found on object 'Sounds'");
         }
+
+        float initialPositionX = Mathf.Lerp(leftLimit.position.x, rightLimit.position.x, setVolume);
+        transform.position = new Vector3(initialPositionX, transform.position.y, transform.position.z);
+
+        SetVolumeForAmbient(soundManager.ActiveAmbient, setVolume);
     }
 
     private void Update()
