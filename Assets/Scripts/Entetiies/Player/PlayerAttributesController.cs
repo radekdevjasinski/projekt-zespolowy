@@ -19,7 +19,8 @@ public class PlayerAttributesController : MonoBehaviour
         LUCK,// currently not used, not sure about future implemenation
         PHYSICALRESISTANCE,// currently not used, not sure about future implemenation
         MAGICALRESISTANCE,// currently not used, not sure about future implemenation
-        MAX_HEALTH
+        MAX_HEALTH,
+        MAX_STAMINA
     }
 
     //Attributes
@@ -136,6 +137,10 @@ public class PlayerAttributesController : MonoBehaviour
     {
         return MaxHealth;
     }
+    public float getMaxStamina()
+    {
+        return MaxStamina;
+    }
     private void increaseMaxHealth(float change)
     {
         this.MaxHealth +=(int)change;
@@ -147,6 +152,12 @@ public class PlayerAttributesController : MonoBehaviour
         }
         GameObject HpBar = GameObject.Find("HpBar");
         HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+    }
+    private void increaseMaxStamina(float change)
+    {
+        this.MaxStamina += (int)change;
+        GameObject StaminaBar = GameObject.Find("StaminaBar");
+        StaminaBar.GetComponent<StaminaBar>().ChangeMaxStamina();
     }
     public int getArmor()
     {
@@ -169,7 +180,7 @@ public class PlayerAttributesController : MonoBehaviour
             case attributes.PHYSICALRESISTANCE: this.increasePhysicalResistance(change); break;
             case attributes.MAGICALRESISTANCE: this.increaseMagicalResistance(change);break;
             case attributes.MAX_HEALTH: this.increaseMaxHealth(change); break;
-
+            case attributes.MAX_STAMINA: this.increaseMaxStamina(change); break;
         }
         Debug.Log("increase: " + attrib + " with " + change+ " to overall value: "+ getAtrib(attrib));
 
@@ -214,6 +225,8 @@ public class PlayerAttributesController : MonoBehaviour
             case attributes.PHYSICALRESISTANCE: physicalResistance=val; break;
             case attributes.MAGICALRESISTANCE: magicalResistance=val; break;
             case attributes.MAX_HEALTH: MaxHealth=(int)val; break;
+            case attributes.MAX_STAMINA: MaxStamina = val; break;
+            case attributes.ARMOR: armor = (int)val; break;
 
         }
     }
@@ -232,6 +245,8 @@ public class PlayerAttributesController : MonoBehaviour
             case attributes.PHYSICALRESISTANCE: return (float)physicalResistance; break;
             case attributes.MAGICALRESISTANCE: return (float)magicalResistance; break;
             case attributes.MAX_HEALTH: return (float)getMaxHealth() ; break;
+            case attributes.MAX_STAMINA: return (float)getMaxStamina(); break;
+
         }
         return -1;
     }

@@ -90,7 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cc08eb5fe9ae240b1eab3598cb6677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 1, y: 0}
+  secondTeleport: {fileID: 0}
+  offset: 5
 --- !u!1 &1527458311902789050
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820761f512b287441aabcf93d8c9e2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorSprite: {fileID: 0}
+  openOnstar: 0
 --- !u!61 &4393947214484795358
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -367,6 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820761f512b287441aabcf93d8c9e2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorSprite: {fileID: 0}
+  openOnstar: 0
 --- !u!61 &7755493506408408595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -675,6 +680,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820761f512b287441aabcf93d8c9e2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorSprite: {fileID: 0}
+  openOnstar: 0
 --- !u!61 &6995614253588563131
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -810,7 +817,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cc08eb5fe9ae240b1eab3598cb6677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: -1, y: 0}
+  secondTeleport: {fileID: 0}
+  offset: 5
 --- !u!1 &4551571313248123831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,10 +1390,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52993c561291fd44fbacd6e3741dc471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftDoor: {fileID: 7269737091057432951}
-  rightDoor: {fileID: 3760770321965933761}
-  topDoor: {fileID: 1527458311902789050}
-  bottomDoor: {fileID: 2460910145085467883}
+  leftDoor: {fileID: 9103140407097332087}
+  rightDoor: {fileID: 5514326363762610351}
+  topDoor: {fileID: 5757782555238850840}
+  bottomDoor: {fileID: 2349694730885908348}
 --- !u!1 &7086878666001828620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820761f512b287441aabcf93d8c9e2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorSprite: {fileID: 0}
+  openOnstar: 0
 --- !u!61 &4630478944082888377
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1749,7 +1759,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cc08eb5fe9ae240b1eab3598cb6677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 1}
+  secondTeleport: {fileID: 0}
+  offset: 5
 --- !u!1 &7545472820356227206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,4 +2146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cc08eb5fe9ae240b1eab3598cb6677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: -1}
+  secondTeleport: {fileID: 0}
+  offset: 5

@@ -54,7 +54,7 @@ public class CommandHandler : MonoBehaviour
         }));
         _commands.Add(new ActionCommand("mercy", "adds 10 health potions to player", "mercy", () =>
         {
-            commandHelper.getPlayer().GetComponent<PlayerItemsController>().addHelathPotion(10);
+            commandHelper.getPlayer().GetComponent<PlayerItemsController>().addHealthPotion(10);
             return "Added 10 keys";
         }));
 
@@ -62,7 +62,7 @@ public class CommandHandler : MonoBehaviour
         {
             if (val >= 0)
             {
-                commandHelper.getPlayer().GetComponent<PlayerItemsController>().addCoins(val-commandHelper.getPlayer().GetComponent<PlayerItemsController>().getCoinsAmount());
+                commandHelper.getPlayer().GetComponent<PlayerItemsController>().addCoins(val-commandHelper.getPlayer().GetComponent<PlayerItemsController>().getCoins());
                 return "set coins to "+ val;
 
             }
@@ -104,7 +104,7 @@ public class CommandHandler : MonoBehaviour
         {
             if (val >= 0)
             {
-                commandHelper.getPlayer().GetComponent<PlayerItemsController>().addHelathPotion(val - commandHelper.getPlayer().GetComponent<PlayerItemsController>().getHelathPotion());
+                commandHelper.getPlayer().GetComponent<PlayerItemsController>().addHealthPotion(val - commandHelper.getPlayer().GetComponent<PlayerItemsController>().getHealthPotion());
                 return "set health potions to " + val;
 
             }

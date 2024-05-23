@@ -12,28 +12,28 @@ public class PlayerItemsController : MonoBehaviour
     [SerializeField]
     private int keys = 0;
     [SerializeField]
-    private int heathPotions = 0;
+    private int healthPotions = 0;
     [SerializeField]
     private int bombs = 0;
 
 
     private void Start()
     {
-        itemUIPanel.SetValuesToText(coins, bombs, keys, heathPotions);
+        itemUIPanel.SetValuesToText(coins, bombs, keys, healthPotions);
     }
     public void addCoins(int coins)
     {
         this.coins+= coins;
-        itemUIPanel.SetValuesToText(this.coins, bombs, keys, heathPotions);
+        itemUIPanel.SetValuesToText(this.coins, bombs, keys, healthPotions);
     }
 
-    public void remvoveCoins(int coins)
+    public void removeCoins(int coins)
     {
         this.coins -= coins;
-        itemUIPanel.SetValuesToText(this.coins, bombs, keys, heathPotions);
+        itemUIPanel.SetValuesToText(this.coins, bombs, keys, healthPotions);
     }
 
-    public int getCoinsAmount()
+    public int getCoins()
     {
         return coins;
     }
@@ -41,47 +41,68 @@ public class PlayerItemsController : MonoBehaviour
     internal void addKey(int keys)
     {
         this.keys += keys;
-        itemUIPanel.SetValuesToText(coins, bombs, this.keys, heathPotions);
+        itemUIPanel.SetValuesToText(coins, bombs, this.keys, healthPotions);
     }
     internal void removeKey(int keys)
     {
         this.keys -= keys;
-        itemUIPanel.SetValuesToText(coins, bombs, this.keys, heathPotions);
+        itemUIPanel.SetValuesToText(coins, bombs, this.keys, healthPotions);
     }
     internal int getKeys()
     {
         return this.keys;
     }
 
-    internal void addHelathPotion(int potions)
+    internal void addHealthPotion(int potions)
     {
-        heathPotions += potions;
-        itemUIPanel.SetValuesToText(coins, bombs, keys, this.heathPotions);
+        healthPotions += potions;
+        itemUIPanel.SetValuesToText(coins, bombs, keys, this.healthPotions);
     }
-    internal void removeHelathPotion(int potions)
+    internal void removeHealthPotion(int potions)
     {
-        heathPotions -= potions;
-        itemUIPanel.SetValuesToText(coins, bombs, keys, this.heathPotions);
+        healthPotions -= potions;
+        itemUIPanel.SetValuesToText(coins, bombs, keys, this.healthPotions);
     }
-    internal int getHelathPotion()
+    internal int getHealthPotion()
     {
-        return heathPotions;
+        return healthPotions;
     }
 
     internal void addBomb(int bomb)
     {
         this.bombs += bomb;
-        itemUIPanel.SetValuesToText(coins, this.bombs, keys, heathPotions);
+        itemUIPanel.SetValuesToText(coins, this.bombs, keys, healthPotions);
     }
     internal void removeBombs(int bomb)
     {
         this.bombs -= bomb;
-        itemUIPanel.SetValuesToText(coins, this.bombs, keys, heathPotions);
+        itemUIPanel.SetValuesToText(coins, this.bombs, keys, healthPotions);
     }
     internal int getBombs()
     {
         return this.bombs;
     }
 
- 
+    public void SetCoins(int coins)
+    {
+        this.coins = coins;
+        itemUIPanel.SetValuesToText(this.coins, bombs, keys, healthPotions);
+    }
+
+    public void SetKeys(int keys)
+    {
+        this.keys = keys;
+        itemUIPanel.SetValuesToText(coins, bombs, this.keys, healthPotions);
+    }
+    public void SetHealthPotions(int healthPotions)
+    {
+        this.healthPotions = healthPotions;
+        itemUIPanel.SetValuesToText(coins, bombs, keys, this.healthPotions);
+    }
+
+    public void SetBombs(int bombs)
+    {
+        this.bombs = bombs;
+        itemUIPanel.SetValuesToText(coins, this.bombs, keys, healthPotions);
+    }
 }

@@ -12,7 +12,7 @@ public class StaminaBar : MonoBehaviour
         playerAttributesController = GameObject.Find("Player").GetComponent<PlayerAttributesController>();
         slider = GetComponent<Slider>();
         slider.minValue = 0;
-        slider.maxValue = playerAttributesController.Stamina;
+        slider.maxValue = playerAttributesController.getMaxStamina();
     }
 
     void Update()
@@ -22,5 +22,9 @@ public class StaminaBar : MonoBehaviour
     public void DrawStamina()
     {
         slider.value = playerAttributesController.Stamina;
+    }
+    public void ChangeMaxStamina()
+    {
+        slider.maxValue = playerAttributesController.getMaxStamina();
     }
 }

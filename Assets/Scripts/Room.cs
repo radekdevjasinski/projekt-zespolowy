@@ -12,23 +12,17 @@ public class Room : MonoBehaviour
 
 
     private Vector2Int roomPositon;
-
-    bool alreadyEntered=false;
-
-
     public Vector2Int RoomIndex { get; set; }
 
-    virtual public void  onEntry()
+    virtual public void onEntry()
     {
         DungeonGenerator.instance.onRoomEnter(this.roomPositon);
-        if (!alreadyEntered)
+        if (!DungeonGenerator.instance.rooms[roomPositon].visited)
         {
             //Debug.Log("first Entry");
             onFirstEntry();
-
-
         }
-        alreadyEntered=true;
+        DungeonGenerator.instance.rooms[RoomIndex].visited = true;
         GameControler.instance.pausePlayerControls();
         StartCoroutine(wakeUpRoutine(DungeonGenerator.instance.getControlsOFTime()));
     }
@@ -39,8 +33,6 @@ public class Room : MonoBehaviour
         {
             var.onFirstEntry(roomPositon);
         }
-       
-
     }
 
 

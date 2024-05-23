@@ -414,12 +414,12 @@ public class PlayerActionsController : MonoBehaviour
     public void useHealthPotion()
     {
         Debug.Log("try use health potion");
-        if(playerItemsController.getHelathPotion()>0 && playerEntityController.getHealth()<playerEntityController.getMaxHealth())
+        if(playerItemsController.getHealthPotion()>0 && playerEntityController.getHealth()<playerEntityController.getMaxHealth())
         {
             if (healthPotionSound != null)
                 SoundManager.instance.playSound(transform, healthPotionSound);
             playerEntityController.heal(1);
-            playerItemsController.removeHelathPotion(1);
+            playerItemsController.removeHealthPotion(1);
         }
     }
 

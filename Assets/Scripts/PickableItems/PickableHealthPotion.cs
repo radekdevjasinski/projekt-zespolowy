@@ -7,7 +7,7 @@ public class PickableHealthPotion : PicableItem
 {
     protected override void onItemPick(GameObject obj)
     {
-        obj.GetComponent<PlayerItemsController>().addHelathPotion(1);
+        obj.GetComponent<PlayerItemsController>().addHealthPotion(1);
     }
 
 

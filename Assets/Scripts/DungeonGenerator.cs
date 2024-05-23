@@ -26,12 +26,12 @@ public class DungeonRoom
     public bool visited;
 
 
-    public DungeonRoom( Vector2Int pos, RoomType roomType)
+    public DungeonRoom( Vector2Int pos, RoomType roomType, bool visited)
     {
         this.pos = pos;
         this.roomType = roomType;
         enemiesCount = 0;
-        visited = false;
+        this.visited = visited;
         gameObject = null;
     }
 
@@ -78,8 +78,6 @@ public class DungeonRoom
     {
         return this.pos+": "+this.roomType;
     }
-
-
 }
 
 public class DungeonGenerator : MonoBehaviour
@@ -122,11 +120,11 @@ public class DungeonGenerator : MonoBehaviour
     public HashSet<Vector2Int> freeSpots = new HashSet<Vector2Int>(){new Vector2Int(0,0)};
     public NavigationBake navigationBake;
 
-    public void addRoomBase(Vector2Int postion, RoomType type, bool visited = false)
+    public void addRoomBase(Vector2Int postion, RoomType type, bool visited)
     {
     
         freeSpots.Remove(postion);
-        rooms.Add(postion,new DungeonRoom(postion, type) { visited = visited });
+        rooms.Add(postion,new DungeonRoom(postion, type, visited));
         foreach (Vector2Int dir in directions)
         {
             if (!rooms.ContainsKey(dir+ postion))
@@ -142,13 +140,10 @@ public class DungeonGenerator : MonoBehaviour
     void Start()
     {
         if (SaveLoadManager.instance.GameLoaded)
-        {
             LoadDungeon();
-        }
         else
-        {
             GenerateRooms();
-        }
+        
         DrawRooms(); 
         setupRooms();
         navigationBake.BakeNavMesh();
@@ -166,13 +161,13 @@ public class DungeonGenerator : MonoBehaviour
             if (roomCount > 0)
             {
                 Debug.Log("Adding room : room");
-                addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)), RoomType.ROOM);
+                addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)), RoomType.ROOM, false);
                 roomCount--;
             }
             else if (shopRoomCount > 0)
             {
                 Debug.Log("Adding room : shop");
-                addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)), RoomType.SHOPROOM);
+                addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)), RoomType.SHOPROOM, false);
 
                 shopRoomCount--;
             }
@@ -180,7 +175,7 @@ public class DungeonGenerator : MonoBehaviour
             {
                 Debug.Log("Adding room : boss");
                 Vector2Int positon = getFarthestOpenSpot();
-                addRoomBase(positon, RoomType.BOSSROOM);
+                addRoomBase(positon, RoomType.BOSSROOM, false);
                 bossRoomCount--;
             }
         }
@@ -205,19 +200,28 @@ public class DungeonGenerator : MonoBehaviour
             {
               case RoomType.STARTROOM:
                   roomPrefab = startRoomPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)];
-
                     break;
                 case RoomType.ROOM:
                     roomPrefab = roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Length)];
                     break;
                 case RoomType.BOSSROOM:
-                    roomPrefab = bossPrefabs[UnityEngine.Random.Range(0, bossPrefabs.Length)]; break;
+                    roomPrefab = bossPrefabs[UnityEngine.Random.Range(0, bossPrefabs.Length)]; 
+                    break;
                 case RoomType.SHOPROOM:
                     roomPrefab = shopPrefabs[UnityEngine.Random.Range(0, shopPrefabs.Length)];
                     break;
             }
             item.gameObject = Instantiate(roomPrefab, this.gameObject.transform);
             item.gameObject.transform.position = new Vector3(item.pos.x * roomSpace, item.pos.y * roomSpace, 0);
+            if (item.visited)
+            {
+                item.gameObject.GetComponent<Room>().openAllDoors();
+                AddEnemy[] addEnemies = item.gameObject.GetComponentsInChildren<AddEnemy>();
+                foreach (AddEnemy addEnemy in addEnemies)
+                {
+                    Destroy(addEnemy.gameObject);
+                }
+            }
             rooms[key] = item;
         }
     }
@@ -275,6 +279,13 @@ public class DungeonGenerator : MonoBehaviour
     public void EnterRoom(DungeonRoom room)
     {
         currPlayerPositon = room.pos;
+        /*if (!room.visited)
+        {
+            room.visited = true;
+        }*/
+    }
+    public void onRoomClear(DungeonRoom room)
+    {
         if (!room.visited)
         {
             room.visited = true;

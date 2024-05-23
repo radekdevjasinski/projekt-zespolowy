@@ -7,10 +7,13 @@ public class EnemiesRoom : Room
 {
     private int enemiesCount;
     private AddEnemy[] addEnemis;
+    private DungeonRoom dungeonRoom;
     private void Awake()
     {
         addEnemis = GetComponentsInChildren<AddEnemy>();
         enemiesCount = addEnemis.Length;
+
+        dungeonRoom = DungeonGenerator.instance.rooms[RoomIndex];
     }
 
 
@@ -39,10 +42,15 @@ public class EnemiesRoom : Room
 
     public override void onFirstEntry()
     {
+        dungeonRoom = DungeonGenerator.instance.rooms[RoomIndex];
         base.onFirstEntry();
-        this.closeAllDorrs();
-        summonEnemies();
-   
+        if (enemiesCount > 0)
+        {
+            this.closeAllDorrs();
+            summonEnemies();
+        }
+        
+
     }
 
     protected override IEnumerator wakeUpRoutine(float controlsOfTime)

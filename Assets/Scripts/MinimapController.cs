@@ -36,7 +36,7 @@ public class MiniMapController : MonoBehaviour
 
         //teleportScript = FindObjectOfType<PlayerTeleporter>();
 
-        DungeonRoom startRoom = new DungeonRoom( Vector2Int.zero, RoomType.STARTROOM);
+        DungeonRoom startRoom = new DungeonRoom( Vector2Int.zero, RoomType.STARTROOM, true);
         lastPlayerRoomPos = startRoom.pos;
 
         StartCoroutine(DelayedDrawMiniMap(startRoom));

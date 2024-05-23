@@ -5,6 +5,19 @@ using System;
 using System.Collections.Generic;
 using JSONConverters;
 [System.Serializable]
+public class GameData
+{
+    //dungeon
+    public Dictionary<Vector2Int, DungeonRoomSerializable> rooms;
+    public Vector2Int currentRoom;
+
+    //player
+    public PlayerDataSerializable player;
+
+    //ui items
+    public PlayerItemsSerializable items;
+}
+[System.Serializable]
 public class DungeonRoomSerializable
 {
     public Vector2Int pos;
@@ -22,14 +35,50 @@ public class DungeonRoomSerializable
     }
 }
 [System.Serializable]
-public class GameData
+public class PlayerDataSerializable
 {
-    public Dictionary<Vector2Int, DungeonRoomSerializable> rooms;
-    public Vector2Int currentRoom;
+    public int MaxHealth;
+    public int health;
+    public float MaxStamina;
+    public float stamina;
+    public int armor;
+    public float speed;
+    public float fireRate;
+    public float damage;
+    public float range;
+    public PlayerDataSerializable(int maxHealth, int health, float maxStamina, float stamina, int armor, float speed, float fireRate, float damage, float range)
+    {
+        this.MaxHealth = maxHealth;
+        this.health = health;
+        this.MaxStamina = maxStamina;
+        this.stamina = stamina;
+        this.armor = armor;
+        this.speed = speed;
+        this.fireRate = fireRate;
+        this.damage = damage;
+        this.range = range;
+    }
 }
+[System.Serializable]
+public class PlayerItemsSerializable
+{
+    public int coins;
+    public int keys;
+    public int healthPotions;
+    public int bombs;
+    public PlayerItemsSerializable(int coins, int keys, int healthPotions, int bombs)
+    {
+        this.coins = coins;
+        this.keys = keys;
+        this.healthPotions = healthPotions;
+        this.bombs = bombs;
+    }
+}
+
 public class SaveLoadManager : MonoBehaviour
 {
     private static SaveLoadManager _instance;
+    private string saveFilePath;
 
     public static SaveLoadManager instance
     {
@@ -41,14 +90,15 @@ public class SaveLoadManager : MonoBehaviour
     {
         if (_instance != null)
             throw new Exception("there should be only one instance of Save Load Manager");
-        _instance = this;
-    }
-    private string saveFilePath;
-
-    void Start()
-    {
         saveFilePath = Path.Combine(Application.persistentDataPath, "savefile.json");
-        Debug.Log(saveFilePath);
+
+        _instance = this;
+
+        if (PlayerPrefs.GetInt("Loaded") == 1)
+        {
+            GameLoaded = true;
+        }
+        
     }
 
     public void SaveGame()
@@ -64,10 +114,32 @@ public class SaveLoadManager : MonoBehaviour
         }
         data.rooms = roomsSerializable;
 
+
+        //player stats
+        PlayerAttributesController playerAttributesController = GameObject.Find("Player").GetComponent<PlayerAttributesController>();
+        PlayerDataSerializable playerDataSerializable = new(
+            playerAttributesController.getMaxHealth(),
+            playerAttributesController.Health,
+            playerAttributesController.getMaxStamina(),
+            playerAttributesController.getMaxStamina(), //gets max stamina
+            playerAttributesController.Armor,
+            playerAttributesController.Speed,
+            playerAttributesController.FireRate,
+            playerAttributesController.Damage,
+            playerAttributesController.Range
+            );
+        data.player = playerDataSerializable;
+
         //current Room
         data.currentRoom = DungeonGenerator.instance.getCurrRoom().pos;
 
-
+        // items
+        PlayerItemsController playerItemsController = GameObject.Find("Player").GetComponent<PlayerItemsController>();
+        data.items = new(
+            playerItemsController.getCoins(),
+            playerItemsController.getKeys(),
+            playerItemsController.getHealthPotion(),
+            playerItemsController.getBombs());
 
         JsonSerializerSettings settings = new();
         settings.Converters.Add(new Vector2IntConverter());
@@ -97,7 +169,7 @@ public class SaveLoadManager : MonoBehaviour
             Dictionary<Vector2Int, DungeonRoom> rooms = new();
             foreach(DungeonRoomSerializable dungeonRoomSerializable in roomsSerializable.Values)
             {
-                DungeonRoom room = new DungeonRoom(dungeonRoomSerializable.pos, dungeonRoomSerializable.roomType);
+                DungeonRoom room = new DungeonRoom(dungeonRoomSerializable.pos, dungeonRoomSerializable.roomType, dungeonRoomSerializable.visited);
                 rooms.Add(room.pos, room);
             }
             return rooms;

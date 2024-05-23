@@ -8,7 +8,7 @@ public class RemoveMoneyOnPickUp : MonoBehaviour, IonItemPickUP
 
     public void onItemPicked(GameObject gameobject)
     {
-        gameobject.GetComponent<PlayerItemsController>().remvoveCoins(moneyToRemove);
+        gameobject.GetComponent<PlayerItemsController>().removeCoins(moneyToRemove);
     }
 
     public void setMoneyToRemove(int moneyToRemove) {

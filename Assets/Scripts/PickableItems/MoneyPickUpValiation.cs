@@ -14,7 +14,7 @@ public class MoneyPickUpValiation : MonoBehaviour, IitemPickUpValidaitin
         PlayerItemsController playerItemsController = pickingUpActor.GetComponent<PlayerItemsController>();
         if (playerItemsController != null)
         {
-            return playerItemsController.getCoinsAmount() >= moneyRequired;
+            return playerItemsController.getCoins() >= moneyRequired;
         }
         else
         {
