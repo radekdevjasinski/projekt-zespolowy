@@ -9,15 +9,26 @@ public class NPCConversation : MonoBehaviour
     private DialogController dialogController;
     [SerializeField] private LocalizedString [] eneterDialogues;
     protected Animator Animator;
+    protected NarratorDialogControler narratorDialog;
     private void Awake()
     {
         dialogController = GetComponent<DialogController>();
         Animator=GetComponent<Animator>();
+
     }
     protected virtual void Start()
     {
-        
+        narratorDialog = FindObjectOfType<NarratorDialogControler>();
+        if (narratorDialog != null)
+        {
+            Debug.Log("NarratorDialogControler found.");
         }
+        else
+        {
+            Debug.LogError("NarratorDialogControler not found.");
+        }
+
+    }
 
     public void setDialogeText(string text)
     {
@@ -26,13 +37,20 @@ public class NPCConversation : MonoBehaviour
     public void setDialogeText(LocalizedString text)
     {
         setDialogeText(text.GetLocalizedString());
-            }
+    }
 
         private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            StartConversation();
+            if(narratorDialog != null)
+            {
+                if (!narratorDialog.isTalking)
+                {
+                    StartConversation();
+                }
+            }
+
             
         }
     }

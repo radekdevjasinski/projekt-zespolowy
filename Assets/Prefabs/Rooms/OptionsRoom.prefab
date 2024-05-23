@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cc08eb5fe9ae240b1eab3598cb6677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 1}
-  active: 0
+  secondTeleport: {fileID: 0}
+  offset: 5
 --- !u!1 &1025584897092830552
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52993c561291fd44fbacd6e3741dc471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftDoor: {fileID: 8518259797110407874}
+  leftDoor: {fileID: 424126996265393060}
   rightDoor: {fileID: 0}
   topDoor: {fileID: 0}
   bottomDoor: {fileID: 0}
@@ -415,8 +415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cc08eb5fe9ae240b1eab3598cb6677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: -1}
-  active: 0
+  secondTeleport: {fileID: 0}
+  offset: 5
 --- !u!1 &2930944773227475718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,8 +1460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cc08eb5fe9ae240b1eab3598cb6677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: -1, y: 0}
-  active: 0
+  secondTeleport: {fileID: 0}
+  offset: 5
 --- !u!1 &6333202624250676753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,8 +1552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cc08eb5fe9ae240b1eab3598cb6677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 1, y: 0}
-  active: 0
+  secondTeleport: {fileID: 0}
+  offset: 5
 --- !u!1 &8518259797110407874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorSprite: {fileID: 0}
-  doorState: 0
+  openOnstar: 0
 --- !u!1 &8528262608300057714
 GameObject:
   m_ObjectHideFlags: 0
