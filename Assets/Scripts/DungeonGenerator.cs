@@ -141,17 +141,32 @@ public class DungeonGenerator : MonoBehaviour
 
     void Start()
     {
+        if (SaveLoadManager.instance.GameLoaded)
+        {
+            LoadDungeon();
+        }
+        else
+        {
+            GenerateRooms();
+        }
+        DrawRooms(); 
+        setupRooms();
+        navigationBake.BakeNavMesh();
+        SaveLoadManager.instance.SaveGame();
+    }
+    void GenerateRooms()
+    {
         int allRooms = roomCount + shopRoomCount + bossRoomCount;
 
         addRoomBase(new Vector2Int(0, 0), RoomType.STARTROOM, true);
- 
+
         for (int i = 0; i < allRooms; i++)
         {
-            Debug.Log("Adding room nr: "+ i);
+            Debug.Log("Adding room nr: " + i);
             if (roomCount > 0)
             {
                 Debug.Log("Adding room : room");
-                addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)),RoomType.ROOM);
+                addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)), RoomType.ROOM);
                 roomCount--;
             }
             else if (shopRoomCount > 0)
@@ -169,13 +184,13 @@ public class DungeonGenerator : MonoBehaviour
                 bossRoomCount--;
             }
         }
-        DrawRooms();
-        setupRooms();
-        navigationBake.BakeNavMesh();
     }
-
-
-
+    void LoadDungeon()
+    {
+        GameData loaded = SaveLoadManager.instance.LoadGame();
+        rooms = SaveLoadManager.instance.TranslateRooms(loaded);
+        currPlayerPositon = loaded.currentRoom;
+    }
     void DrawRooms()
     {
 
@@ -244,7 +259,7 @@ public class DungeonGenerator : MonoBehaviour
     }
 
     #region Dungeon controls
-    Vector2Int currPlayerPOsiton=Vector2Int.zero;
+    Vector2Int currPlayerPositon = Vector2Int.zero;
     [SerializeField] private float controlsOfTime = 0.8f;
 
     public float getControlsOFTime()
@@ -254,10 +269,12 @@ public class DungeonGenerator : MonoBehaviour
     public void onRoomEnter(Vector2Int positon)
     {
         EnterRoom(rooms[positon]);
+        SaveLoadManager.instance.SaveGame();
+
     }
     public void EnterRoom(DungeonRoom room)
     {
-        currPlayerPOsiton = room.pos;
+        currPlayerPositon = room.pos;
         if (!room.visited)
         {
             room.visited = true;
@@ -266,7 +283,7 @@ public class DungeonGenerator : MonoBehaviour
 
     public DungeonRoom getCurrRoom()
     {
-        return rooms[currPlayerPOsiton];
+        return rooms[currPlayerPositon];
     }
 
     #endregion
