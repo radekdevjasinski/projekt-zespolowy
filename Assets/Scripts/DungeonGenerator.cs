@@ -84,6 +84,7 @@ public class DungeonRoom
 
 public class DungeonGenerator : MonoBehaviour
 {
+    private CameraFollowRoom cameraController;
     private static DungeonGenerator _instance;
 
     public static DungeonGenerator instance
@@ -141,6 +142,9 @@ public class DungeonGenerator : MonoBehaviour
 
     void Start()
     {
+        cameraController = GameObject.Find("CameraHolder").GetComponent<CameraFollowRoom>();
+        if (cameraController == null)
+            throw new Exception("no cam,era hlder");
         int allRooms = roomCount + shopRoomCount + bossRoomCount;
 
         addRoomBase(new Vector2Int(0, 0), RoomType.STARTROOM, true);
@@ -253,15 +257,23 @@ public class DungeonGenerator : MonoBehaviour
     }
     public void onRoomEnter(Vector2Int positon)
     {
+        if(rooms.ContainsKey(positon))
         EnterRoom(rooms[positon]);
     }
     public void EnterRoom(DungeonRoom room)
     {
+        updateCamera(room);
         currPlayerPOsiton = room.pos;
         if (!room.visited)
         {
             room.visited = true;
         }
+    }
+
+    void updateCamera(DungeonRoom room)
+    {
+    
+        cameraController.moveCameraToPosition(room);
     }
 
     public DungeonRoom getCurrRoom()

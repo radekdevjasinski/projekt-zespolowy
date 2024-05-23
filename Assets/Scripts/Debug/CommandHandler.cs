@@ -182,50 +182,96 @@ public class CommandHandler : MonoBehaviour
             }
             return "resets trades for "+ amt+" npcs";
         }));
-        //_commands.Add(new ActionCommand("alohomora", "opens nearby doors", "alohomora", () =>
-        //{
-        //    Collider2D[] objectsNearby = new Collider2D[20];
-        //    ContactFilter2D contactFilter = new ContactFilter2D();
-        //    contactFilter.layerMask = doorsMask;
-        //    contactFilter.useTriggers = true;
-        //    int amt = Physics2D.OverlapCircle(commandHelper.getPlayer().transform.position, 5, contactFilter, objectsNearby);
-          
-        //  Debug.Log("Object nearby " + amt);
-        //  int doorsamt = 0;
-          
-        //    for (int i= 0; i < amt; i++)
-        //    {
-        //        Collider2D var= objectsNearby[i];
-        //        Debug.Log("Object nearby " + var!=null?var.name:"null");
-        //        Door doors;
-        //        Teleport teleport;
-                
-        //        if (var != null && var.TryGetComponent<Door>(out doors))
-        //        {
-        //         doors.openDoor();
-        //        }
-             
-        //    }
-        //    return "opened " + doorsamt + " doors";
-        //}));
+        _commands.Add(new ActionCommand("alohomora", "opens nearby doors", "alohomora", () =>
+        {
+            Collider2D[] objectsNearby = new Collider2D[20];
+            ContactFilter2D contactFilter = new ContactFilter2D();
+            contactFilter.layerMask = doorsMask;
+            contactFilter.useTriggers = true;
+            int amt = Physics2D.OverlapCircle(commandHelper.getPlayer().transform.position, 3, contactFilter, objectsNearby);
 
-        //_commands.Add(new ActionCommand("l", "teleport player to left room", "L/l", () =>
-        //{
-        //    return commandHelper.teleportPlayer(new Vector2Int(-1, 0));
-        //}));
-        //_commands.Add(new ActionCommand("r", "teleport player to right room", "R/r", () =>
-        //{
-        //    return commandHelper.teleportPlayer(new Vector2Int(1, 0));
-        //}));
-        //_commands.Add(new ActionCommand("u", "teleport player to up room", "U/u", () =>
-        //{
-        //    return commandHelper.teleportPlayer(new Vector2Int(0, 1));
-        //}));
-        //_commands.Add(new ActionCommand("d", "teleport player to down room", "D/d", () =>
-        //{
-        //    return commandHelper.teleportPlayer(new Vector2Int(0, -1));
-        //}));
+            Debug.Log("Object nearby " + amt);
+            int doorsamt = 0;
 
+            for (int i = 0; i < amt; i++)
+            {
+                Collider2D var = objectsNearby[i];
+                Debug.Log("Object nearby " + var != null ? var.name : "null");
+                Door doors;
+
+                if (var != null && var.TryGetComponent<Door>(out doors))
+                {
+                    doors.openDoor();
+                    doorsamt++;
+                }
+
+            }
+            return "opened " + doorsamt + " doors";
+        }));
+
+        _commands.Add(new ActionCommand("l", "teleport player to left room, Cautions overuse might break Camera", "L/l", () =>
+        {
+            return commandHelper.teleportPlayer(0);
+        }));
+        _commands.Add(new ActionCommand("r", "teleport player to right room, Cautions overuse might break Camera", "R/r", () =>
+        {
+            return commandHelper.teleportPlayer(2);
+        }));
+        _commands.Add(new ActionCommand("u", "teleport player to up room, Cautions overuse might break Camera", "U/u", () =>
+        {
+            return commandHelper.teleportPlayer(1);
+        }));
+        _commands.Add(new ActionCommand("d", "teleport player to down room, Cautions overuse might break Camera", "D/d", () =>
+        {
+            return commandHelper.teleportPlayer(3);
+        }));
+
+
+        _commands.Add(new ActionCommand("kill", "deals 100.0 points of damge to nerby enteties", "kill", () =>
+        {
+            Collider2D[] objectsNearby = new Collider2D[20];
+            ContactFilter2D contactFilter = new ContactFilter2D();
+            int amt = Physics2D.OverlapCircle(commandHelper.getPlayer().transform.position, 10, contactFilter, objectsNearby);
+
+            Debug.Log("Object nearby " + amt);
+            int entetyiAmt = 0;
+
+            for (int i = 0; i < amt; i++)
+            {
+                Collider2D var = objectsNearby[i];
+                Debug.Log("Object nearby " + var != null ? var.name : "null");
+                EntityController<float> enController;
+
+                if (var != null && var.TryGetComponent<EntityController<float>>(out enController))
+                {
+                    enController.dealDamage(100);
+                    entetyiAmt++;
+                }
+
+            }
+            return "killed " + entetyiAmt + " enteties";
+        }));
+        _commands.Add(new ActionCommand("chest", "rerolls chest Spawner in current room", "chest", () =>
+        {
+            ChestSpawner[] spanwers = DungeonGenerator.instance.getCurrRoom().gameObject
+                .GetComponentsInChildren<ChestSpawner>();
+           
+            int chestiAmt = spanwers.Length;
+
+            foreach (ChestSpawner chestSpawner in spanwers)
+            {
+                chestSpawner.SpawnChest();
+            }
+            
+            return "chest spanwer rerolled " + chestiAmt + " chest";
+        }));
+        _commands.Add(new ActionCommand("speedrun", "gives player inviniclity, spped 3 and damgage 20", "speedrun", () =>
+        {
+            commandHelper.setAttribute(20, PlayerAttributesController.attributes.DAMAGE);
+            commandHelper.getPlayer().GetComponent<PlayerItemsController>().GetComponent<PlayerEntityController>().setIsInvurnable(!commandHelper.getPlayer().GetComponent<PlayerItemsController>().GetComponent<PlayerEntityController>().getIsInvurnable());
+            commandHelper.setAttribute(3, PlayerAttributesController.attributes.SPEED);
+            return "set speed run values for debbuging";
+        }));
     }
 
 

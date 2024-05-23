@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LootChest : ActivatableObject
+public class LootChest : ActivatableAreaObject
 {
     [SerializeField] public List <GameObject> loot;
     private GameObject player;
@@ -15,7 +15,7 @@ public class LootChest : ActivatableObject
         player = GameObject.FindGameObjectWithTag("Player");
         renderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
-    protected override void onActivate(GameObject player)
+    public override bool activate(GameObject player)
     {
         if (!isOpened)
         {
@@ -27,6 +27,7 @@ public class LootChest : ActivatableObject
                     renderer.sprite = openChest;
                     player.GetComponent<PlayerItemsController>().removeKey(1);
                     dropLoot();
+                    return true;
                 }
             }
             else
@@ -35,7 +36,10 @@ public class LootChest : ActivatableObject
                 renderer.sprite = openChest;
                 dropLoot();
             }
+           
         }
+
+        return false;
     }
 
     void pushItem(GameObject obj)

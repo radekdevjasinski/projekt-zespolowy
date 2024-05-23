@@ -13,55 +13,63 @@ AnimationClip:
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
   m_CompressedRotationCurves: []
-  m_EulerCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: {x: 0, y: 0, z: -0.27920532}
-        inSlope: {x: 0, y: 0, z: 188.77264}
-        outSlope: {x: 0, y: 0, z: 188.77264}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.27023625}
-      - serializedVersion: 3
-        time: 0.26666668
-        value: {x: 0, y: 0, z: -21.591265}
-        inSlope: {x: 0, y: 0, z: -79.92022}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.6
-        value: {x: 0, y: 0, z: -18.973764}
-        inSlope: {x: -0, y: -0, z: 14.374064}
-        outSlope: {x: 0, y: 0, z: 14.374064}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 1.8
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: spriteHodler
+  m_EulerCurves: []
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
-  m_SampleRate: 60
+  m_PPtrCurves:
+  - serializedVersion: 2
+    curve:
+    - time: 0
+      value: {fileID: -1074978281, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.0625
+      value: {fileID: 437199024, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.125
+      value: {fileID: -1073556539, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.1875
+      value: {fileID: 1413528190, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.25
+      value: {fileID: -1367323190, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.3125
+      value: {fileID: -1571533766, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.375
+      value: {fileID: 1337590423, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.4375
+      value: {fileID: -1337671980, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.5
+      value: {fileID: 1396241491, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.5625
+      value: {fileID: 413734525, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.625
+      value: {fileID: 685064008, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.6875
+      value: {fileID: -485545632, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.75
+      value: {fileID: -1977380625, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.8125
+      value: {fileID: 45111316, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.875
+      value: {fileID: 372433740, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 0.9375
+      value: {fileID: -717735331, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 1
+      value: {fileID: -1108838526, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 1.0625
+      value: {fileID: 466579365, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 1.125
+      value: {fileID: -155366523, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 1.1875
+      value: {fileID: 239026695, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 1.25
+      value: {fileID: -2015696520, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - time: 1.3125
+      value: {fileID: -1358713177, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    attribute: m_Sprite
+    path: spriteHodler/Sprite
+    classID: 212
+    script: {fileID: 0}
+    flags: 2
+  m_SampleRate: 16
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -69,21 +77,43 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2393566357
-      attribute: 4
+      path: 3431823709
+      attribute: 0
       script: {fileID: 0}
-      typeID: 4
-      customType: 4
-      isPPtrCurve: 0
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
       isIntCurve: 0
       isSerializeReferenceCurve: 0
-    pptrCurveMapping: []
+    pptrCurveMapping:
+    - {fileID: -1074978281, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: 437199024, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -1073556539, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: 1413528190, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -1367323190, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -1571533766, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: 1337590423, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -1337671980, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: 1396241491, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: 413734525, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: 685064008, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -485545632, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -1977380625, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: 45111316, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: 372433740, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -717735331, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -1108838526, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: 466579365, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -155366523, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: 239026695, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -2015696520, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
+    - {fileID: -1358713177, guid: fabde5fe72f2e9c48905c54650214033, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.8
+    m_StopTime: 1.375
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -98,165 +128,12 @@ AnimationClip:
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
     m_Mirror: 0
-  m_EditorCurves:
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.6
-        value: 0
-        inSlope: -0
-        outSlope: 0
-        tangentMode: 5
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.8
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.x
-    path: spriteHodler
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.6
-        value: 0
-        inSlope: -0
-        outSlope: 0
-        tangentMode: 5
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.8
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.y
-    path: spriteHodler
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: -0.27920532
-        inSlope: 188.77264
-        outSlope: 188.77264
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.27023625
-      - serializedVersion: 3
-        time: 0.26666668
-        value: -21.591265
-        inSlope: -79.92022
-        outSlope: 0
-        tangentMode: 5
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.8
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.z
-    path: spriteHodler
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  m_EulerEditorCurves:
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: spriteHodler
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: spriteHodler
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: spriteHodler
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.26666668
+  - time: 1.1875
     functionName: doAction
     data: 
     objectReferenceParameter: {fileID: 0}

@@ -6,11 +6,13 @@ public class Teleport : MonoBehaviour
 {
     [SerializeField] private Teleport secondTeleport;
     [SerializeField] private float offset=5;
+
     private Collider2D collider;
 
     private void Awake()
     {
         collider = GetComponent<Collider2D>();
+       
     }
 
     public bool isActve()
@@ -22,6 +24,23 @@ public class Teleport : MonoBehaviour
     {
         collider.gameObject.SetActive(state);
     }
+
+    public void teleport(GameObject obj)
+    {
+        if (secondTeleport != null)
+        {
+            Vector3 offsetVector = secondTeleport.transform.right;
+            offsetVector = new Vector3(offsetVector.y, -offsetVector.x, 0);
+
+            Debug.Log("second teleport positon: " + secondTeleport.transform.position);
+            Debug.Log("second local teleport positon: " + secondTeleport.transform.localPosition);
+            obj.transform.position = secondTeleport.transform.position + offsetVector * offset;
+            Debug.Log("telpeort postion : " + secondTeleport.transform.position);
+
+            Debug.Log("OFfset vector: " + offsetVector * offset);
+            secondTeleport.onTeleport();
+        }
+    }
     
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,17 +48,8 @@ public class Teleport : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && isActve())
         {
-            
-            Vector3 offsetVector = secondTeleport.transform.right;
-            offsetVector = new Vector3(offsetVector.y, -offsetVector.x, 0);
+            teleport(collision.gameObject);
 
-            Debug.Log("second teleport positon: "+secondTeleport.transform.position);
-            Debug.Log("second local teleport positon: " + secondTeleport.transform.localPosition);
-            collision.gameObject.transform.position = secondTeleport.transform.position + offsetVector * offset;
-            Debug.Log("telpeort postion : " + secondTeleport.transform.position);
-
-            Debug.Log("OFfset vector: "+ offsetVector * offset);
-            secondTeleport.onTeleport();
             //GameObject.Find("Player").GetComponent<PlayerTeleporter>().Teleport(direction);
         }
     }

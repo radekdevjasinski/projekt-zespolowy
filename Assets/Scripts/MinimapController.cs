@@ -114,7 +114,7 @@ public class MiniMapController : MonoBehaviour
     void Update()
     {
         DungeonRoom currentPlayerRoom = DungeonGenerator.instance.getCurrRoom();
- 
+
 
         if (currentPlayerRoom.pos != lastPlayerRoomPos)
         {

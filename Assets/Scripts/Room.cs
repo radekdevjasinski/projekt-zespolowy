@@ -9,7 +9,7 @@ public class Room : MonoBehaviour
     [SerializeField] Door rightDoor;
     [SerializeField] Door topDoor;
     [SerializeField] Door bottomDoor;
-
+    [SerializeField] private float cameraRoomSize=4f;
 
     private Vector2Int roomPositon;
 
@@ -101,5 +101,15 @@ public class Room : MonoBehaviour
         topDoor.openDoor();
         bottomDoor.openDoor();
 
+    }
+
+    public float getRoomSize()
+    {
+        return cameraRoomSize;
+    }
+
+    public Door[] getDoors()
+    {
+        return new Door[] { leftDoor, topDoor, rightDoor, bottomDoor };
     }
 }

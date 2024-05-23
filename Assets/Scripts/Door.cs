@@ -53,7 +53,7 @@ public class Door : MonoBehaviour
             Debug.Log("opening door");
             col.enabled = false;
             renderer.color = Color.black;
-            if (soundOnOpen != null)
+            if (soundOnOpen != null && SoundManager.instance!=null)
                 SoundManager.instance.playSound(transform, soundOnOpen);
         }
     }

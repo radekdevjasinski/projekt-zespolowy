@@ -46,7 +46,7 @@ DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
     public void playSound(Transform parent, GameObject soundObject)
     {
         GameObject soundGameObjet = Instantiate(soundObject, parent.position, new Quaternion(0, 0, 0, 0), parent);
-        //Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name);
+        Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name+" at postion "+soundGameObjet.transform.position);
         AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
         DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
     }
