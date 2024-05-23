@@ -41,7 +41,10 @@ public class PlayerControler : MonoBehaviour, Ipausable
         this.playerActionsController = this.GetComponent<PlayerActionsController>();
         this.playerAttributesController = this.GetComponent<PlayerAttributesController>();
     }
-
+    private void Update()
+    {
+        PauseGameControllToggle();
+    }
     void OnEnable()
     {
         this.controls.Player.Enable();
@@ -179,7 +182,17 @@ public class PlayerControler : MonoBehaviour, Ipausable
 
     }
 
-
+    void PauseGameControllToggle()
+    {
+        if (PauseMenuController.GameIsPaused)
+        {
+            this.controls.Player.Disable();
+        }
+        else
+        {
+            this.controls.Player.Enable();
+        }
+    }
 
     void OnCancelMouseLeftPress()
     {
