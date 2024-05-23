@@ -1,3 +1,7 @@
+# Language
+* [Polski](#spis-treści)
+* [English](#table-of-contents)
+
 ## Spis treści
 * [Informacje](#informacje)
 * [Użyte technologie](#użyte-technologie)
