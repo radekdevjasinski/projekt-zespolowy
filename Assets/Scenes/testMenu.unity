@@ -417,6 +417,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3534782048648868137, guid: c61521e8de8d7aa4ebb45a00bb9ba316, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6731866519351943996, guid: c61521e8de8d7aa4ebb45a00bb9ba316, type: 3}
       propertyPath: m_Name
       value: MenuRoom
@@ -499,7 +503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &205514606
 Transform:
   m_ObjectHideFlags: 0
@@ -525,9 +529,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f2226bd5401bd0d429c33d113fd58462, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 667b6b540edc7b842a88909e340d639a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.378
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -853,11 +857,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6755934039273500851, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 6755934039273500851, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 6755934039273500851, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -910,6 +914,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6755934039273500851, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
   m_PrefabInstance: {fileID: 299050555}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &307720349 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 424126996265393060, guid: 6f33163e6cededd4d96cea6d884fc816, type: 3}
+  m_PrefabInstance: {fileID: 598112286}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820761f512b287441aabcf93d8c9e2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &319074033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,6 +1512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionsRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 2681978827230496229, guid: 6f33163e6cededd4d96cea6d884fc816, type: 3}
+      propertyPath: sensitivity
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8348804695026186928, guid: 6f33163e6cededd4d96cea6d884fc816, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50
@@ -1537,6 +1556,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9065011981231801134, guid: 6f33163e6cededd4d96cea6d884fc816, type: 3}
+      propertyPath: leftDoor
+      value: 
+      objectReference: {fileID: 307720349}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1669,7 +1692,7 @@ Transform:
   m_GameObject: {fileID: 630529185}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.23, y: 0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2307,7 +2330,7 @@ Transform:
   m_GameObject: {fileID: 1012181095}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.23, y: 0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2872,7 +2895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff7d3c9af1d99049ac473abf9139829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BasicAmbientSounds: {fileID: 8660298434160436912, guid: e72b00879d562ea4eae2315d69a2cfe3, type: 3}
+  BasicAmbientSounds: {fileID: 8660298434160436912, guid: c9c99d8f6762b734fbcd9c867dca3626, type: 3}
+  ActiveAmbient: {fileID: 0}
 --- !u!1 &1417418276
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,7 +3671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2002155756
 Transform:
   m_ObjectHideFlags: 0

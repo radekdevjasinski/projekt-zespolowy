@@ -36,16 +36,16 @@ public class MenuControl : MonoBehaviour
         }
         else if (collision.CompareTag("OMenu"))
         {
-            TeleportTo(6.9f);
+            TeleportTo(5.5f);
         }
         else if (collision.CompareTag("SMenu"))
         {
-            TeleportTo(-6.9f);
+            TeleportTo(-7.15f);
         }
     }
     private void TeleportTo(float xPosition)
     {
-        transform.position = new Vector2(xPosition, transform.position.y);
+        transform.position = new Vector2(xPosition, 0.56f);
     }
 }
 
