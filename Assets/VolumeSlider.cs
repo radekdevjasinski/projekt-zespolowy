@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering;
 
 public class VolumeSlider : MonoBehaviour
 {
@@ -21,7 +22,11 @@ public class VolumeSlider : MonoBehaviour
         float initialPositionX = Mathf.Lerp(leftLimit.position.x, rightLimit.position.x, setVolume);
         transform.position = new Vector3(initialPositionX, transform.position.y, transform.position.z);
 
-        SetVolumeForAmbient(soundManager.ActiveAmbient, setVolume);
+        AudioSource[] audioSources = soundManager.GetComponentsInChildren<AudioSource>(true);
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.volume = setVolume;
+        }
     }
 
     private void Update()
@@ -43,16 +48,11 @@ public class VolumeSlider : MonoBehaviour
 
             float volume = Mathf.InverseLerp(leftLimit.position.x, rightLimit.position.x, transform.position.x);
 
-            SetVolumeForAmbient(soundManager.ActiveAmbient, volume);
-        }
-    }
-
-    private void SetVolumeForAmbient(GameObject ambient, float volume)
-    {
-        AudioSource[] audioSources = soundManager.GetComponentsInChildren<AudioSource>(true);
-        foreach (AudioSource audioSource in audioSources)
-        {
-            audioSource.volume = volume;
+            AudioSource[] audioSources = soundManager.GetComponentsInChildren<AudioSource>(true);
+            foreach (AudioSource audioSource in audioSources)
+            {
+                audioSource.volume = volume;
+            }
         }
     }
 
