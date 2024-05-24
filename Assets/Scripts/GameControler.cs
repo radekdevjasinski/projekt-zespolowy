@@ -64,4 +64,9 @@ player.GetComponent<PlayerControler>().pause();
     {
         player.GetComponent<PlayerControler>().resume();
     }
+
+    public Transform getPlayer()
+    {
+        return player.transform;
+    }
 }

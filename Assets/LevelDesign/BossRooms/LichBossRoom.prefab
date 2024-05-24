@@ -3759,7 +3759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3454423971384584238}
-  - component: {fileID: 796470190878452661}
+  - component: {fileID: 6038280000513354973}
   m_Layer: 0
   m_Name: LichBossRoom
   m_TagString: LichBossRoom
@@ -3786,7 +3786,7 @@ Transform:
   - {fileID: 2488109860700147033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &796470190878452661
+--- !u!114 &6038280000513354973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3795,13 +3795,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6731866519351943996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52993c561291fd44fbacd6e3741dc471, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a8ca1ac8368f18469a5a0f2c135536d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leftDoor: {fileID: 3131863397956993938}
   rightDoor: {fileID: 5035378161046641598}
   topDoor: {fileID: 977709396519540285}
   bottomDoor: {fileID: 169852067246355226}
+  cameraRoomSize: 4
 --- !u!1 &8106301390556366763
 GameObject:
   m_ObjectHideFlags: 0

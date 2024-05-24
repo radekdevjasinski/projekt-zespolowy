@@ -112,4 +112,9 @@ public class Room : MonoBehaviour
     {
         return new Door[] { leftDoor, topDoor, rightDoor, bottomDoor };
     }
+
+    public virtual Transform getCameraFollowPoint()
+    {
+        return this.transform;
+    }
 }

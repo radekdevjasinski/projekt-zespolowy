@@ -257,6 +257,7 @@ public class DungeonGenerator : MonoBehaviour
     }
     public void onRoomEnter(Vector2Int positon)
     {
+        Debug.Log("onRoomEnter");
         if(rooms.ContainsKey(positon))
         EnterRoom(rooms[positon]);
     }
@@ -272,8 +273,19 @@ public class DungeonGenerator : MonoBehaviour
 
     void updateCamera(DungeonRoom room)
     {
-    
-        cameraController.moveCameraToPosition(room);
+        Debug.Log("udpate camera" + room.roomType);
+        if (room.roomType == RoomType.BOSSROOM)
+        {
+            cameraController.cameraFadeIn();
+            cameraController.enableConfirer();
+        }
+        else
+        {
+            cameraController.disableConfirer();
+        }
+        cameraController.setCameraFollowPonit(room.gameObject.GetComponent<Room>().getCameraFollowPoint());
+
+        //cameraController.moveCameraToPosition(room);
     }
 
     public DungeonRoom getCurrRoom()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -77,16 +78,13 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
 
     private void summonMinion()
     {
+        Debug.Log("summonMinion");
         currentAmountOfMinons++;
         Vector2 pos= bossFightController.getRandomPostionOnBossMap(0.1f);
         GameObject minion = Instantiate(this.minionSummon, new Vector3(pos.x, pos.y,0) , new Quaternion(0,0,0,0), this.minionsParent);
-        minion.GetComponentInChildren<EnemyBase>().LockMovement = false;
-        //Debug.Log("Set mionn bsses");
-        foreach (InformBossAboutDeath VARIABLE in minion.GetComponentsInChildren<InformBossAboutDeath>())
-        {
-            //Debug.Log("Set mionn boss for : "+ VARIABLE.name);
-            VARIABLE.setMinionBoss(this);
-        }
+        minion.transform.GetComponentInChildren<EnemyBase>().LockMovement = false;
+        Debug.Log("Set mionn bsses for "+minion.transform.name);
+        minion.transform.GetComponentInChildren<EntityController<float>>(). AddComponent<InformBossAboutDeath>().setMinionBoss(this);
     }
     public void onMinonDeath()
     {

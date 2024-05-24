@@ -31,7 +31,8 @@ public class CameraFollowRoom : MonoBehaviour
         player = GameObject.Find("Player");
 
         transform.position = new Vector3(transform.position.x, transform.position.y, -11);
-        setCameraToBasicRoom();
+        setCameraFollowPonit(this.gameObject.transform);
+        //setCameraToBasicRoom();
     }
 
 
@@ -40,82 +41,50 @@ public class CameraFollowRoom : MonoBehaviour
         mainCamera.SetActive(true);
         bossRoomCamera.enabled = false;
     }
-    private void setCameraToBossRoom(bool visited)
-    {
+ 
 
-
-        //bossRoomCamera.gameObject.SetActive(true);
-     
-        StartCoroutine(DelayedCameraActivation(0.25f,visited));
-     
-        //mainCamera.SetActive(false);
-    }
-
-    public void moveCameraToPosition(DungeonRoom newRoom)
-    {
-        Vector3 newPos = newRoom.gameObject.transform.position;
-        mainCamera.GetComponent<Camera>().orthographicSize = newRoom.gameObject.GetComponent<Room>().getRoomSize();
-        newPos.z = -11;
-        StartCoroutine(moveCamera(newPos));
-        switch (newRoom.roomType)
-        {
-            case RoomType.BOSSROOM:
-                setCameraToBossRoom(newRoom.visited);
-                break;
-            default:
-                setCameraToBasicRoom();
-                break;
-        }
+    //public void moveCameraToPosition(DungeonRoom newRoom)
+    //{
+    //    Vector3 newPos = newRoom.gameObject.transform.position;
+    //    mainCamera.GetComponent<Camera>().orthographicSize = newRoom.gameObject.GetComponent<Room>().getRoomSize();
+    //    newPos.z = -11;
+    //    StartCoroutine(moveCamera(newPos));
+    //    switch (newRoom.roomType)
+    //    {
+    //        case RoomType.BOSSROOM:
+    //            setCameraToBossRoom(newRoom.visited);
+    //            break;
+    //        default:
+    //            setCameraToBasicRoom();
+    //            break;
+    //    }
         
-    }
+    //}
 
 
-    void Update()
+ 
+    //IEnumerator moveCamera(Vector3 destin)
+    //{
+
+    //    //Vector3 vel = Vector3.zero;
+    //    //while (Vector3.Distance(transform.position, destin) > 0.01)
+    //    //{
+    //    //    Debug.Log("moving camera from "+ transform.position+" to "+ destin);
+    //    //    transform.position = Vector3.SmoothDamp(transform.position, destin, ref velocity, smoothTime);
+    //    //    yield return new WaitForEndOfFrame(); 
+    //    //}
+    //}
+    IEnumerator DelayedCameraActivation(float delay)
     {
-        //activePlayerRoom = DungeonGenerator.instance.getCurrRoom();
-        ////Debug.Log("active player room: " + activePlayerRoom);
-        //if (activePlayerRoom.gameObject != null)
-        //{
-        //    Vector2 roomPos = activePlayerRoom.pos * dungeonGenerator.roomSpace;
-        //    transform.position = Vector3.SmoothDamp(transform.position,
-        //        new Vector3(roomPos.x, roomPos.y, transform.position.z), ref velocity, smoothTime);
-        //    //    switch (activePlayerRoom.roomType)
-        //    //    {
-        //    //        case RoomType.BOSSROOM:
-        //    //            if (!transitionDone)
-        //    //            {
-        //    //                StartCoroutine(DelayedCameraActivation(0.25f));
-        //    //            }
-        //    //            break;
-        //    //        default:
-        //    //            transitionDone = false;
-        //    //            bossRoomCamera.gameObject.SetActive(false);
-        //    //            mainCamera.GetComponent<Camera>().orthographicSize = activePlayerRoom.roomType == RoomType.SHOPROOM ? smallRoomCameraSize : mediumRoomCameraSize;
-        //    //            break;
-        //    //    }
-        //}
-    }
-
-    IEnumerator moveCamera(Vector3 destin)
-    {
-
-        Vector3 vel = Vector3.zero;
-        while (Vector3.Distance(transform.position, destin) > 0.01)
-        {
-            Debug.Log("moving camera from "+ transform.position+" to "+ destin);
-            transform.position = Vector3.SmoothDamp(transform.position, destin, ref velocity, smoothTime);
-            yield return new WaitForEndOfFrame(); 
-        }
-    }
-    IEnumerator DelayedCameraActivation(float delay, bool visited)
-    {
+        Debug.Log("DelayedCameraActivation");
         transitionDone = true;
         transitionDuration = 5f;
         float t = 0;
-        yield return new WaitForSeconds(delay);
         bossRoomCamera.enabled = true;
+        bossRoomCamera.GetComponent<CinemachineStoryboard>().m_Alpha = 1;
+
+        yield return new WaitForSeconds(delay);
   
-            bossRoomCamera.GetComponent<CinemachineStoryboard>().m_Alpha = 1;
             GameObject bossRoomPrefab = GameObject.FindGameObjectWithTag("LichBossRoom");
             if (bossRoomPrefab != null)
             {
@@ -143,5 +112,28 @@ public class CameraFollowRoom : MonoBehaviour
                 yield return null;
             }
         }
-    
+
+    public void setCameraFollowPonit(Transform followpoint)
+    {
+        Debug.Log("seting folor point to "+ followpoint.transform.name + " at positon: "+ followpoint.transform.position);
+        bossRoomCamera.Follow=followpoint;
+        
+    }
+
+    public void cameraFadeIn()
+    {
+        Debug.Log("cameraFadeIn") ;
+        StartCoroutine(DelayedCameraActivation(0.25f));
+    }
+
+    public void disableConfirer()
+    {
+        
+        this.bossRoomCamera.GetComponent<CinemachineConfiner2D>().enabled=false;
+    }
+    public void enableConfirer()
+    {
+
+        this.bossRoomCamera.GetComponent<CinemachineConfiner2D>().enabled = true;
+    }
 }

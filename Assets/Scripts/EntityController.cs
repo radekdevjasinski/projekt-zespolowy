@@ -80,8 +80,6 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
     protected void runDeathSequanceElemnts()
     {
         Debug.Log("----------runDeathSequanceElemnts: "+ transform.name+" of ocunt "+ this.GetComponents<DeathSeuance>().Length);
-        if (this.GetComponents<DeathSeuance>().Length < 2)
-            throw new Exception("To small aomtu of death seaq");
         foreach (DeathSeuance var in this.GetComponents<DeathSeuance>())
         {
             Debug.Log("running: " + var.GetType());
