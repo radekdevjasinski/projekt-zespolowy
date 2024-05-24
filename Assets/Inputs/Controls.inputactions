@@ -96,15 +96,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PauseMenu",
-                    "type": "Button",
-                    "id": "29674dd5-1572-4ea4-97ca-357d63d28284",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "UseHealthPotion",
                     "type": "Button",
                     "id": "d0237ad2-0dbe-4d78-b34e-2ab4e3c65ebe",
@@ -315,17 +306,6 @@
                 },
                 {
                     "name": "",
-                    "id": "0b078887-8257-4ec6-ad6b-4f161acb58c5",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PauseMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8363631c-fe69-4425-8472-be58ca82f057",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -402,6 +382,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menu",
+            "id": "df905cad-8f7e-463b-8431-6f293d44894c",
+            "actions": [
+                {
+                    "name": "PauseMenu",
+                    "type": "Button",
+                    "id": "dcfb533d-e8a8-4637-b032-03ee8d8bfe62",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f4b80b0c-93fa-485b-81e1-3e11aabc7b0e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -25,7 +25,7 @@ public class NPCConversation : MonoBehaviour
         }
         else
         {
-            Debug.LogError("NarratorDialogControler not found.");
+            Debug.LogWarning("NarratorDialogControler not found.");
         }
 
     }

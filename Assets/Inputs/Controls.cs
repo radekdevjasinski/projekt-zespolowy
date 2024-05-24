@@ -118,15 +118,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PauseMenu"",
-                    ""type"": ""Button"",
-                    ""id"": ""29674dd5-1572-4ea4-97ca-357d63d28284"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""UseHealthPotion"",
                     ""type"": ""Button"",
                     ""id"": ""d0237ad2-0dbe-4d78-b34e-2ab4e3c65ebe"",
@@ -337,17 +328,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0b078887-8257-4ec6-ad6b-4f161acb58c5"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PauseMenu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8363631c-fe69-4425-8472-be58ca82f057"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -428,6 +408,34 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""df905cad-8f7e-463b-8431-6f293d44894c"",
+            ""actions"": [
+                {
+                    ""name"": ""PauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""dcfb533d-e8a8-4637-b032-03ee8d8bfe62"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f4b80b0c-93fa-485b-81e1-3e11aabc7b0e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -444,12 +452,14 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_MousePress = m_Player.FindAction("MousePress", throwIfNotFound: true);
         m_Player_MousePostion = m_Player.FindAction("MousePostion", throwIfNotFound: true);
         m_Player_UseAbilityOne = m_Player.FindAction("UseAbilityOne", throwIfNotFound: true);
-        m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
         m_Player_UseHealthPotion = m_Player.FindAction("UseHealthPotion", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_OpenConsole = m_Debug.FindAction("OpenConsole", throwIfNotFound: true);
         m_Debug_Enter = m_Debug.FindAction("Enter", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_PauseMenu = m_Menu.FindAction("PauseMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -521,7 +531,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MousePress;
     private readonly InputAction m_Player_MousePostion;
     private readonly InputAction m_Player_UseAbilityOne;
-    private readonly InputAction m_Player_PauseMenu;
     private readonly InputAction m_Player_UseHealthPotion;
     public struct PlayerActions
     {
@@ -537,7 +546,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @MousePress => m_Wrapper.m_Player_MousePress;
         public InputAction @MousePostion => m_Wrapper.m_Player_MousePostion;
         public InputAction @UseAbilityOne => m_Wrapper.m_Player_UseAbilityOne;
-        public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
         public InputAction @UseHealthPotion => m_Wrapper.m_Player_UseHealthPotion;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -578,9 +586,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @UseAbilityOne.started += instance.OnUseAbilityOne;
             @UseAbilityOne.performed += instance.OnUseAbilityOne;
             @UseAbilityOne.canceled += instance.OnUseAbilityOne;
-            @PauseMenu.started += instance.OnPauseMenu;
-            @PauseMenu.performed += instance.OnPauseMenu;
-            @PauseMenu.canceled += instance.OnPauseMenu;
             @UseHealthPotion.started += instance.OnUseHealthPotion;
             @UseHealthPotion.performed += instance.OnUseHealthPotion;
             @UseHealthPotion.canceled += instance.OnUseHealthPotion;
@@ -618,9 +623,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @UseAbilityOne.started -= instance.OnUseAbilityOne;
             @UseAbilityOne.performed -= instance.OnUseAbilityOne;
             @UseAbilityOne.canceled -= instance.OnUseAbilityOne;
-            @PauseMenu.started -= instance.OnPauseMenu;
-            @PauseMenu.performed -= instance.OnPauseMenu;
-            @PauseMenu.canceled -= instance.OnPauseMenu;
             @UseHealthPotion.started -= instance.OnUseHealthPotion;
             @UseHealthPotion.performed -= instance.OnUseHealthPotion;
             @UseHealthPotion.canceled -= instance.OnUseHealthPotion;
@@ -695,6 +697,52 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public DebugActions @Debug => new DebugActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
+    private readonly InputAction m_Menu_PauseMenu;
+    public struct MenuActions
+    {
+        private @Controls m_Wrapper;
+        public MenuActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PauseMenu => m_Wrapper.m_Menu_PauseMenu;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void AddCallbacks(IMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
+            @PauseMenu.started += instance.OnPauseMenu;
+            @PauseMenu.performed += instance.OnPauseMenu;
+            @PauseMenu.canceled += instance.OnPauseMenu;
+        }
+
+        private void UnregisterCallbacks(IMenuActions instance)
+        {
+            @PauseMenu.started -= instance.OnPauseMenu;
+            @PauseMenu.performed -= instance.OnPauseMenu;
+            @PauseMenu.canceled -= instance.OnPauseMenu;
+        }
+
+        public void RemoveCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -707,12 +755,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMousePress(InputAction.CallbackContext context);
         void OnMousePostion(InputAction.CallbackContext context);
         void OnUseAbilityOne(InputAction.CallbackContext context);
-        void OnPauseMenu(InputAction.CallbackContext context);
         void OnUseHealthPotion(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {
         void OnOpenConsole(InputAction.CallbackContext context);
         void OnEnter(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnPauseMenu(InputAction.CallbackContext context);
     }
 }

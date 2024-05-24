@@ -15,7 +15,7 @@ public class PauseMenuController : MonoBehaviour
     private void Awake()
     {
         controls = new Controls();
-        controls.Player.PauseMenu.performed += ctx => TogglePause();    
+        controls.Menu.PauseMenu.performed += ctx => TogglePause();    
     }
     private void Update()
     {
