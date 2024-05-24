@@ -47,10 +47,10 @@ public class Door : MonoBehaviour
    
     public void openDoor()
     {
-        Debug.Log("trying top open door: "+ isValid());
+        //Debug.Log("trying top open door: "+ isValid());
         if (isValid())
         {
-            Debug.Log("opening door");
+            //Debug.Log("opening door");
             col.enabled = false;
             renderer.color = Color.black;
             if (soundOnOpen != null && SoundManager.instance!=null)

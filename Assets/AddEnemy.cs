@@ -5,11 +5,12 @@ using UnityEngine;
 public class AddEnemy : MonoBehaviour
 {
     public GameObject enemyToSpawn;
-    public void Spawn()
+    public GameObject Spawn()
     {
         GameObject enemy = Instantiate(enemyToSpawn, transform.parent);
         enemy.transform.position = transform.position;
         Destroy(gameObject);
+        return enemy;
     }
 
 }

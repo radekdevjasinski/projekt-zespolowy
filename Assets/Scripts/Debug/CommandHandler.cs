@@ -233,13 +233,13 @@ public class CommandHandler : MonoBehaviour
             ContactFilter2D contactFilter = new ContactFilter2D();
             int amt = Physics2D.OverlapCircle(commandHelper.getPlayer().transform.position, 10, contactFilter, objectsNearby);
 
-            Debug.Log("Object nearby " + amt);
+           // Debug.Log("Object nearby " + amt);
             int entetyiAmt = 0;
 
             for (int i = 0; i < amt; i++)
             {
                 Collider2D var = objectsNearby[i];
-                Debug.Log("Object nearby " + var != null ? var.name : "null");
+                //Debug.Log("Object nearby " + var != null ? var.name : "null");
                 EntityController<float> enController;
 
                 if (var != null && var.TryGetComponent<EntityController<float>>(out enController))

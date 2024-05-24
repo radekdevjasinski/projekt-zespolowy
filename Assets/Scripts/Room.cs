@@ -95,7 +95,7 @@ public class Room : MonoBehaviour
 
     public void openAllDoors()
     {
-        Debug.Log("OPening doots");
+        //Debug.Log("OPening doots");
         leftDoor.openDoor();
         rightDoor.openDoor();
         topDoor.openDoor();

@@ -10,7 +10,7 @@ public class ObjectUponDeath : MonoBehaviour,DeathSeuance
   
     public void onDeath()
     {
-        Debug.Log("spawn object upon death, in "+ transform.parent.name);
+        //Debug.Log("spawn object upon death, in "+ transform.parent.name);
         Instantiate(paritcleObject,this.transform.position,this.transform.rotation,transform.parent);
     }
 }

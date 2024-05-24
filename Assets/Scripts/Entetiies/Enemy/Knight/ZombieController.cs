@@ -95,7 +95,7 @@ public class ZombieController : EnemyBase, OnDamage
         }*/
         playerController.dealDamage(damage);
         ApplyKnockback((transform.position - GameObject.Find("Player").transform.position).normalized, knockback.knockbackForceAttacking, knockback.knockbackDurationAttacking);
-        Debug.Log("Hit Player and applied knockback");
+        //Debug.Log("Hit Player and applied knockback");
     }
     void OnTriggerStay2D(Collider2D collision)
     {

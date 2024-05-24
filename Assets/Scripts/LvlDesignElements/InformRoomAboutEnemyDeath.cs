@@ -6,15 +6,13 @@ using UnityEngine;
 public class InformRoomAboutEnemyDeath : MonoBehaviour, DeathSeuance
 {
 
-    private Action onDeathACtion;
 
-    public void setup(Action newAction)
-    {
-        onDeathACtion=newAction;
-    }
+
+  
 
     public void onDeath()
     {
-        onDeathACtion.Invoke();
+        Debug.Log(transform.name+ ": InformRoomAboutEnemyDeath");
+        transform.parent.GetComponent<EnemiesRoom>().decreaseEnemyCount();
     }
 }

@@ -36,7 +36,7 @@ public class DialogController : MonoBehaviour
         }
         else
         {
-            Debug.Log("dialoge txt not null");
+            //Debug.Log("dialoge txt not null");
         }
         if (mumblePack != null)
             musicLoopSoundControls= SoundManager.instance.playRandomLoop(transform, mumblePack);
@@ -48,7 +48,7 @@ public class DialogController : MonoBehaviour
         int character = 0;
         for(int i = 0; i < txt.Length; i++)
         {
-            Debug.Log("txt add: " + txt[i]);
+            //Debug.Log("txt add: " + txt[i]);
             dialogueText.text += txt[i];
            yield return new WaitForSeconds(characterSpeed);
         }

@@ -19,7 +19,7 @@ public class PauseMenuController : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(GameIsPaused);
+       // Debug.Log(GameIsPaused);
     }
     private void OnEnable()
     {

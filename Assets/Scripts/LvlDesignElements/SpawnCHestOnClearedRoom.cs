@@ -8,7 +8,7 @@ public class SpawnCHestOnClearedRoom : MonoBehaviour, IOnRoomCleared
 
     public void onRoomCleared()
     {
-        Debug.Log("attemt to sumon chest");
+        //Debug.Log("attemt to sumon chest");
       chestSpawner.SpawnChest();
     }
 }

@@ -59,7 +59,7 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
         {
             runOnDamageBehaviour();
             this.reviceDamage(baseDamage);
-            Debug.Log("Recived damage: " + baseDamage + " to: " + this.getHealth());
+            //Debug.Log("Recived damage: " + baseDamage + " to: " + this.getHealth());
             if (converToFloat(this.getHealth()) <= 0.0f && isAlive == true)
             {
                 killImidielty();
@@ -72,15 +72,19 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
     public void killImidielty()
     {
         isAlive = false;
-        this.onDie();
         runDeathSequanceElemnts();
+        this.onDie();
+        
     }
 
     protected void runDeathSequanceElemnts()
     {
-        Debug.Log("----------runDeathSequanceElemnts");
+        Debug.Log("----------runDeathSequanceElemnts: "+ transform.name+" of ocunt "+ this.GetComponents<DeathSeuance>().Length);
+        if (this.GetComponents<DeathSeuance>().Length < 2)
+            throw new Exception("To small aomtu of death seaq");
         foreach (DeathSeuance var in this.GetComponents<DeathSeuance>())
         {
+            Debug.Log("running: " + var.GetType());
             var.onDeath();
         }
     }

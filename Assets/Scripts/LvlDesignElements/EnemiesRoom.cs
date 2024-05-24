@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class EnemiesRoom : Room
 {
-    private int enemiesCount;
+    [SerializeField]private int enemiesCount;
     private AddEnemy[] addEnemis;
+    private Object locker = new Object();
     private void Awake()
     {
         addEnemis = GetComponentsInChildren<AddEnemy>();
@@ -14,14 +17,19 @@ public class EnemiesRoom : Room
     }
 
 
-    void decreaseEnemyCount()
+   public void decreaseEnemyCount()
     {
-        enemiesCount--;
-        Debug.Log("ENEMIES COUNT: "+ enemiesCount);
-
-        if (enemiesCount == 0)
+        lock (locker)
         {
-            onCleared();
+            
+            Debug.Log("ENEMIES FROM  COUNT: " + enemiesCount);
+            enemiesCount--;
+            Debug.Log("ENEMIES TO  COUNT: " + enemiesCount);
+
+            if (enemiesCount == 0)
+            {
+                onCleared();
+            }
         }
     }
 
@@ -33,7 +41,7 @@ public class EnemiesRoom : Room
         foreach (IOnRoomCleared var in GetComponents<IOnRoomCleared>())
         {
             var.onRoomCleared();
-            Debug.Log("runngig: "+ var.GetType());
+            //Debug.Log("runngig: "+ var.GetType());
         }
     }
 
@@ -59,7 +67,7 @@ public class EnemiesRoom : Room
             foreach (EnemyBase enemy in enemies)
             {
                 enemy.LockMovement = false;
-                enemy.AddComponent<InformRoomAboutEnemyDeath>().setup(()=>{decreaseEnemyCount();});
+              
             }
 
     }
@@ -67,7 +75,11 @@ public class EnemiesRoom : Room
     {
         foreach (AddEnemy var in addEnemis)
         {
-            var.Spawn();
+            GameObject enemy= var.Spawn();
+            enemy.AddComponent<InformRoomAboutEnemyDeath>();
+            InformRoomAboutEnemyDeath tmp;
+            if (!enemy.TryGetComponent<InformRoomAboutEnemyDeath>(out tmp))
+                throw new Exception("InformRoomAboutEnemyDeath was not added");
         }
     }
 

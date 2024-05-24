@@ -36,7 +36,7 @@ public class ChestSpawner : MonoBehaviour
     }
     public void SpawnChest()
     {
-        Debug.Log("-------------Spawing chest");
+        //Debug.Log("-------------Spawing chest");
      int randomNumber=0;
 
          randomNumber = Random.Range(0, 101);
@@ -45,10 +45,10 @@ public class ChestSpawner : MonoBehaviour
              if (spawnChestChance < maxSpawnChestChance)
              {
                  spawnChestChance += 10;
-                 Debug.Log("Enaching hcanes to " + spawnChestChance);
+                 //Debug.Log("Enaching hcanes to " + spawnChestChance);
              }
 
-             Debug.Log("no chest usmmon: " + randomNumber + "> " + spawnChestChance +" == "+ensureSpawn);
+             //Debug.Log("no chest usmmon: " + randomNumber + "> " + spawnChestChance +" == "+ensureSpawn);
          }
          else
          {
@@ -98,7 +98,7 @@ public class ChestSpawner : MonoBehaviour
     }
     private void CreateBigChest()
     {
-        Debug.Log("create Big chest");
+        //Debug.Log("create Big chest");
         newCreatedChest = Instantiate(bigChest, transform.position, Quaternion.identity, transform);
         int randomAmountOfItems = Random.Range(minItemsAmountChest, maxItemsAmountChest + 5);
         LootChest lootChest = newCreatedChest.GetComponent<LootChest>();
