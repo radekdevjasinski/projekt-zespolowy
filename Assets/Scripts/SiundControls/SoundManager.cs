@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField]
     private GameObject BasicAmbientSounds;
-    public GameObject ActiveAmbient;
+    private GameObject ActiveAmbient;
     private Transform ambientParent;
 
     private void Awake()
