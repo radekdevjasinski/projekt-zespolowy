@@ -3587,7 +3587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -105.70104
+      value: -107.399864
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4381,8 +4381,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomSpace: 50
-  roomCount: 0
-  shopRoomCount: 0
+  roomCount: 10
+  shopRoomCount: 2
   bossRoomCount: 1
   startRoomPrefabs:
   - {fileID: 5690942790177299855, guid: fed5116736d8a4c40982a3b550f73dcf, type: 3}
@@ -4398,6 +4398,7 @@ MonoBehaviour:
   - {fileID: 6196426667538248293, guid: 9652b63be6a915e4cbf9fe7677747766, type: 3}
   - {fileID: 6196426667538248293, guid: b4b4b41d09a48d247b59f1727a81da1f, type: 3}
   - {fileID: 6196426667538248293, guid: eb12f75df4aa6b245b684d47723f0533, type: 3}
+  - {fileID: 6196426667538248293, guid: 27d45b19832b72041b031b183a8db837, type: 3}
   navigationBake: {fileID: 646683195}
   controlsOfTime: 0.8
 --- !u!1 &1061355320
