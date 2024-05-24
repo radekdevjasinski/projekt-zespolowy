@@ -1,8 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class VolumeSlider : MonoBehaviour
+public class GameVolumeSlider : MonoBehaviour
 {
-    public SoundManager soundManager;
     public float sensitivity = 0.5f;
     public float setVolume = 0.5f;
     public Transform leftLimit;
@@ -12,16 +11,11 @@ public class VolumeSlider : MonoBehaviour
 
     private void Start()
     {
-        soundManager = GameObject.Find("Sounds").GetComponent<SoundManager>();
-        if (soundManager == null)
-        {
-            Debug.LogError("SoundManager not found on object 'Sounds'");
-        }
 
         float initialPositionX = Mathf.Lerp(leftLimit.position.x, rightLimit.position.x, setVolume);
         transform.position = new Vector3(initialPositionX, transform.position.y, transform.position.z);
 
-        SetVolumeForAmbient(soundManager.ActiveAmbient, setVolume);
+        AudioListener.volume = setVolume;
     }
 
     private void Update()
@@ -43,16 +37,7 @@ public class VolumeSlider : MonoBehaviour
 
             float volume = Mathf.InverseLerp(leftLimit.position.x, rightLimit.position.x, transform.position.x);
 
-            SetVolumeForAmbient(soundManager.ActiveAmbient, volume);
-        }
-    }
-
-    private void SetVolumeForAmbient(GameObject ambient, float volume)
-    {
-        AudioSource[] audioSources = soundManager.GetComponentsInChildren<AudioSource>(true);
-        foreach (AudioSource audioSource in audioSources)
-        {
-            audioSource.volume = volume;
+            AudioListener.volume = volume;
         }
     }
 
