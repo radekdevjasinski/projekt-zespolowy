@@ -3125,6 +3125,7 @@ MonoBehaviour:
   rightDoor: {fileID: 1762745955779875383}
   topDoor: {fileID: 5766380335821365172}
   bottomDoor: {fileID: 6903075221878635155}
+  cameraRoomSize: 4
 --- !u!1 &9200443587072049173
 GameObject:
   m_ObjectHideFlags: 0
@@ -3898,6 +3899,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: a97f76c9d557dc243acedaad8446e2ca, type: 3}
+    - target: {fileID: 4086670191727936023, guid: 684b5f2714d45054c87e0878935e076f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8098825640315013711, guid: 684b5f2714d45054c87e0878935e076f, type: 3}
       propertyPath: m_Name
       value: shop
