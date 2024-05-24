@@ -8,6 +8,7 @@ public class MenuControl : MonoBehaviour
 
     private void Start()
     {
+        CinemachineCamera = FindObjectOfType<CinemachineVirtualCamera>();
         ChangeConfiner("MenuRoom");
     }
 
