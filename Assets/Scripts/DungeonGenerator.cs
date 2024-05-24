@@ -6,6 +6,7 @@ using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -284,7 +285,7 @@ public class DungeonGenerator : MonoBehaviour
             cameraController.disableConfirer();
         }
         cameraController.setCameraFollowPonit(room.gameObject.GetComponent<Room>().getCameraFollowPoint());
-
+        cameraController.setCameraSize(room.gameObject.GetComponent<Room>().getRoomSize());
         //cameraController.moveCameraToPosition(room);
     }
 

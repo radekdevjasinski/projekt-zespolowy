@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -135,5 +136,11 @@ public class CameraFollowRoom : MonoBehaviour
     {
 
         this.bossRoomCamera.GetComponent<CinemachineConfiner2D>().enabled = true;
+    }
+
+    internal void setCameraSize(float v)
+    {
+        Debug.Log("setting camera size: " + v);
+        bossRoomCamera.m_Lens.OrthographicSize = v;
     }
 }
