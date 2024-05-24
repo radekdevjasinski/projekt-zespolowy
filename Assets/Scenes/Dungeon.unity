@@ -2207,9 +2207,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3820755006469177855, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 599823110}
-    - targetCorrespondingSourceObject: {fileID: 3820755006469177855, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 599823112}
     - targetCorrespondingSourceObject: {fileID: 961128054422843696, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
       insertIndex: -1
@@ -2225,26 +2222,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 961128054422843696, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
   m_PrefabInstance: {fileID: 599823106}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &599823110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599823107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9faa2db46769b0c46959aae68ecfeee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallRoomCameraSize: 4
-  bossRoomCameraSize: 8
-  mediumRoomCameraSize: 4
-  mainCamera: {fileID: 599823108}
-  bossRoomCamera: {fileID: 0}
-  transitionDuration: 0
-  transitionDone: 0
-  smoothTime: 0.25
 --- !u!114 &599823111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3606,7 +3583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.39895
+      value: -107.39957
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
