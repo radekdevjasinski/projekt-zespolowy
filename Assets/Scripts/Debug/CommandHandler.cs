@@ -279,8 +279,8 @@ public class CommandHandler : MonoBehaviour
     public string handleCommand(string input)
     {
         input=input.ToLower();
-        //try
-        //{
+        try
+        {
             CommandBase command;
             string[] splits = input.Split(' ');
             if (_commands.TryGetValue(new CommandBase(splits[0]), out command))
@@ -299,15 +299,15 @@ public class CommandHandler : MonoBehaviour
                     return (command as ArgumentCommand<float>).invoke(float.Parse(splits[1]));
                 }
             }
-            
 
-    //}
-    //    catch (Exception e)
-    //    {
-    //        return "Exception: "+ e.Message;
-    //    }
 
-return "command not found, you can enter help";
+        }
+        catch (Exception e)
+        {
+            return "Exception: " + e.Message;
+        }
+
+        return "command not found, you can enter help";
     }
 
    
