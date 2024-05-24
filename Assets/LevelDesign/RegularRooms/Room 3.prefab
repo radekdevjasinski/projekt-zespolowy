@@ -2050,6 +2050,7 @@ MonoBehaviour:
   rightDoor: {fileID: 7308916950968978202}
   topDoor: {fileID: 3251239907208480409}
   bottomDoor: {fileID: 2509722643476915134}
+  cameraRoomSize: 4
 --- !u!114 &1440942008627509214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2119,10 +2120,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 546015444627751530}
-  - {fileID: 3052195349892310904}
-  - {fileID: 3017658943185838577}
   - {fileID: 1461973996970862251}
+  - {fileID: 3017658943185838577}
+  - {fileID: 3052195349892310904}
+  - {fileID: 546015444627751530}
   m_Father: {fileID: 6094821487052831313}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6409942110666168752
@@ -4640,7 +4641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4702,7 +4703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4870,7 +4871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4932,7 +4933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalRotation.w
