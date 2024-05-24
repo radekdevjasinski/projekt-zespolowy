@@ -50,22 +50,23 @@ public class NarratorConversation : MonoBehaviour
         lich = GameObject.FindGameObjectWithTag("LichBossRoom");
         if (lich != null)
         {
-            Debug.Log("Found Lich");
-        }
-        lichCoords = lich.transform.position;
+            lichCoords = lich.transform.position;
 
-        if (Mathf.Abs(transform.parent.position.x - lichCoords.x) <= 50f && Mathf.Abs(transform.parent.position.y - lichCoords.y) <= 50f)
-        {
-            if (!beforeEnteringBoss)
+            if (Mathf.Abs(transform.parent.position.x - lichCoords.x) <= 50f && Mathf.Abs(transform.parent.position.y - lichCoords.y) <= 50f)
             {
-                globalMessage = "Before Enetering Boss";
-                StartConversation(beforeEnterBossDialogues);
-                beforeEnteringBoss = true;
+                if (!beforeEnteringBoss)
+                {
+                    globalMessage = "Before Enetering Boss";
+                    StartConversation(beforeEnterBossDialogues);
+                    beforeEnteringBoss = true;
+                }
             }
-        } else
-        {
-            beforeEnteringBoss = false;
+            else
+            {
+                beforeEnteringBoss = false;
+            }
         }
+        
         if (!dialogController.isTalking)
             EndConversation();
 
