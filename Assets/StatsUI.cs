@@ -13,6 +13,22 @@ public class StatsUI : MonoBehaviour
 
     private bool isPanelVisible = true;
     private PlayerAttributesController playerAttributes;
+    private Controls controls;
+    void Awake()
+    {
+        controls = new Controls();
+    }
+
+    void OnEnable()
+    {
+        controls.Player.Enable();
+        controls.Player.StatisticToggle.performed +=(ctx)=> onToggle();
+    }
+
+    void OnDisable()
+    {
+        controls.Player.Disable();
+    }
 
     void Start()
     {
@@ -20,12 +36,15 @@ public class StatsUI : MonoBehaviour
         UpdateStatsUI();
     }
 
+
+
+    void onToggle()
+    {
+        ToggleStatsPanel();
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            ToggleStatsPanel();
-        }
         UpdateStatsUI();
     }
 

@@ -125,6 +125,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StatisticToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""a936d37d-c1f4-4c62-800a-f6c3e0472437"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -358,6 +367,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""UseHealthPotion"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ab86411-4670-44d1-810c-92db0ef8bb84"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StatisticToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -453,6 +473,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_MousePostion = m_Player.FindAction("MousePostion", throwIfNotFound: true);
         m_Player_UseAbilityOne = m_Player.FindAction("UseAbilityOne", throwIfNotFound: true);
         m_Player_UseHealthPotion = m_Player.FindAction("UseHealthPotion", throwIfNotFound: true);
+        m_Player_StatisticToggle = m_Player.FindAction("StatisticToggle", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_OpenConsole = m_Debug.FindAction("OpenConsole", throwIfNotFound: true);
@@ -532,6 +553,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MousePostion;
     private readonly InputAction m_Player_UseAbilityOne;
     private readonly InputAction m_Player_UseHealthPotion;
+    private readonly InputAction m_Player_StatisticToggle;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -547,6 +569,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @MousePostion => m_Wrapper.m_Player_MousePostion;
         public InputAction @UseAbilityOne => m_Wrapper.m_Player_UseAbilityOne;
         public InputAction @UseHealthPotion => m_Wrapper.m_Player_UseHealthPotion;
+        public InputAction @StatisticToggle => m_Wrapper.m_Player_StatisticToggle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -589,6 +612,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @UseHealthPotion.started += instance.OnUseHealthPotion;
             @UseHealthPotion.performed += instance.OnUseHealthPotion;
             @UseHealthPotion.canceled += instance.OnUseHealthPotion;
+            @StatisticToggle.started += instance.OnStatisticToggle;
+            @StatisticToggle.performed += instance.OnStatisticToggle;
+            @StatisticToggle.canceled += instance.OnStatisticToggle;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -626,6 +652,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @UseHealthPotion.started -= instance.OnUseHealthPotion;
             @UseHealthPotion.performed -= instance.OnUseHealthPotion;
             @UseHealthPotion.canceled -= instance.OnUseHealthPotion;
+            @StatisticToggle.started -= instance.OnStatisticToggle;
+            @StatisticToggle.performed -= instance.OnStatisticToggle;
+            @StatisticToggle.canceled -= instance.OnStatisticToggle;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -756,6 +785,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMousePostion(InputAction.CallbackContext context);
         void OnUseAbilityOne(InputAction.CallbackContext context);
         void OnUseHealthPotion(InputAction.CallbackContext context);
+        void OnStatisticToggle(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {
