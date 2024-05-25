@@ -69,7 +69,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.018893704, y: -0.02028802}
+  m_Offset: {x: -0.018893704, y: -0.00858736}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -80,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.13438043, y: 0.22613907}
+  m_Size: {x: 0.13438043, y: 0.39060116}
   m_EdgeRadius: 0
 --- !u!50 &4084532252108822104
 Rigidbody2D:
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 4177362181368006637}
   - component: {fileID: 8318395685903682192}
   m_Layer: 0
-  m_Name: coinSprite
+  m_Name: hralthvial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0031, y: -0.0176, z: 0}
-  m_LocalScale: {x: 0.91, y: 0.91, z: 0.91}
+  m_LocalScale: {x: 1.52, y: 1.52, z: 1.52}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3914346731871655489}
@@ -220,12 +220,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2319aff78e543b74ab98941ccc3e0c0f, type: 3}
+  m_Sprite: {fileID: -1931640577, guid: 2319aff78e543b74ab98941ccc3e0c0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.09, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
