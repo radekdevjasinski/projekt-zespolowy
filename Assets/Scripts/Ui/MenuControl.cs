@@ -25,29 +25,29 @@ public class MenuControl : MonoBehaviour
         }
         else if (collision.CompareTag("Options"))
         {
-            TeleportTo(44.3f);
+            TeleportTo(44.4f, 0.08f);
             ChangeConfiner("OptionsRoom");
         }
         else if (collision.CompareTag("Stats"))
         {
-            TeleportTo(-44.3f);
+            TeleportTo(-44.4f, 0.08f);
             ChangeConfiner("StatsRoom");
         }
         else if (collision.CompareTag("OMenu"))
         {
-            TeleportTo(5.5f);
+            TeleportTo(5.5f, 0.54f);
             ChangeConfiner("MenuRoom");
         }
         else if (collision.CompareTag("SMenu"))
         {
-            TeleportTo(-7.15f);
+            TeleportTo(-7.15f, 0.54f);
             ChangeConfiner("MenuRoom");
         }
     }
 
-    private void TeleportTo(float xPosition)
+    private void TeleportTo(float xPosition, float yPosition)
     {
-        transform.position = new Vector2(xPosition, 0.56f);
+        transform.position = new Vector2(xPosition, yPosition);
     }
 
     private void ChangeConfiner(string roomName)
