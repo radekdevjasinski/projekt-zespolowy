@@ -71,7 +71,7 @@ public class PlayerEntityController : EntityController<int>
         {
             playerAttributesController.increaseHealth(-damage);
             GameObject HpBar = GameObject.Find("HpBar");
-            HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+            HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
         }
         
         invincCount = invincLength;
@@ -92,7 +92,7 @@ public class PlayerEntityController : EntityController<int>
         {
             playerAttributesController.increaseHealth(-damage);
             GameObject HpBar = GameObject.Find("HpBar");
-            //HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+            //HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
             HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
         }
 
@@ -117,13 +117,13 @@ public class PlayerEntityController : EntityController<int>
     {
         playerAttributesController.resetHealth();
         GameObject HpBar = GameObject.Find("HpBar");
-        HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+        HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
     }
     public void heal(int amount)
     {
         GetComponent<PlayerAttributesController>().increaseHealth(amount);
         GameObject HpBar = GameObject.Find("HpBar");
-        HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+        HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
     }
 
     public void addArmor(int amount)

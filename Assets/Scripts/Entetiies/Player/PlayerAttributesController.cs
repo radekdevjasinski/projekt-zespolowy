@@ -70,7 +70,7 @@ public class PlayerAttributesController : MonoBehaviour
    {
        this.health += (int) change;
         GameObject HpBar = GameObject.Find("HpBar");
-        //HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+        //HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
         HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
     }
     public void resetHealth()
@@ -154,7 +154,7 @@ public class PlayerAttributesController : MonoBehaviour
             increaseHealth((int)change);
         }
         GameObject HpBar = GameObject.Find("HpBar");
-        //HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+        //HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
         HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
     }
     public int getArmor()
