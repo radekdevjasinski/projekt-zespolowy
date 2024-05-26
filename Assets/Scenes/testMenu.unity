@@ -841,7 +841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &205514606
 Transform:
   m_ObjectHideFlags: 0
@@ -5095,6 +5095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BasicAmbientSounds: {fileID: 8660298434160436912, guid: c9c99d8f6762b734fbcd9c867dca3626, type: 3}
+  ActiveAmbient: {fileID: 0}
 --- !u!1 &1424131287
 GameObject:
   m_ObjectHideFlags: 0
@@ -7205,7 +7206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2002155756
 Transform:
   m_ObjectHideFlags: 0
