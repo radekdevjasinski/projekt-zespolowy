@@ -70,11 +70,11 @@ Michał Szot
 
 ## Zrzuty ekranu 
 
-[screen1.png](https://postimg.cc/Yj7bbXSG)
+![screen1.png](https://i.postimg.cc/qBhSBSVL/screen1.png)
 
-[screen2.png](https://postimg.cc/wRx5HGtw)
+![screen2.png](https://i.postimg.cc/XqdsKMn6/screen2.png)
 
-[screen3.png](https://postimg.cc/ns8vMzjj)
+![screen3.png](https://i.postimg.cc/PqJK3vd4/screen3.png)
 
 
 ## Table of Contents
@@ -132,8 +132,8 @@ Michał Szot
 ```
 
 ## Screenshots
-[screenshot 1](https://postimg.cc/Yj7bbXSG)
+![screen1.png](https://i.postimg.cc/qBhSBSVL/screen1.png)
 
-[screenshot 2](https://postimg.cc/wRx5HGtw)
+![screen2.png](https://i.postimg.cc/XqdsKMn6/screen2.png)
 
-[screenshot 3](https://postimg.cc/ns8vMzjj)
+![screen3.png](https://i.postimg.cc/PqJK3vd4/screen3.png)
