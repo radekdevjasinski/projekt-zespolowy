@@ -19,7 +19,8 @@ public class PlayerAttributesController : MonoBehaviour
         LUCK,// currently not used, not sure about future implemenation
         PHYSICALRESISTANCE,// currently not used, not sure about future implemenation
         MAGICALRESISTANCE,// currently not used, not sure about future implemenation
-        MAX_HEALTH
+        MAX_HEALTH,
+        MAX_STAMINA
     }
 
     //Attributes
@@ -69,7 +70,8 @@ public class PlayerAttributesController : MonoBehaviour
    {
        this.health += (int) change;
         GameObject HpBar = GameObject.Find("HpBar");
-        HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+        //HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+        HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
     }
     public void resetHealth()
     {
@@ -77,13 +79,15 @@ public class PlayerAttributesController : MonoBehaviour
     }
     public void increaseStamina(float change)
     {
-        if (this.stamina + change >= this.MaxStamina)
-            stamina = this.MaxStamina;
-        else if (this.stamina + change <= 0)
+        if (stamina + change >= MaxStamina)
+            stamina = MaxStamina;
+        else if (stamina + change <= 0)
             stamina = 0;
         else
             stamina += change;
-        
+
+        GameObject.Find("StaminaSpriteBar").GetComponent<StaminaSpriteBar>().SetStamina(stamina, MaxStamina);
+
     }
     public void increaseArmor(int change)
     {
@@ -136,6 +140,10 @@ public class PlayerAttributesController : MonoBehaviour
     {
         return MaxHealth;
     }
+    public float getMaxStamina()
+    {
+        return MaxStamina;
+    }
     private void increaseMaxHealth(float change)
     {
         this.MaxHealth +=(int)change;
@@ -146,7 +154,8 @@ public class PlayerAttributesController : MonoBehaviour
             increaseHealth((int)change);
         }
         GameObject HpBar = GameObject.Find("HpBar");
-        HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+        //HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+        HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
     }
     public int getArmor()
     {

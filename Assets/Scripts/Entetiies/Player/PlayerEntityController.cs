@@ -92,7 +92,8 @@ public class PlayerEntityController : EntityController<int>
         {
             playerAttributesController.increaseHealth(-damage);
             GameObject HpBar = GameObject.Find("HpBar");
-            HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+            //HpBar.GetComponent<HealtHeartBar>().DrawHearts();
+            HpBar.GetComponent<AnimatedHealthBar>().DrawHearts();
         }
 
         invincCount = invincLength;
