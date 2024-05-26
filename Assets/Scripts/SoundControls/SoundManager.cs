@@ -18,7 +18,7 @@ public class SoundManager : MonoBehaviour
         if (instance != null && instance != this)
         {
             Debug.LogError("Two instances of SoundManager");
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -49,6 +49,15 @@ public class SoundManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
         PlayerPrefs.SetInt("IsMuted", IsMuted ? 1 : 0);
+    }
+
+    public void StopAllSounds()
+    {
+        AudioSource[] audioSources = GetComponentsInChildren<AudioSource>(true);
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.Stop();
+        }
     }
 
     public void setAmbient(GameObject ambientPack)

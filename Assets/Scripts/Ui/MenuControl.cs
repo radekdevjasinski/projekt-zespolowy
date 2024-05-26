@@ -21,6 +21,7 @@ public class MenuControl : MonoBehaviour
         }
         else if (collision.CompareTag("Start"))
         {
+            //SoundManager.instance.StopAllSounds();
             SceneManager.LoadScene(1);
         }
         else if (collision.CompareTag("Options"))
