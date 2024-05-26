@@ -1,74 +1,66 @@
-
 using System;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-
     public static SoundManager instance { get; private set; }
 
     [SerializeField]
     private GameObject BasicAmbientSounds;
-    private GameObject ActiveAmbient;
+    public GameObject ActiveAmbient;
     private Transform ambientParent;
+
+    public float MusicVolume { get; set; }
+    public bool IsMuted { get; set; }
 
     private void Awake()
     {
         if (instance != null && instance != this)
         {
-            Debug.LogError("TWo instances of sound manager");
+            Debug.LogError("Two instances of SoundManager");
             Destroy(this);
         }
         else
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         ambientParent = transform.Find("Ambient").transform;
         setAmbient(BasicAmbientSounds);
-    }
-    public void playSound(GameObject soundObject, Vector3 postion)
-    {
-        GameObject soundGameObjet = playSound(this.transform, soundObject, postion);
-        AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
-        //Debug.Log("play sound: " + soundObject.GetComponent<AudioSource>().clip.name + " ini postion: "+ postion);
-DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
-    }
-    public GameObject playSound(Transform parent, GameObject soundObject, Vector3 postion)
-    {
-        GameObject soundGameObjet = Instantiate(soundObject, new Vector3(postion.x,postion.y,0), new Quaternion(0, 0, 0, 0), parent);
-        //Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name+ " at positon: "+ soundGameObjet.transform.position);
-        AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
-        //DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
-        return soundGameObjet;
+
+        MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        IsMuted = PlayerPrefs.GetInt("IsMuted", 0) == 1;
+
+        ApplySettings();
     }
 
-    public void playSound(Transform parent, GameObject soundObject)
+    private void ApplySettings()
     {
-        GameObject soundGameObjet = Instantiate(soundObject, parent.position, new Quaternion(0, 0, 0, 0), parent);
-        //Debug.Log("play sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name+" at postion "+soundGameObjet.transform.position);
-        AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
-        DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
+        AudioSource[] audioSources = GetComponentsInChildren<AudioSource>(true);
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.volume = MusicVolume;
+            audioSource.mute = IsMuted;
+        }
     }
-    public GameObject playLoop(Transform parent, GameObject loopSOundPrefab)
+
+    public void SaveSettings()
     {
-        GameObject soundGameObjet = Instantiate(loopSOundPrefab, parent.position, new Quaternion(0, 0, 0, 0), parent);
-        //Debug.Log("play kkloop sound: " + soundGameObjet.GetComponent<AudioSource>().clip.name);
-        AudioSource audio = soundGameObjet.GetComponent<AudioSource>();
-        audio.Play();
-        return soundGameObjet;
+        PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
+        PlayerPrefs.SetInt("IsMuted", IsMuted ? 1 : 0);
     }
 
     public void setAmbient(GameObject ambientPack)
     {
-
-        Debug.Log("set ambient: "+ ambientPack.name);
+        Debug.Log("set ambient: " + ambientPack.name);
         if (this.ActiveAmbient != null)
         {
             Destroy(this.ActiveAmbient);
         }
 
         ActiveAmbient = Instantiate(ambientPack, this.ambientParent);
+        ApplySettings();
     }
 
     public void revertToBasicAmbient()
@@ -79,9 +71,35 @@ DestroyAfterTime.Destroy(soundGameObjet, audio.clip.length);
         }
     }
 
+    public void playSound(GameObject soundObject, Vector3 position)
+    {
+        GameObject soundGameObject = playSound(this.transform, soundObject, position);
+        AudioSource audio = soundGameObject.GetComponent<AudioSource>();
+        DestroyAfterTime.Destroy(soundGameObject, audio.clip.length);
+    }
+
+    public GameObject playSound(Transform parent, GameObject soundObject, Vector3 position)
+    {
+        GameObject soundGameObject = Instantiate(soundObject, new Vector3(position.x, position.y, 0), Quaternion.identity, parent);
+        return soundGameObject;
+    }
+
+    public void playSound(Transform parent, GameObject soundObject)
+    {
+        GameObject soundGameObject = Instantiate(soundObject, parent.position, Quaternion.identity, parent);
+        DestroyAfterTime.Destroy(soundGameObject, soundGameObject.GetComponent<AudioSource>().clip.length);
+    }
+
+    public GameObject playLoop(Transform parent, GameObject loopSoundPrefab)
+    {
+        GameObject soundGameObject = Instantiate(loopSoundPrefab, parent.position, Quaternion.identity, parent);
+        soundGameObject.GetComponent<AudioSource>().Play();
+        return soundGameObject;
+    }
+
     internal RandomLoopSoundControls playRandomLoop(Transform transform, GameObject mumblePack)
     {
-        GameObject soundObject= Instantiate(mumblePack,transform);
-      return soundObject.AddComponent<RandomLoopSoundControls>();
+        GameObject soundObject = Instantiate(mumblePack, transform);
+        return soundObject.AddComponent<RandomLoopSoundControls>();
     }
 }
