@@ -7,10 +7,10 @@ public class MusicToggleButton : MonoBehaviour
 
     private void Start()
     {
-        soundManager = GameObject.Find("Sounds").GetComponent<SoundManager>();
+        soundManager = SoundManager.instance;
         if (soundManager == null)
         {
-            Debug.LogError("SoundManager not found on object 'Sounds'");
+            Debug.LogError("SoundManager instance not found");
         }
     }
 
@@ -33,10 +33,13 @@ public class MusicToggleButton : MonoBehaviour
 
     private void ToggleMusic()
     {
+        soundManager.IsMuted = !soundManager.IsMuted;
+        soundManager.SaveSettings();
+
         AudioSource[] audioSources = soundManager.GetComponentsInChildren<AudioSource>(true);
         foreach (AudioSource audioSource in audioSources)
         {
-            audioSource.mute = !audioSource.mute;
+            audioSource.mute = soundManager.IsMuted;
         }
     }
 }
