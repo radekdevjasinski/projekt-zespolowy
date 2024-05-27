@@ -22,7 +22,7 @@ public class MenuControl : MonoBehaviour
         else if (collision.CompareTag("Start"))
         {
             //SoundManager.instance.StopAllSounds();
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
         else if (collision.CompareTag("Options"))
         {
