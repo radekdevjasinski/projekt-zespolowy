@@ -36,7 +36,7 @@ TagManager:
   - Projectiles
   - Enteties
   - Enemies
-  - 
+  - Light
   - 
   - 
   - 
@@ -60,4 +60,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: AfterCameraTexture
+    uniqueID: 4141979049
     locked: 0
