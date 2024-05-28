@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class healPlayerNpcAction : MonoBehaviour, InpcAction
 {
+
+    private PlayerEntityController controller;
+    [SerializeField] private GameObject Affect;
+    private void Awake()
+    {
+        Debug.Log("Heal npc Awake");
+        controller = GameObject.Find("Player").GetComponent<PlayerEntityController>();
+    }
+
     public bool perfromAction()
     {
-        PlayerEntityController controller = GameObject.Find("Player").GetComponent<PlayerEntityController>();
+        Debug.Log("Heal npc action");
+        
         if (controller.getHealth() >= controller.getMaxHealth())
             return false;
         controller.heal();
@@ -15,6 +25,8 @@ public class healPlayerNpcAction : MonoBehaviour, InpcAction
         {
             action.onPerformAction();
         }
+
+        Instantiate(Affect, controller.GetComponentInChildren<SpriteRenderer>().transform);
         return true;
 
     }

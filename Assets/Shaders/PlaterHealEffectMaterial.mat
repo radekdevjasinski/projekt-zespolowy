@@ -54,11 +54,26 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _HealTimepassed: 0.26
-    - _XTiles: 10
+    - _HealTimepassed: 1.0188816
+    - _XTiles: 16
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _glow_coor: {r: 1, g: 0.917622, b: 0, a: 0}
+    - _tiles: {r: 16, g: 16, b: 0, a: 0}
     - _tiles_section: {r: 16, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &378380642470488635
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

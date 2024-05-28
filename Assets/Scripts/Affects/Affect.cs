@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Affect : MonoBehaviour
 {
-    [SerializeField] private float timeOfAffect;
+    [SerializeField] protected float timeOfAffect;
     [SerializeField] private GameObject soundOfAffect;
 
     private GameObject loopSoundInstance;
