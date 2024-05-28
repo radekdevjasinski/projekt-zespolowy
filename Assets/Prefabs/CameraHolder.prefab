@@ -31,8 +31,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5562272416136132493}
+  m_Children: []
   m_Father: {fileID: 8526364038659339696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1780974077749885163
@@ -266,7 +265,7 @@ GameObject:
   - component: {fileID: 4057186897167626213}
   m_Layer: 0
   m_Name: CharCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,7 +283,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 621211548282424048}
+  m_Father: {fileID: 8526364038659339696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2508684611838305972
 Camera:
@@ -325,7 +324,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3584
+    m_Bits: 3585
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: ad39195a01dd42a4d84ac856cc527caf, type: 2}
   m_TargetDisplay: 0
@@ -397,8 +396,8 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
+  m_UpdateMethod: 0
+  m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -578,6 +577,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5562272416136132493}
   - {fileID: 621211548282424048}
   - {fileID: 9180033942492258657}
   m_Father: {fileID: 0}

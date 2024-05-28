@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 01732cc3f5d141d458f9bb9d05764d80, type: 3}
+        m_Texture: {fileID: 2800000, guid: ea719194c674b0a48a11f53250ecc010, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -74,9 +74,24 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - PixelSnap: 0
+    - _ColorMask: 15
+    - _CullMode: 0
     - _EnableExternalAlpha: 0
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    - _waterMoveSpeed: 0.21
+    - _waterMoveSpeed2: 0
+    - _waterSpeed: 2.17
+    - _waterWaveDensity: 5.09
     m_Colors:
-    - _Color: {r: 0.27055892, g: 0.4998809, b: 0.6037736, a: 1}
+    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
+    - _Color: {r: 0.15663938, g: 0.46174267, b: 0.6037736, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _waterHiglightColor: {r: 0.5235849, g: 0.8089472, b: 1, a: 0}
   m_BuildTextureStacks: []
