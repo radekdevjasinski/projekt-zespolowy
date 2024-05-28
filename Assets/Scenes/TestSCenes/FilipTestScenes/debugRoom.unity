@@ -869,6 +869,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 5562272416136132493, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.679993
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562272416136132493, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22.158997
+      objectReference: {fileID: 0}
     - target: {fileID: 7656588963417818866, guid: 067946e1e1feb2c4cb52d3b891dffa09, type: 3}
       propertyPath: m_Follow
       value: 
@@ -2030,6 +2038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BasicAmbientSounds: {fileID: 8660298434160436912, guid: e72b00879d562ea4eae2315d69a2cfe3, type: 3}
+  ActiveAmbient: {fileID: 0}
 --- !u!1001 &1420362765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2638,7 +2647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.399254
+      value: -107.39958
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
