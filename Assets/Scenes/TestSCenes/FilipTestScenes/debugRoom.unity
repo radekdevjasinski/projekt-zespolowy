@@ -1979,6 +1979,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -152988247
       objectReference: {fileID: 0}
+    - target: {fileID: 9188672860937341204, guid: a5a7f2e5a9323c54c8160a300eb3c5ce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5181946765116147007, guid: a5a7f2e5a9323c54c8160a300eb3c5ce, type: 3}
@@ -2655,7 +2659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.399506
+      value: -107.399994
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
