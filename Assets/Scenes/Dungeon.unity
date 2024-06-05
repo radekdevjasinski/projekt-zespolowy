@@ -574,7 +574,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1373,7 +1373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.399124
+      value: -107.400024
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2094,11 +2094,27 @@ MonoBehaviour:
   bossRoomCount: 1
   startRoomPrefabs:
   - {fileID: 5690942790177299855, guid: fed5116736d8a4c40982a3b550f73dcf, type: 3}
+  - {fileID: 5690942790177299855, guid: 434f86cce1056074eaccf57bb9bb658e, type: 3}
+  - {fileID: 5690942790177299855, guid: 94dcb59d0145da2439397190840e92db, type: 3}
+  - {fileID: 5690942790177299855, guid: ae9a08dac498da14999760dffae84432, type: 3}
+  - {fileID: 5690942790177299855, guid: 1e6de88ae833d2d4db81c0d82fa8035a, type: 3}
   roomPrefabs:
   - {fileID: 5690942790177299855, guid: decd5614ed44402499e0f98feb2bebe5, type: 3}
   - {fileID: 5690942790177299855, guid: f669861f539b2d24887627711937011d, type: 3}
   - {fileID: 5690942790177299855, guid: 81d4502ae7425ae409f9e6657707e288, type: 3}
   - {fileID: 5690942790177299855, guid: 8f82e9cb69327994b941609b4d3655a4, type: 3}
+  - {fileID: 5690942790177299855, guid: e2f6720748de4c84bb6b9ee7e6ba9a4a, type: 3}
+  - {fileID: 5690942790177299855, guid: ea6cfcf204ebac94db4305390eaf3fa2, type: 3}
+  - {fileID: 5690942790177299855, guid: a2d46052aa0a8ae45866b37a7daee587, type: 3}
+  - {fileID: 5690942790177299855, guid: cc1677740a4781d47a4ff69ac11be25c, type: 3}
+  - {fileID: 5690942790177299855, guid: 94f020c5c39735742ad0951a2eeafe46, type: 3}
+  - {fileID: 5690942790177299855, guid: 054d9250e6344e74e913a3edd96c9873, type: 3}
+  - {fileID: 5690942790177299855, guid: cc2ec60203b28e94ba7b20bf221ea5a8, type: 3}
+  - {fileID: 5690942790177299855, guid: fdd885a98a940de43b342387437ff7cc, type: 3}
+  - {fileID: 5690942790177299855, guid: 4398d06841e41ff458d06e6e1014eadb, type: 3}
+  - {fileID: 5690942790177299855, guid: d2c80ecbeed2db744b8351ec6fefb895, type: 3}
+  - {fileID: 5690942790177299855, guid: 89c48bb211eb82a479189f32347a7a56, type: 3}
+  - {fileID: 5690942790177299855, guid: d792c1fef95dbb14985b67ad52f6f74c, type: 3}
   bossPrefabs:
   - {fileID: 6731866519351943996, guid: d4b892e898ee5754c95e66693dec31e5, type: 3}
   shopPrefabs:
@@ -2107,6 +2123,12 @@ MonoBehaviour:
   - {fileID: 6196426667538248293, guid: b4b4b41d09a48d247b59f1727a81da1f, type: 3}
   - {fileID: 6196426667538248293, guid: eb12f75df4aa6b245b684d47723f0533, type: 3}
   - {fileID: 6196426667538248293, guid: 27d45b19832b72041b031b183a8db837, type: 3}
+  - {fileID: 6196426667538248293, guid: 9652b63be6a915e4cbf9fe7677747766, type: 3}
+  - {fileID: 6196426667538248293, guid: 22704202e3289d64497257af62c63bcb, type: 3}
+  - {fileID: 6196426667538248293, guid: a87e9dd5f8dfa2e4e971a745130f423c, type: 3}
+  - {fileID: 6196426667538248293, guid: cb98ff833b03734468d20975cdc1186e, type: 3}
+  - {fileID: 6196426667538248293, guid: 802d816e2ef1e284abf77f9ff6c59c13, type: 3}
+  - {fileID: 6196426667538248293, guid: 40573ce77275eb744b0bfe30015ad678, type: 3}
   navigationBake: {fileID: 646683195}
   controlsOfTime: 0.8
 --- !u!1 &1174915591
