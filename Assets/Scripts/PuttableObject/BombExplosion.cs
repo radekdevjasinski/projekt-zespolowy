@@ -4,6 +4,8 @@ using UnityEngine;
 public class BombExplosion : PuttableObject
 {
     [SerializeField] private GameObject blastPrefab;
+    [SerializeField] private GameObject shockWavePrefab;
+
     [SerializeField] private Material explosionMaterial;
 
     [SerializeField] private float explosionTimer = 3f;
@@ -42,11 +44,16 @@ public class BombExplosion : PuttableObject
         Renderer blastRenderer = blast.GetComponent<Renderer>();
         blastRenderer.material = explosionMaterial;
 
+        GameObject shockWave = Instantiate(shockWavePrefab, transform.position, Quaternion.identity);
+        var shockWaveControl = shockWave.GetComponent<ShockWaveControl>();
+        shockWaveControl.CallShockWave();
+
         var explosionControl = blast.AddComponent<ExplosionControl>();
         explosionControl.explosionMaterial = explosionMaterial;
         explosionControl.explosionSpeed = explosionSpeed;
 
         explosionControl.StartExplosion(startPos, endPos);
+
 
         destroyObjects();
 

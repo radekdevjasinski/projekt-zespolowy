@@ -10,14 +10,7 @@ public class ExplosionControl : MonoBehaviour
 
     private static int _timeToPlay = Shader.PropertyToID("_TimeToPlay");
 
-    private void Awake()
-    {
-        explosionMaterial = Resources.Load<Material>(materialName);
-        if (explosionMaterial == null)
-        {
-            Debug.LogError("Material not found: " + materialName);
-        }
-    }
+
 
     public void StartExplosion(float startPos, float endPos)
     {
