@@ -55,19 +55,19 @@ Material:
     m_Ints: []
     m_Floats:
     - _Cover: 1
-    - _CoverAmount: 0.8
+    - _CoverAmount: 0.85
     - _Dust: 1
     - _FadeEnd: 1
     - _FadeStart: 3
     - _FadeValue: 1.11
-    - _FadeValueBottom: 1.51
-    - _FadeValueTop: 0.68
+    - _FadeValueBottom: 1.4
+    - _FadeValueTop: 1.28
     - _NoiseScale: 50
-    - _ScrollSpeed: 1
+    - _ScrollSpeed: 0.2
     - _Transparent: 1
     m_Colors:
     - _CharacterMovement: {r: 0, g: 0, b: 0, a: 0}
-    - _DustColor: {r: 0.038414977, g: 0.0318192, b: 0.0318192, a: 1}
-    - _FadeColor: {r: 0.9924528, g: 0, b: 0, a: 0}
+    - _DustColor: {r: 0.004801872, g: 0.0039774, b: 0.0039774, a: 1}
+    - _FadeColor: {r: 0, g: 0, b: 0, a: 0}
     - _TintColor: {r: 3.6723404, g: 2.4292982, b: 1.6283017, a: 1}
   m_BuildTextureStacks: []
