@@ -1076,6 +1076,7 @@ MonoBehaviour:
   topDoor: {fileID: 1505776259292718133}
   bottomDoor: {fileID: 1958922410087776530}
   cameraRoomSize: 4
+  enemiesCount: 0
 --- !u!114 &608888368716809629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4440,6 +4441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4502,6 +4507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

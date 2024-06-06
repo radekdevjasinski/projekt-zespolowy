@@ -2051,6 +2051,7 @@ MonoBehaviour:
   topDoor: {fileID: 3251239907208480409}
   bottomDoor: {fileID: 2509722643476915134}
   cameraRoomSize: 4
+  enemiesCount: 0
 --- !u!114 &1440942008627509214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4322,6 +4323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     - target: {fileID: 7163200264557457382, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4392,6 +4397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     - target: {fileID: 7163200264557457382, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4462,6 +4471,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     - target: {fileID: 7163200264557457382, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4605,6 +4618,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     - target: {fileID: 7163200264557457382, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
       propertyPath: m_Enabled
       value: 0
