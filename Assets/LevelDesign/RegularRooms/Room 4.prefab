@@ -1055,6 +1055,7 @@ MonoBehaviour:
   topDoor: {fileID: 8692267185352060776}
   bottomDoor: {fileID: 8605192487717292623}
   cameraRoomSize: 4
+  enemiesCount: 0
 --- !u!114 &5972620075868730356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4285,6 +4286,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8174608846421683631}
     m_Modifications:
+    - target: {fileID: 2120473809973152684, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.750001
@@ -4601,6 +4606,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8174608846421683631}
     m_Modifications:
+    - target: {fileID: 2120473809973152684, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.470001
@@ -4663,6 +4672,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8174608846421683631}
     m_Modifications:
+    - target: {fileID: 2120473809973152684, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7189194645361671970, guid: 304a57d440ccf814ba183a5c17c70bfa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.762617
