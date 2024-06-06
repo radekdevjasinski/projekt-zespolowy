@@ -763,6 +763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 7979790539228569644, guid: c61521e8de8d7aa4ebb45a00bb9ba316, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 516dd991643c80b4cbb92a30c0e6249a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4117,7 +4121,7 @@ Transform:
   m_GameObject: {fileID: 1063942907}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: 5.22, z: 1}
+  m_LocalPosition: {x: 5.55, y: 5.21, z: 1}
   m_LocalScale: {x: 0.5908, y: 0.8556134, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4497,7 +4501,7 @@ Transform:
   m_GameObject: {fileID: 1194332067}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 5.2442, z: 1}
+  m_LocalPosition: {x: -4.48, y: 5.2442, z: 1}
   m_LocalScale: {x: 0.5908, y: 0.8556134, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

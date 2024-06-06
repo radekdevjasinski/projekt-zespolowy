@@ -54,10 +54,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Cover: 1
+    - _CoverAmount: 0.8
+    - _Dust: 1
     - _FadeEnd: 1
     - _FadeStart: 3
-    - _FadeValue: 0.95
+    - _FadeValue: 1.11
+    - _FadeValueBottom: 1.51
+    - _FadeValueTop: 0.68
+    - _NoiseScale: 50
+    - _ScrollSpeed: 1
+    - _Transparent: 1
     m_Colors:
     - _CharacterMovement: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 3.341983, g: 2.6791875, b: 1.1034846, a: 0}
+    - _DustColor: {r: 0.038414977, g: 0.0318192, b: 0.0318192, a: 1}
+    - _FadeColor: {r: 0.9924528, g: 0, b: 0, a: 0}
+    - _TintColor: {r: 3.6723404, g: 2.4292982, b: 1.6283017, a: 1}
   m_BuildTextureStacks: []
