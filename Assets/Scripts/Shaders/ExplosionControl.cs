@@ -34,6 +34,6 @@ public class ExplosionControl : MonoBehaviour
             yield return null;
         }
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject);
     }
 }
