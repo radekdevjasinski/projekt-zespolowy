@@ -4326,6 +4326,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     - target: {fileID: 7163200264557457382, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4396,6 +4400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     - target: {fileID: 7163200264557457382, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4466,6 +4474,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     - target: {fileID: 7163200264557457382, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4671,6 +4683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     - target: {fileID: 7163200264557457382, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4868,6 +4884,10 @@ PrefabInstance:
     - target: {fileID: 8098825640315013711, guid: 122f4491352035d43945237c3c0ba913, type: 3}
       propertyPath: m_Name
       value: fotel1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098825640315013711, guid: 122f4491352035d43945237c3c0ba913, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8270153440077403260, guid: 122f4491352035d43945237c3c0ba913, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5095,6 +5115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnWarrior (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
     - target: {fileID: 7163200264557457382, guid: bcf5491dc5dc0af478e668b8cf31e179, type: 3}
       propertyPath: m_Enabled
       value: 0

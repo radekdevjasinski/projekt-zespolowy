@@ -4291,11 +4291,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4437541382746954702, guid: 8a070d0bb67dc064494414300e7498d9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.19
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4437541382746954702, guid: 8a070d0bb67dc064494414300e7498d9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.07
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4437541382746954702, guid: 8a070d0bb67dc064494414300e7498d9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4333,6 +4333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnZombie 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: 8a070d0bb67dc064494414300e7498d9, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 504798309044270833, guid: a7ed8b77266c4064292f61d2ce41ad94, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4904,11 +4908,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4437541382746954702, guid: 8a070d0bb67dc064494414300e7498d9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4437541382746954702, guid: 8a070d0bb67dc064494414300e7498d9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.3541617
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4437541382746954702, guid: 8a070d0bb67dc064494414300e7498d9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4946,6 +4950,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnZombie 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5049318161331143035, guid: 8a070d0bb67dc064494414300e7498d9, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 504798309044270833, guid: a7ed8b77266c4064292f61d2ce41ad94, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

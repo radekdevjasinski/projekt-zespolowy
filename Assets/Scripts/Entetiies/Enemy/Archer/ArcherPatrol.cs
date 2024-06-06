@@ -1,15 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class ArcherPatrol : EnemyBase
 {
     private bool facingRight = true;
     private Animator animator;
-   [SerializeField]private float moveSpeed = 1f;
-
-    [SerializeField]private bool isShooting;
+    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] public bool isShooting;
 
     protected override void Start()
     {
@@ -17,14 +14,20 @@ public class ArcherPatrol : EnemyBase
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         animator = GetComponentInChildren<Animator>();
         EnemyBase enemy = GetComponent<EnemyBase>();
-
     }
 
     void FixedUpdate()
     {
         if (!LockMovement)
         {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            if (isShooting)
+            {
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            }
         }
         else
         {
@@ -33,7 +36,7 @@ public class ArcherPatrol : EnemyBase
         animator.SetBool("isShooting", isShooting);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Player"))
         {
@@ -41,17 +44,17 @@ public class ArcherPatrol : EnemyBase
             ChangeDirection();
         }
     }
+
     public void SetVelocityToZero()
     {
         rb.velocity = Vector2.zero;
         isShooting = true;
-        
     }
+
     public void SetVelocity()
     {
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         isShooting = false;
-
     }
 
     private void FlipSprite()
@@ -67,6 +70,4 @@ public class ArcherPatrol : EnemyBase
         moveSpeed *= -1;
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
     }
-
-
 }
