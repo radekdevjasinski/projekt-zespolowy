@@ -1,19 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class BombExplosion : PuttableObject
 {
     [SerializeField] private GameObject blastPrefab;
+    [SerializeField] private GameObject shockWavePrefab;
 
-    [SerializeField] private float explosionTimer = 3;
+    [SerializeField] private Material explosionMaterial;
+
+    [SerializeField] private float explosionTimer = 3f;
+    [SerializeField] private float explosionSpeed = 0.75f;
     [SerializeField] private float blastRadius = 1;
     [SerializeField] private LayerMask destructableMask;
 
+    private Coroutine _coroutine;
 
     protected override void onPut()
     {
-        Invoke("kill", explosionTimer);
+        Debug.Log("onPut() called");
+        Invoke("CallExplosion", explosionTimer);
     }
 
     private void destroyObjects()
@@ -21,19 +26,37 @@ public class BombExplosion : PuttableObject
         Collider2D[] objectToDestroy = Physics2D.OverlapCircleAll(transform.position, blastRadius, destructableMask);
         foreach (Collider2D obj in objectToDestroy)
         {
-           // Debug.Log(obj.name);
             obj.GetComponent<Destructable>().destruct();
         }
     }
 
-    private void kill()
+    public void CallExplosion()
     {
-        GameObject blast = Instantiate(blastPrefab);
-        blast.transform.position = this.transform.position;
-        blast.GetComponent<ParticleSystem>().Play();
-        destroyObjects();
-        Destroy(blast, 3f);
+        _coroutine = StartCoroutine(ExplosionAction(0f, 1f));
         Destroy(this.gameObject);
     }
 
+    private IEnumerator ExplosionAction(float startPos, float endPos)
+    {
+        GameObject blast = Instantiate(blastPrefab);
+        blast.transform.position = this.transform.position;
+
+        Renderer blastRenderer = blast.GetComponent<Renderer>();
+        blastRenderer.material = explosionMaterial;
+
+        GameObject shockWave = Instantiate(shockWavePrefab, transform.position, Quaternion.identity);
+        var shockWaveControl = shockWave.GetComponent<ShockWaveControl>();
+        shockWaveControl.CallShockWave();
+
+        var explosionControl = blast.AddComponent<ExplosionControl>();
+        explosionControl.explosionMaterial = explosionMaterial;
+        explosionControl.explosionSpeed = explosionSpeed;
+
+        explosionControl.StartExplosion(startPos, endPos);
+
+
+        destroyObjects();
+
+        yield return null;
+    }
 }
