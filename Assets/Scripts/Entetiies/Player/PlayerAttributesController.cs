@@ -39,6 +39,17 @@ public class PlayerAttributesController : MonoBehaviour
     [SerializeField] private float physicalResistance = 0;// currently not used, not sure about future implemenation
     [SerializeField] private float magicalResistance = 0;// currently not used, not sure about future implemenation
 
+    //ui
+    private StaminaSpriteBar staminaSpriteBar=null;
+
+    private void Start()
+    {
+        GameObject StaminaSpriteBarObject = GameObject.Find("StaminaSpriteBar");
+        if(StaminaSpriteBarObject!=null)
+        staminaSpriteBar = GameObject.Find("StaminaSpriteBar").GetComponent<StaminaSpriteBar>();
+
+    }
+
     //getters
     public int Health => health;
     
@@ -63,6 +74,7 @@ public class PlayerAttributesController : MonoBehaviour
     {
         return playerClass;
     }
+    
 
 
     //setters
@@ -86,7 +98,8 @@ public class PlayerAttributesController : MonoBehaviour
         else
             stamina += change;
 
-        GameObject.Find("StaminaSpriteBar").GetComponent<StaminaSpriteBar>().SetStamina(stamina, MaxStamina);
+        if(staminaSpriteBar!=null)
+        staminaSpriteBar.SetStamina(stamina, MaxStamina);
 
     }
     public void increaseArmor(int change)
