@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ZombieController : EnemyBase, OnDamage
 {
@@ -25,6 +26,8 @@ public class ZombieController : EnemyBase, OnDamage
         knightPathfinding.agent.speed = this.speed;
         playerController = GameObject.Find("Player").GetComponent<PlayerEntityController>();
         knockback = GetComponent<Knockback>();
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
     }
     void FixedUpdate()
     {

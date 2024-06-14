@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Menu_pl
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: 3e459fe1f464af041b33b76fa3ab15b0, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 98495410176
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 134423818240
+    m_Localized: Opcje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 283032203264
+    m_Localized: "Wyj\u015B\u0107ie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 361721540608
+    m_Localized: Statystyki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 656929239040
+    m_Localized: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit
+      amet consequat dolor. Sed mollis tellus vel faucibus rutrum. Vestibulum eu
+      justo dapibus, bibendum nisl vel, venenatis mauris. Donec vestibulum odio scelerisque
+      imperdiet dignissim. Integer ac ex at elit accumsan tempus vel sed tellus.
+      Nam diam tortor, malesuada a consectetur ut, ultrices vitae ex. Donec at turpis
+      sed lacus aliquam viverra lacinia vel nulla. Pellentesque non nulla volutpat,
+      vestibulum felis sit amet, tempus sem. Morbi eget sapien sit amet libero mattis
+      porta. Integer vitae neque porta, sodales enim nec, mattis ligula. Nunc id
+      nisi et felis tincidunt tempus. Pellentesque mollis risus eget posuere egestas.
+      Nam interdum sed diam vel tincidunt. Fusce lacinia vel elit ut faucibus. In
+      hac habitasse platea dictumst. In orci odio, fringilla vel aliquam pulvinar,
+      congue sit amet erat. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3579318939648
+    m_Localized: "Wyjd\u017A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3686248525824
+    m_Localized: Nowa gra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3752858267648
+    m_Localized: "Wzn\xF3w"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5277869453312
+    m_Localized: Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16263460466688
+    m_Localized: GAME OVER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16352300019712
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
