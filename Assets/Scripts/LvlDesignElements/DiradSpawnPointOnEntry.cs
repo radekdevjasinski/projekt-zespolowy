@@ -23,4 +23,9 @@ public class DiradSpawnPointOnEntry : MonoBehaviour, IOnFirstEntryInRoom
           
         }
     }
+
+    public void setApperanceChance(float chance)
+    {
+        appearChance = chance; 
+    }
 }

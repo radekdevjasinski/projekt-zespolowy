@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public enum RoomType
 {
@@ -169,6 +170,7 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
         DrawRooms();
+        setupDriadSpawnPoint();
         setupRooms();
         navigationBake.BakeNavMesh();
     }
@@ -214,7 +216,20 @@ public class DungeonGenerator : MonoBehaviour
         {
             DungeonRoom item = rooms[key];
             item.gameObject.GetComponent<Room>().setupNewRoom(getRoomsAround(key),key);
+
+           
+
         }
+    }
+
+    void setupDriadSpawnPoint()
+    {
+        List<DiradSpawnPointOnEntry> driadEntires=rooms.Values.ToList()
+            .FindAll((room => room.gameObject.GetComponent<DiradSpawnPointOnEntry>()!=null))
+            .Select((room =>room.gameObject.GetComponent<DiradSpawnPointOnEntry>() ))
+            .ToList();
+        driadEntires.ForEach((entry => entry.setApperanceChance(0)));
+        driadEntires[UnityEngine.Random.Range(0,driadEntires.Count-1)].setApperanceChance(1);
     }
 
     //return table with room Configuration around that room in order left, up , right, down
