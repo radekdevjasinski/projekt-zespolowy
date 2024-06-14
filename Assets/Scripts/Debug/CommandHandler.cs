@@ -272,6 +272,14 @@ public class CommandHandler : MonoBehaviour
             commandHelper.setAttribute(3, PlayerAttributesController.attributes.SPEED);
             return "set speed run values for debbuging";
         }));
+
+
+        _commands.Add(new ActionCommand("saviour", "gives player golden coin to save nymph", "saviour", () =>
+        {
+            commandHelper.getPlayer().GetComponent<PlayerItemsController>().addGoldCoin();
+            return "added golden coin to player inventory";
+        }));
+
     }
 
 
