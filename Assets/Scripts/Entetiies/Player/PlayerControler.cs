@@ -53,7 +53,8 @@ public class PlayerControler : MonoBehaviour, Ipausable
 
         shoot = this.controls.Player.Shoot;
         shoot.started += ctx => { OnShoot(ctx.ReadValue<Vector2>()); };
-        shoot.performed += ctx => { OnCancelShoot(); };
+        shoot.canceled += ctx => { OnCancelShoot(); };
+        
 
         useActivatedItem = this.controls.Player.UseActivatedItem;
         useActivatedItem.performed += ctx => { OnUseActivatedItem(); };
@@ -108,14 +109,15 @@ public class PlayerControler : MonoBehaviour, Ipausable
 
     void OnShoot(Vector2 direction)
     {
-        //Debug.Log("direction: "+ direction);
+        Debug.Log("bututon shoot");
+        Debug.Log("direction: "+ direction);
         this.playerActionsController.setShootingDiretion(direction);
         this.playerActionsController.setIsShooting(true);
     }
 
     void OnCancelShoot()
     {
-        // Debug.Log("cancel shoot: ");
+         Debug.Log("cancel shoot: ");
         this.playerActionsController.setIsShooting(false);
     }
     void OnDash()
@@ -166,13 +168,16 @@ public class PlayerControler : MonoBehaviour, Ipausable
 
     void OnMousePostion(Vector2 pos)
     {
-        this.playerActionsController.setWorldMousePostion(Camera.main.ScreenToWorldPoint(pos));
+        this.playerActionsController.setScreenMousePostion(pos);
+
+        //Debug.Log("OnMousePostion pos " + pos+" world mouse poiton: "+ this.playerActionsController.getWorldMousePositon());
     }
 
 
 
     void OnMouseLeftPress()
     {
+        Debug.Log("mouse shoot");
         this.playerActionsController.setLeftMousePress(true);
         this.playerActionsController.setShootingDirectionFromMouse();
         this.playerActionsController.setIsShooting(true);

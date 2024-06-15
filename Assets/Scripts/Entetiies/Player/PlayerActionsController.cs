@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(PlayerItemsController))]
 [RequireComponent(typeof(PlayerAttributesController))]
@@ -37,7 +39,7 @@ public class PlayerActionsController : MonoBehaviour
     Vector2 direction;
     bool isMouseLeftPressed;
     bool isShootButtonPress;
-    Vector2 worldMousePositon;
+    Vector2 mouseScreenPostion;
     Vector2 offsetSummoning = new Vector2(1f, 0f);
     [Header("Dashing")]
     public GameObject dashSound;
@@ -124,6 +126,7 @@ public class PlayerActionsController : MonoBehaviour
     {
         if (canShoot && playerAttributes.Stamina > staminaActionThreshold)
         {
+            animator.SetTrigger("Shooting");
             canShoot = false;
 
             Vector3 startPosition = new Vector3(
@@ -256,9 +259,10 @@ public class PlayerActionsController : MonoBehaviour
     if(canShoot)
         {
             canShoot = false;
-           
-      
-        Vector3 startPosition = new Vector3(
+            Debug.Log("Shooting");
+          
+
+            Vector3 startPosition = new Vector3(
             transform.position.x + collider.bounds.size.x* 1.4f * direction.x,
             transform.position.y + collider.bounds.size.y*1.4f * direction.y,
             0f)
@@ -308,9 +312,10 @@ public class PlayerActionsController : MonoBehaviour
         } 
     }
 
-    public void setWorldMousePostion(Vector2 pos)
+    public void setScreenMousePostion(Vector2 pos)
     {
-        this.worldMousePositon = pos;
+        //Debug.Log("world mouse postion: "+ pos);
+        this.mouseScreenPostion = pos;
     }
 
     public void setLeftMousePress(bool state)
@@ -336,11 +341,13 @@ public class PlayerActionsController : MonoBehaviour
 
     internal void setShootingDiretion(Vector2 direction)
     {
+        Debug.Log("direction: "+direction);
         Vector2 dir=bount(direction);
-
+        Debug.Log("dir: " + dir);
         animator.SetFloat("HorizontalShoot", dir.x);
         animator.SetFloat("VerticalShoot", dir.y);
         this.direction= dir;
+        Debug.Log("shooting direction: "+ dir+ "from : "+direction);
     }
 
     internal void setIsShooting(bool state)
@@ -352,7 +359,7 @@ public class PlayerActionsController : MonoBehaviour
             {
                 this.isShooting = state;
                 
-                animator.SetTrigger("Shooting");
+               
                 ClassActionSelection();
             }
             
@@ -381,7 +388,10 @@ public class PlayerActionsController : MonoBehaviour
 
     internal void setShootingDirectionFromMouse()
     {
-        this.setShootingDiretion(worldMousePositon - new Vector2(this.transform.position.x, this.transform.position.y));
+        Debug.Log("mouse pos: "+ mouseScreenPostion/new Vector2(Screen.width,Screen.height));
+        Debug.Log("_PlayerScreenPosition"+Shader.GetGlobalVector("_PlayerScreenPosition"));
+        Vector3 direction = mouseScreenPostion / new Vector2(Screen.width, Screen.height) - new Vector2(Shader.GetGlobalVector("_PlayerScreenPosition").x, Shader.GetGlobalVector("_PlayerScreenPosition").y);
+        this.setShootingDiretion(new Vector2(direction.x,direction.y));
     }
     #endregion
 
@@ -452,6 +462,11 @@ public class PlayerActionsController : MonoBehaviour
         }
     }
 
+    internal Vector3 getWorldMousePositon()
+    {
+      return Camera.main.ScreenToWorldPoint(this.mouseScreenPostion);
+    }
 
-#endregion
+
+    #endregion
 }
