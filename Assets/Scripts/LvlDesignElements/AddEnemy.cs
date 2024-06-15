@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class AddEnemy : MonoBehaviour
 {
+    [SerializeField]
+    private bool spwanAtStart=false;
+
+    private void Start()
+    {
+        if (spwanAtStart)
+        {
+
+        }
+    }
+
     public GameObject enemyToSpawn;
     public GameObject Spawn()
     {
