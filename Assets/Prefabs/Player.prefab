@@ -356,6 +356,8 @@ MonoBehaviour:
   bombs: 0
   _hasGoldenCoin: 0
   collectedItems: []
+  singleItemControoler: {fileID: 0}
+  goldenCoinSprtie: {fileID: 21300000, guid: da560ea8d4028594eb59a2763e1453cf, type: 3}
 --- !u!81 &5745296312801078995
 AudioListener:
   m_ObjectHideFlags: 0

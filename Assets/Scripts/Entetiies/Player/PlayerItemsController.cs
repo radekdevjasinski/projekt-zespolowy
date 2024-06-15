@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerItemsController : MonoBehaviour
@@ -20,7 +21,8 @@ public class PlayerItemsController : MonoBehaviour
 
     [SerializeField] private List<string> collectedItems = new List<string>();
     NarratorConversation conversation;
-
+    [SerializeField] private SingleItemControoler singleItemControoler;
+    [SerializeField] private Sprite goldenCoinSprtie;
     private void Start()
     {
         conversation = transform.GetComponentInChildren<NarratorConversation>();
@@ -109,15 +111,31 @@ public class PlayerItemsController : MonoBehaviour
     internal void addGoldCoin()
     {
         _hasGoldenCoin = true;
+        if (singleItemControoler != null && goldenCoinSprtie != null)
+        {
+            singleItemControoler.setImage(goldenCoinSprtie);
+            Debug.Log("updated single item controls");
+
+        }
+        else
+        {
+            Debug.Log("coudlnt update single itme contorls");
+        }
+
     }
 
     internal bool hasGoldenCoin()
     {
         return _hasGoldenCoin;
+   
     }
 
     internal void removeGoldCoin()
     {
         _hasGoldenCoin=false;
+        if (singleItemControoler != null)
+        {
+            singleItemControoler.clearContainer();
+        }
     }
 }
