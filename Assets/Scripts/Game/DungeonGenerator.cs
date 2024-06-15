@@ -228,8 +228,11 @@ public class DungeonGenerator : MonoBehaviour
             .FindAll((room => room.gameObject.GetComponent<DiradSpawnPointOnEntry>()!=null))
             .Select((room =>room.gameObject.GetComponent<DiradSpawnPointOnEntry>() ))
             .ToList();
-        driadEntires.ForEach((entry => entry.setApperanceChance(0)));
-        driadEntires[UnityEngine.Random.Range(0,driadEntires.Count-1)].setApperanceChance(1);
+        if (driadEntires.Count > 0)
+        {
+            driadEntires.ForEach((entry => entry.setApperanceChance(0)));
+            driadEntires[UnityEngine.Random.Range(0, driadEntires.Count - 1)].setApperanceChance(1);
+        }
     }
 
     //return table with room Configuration around that room in order left, up , right, down
