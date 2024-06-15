@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class ActivatableAreaObject : MonoBehaviour, IActivatableObject
+public abstract class ActivatableAreaObjectTrigger : MonoBehaviour, IActivatableObject
 {
 
     [SerializeField] private GameObject onAcvtivationSound;
     private bool _isActivated = false;
     [SerializeField] bool mulitiActivatable=false;
-    private void OnCollisionEnter2D(Collision2D collsion)
+    private void OnTriggerEnter2D (Collider2D collider)
     {
-        Debug.Log("Collsion: "+ collsion.collider.tag);
-        if (collsion.collider.CompareTag("Player") && (!isActivated()|| mulitiActivatable))
+        Debug.Log("Collsion: "+ collider.tag);
+        if (collider.CompareTag("Player") && (!isActivated() || mulitiActivatable))
         {
-            if (activate(collsion.collider.gameObject) && onAcvtivationSound != null)
+            Debug.Log("correct collsion: " + collider.tag);
+
+            if (activate(collider.gameObject) && onAcvtivationSound != null)
             {
                 SoundManager.instance.playSound(transform, onAcvtivationSound);
                 _isActivated = true;
