@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(PlayerItemsController))]
 [RequireComponent(typeof(PlayerAttributesController))]
