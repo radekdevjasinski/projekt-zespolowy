@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Localization;
 using Unity.VisualScripting;
+using System.Collections;
 
 [RequireComponent(typeof(NarratorDialogControler))]
 public class NarratorConversation : MonoBehaviour
@@ -36,13 +37,15 @@ public class NarratorConversation : MonoBehaviour
 
     private LocalizedString previousMessage;
     private LocalizedString currentMessage;
+    private bool isCooldownActive = false;
+    [SerializeField] private float cooldown = 20f;
 
     private void Awake()
     {
         dialogController = GetComponent<NarratorDialogControler>();
         currentMessage = beginGameDialogues[Random.Range(0, beginGameDialogues.Length)];
         previousMessage = currentMessage;
-
+        dialogController.canTalk = true;
     }
 
     private void Update()
@@ -159,20 +162,33 @@ public class NarratorConversation : MonoBehaviour
 
     protected virtual void StartConversation(LocalizedString[] name)
     {
-        dialogController.isTalking = true;
-        previousMessage = currentMessage;
-        do
+        if (dialogController.canTalk)
         {
-            currentMessage = name[Random.Range(0, name.Length)];
-        } while (currentMessage == previousMessage);
+            if (isCooldownActive)
+            {
+                dialogController.isTalking = true;
+                previousMessage = currentMessage;
+                do
+                {
+                    currentMessage = name[Random.Range(0, name.Length)];
+                } while (currentMessage == previousMessage);
 
-        setDialogeText(currentMessage);
+                setDialogeText(currentMessage);
+            }
+        }
     }
-
 
     void EndConversation()
     {
         globalMessage = "";
         setDialogeText("");
+        StartCoroutine(CooldownCoroutine(cooldown));
+    }
+
+    private IEnumerator CooldownCoroutine(float cooldownTime)
+    {
+        isCooldownActive = true;
+        yield return new WaitForSeconds(cooldownTime);
+        isCooldownActive = false;
     }
 }

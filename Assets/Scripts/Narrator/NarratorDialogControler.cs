@@ -12,6 +12,7 @@ public class NarratorDialogControler : MonoBehaviour
     private RandomLoopSoundControls musicLoopSoundControls;
     private IEnumerator coroutine;
     public bool isTalking;
+    public bool canTalk;
 
     internal void SetText(string text)
     {
@@ -45,7 +46,9 @@ public class NarratorDialogControler : MonoBehaviour
         }
 
         if (mumblePack != null)
+        {
             musicLoopSoundControls = SoundManager.instance.playRandomLoop(transform, mumblePack);
+        }
     }
 
     private IEnumerator applyText(string txt)
