@@ -294,6 +294,10 @@ PrefabInstance:
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 1881788914}
+    - target: {fileID: 2447949246618226179, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
+      propertyPath: fadeDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4319326301353448314, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1373,7 +1377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.39995
+      value: -107.39907
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
