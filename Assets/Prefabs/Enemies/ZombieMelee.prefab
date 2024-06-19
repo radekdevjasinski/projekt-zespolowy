@@ -60,6 +60,10 @@ MonoBehaviour:
   visionRange: 10
   damage: 1
   speed: 1.5
+  coin: {fileID: 5112259435028361392, guid: f0a71b1dbbe90e6478f68b62f9e01c32, type: 3}
+  bomb: {fileID: 5112259435028361392, guid: 4043e8fa32bdb7b439272ca6e940ceb9, type: 3}
+  key: {fileID: 5112259435028361392, guid: ad732535650cc6f4da00e69877929907, type: 3}
+  potion: {fileID: 5112259435028361392, guid: 2e9a9850028f60c4d8abd3120b96e5fe, type: 3}
   LockMovement: 1
   attackSpeed: 1
   attackRange: 0.7
