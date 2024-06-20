@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &40313039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9107815391892635595, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+  m_PrefabInstance: {fileID: 8822493276042486048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &115445280
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +299,14 @@ PrefabInstance:
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 1881788914}
+    - target: {fileID: 3203944582975471556, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203944582975471556, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
+      propertyPath: MaxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4319326301353448314, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -301,6 +314,10 @@ PrefabInstance:
     - target: {fileID: 5057400597476377839, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
       propertyPath: flashDuration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309377172707359903, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
+      propertyPath: invulnerable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6104499099234497951, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
       propertyPath: dashDrop
@@ -1373,7 +1390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.399994
+      value: -107.40001
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2635,6 +2652,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9034219022666635544, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 714376706246581171, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2755,6 +2776,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3287812723125031791, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: endingMenuUI
+      value: 
+      objectReference: {fileID: 40313039}
     - target: {fileID: 3310883760063524308, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2846,6 +2871,10 @@ PrefabInstance:
     - target: {fileID: 4124914097206910724, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809585180989607615, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndingScreenResumeGame
       objectReference: {fileID: 0}
     - target: {fileID: 4816814086712337330, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3051,6 +3080,10 @@ PrefabInstance:
       propertyPath: playerAttributesController
       value: 
       objectReference: {fileID: 395048013}
+    - target: {fileID: 6284110036820382239, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_Name
+      value: Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 7546669717522155334, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3097,10 +3130,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9053583748581024642, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107815391892635595, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -9034219022666635544, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
