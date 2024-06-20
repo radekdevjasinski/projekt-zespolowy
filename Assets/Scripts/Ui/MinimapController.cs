@@ -7,13 +7,13 @@ public class MiniMapController : MonoBehaviour
 {
     public GameObject player;
     public Sprite roomIconSprite;
-    public Sprite startRoomIconSprite;
     public Sprite shopRoomIconSprite;
     public Sprite bossRoomIconSprite;
     public Sprite unknownRoomSprite;
     public Sprite backgroundImage;
-    public float iconSize = 15f;
-    public float roomSpacing = 18f;
+    public Sprite currentRoomSprite;
+    public float iconSize = 40f;
+    public float roomSpacing = 5f;
     private RectTransform miniMapRect;
     private Image playerIcon;
 
@@ -26,7 +26,7 @@ public class MiniMapController : MonoBehaviour
 
     void Start()
     {
-        roomIconsDict.Add(RoomType.STARTROOM, startRoomIconSprite);
+        roomIconsDict.Add(RoomType.STARTROOM, roomIconSprite);
         roomIconsDict.Add(RoomType.ROOM, roomIconSprite);
         roomIconsDict.Add(RoomType.SHOPROOM, shopRoomIconSprite);
         roomIconsDict.Add(RoomType.BOSSROOM, bossRoomIconSprite);
@@ -51,36 +51,61 @@ public class MiniMapController : MonoBehaviour
             Vector2Int playerRoomPos = currentPlayerRoom.pos;
             Vector2 miniMapPos = new Vector2((roomPos.x - playerRoomPos.x) * (iconSize + roomSpacing), (roomPos.y - playerRoomPos.y) * (iconSize + roomSpacing));
 
+            Vector2 backgroundIconSize = new Vector2(iconSize+5, iconSize+5);
             Vector2 roomIconSize = new Vector2(iconSize, iconSize);
-            Vector2 backgroundIconSize = roomIconSize + new Vector2(10, 10);
-
-            if (currentPlayerRoom.Equals(room))
-            {
-                roomIconSize *= 2f;
-                backgroundIconSize = roomIconSize + new Vector2(10, 10);
-            }
 
             if (IsInMiniMapArea(miniMapPos))
             {
-                GameObject backgroundIconObject = new GameObject("BackgroundIcon");
-                backgroundIconObject.transform.SetParent(transform);
-
-                Image backgroundIcon = backgroundIconObject.AddComponent<Image>();
-                backgroundIcon.sprite = backgroundImage;
-                backgroundIcon.rectTransform.sizeDelta = backgroundIconSize;
-                backgroundIcon.rectTransform.anchoredPosition = miniMapPos;
-
                 GameObject roomIconObject = new GameObject("RoomIcon");
-                roomIconObject.transform.SetParent(backgroundIconObject.transform);
+                roomIconObject.transform.SetParent(transform);
 
                 Image roomIcon = roomIconObject.AddComponent<Image>();
                 roomIcon.sprite = GetRoomSprite(room.roomType);
-                if (!room.visited)
+                if (currentPlayerRoom.Equals(room))
+                {
+                    if (room.roomType.Equals(RoomType.BOSSROOM))
+                    {
+                        roomIcon.sprite = currentRoomSprite;
+
+                        GameObject specialRoomIconObject = new GameObject("SpecialRoomIcon");
+                        specialRoomIconObject.transform.SetParent(roomIconObject.transform);
+
+                        Image specialRoomIcon = specialRoomIconObject.AddComponent<Image>();
+                        specialRoomIcon.sprite = bossRoomIconSprite;
+                        specialRoomIcon.rectTransform.sizeDelta = roomIconSize;
+                        specialRoomIcon.rectTransform.anchoredPosition = Vector2.zero;
+                    }
+                    else if (room.roomType.Equals(RoomType.SHOPROOM))
+                    {
+                        roomIcon.sprite = currentRoomSprite;
+
+                        GameObject specialRoomIconObject = new GameObject("SpecialRoomIcon");
+                        specialRoomIconObject.transform.SetParent(roomIconObject.transform);
+
+                        Image specialRoomIcon = specialRoomIconObject.AddComponent<Image>();
+                        specialRoomIcon.sprite = shopRoomIconSprite;
+                        specialRoomIcon.rectTransform.sizeDelta = roomIconSize;
+                        specialRoomIcon.rectTransform.anchoredPosition = Vector2.zero;
+                    }
+                    else
+                    {
+                        roomIcon.sprite = currentRoomSprite;
+                    }
+                }
+                else if (!room.visited)
                 {
                     roomIcon.sprite = unknownRoomSprite;
                 }
                 roomIcon.rectTransform.sizeDelta = roomIconSize;
-                roomIcon.rectTransform.anchoredPosition = Vector2.zero; // Ensure it's centered
+                roomIcon.rectTransform.anchoredPosition = miniMapPos;
+
+                GameObject backgroundIconObject = new GameObject("BackgroundIcon");
+                backgroundIconObject.transform.SetParent(roomIconObject.transform);
+
+                Image backgroundIcon = backgroundIconObject.AddComponent<Image>();
+                backgroundIcon.sprite = backgroundImage;
+                backgroundIcon.rectTransform.sizeDelta = backgroundIconSize;
+                backgroundIcon.rectTransform.anchoredPosition = Vector2.zero;
 
                 roomIcons.Add(roomPos, roomIcon);
             }
@@ -91,7 +116,7 @@ public class MiniMapController : MonoBehaviour
     {
         foreach (KeyValuePair<Vector2Int, Image> pair in roomIcons)
         {
-            Destroy(pair.Value.transform.parent.gameObject);
+            Destroy(pair.Value.gameObject);
         }
         roomIcons.Clear();
     }
