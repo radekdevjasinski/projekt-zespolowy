@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuController : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
     public int newGameScene = 1;
     public GameObject creditsPanel;
