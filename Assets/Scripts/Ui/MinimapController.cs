@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
-using Unity.Collections.LowLevel.Unsafe;
 
 public class MiniMapController : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class MiniMapController : MonoBehaviour
     public Sprite shopRoomIconSprite;
     public Sprite bossRoomIconSprite;
     public Sprite unknownRoomSprite;
+    public Sprite backgroundImage;
     public float iconSize = 15f;
     public float roomSpacing = 18f;
     private RectTransform miniMapRect;
@@ -22,7 +22,6 @@ public class MiniMapController : MonoBehaviour
 
     public DungeonGenerator dungeonGenerator;
 
-    //public PlayerTeleporter teleportScript;
     private Vector2Int lastPlayerRoomPos;
 
     void Start()
@@ -34,9 +33,7 @@ public class MiniMapController : MonoBehaviour
 
         miniMapRect = GetComponent<RectTransform>();
 
-        //teleportScript = FindObjectOfType<PlayerTeleporter>();
-
-        DungeonRoom startRoom = new DungeonRoom( Vector2Int.zero, RoomType.STARTROOM);
+        DungeonRoom startRoom = new DungeonRoom(Vector2Int.zero, RoomType.STARTROOM);
         lastPlayerRoomPos = startRoom.pos;
 
         StartCoroutine(DelayedDrawMiniMap(startRoom));
@@ -44,10 +41,9 @@ public class MiniMapController : MonoBehaviour
 
     public void DrawMiniMap(DungeonRoom currentPlayerRoom)
     {
-        //Debug.Log("Rysuje");
         ClearMiniMap();
 
-        foreach ( KeyValuePair<Vector2Int,DungeonRoom> item in dungeonGenerator.rooms)
+        foreach (KeyValuePair<Vector2Int, DungeonRoom> item in dungeonGenerator.rooms)
         {
             DungeonRoom room = item.Value;
             Vector2Int roomPos = room.pos;
@@ -56,35 +52,46 @@ public class MiniMapController : MonoBehaviour
             Vector2 miniMapPos = new Vector2((roomPos.x - playerRoomPos.x) * (iconSize + roomSpacing), (roomPos.y - playerRoomPos.y) * (iconSize + roomSpacing));
 
             Vector2 roomIconSize = new Vector2(iconSize, iconSize);
+            Vector2 backgroundIconSize = roomIconSize + new Vector2(10, 10);
+
             if (currentPlayerRoom.Equals(room))
             {
                 roomIconSize *= 2f;
+                backgroundIconSize = roomIconSize + new Vector2(10, 10);
             }
 
             if (IsInMiniMapArea(miniMapPos))
             {
-                Image roomIcon = new GameObject("RoomIcon").AddComponent<Image>();
+                GameObject backgroundIconObject = new GameObject("BackgroundIcon");
+                backgroundIconObject.transform.SetParent(transform);
+
+                Image backgroundIcon = backgroundIconObject.AddComponent<Image>();
+                backgroundIcon.sprite = backgroundImage;
+                backgroundIcon.rectTransform.sizeDelta = backgroundIconSize;
+                backgroundIcon.rectTransform.anchoredPosition = miniMapPos;
+
+                GameObject roomIconObject = new GameObject("RoomIcon");
+                roomIconObject.transform.SetParent(backgroundIconObject.transform);
+
+                Image roomIcon = roomIconObject.AddComponent<Image>();
                 roomIcon.sprite = GetRoomSprite(room.roomType);
                 if (!room.visited)
                 {
                     roomIcon.sprite = unknownRoomSprite;
                 }
-                roomIcon.transform.SetParent(transform);
                 roomIcon.rectTransform.sizeDelta = roomIconSize;
-                roomIcon.rectTransform.anchoredPosition = miniMapPos;
+                roomIcon.rectTransform.anchoredPosition = Vector2.zero; // Ensure it's centered
 
                 roomIcons.Add(roomPos, roomIcon);
             }
         }
     }
 
-
-
     void ClearMiniMap()
     {
         foreach (KeyValuePair<Vector2Int, Image> pair in roomIcons)
         {
-            Destroy(pair.Value.gameObject);
+            Destroy(pair.Value.transform.parent.gameObject);
         }
         roomIcons.Clear();
     }
@@ -114,7 +121,6 @@ public class MiniMapController : MonoBehaviour
     void Update()
     {
         DungeonRoom currentPlayerRoom = DungeonGenerator.instance.getCurrRoom();
-
 
         if (currentPlayerRoom.pos != lastPlayerRoomPos)
         {
