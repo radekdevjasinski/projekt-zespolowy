@@ -62,6 +62,17 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
         }
 
     }
+
+    public override void dealDamageUniversal(float amount)
+    {
+        dealDamage(amount);
+    }
+
+    public override void dealDamageUniversal(float damageModifer, Vector2 vector2)
+    {
+        dealDamage(damageModifer, vector2);
+    }
+
     public override void reviceDamage(float damage, Vector2 damageDirection)
     {
         this.health -= damage;

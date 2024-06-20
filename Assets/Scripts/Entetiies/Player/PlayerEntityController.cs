@@ -82,6 +82,7 @@ public class PlayerEntityController : EntityController<int>
     }
     public override void reviceDamage(int damage)
     {
+        Debug.Log("player recieved not direcitnla damge");
         if (playerAttributesController.Armor > 0)
         {
             playerAttributesController.increaseArmor(-damage);
@@ -98,6 +99,16 @@ public class PlayerEntityController : EntityController<int>
 
         invincCount = invincLength;
 
+    }
+
+    public override void dealDamageUniversal(float amount)
+    {
+        dealDamage((int)amount);
+    }
+
+    public override void dealDamageUniversal(float dmg, Vector2 vector2)
+    {
+        dealDamage((int)dmg, vector2);
     }
 
     protected virtual IEnumerator HitKnockback(Vector2 knockbackDirection)

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
+abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl, IDealDamage
 {
     protected float invincCount = 0;
     
@@ -46,7 +46,7 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
         {
             runOnDamageBehaviour();
             this.reviceDamage(baseDamage, damageDirection);
-            Debug.Log("Recived damage: "+ baseDamage+" to: "+ this.getHealth());
+            Debug.Log(transform.name+ " Recived damage: "+ baseDamage+" to: "+ this.getHealth());
             if (converToFloat(this.getHealth()) <= 0.0f && isAlive==true)
             {
                 killImidielty();
@@ -108,4 +108,6 @@ abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl
         return this.invulnerable;
     }
 
+    public abstract void dealDamageUniversal(float amount);
+    public abstract void dealDamageUniversal(float damageModifer, Vector2 vector2);
 }

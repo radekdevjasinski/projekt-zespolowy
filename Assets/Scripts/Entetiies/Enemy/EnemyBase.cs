@@ -43,6 +43,16 @@ public class EnemyBase : EntityController<float>
         currentHealthPoints -= damage; //sprawdzenie smeirci jest w klasie bazowej
     }
 
+    public override void dealDamageUniversal(float amount)
+    {
+        dealDamage(amount);
+    }
+
+    public override void dealDamageUniversal(float dmg, Vector2 vector2)
+    {
+        dealDamage(dmg, vector2);
+    }
+
     //metoda do poruszania si? wroga (domy?lnie randomowo)
     protected virtual void Move()
     {

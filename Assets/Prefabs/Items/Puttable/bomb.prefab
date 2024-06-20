@@ -166,9 +166,15 @@ MonoBehaviour:
   blastPrefab: {fileID: 7303302816115850705, guid: 5a59d1c9bd0a7094eb913a8e4bce1ef2, type: 3}
   shockWavePrefab: {fileID: 7837670596331395389, guid: 1be0fc964cc0cfe46b8a331d3c56ae7e, type: 3}
   explosionMaterial: {fileID: 2100000, guid: 534dd4507016bcf48b12f20f39da9cb7, type: 2}
-  explosionTimer: 3
+  explosionTimer: 1.5
   explosionSpeed: 0.75
   blastRadius: 0.5
   destructableMask:
     serializedVersion: 2
     m_Bits: 64
+  damagRadius: 1.25
+  damageModifer: 3
+  damgaeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1536
+  knockbackPower: 4

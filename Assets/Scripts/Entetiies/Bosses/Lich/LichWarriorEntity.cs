@@ -343,6 +343,16 @@ public class LichWarriorEntity : EntityController<float>, MinionBoss, StageDeprn
         // this entity does not recive dagme
     }
 
+    public override void dealDamageUniversal(float amount)
+    {
+        dealDamage(amount);
+    }
+
+    public override void dealDamageUniversal(float damageModifer, Vector2 vector2)
+    {
+        dealDamage(damageModifer, vector2);
+    }
+
 
     public void increaseStage()
     {
