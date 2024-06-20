@@ -11,7 +11,7 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
     private float health;
     [SerializeField] private GameObject healthBar;
     private GameObject healthBarInstnace;
-
+    private GameObject endingScreen;
     private Animator animator;
 
     override public float getMaxHealth()
@@ -30,6 +30,8 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
         healthBarInstnace = Instantiate(healthBar, canvas.transform);
         bossUIHelathBar = healthBarInstnace.GetComponent<BossUIHelathBar>();
         animator = GetComponent<Animator>();
+        endingScreen = canvas.transform.Find("EndingScreen").gameObject;
+
     }
 
     protected override void onDie()
@@ -43,6 +45,10 @@ public class BossEntityController : EntityController<float>, StageDeprndentEleme
         bossFightController.stopFight();
         Destroy(this.gameObject);
         Destroy(healthBarInstnace.gameObject);
+        EndingScreenScript endingScript = endingScreen.GetComponent<EndingScreenScript>();
+        endingScript.Setup();
+        endingScreen.SetActive(true);
+        
     }
 
     public override float getHealth()
