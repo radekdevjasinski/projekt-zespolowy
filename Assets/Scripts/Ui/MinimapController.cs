@@ -51,7 +51,7 @@ public class MiniMapController : MonoBehaviour
             Vector2Int playerRoomPos = currentPlayerRoom.pos;
             Vector2 miniMapPos = new Vector2((roomPos.x - playerRoomPos.x) * (iconSize + roomSpacing), (roomPos.y - playerRoomPos.y) * (iconSize + roomSpacing));
 
-            Vector2 backgroundIconSize = new Vector2(iconSize+5, iconSize+5);
+            Vector2 backgroundIconSize = new Vector2(iconSize + 5, iconSize + 5);
             Vector2 roomIconSize = new Vector2(iconSize, iconSize);
 
             if (IsInMiniMapArea(miniMapPos))
@@ -60,44 +60,27 @@ public class MiniMapController : MonoBehaviour
                 roomIconObject.transform.SetParent(transform);
 
                 Image roomIcon = roomIconObject.AddComponent<Image>();
-                roomIcon.sprite = GetRoomSprite(room.roomType);
-                if (currentPlayerRoom.Equals(room))
-                {
-                    if (room.roomType.Equals(RoomType.BOSSROOM))
-                    {
-                        roomIcon.sprite = currentRoomSprite;
 
-                        GameObject specialRoomIconObject = new GameObject("SpecialRoomIcon");
-                        specialRoomIconObject.transform.SetParent(roomIconObject.transform);
+                roomIcon.sprite = room.visited ? roomIconSprite : unknownRoomSprite;
 
-                        Image specialRoomIcon = specialRoomIconObject.AddComponent<Image>();
-                        specialRoomIcon.sprite = bossRoomIconSprite;
-                        specialRoomIcon.rectTransform.sizeDelta = roomIconSize;
-                        specialRoomIcon.rectTransform.anchoredPosition = Vector2.zero;
-                    }
-                    else if (room.roomType.Equals(RoomType.SHOPROOM))
-                    {
-                        roomIcon.sprite = currentRoomSprite;
-
-                        GameObject specialRoomIconObject = new GameObject("SpecialRoomIcon");
-                        specialRoomIconObject.transform.SetParent(roomIconObject.transform);
-
-                        Image specialRoomIcon = specialRoomIconObject.AddComponent<Image>();
-                        specialRoomIcon.sprite = shopRoomIconSprite;
-                        specialRoomIcon.rectTransform.sizeDelta = roomIconSize;
-                        specialRoomIcon.rectTransform.anchoredPosition = Vector2.zero;
-                    }
-                    else
-                    {
-                        roomIcon.sprite = currentRoomSprite;
-                    }
-                }
-                else if (!room.visited)
-                {
-                    roomIcon.sprite = unknownRoomSprite;
-                }
                 roomIcon.rectTransform.sizeDelta = roomIconSize;
                 roomIcon.rectTransform.anchoredPosition = miniMapPos;
+
+                if (room.visited && (room.roomType == RoomType.BOSSROOM || room.roomType == RoomType.SHOPROOM))
+                {
+                    GameObject specialRoomIconObject = new GameObject("SpecialRoomIcon");
+                    specialRoomIconObject.transform.SetParent(roomIconObject.transform);
+
+                    Image specialRoomIcon = specialRoomIconObject.AddComponent<Image>();
+                    specialRoomIcon.sprite = room.roomType == RoomType.BOSSROOM ? bossRoomIconSprite : shopRoomIconSprite;
+                    specialRoomIcon.rectTransform.sizeDelta = roomIconSize;
+                    specialRoomIcon.rectTransform.anchoredPosition = Vector2.zero;
+                }
+
+                if (currentPlayerRoom.Equals(room))
+                {
+                    roomIcon.sprite = currentRoomSprite;
+                }
 
                 GameObject backgroundIconObject = new GameObject("BackgroundIcon");
                 backgroundIconObject.transform.SetParent(roomIconObject.transform);
