@@ -72,6 +72,11 @@ public class NarratorDialogControler : MonoBehaviour
         yield return new WaitForSeconds(pause);
         musicLoopSoundControls.stopSound();
         isTalking = false;
+        AudioSource[] sources = musicLoopSoundControls.GetComponentsInChildren<AudioSource>();
+        foreach (var source in sources)
+        {
+            source.volume = 1.0f;
+        }
     }
 
     private IEnumerator FadeOutSound()
