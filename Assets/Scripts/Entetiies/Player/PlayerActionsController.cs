@@ -14,6 +14,7 @@ public class PlayerActionsController : MonoBehaviour
     PlayerMovementController playerMovementController;
     [Header("Putting")]
     [SerializeField] private GameObject puttableItem;
+    [SerializeField] private float bombCooldown = 1f;
     [Header("Slashing")]
     [SerializeField] private GameObject slashableItem;
     [Header("Shooting")]
@@ -33,6 +34,7 @@ public class PlayerActionsController : MonoBehaviour
     [Header("Activated item use")]
     //states
     bool canShoot;
+    bool canPutBomb;
     bool isShooting;
     bool isDashing;
     Vector2 direction;
@@ -75,6 +77,7 @@ public class PlayerActionsController : MonoBehaviour
         playerItemsController = this.gameObject.GetComponent<PlayerItemsController>();
         animator = this.gameObject.GetComponent<Animator>();
         canShoot = true;
+        canPutBomb = true;
         collider = GetComponent<Collider2D>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         shootParent = GameObject.Find("Projectiles").transform;
@@ -398,7 +401,7 @@ public class PlayerActionsController : MonoBehaviour
 
     public void putObject()
     {
-        if (playerItemsController.getBombs() > 0)
+        if (playerItemsController.getBombs() > 0 && canPutBomb)
         {
             GameObject shootable = Instantiate(
                 puttableItem,
@@ -407,8 +410,15 @@ public class PlayerActionsController : MonoBehaviour
                 puttedParent
             );
             playerItemsController.removeBombs(1);
+            canPutBomb = false;
+            StartCoroutine(bombCooldownFlag());
         }
 
+    }
+    IEnumerator bombCooldownFlag()
+    {
+        yield return new WaitForSeconds(bombCooldown);
+        canPutBomb = true;
     }
 
 

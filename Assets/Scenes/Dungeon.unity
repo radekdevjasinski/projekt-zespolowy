@@ -311,6 +311,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8559890285010858849, guid: 3439190a102fff846a860e0d83fcbbe3, type: 3}
     - target: {fileID: 6104499099234497951, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
+      propertyPath: bombCooldown
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104499099234497951, guid: 5002485edd8492d4a9f6a89d48d8269e, type: 3}
       propertyPath: shootCooldown
       value: 0.3
       objectReference: {fileID: 0}
@@ -1380,7 +1384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.39977
+      value: -107.39908
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
