@@ -19,7 +19,6 @@ public class UpdateShaderPosition : MonoBehaviour
         {
             Vector3 characterPosition = characterTransform.position;
             material.SetVector("_CharacterMovement", new Vector4(characterPosition.x, characterPosition.y, characterPosition.z, 0));
-            Debug.Log("Testy movementu: "+material.GetVector("_CharacterMovement"));
         }
     }
 }
