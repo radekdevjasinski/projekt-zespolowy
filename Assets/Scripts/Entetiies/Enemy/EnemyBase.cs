@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class EnemyBase : EntityController<float>
 {
     [SerializeField] protected float maxHelathPoints = 20f; //punkty ?ycia wrog?w
@@ -7,6 +9,11 @@ public class EnemyBase : EntityController<float>
     [SerializeField] protected float visionRange = 1f; //zasi?g widzenia wrog?w
     [SerializeField] protected int damage = 1; //damage wrog?w per hit
     [SerializeField] protected float speed = 1f; //szybkosc wroga
+
+    [SerializeField] private GameObject coin;
+    [SerializeField] private GameObject bomb;
+    [SerializeField] private GameObject key;
+    [SerializeField] private GameObject potion;
 
     private float changeDirectionTimer = 3f; //czas po kt?rym zmieniamy kierunek ruchu
     protected float timer;
@@ -66,7 +73,7 @@ public class EnemyBase : EntityController<float>
                 timer = changeDirectionTimer;
             }
         }
-        
+
     }
 
     //metoda do zmiany kierunku poruszania si? wroga
@@ -100,8 +107,8 @@ public class EnemyBase : EntityController<float>
     //metoda, kt?ry niszczy obiekt wroga
     protected override void onDie()
     {
+        isLoot();
         Destroy(gameObject);
-
     }
 
     //metoda do ataku przeciwnika
@@ -125,5 +132,32 @@ public class EnemyBase : EntityController<float>
         return maxHelathPoints;
     }
 
+    public GameObject lootEnemy()
+    {
 
+        int randomNumber = Random.Range(0, 4);
+        switch (randomNumber)
+        {
+            case 0:
+                return coin;
+            case 1:
+                return bomb;
+            case 2:
+                return key;
+            default:
+                return potion;
+        }
+    }
+    public void isLoot()
+    {
+        int randomNumber = Random.Range(0, 4);
+        if (randomNumber == 0)
+        {
+            Instantiate(
+            lootEnemy(),
+            this.transform.position,
+            new Quaternion(0, 0, 0, 0)
+        );
+        }
+    }
 }
