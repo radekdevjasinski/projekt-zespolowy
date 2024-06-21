@@ -1376,7 +1376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.39996
+      value: -104.854935
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2278,6 +2278,11 @@ Transform:
   - {fileID: 1053878241}
   m_Father: {fileID: 241571439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1217291250 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6047667518829267757, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+  m_PrefabInstance: {fileID: 8822493276042486048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1531009633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2325,6 +2330,104 @@ MonoBehaviour:
   player: {fileID: 395048003}
   summonedStance: 0
   summons: []
+--- !u!1 &1556558943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1556558944}
+  - component: {fileID: 1556558947}
+  - component: {fileID: 1556558946}
+  - component: {fileID: 1556558945}
+  m_Layer: 5
+  m_Name: Minimap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1556558944
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556558943}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1217291250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50, y: -50}
+  m_SizeDelta: {x: 250, y: 250}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &1556558945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556558943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117bb8b433f362143b19bf5b376b006b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 395048003}
+  roomIconSprite: {fileID: 21300000, guid: fe917041eb7aece44a626b5aaa4a3801, type: 3}
+  shopRoomIconSprite: {fileID: 21300000, guid: f324138f73bd73e40b39e73f55c5bb02, type: 3}
+  bossRoomIconSprite: {fileID: 21300000, guid: 4eeb224c26952ad4483f2561afc87838, type: 3}
+  unknownRoomSprite: {fileID: 21300000, guid: 91c87944920f72e43832fa22faf1d137, type: 3}
+  backgroundImage: {fileID: 21300000, guid: 109fe6234eb08d34f8281f09d6b4d2de, type: 3}
+  currentRoomSprite: {fileID: 21300000, guid: fa401547121e5114f9e6204e97931224, type: 3}
+  iconSize: 40
+  roomSpacing: 5
+  dungeonGenerator: {fileID: 1053878244}
+--- !u!114 &1556558946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556558943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1556558947
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556558943}
+  m_CullTransparentMesh: 1
 --- !u!114 &1635039796 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9116190364679915091, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
@@ -2589,6 +2692,26 @@ PrefabInstance:
     - target: {fileID: 1664380117069925050, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961063438666520315, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961063438666520315, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961063438666520315, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961063438666520315, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961063438666520315, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2282250419538467943, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3007,8 +3130,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7503827974115537724, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6047667518829267757, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1556558944}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
 --- !u!114 &8822493276042486049 stripped

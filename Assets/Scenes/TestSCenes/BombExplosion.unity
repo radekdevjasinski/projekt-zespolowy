@@ -1377,7 +1377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.39242
+      value: -107.399765
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2732,6 +2732,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3767047333122443890, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3767047333122443890, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_Color.a
+      value: 0.16862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 3767047333122443890, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3767047333122443890, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3767047333122443890, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3995917997440611460, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2917,9 +2937,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 395048003}
     - target: {fileID: 6010481385621883325, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: iconSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6010481385621883325, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: roomSpacing
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6010481385621883325, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: roomIconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe917041eb7aece44a626b5aaa4a3801, type: 3}
+    - target: {fileID: 6010481385621883325, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: backgroundImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 109fe6234eb08d34f8281f09d6b4d2de, type: 3}
+    - target: {fileID: 6010481385621883325, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: dungeonGenerator
       value: 
       objectReference: {fileID: 1053878244}
+    - target: {fileID: 6010481385621883325, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: currentRoomSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fa401547121e5114f9e6204e97931224, type: 3}
+    - target: {fileID: 6010481385621883325, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
+      propertyPath: unknownRoomSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 91c87944920f72e43832fa22faf1d137, type: 3}
     - target: {fileID: 6047667518829267757, guid: 1c49bb4fba3df7441a5a479bb83caac3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
