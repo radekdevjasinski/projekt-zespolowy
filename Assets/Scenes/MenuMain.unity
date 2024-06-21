@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 45203073}
   - component: {fileID: 45203075}
   - component: {fileID: 45203074}
-  - component: {fileID: 45203076}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1056,7 +1055,7 @@ MonoBehaviour:
     zespo\u0142u: Konrad Sochacki\r\n\r\nKonrad Sochacki\r\nBartosz Klimczak\r\nPiotr
     Skuta\r\nMicha\u0142 Szot"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b5f9954ac936f764098d30a31269be81, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1120,7 +1119,7 @@ MonoBehaviour:
   m_margin: {x: -683.8035, y: -27.780243, z: 359.16507, w: -330.22284}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &857668357
@@ -1905,8 +1904,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b5f9954ac936f764098d30a31269be81, type: 2}
+  m_sharedMaterial: {fileID: -2083862922060453798, guid: b5f9954ac936f764098d30a31269be81, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2194,7 +2193,6 @@ GameObject:
   - component: {fileID: 1947749263}
   - component: {fileID: 1947749265}
   - component: {fileID: 1947749264}
-  - component: {fileID: 1947749266}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
