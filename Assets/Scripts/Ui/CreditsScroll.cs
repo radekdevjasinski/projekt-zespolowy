@@ -15,7 +15,7 @@ public class CreditsScroll : MonoBehaviour, IPointerClickHandler
         rectTransform = GetComponent<RectTransform>();
         textHeight = rectTransform.rect.height;
         startPosition = rectTransform.anchoredPosition;
-        resetPosition = new Vector2(startPosition.x, startPosition.y + textHeight);
+        resetPosition = new Vector2(startPosition.x, startPosition.y + textHeight * 2);
     }
 
     void Update()
