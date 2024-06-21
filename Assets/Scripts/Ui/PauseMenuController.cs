@@ -8,6 +8,7 @@ public class PauseMenuController : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject endingMenuUI;
     public int menuScene = 0;
 
     private Controls controls;
@@ -45,6 +46,11 @@ public class PauseMenuController : MonoBehaviour
         //Time.timeScale = 1f;
         GameControler.instance.resumeGame();
         DisablePauseGame();
+    }
+    public void EndingScreenResumeGame()
+    {
+        endingMenuUI.SetActive(false);
+        GameControler.instance.resumePlayerControls();
     }
 
     public void PauseGame()
