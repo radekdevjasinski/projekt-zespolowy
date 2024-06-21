@@ -47,7 +47,9 @@ public class NPCConversation : MonoBehaviour
             {
                 if (!narratorDialog.isTalking)
                 {
+                    narratorDialog.canTalk = false;
                     StartConversation();
+                   
                 }
             }
 
@@ -74,6 +76,7 @@ public class NPCConversation : MonoBehaviour
         setDialogeText ("");
         if (Animator != null)
             Animator.SetBool("isTalking", false);
+        narratorDialog.canTalk = true;
     }
 
 
