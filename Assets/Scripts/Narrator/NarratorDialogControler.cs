@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NarratorDialogControler : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class NarratorDialogControler : MonoBehaviour
     [SerializeField] private float pause = 2f;
     [SerializeField] private GameObject mumblePack;
     [SerializeField] private float fadeDuration = 1.0f;
+    [SerializeField] private Image image;
     private RandomLoopSoundControls musicLoopSoundControls;
     private IEnumerator coroutine;
     public bool isTalking;
@@ -46,6 +48,12 @@ public class NarratorDialogControler : MonoBehaviour
             throw new Exception("Could not find narrator dialogue");
         }
 
+        if(image == null)
+        {
+            Debug.LogError("Border image is null");
+            throw new Exception("Could not find border image");
+        }
+
         if (mumblePack != null)
         {
             musicLoopSoundControls = SoundManager.instance.playRandomLoop(transform, mumblePack);
@@ -57,6 +65,7 @@ public class NarratorDialogControler : MonoBehaviour
         dialogueText.text = "";
         int endLength = (txt.Length / 4) * 2;
 
+        image.enabled = true;
         for (int i = 0; i < txt.Length; i++)
         {
             dialogueText.text += txt[i];
@@ -72,6 +81,7 @@ public class NarratorDialogControler : MonoBehaviour
         yield return new WaitForSeconds(pause);
         musicLoopSoundControls.stopSound();
         isTalking = false;
+        image.enabled = false;
         AudioSource[] sources = musicLoopSoundControls.GetComponentsInChildren<AudioSource>();
         foreach (var source in sources)
         {
