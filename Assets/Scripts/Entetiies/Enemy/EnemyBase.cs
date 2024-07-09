@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class EnemyBase : EntityController<float>
 {
-    [SerializeField] protected float maxHelathPoints = 20f; //punkty ?ycia wrog?w
+    [SerializeField] protected float maxHelathPoints = 20f; //punkty zycia wrogow
     [SerializeField] protected float currentHealthPoints;
-    [SerializeField] protected float visionRange = 1f; //zasi?g widzenia wrog?w
-    [SerializeField] protected int damage = 1; //damage wrog?w per hit
+    [SerializeField] protected float visionRange = 1f; //zasieg widzenia wrogiw
+    [SerializeField] protected int damage = 1; //obrazenia wroga
     [SerializeField] protected float speed = 1f; //szybkosc wroga
-
-    [SerializeField] private GameObject coin;
-    [SerializeField] private GameObject bomb;
-    [SerializeField] private GameObject key;
-    [SerializeField] private GameObject potion;
 
     private float changeDirectionTimer = 3f; //czas po kt?rym zmieniamy kierunek ruchu
     protected float timer;
     private Vector2 randomDirection;
     protected Rigidbody2D rb;
     public bool LockMovement = true;
+
+    [SerializeField] private GameObject coin;
+    [SerializeField] private GameObject bomb;
+    [SerializeField] private GameObject key;
+    [SerializeField] private GameObject potion;
+
 
 
     private Transform playerTransform;

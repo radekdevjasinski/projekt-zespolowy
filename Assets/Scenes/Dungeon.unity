@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 115445282}
   - component: {fileID: 115445281}
   m_Layer: 0
-  m_Name: Light 2D
+  m_Name: Global Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,8 +451,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495272778}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.167856, y: -2.5397377, z: 0.02205911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -825,6 +825,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 919675953}
   - {fileID: 495272779}
   m_Father: {fileID: 241571439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -962,15 +963,15 @@ AudioReverbZone:
   m_Enabled: 1
   m_MinDistance: 2000
   m_MaxDistance: 2000
-  m_ReverbPreset: 9
+  m_ReverbPreset: 3
   m_Room: -1000
-  m_RoomHF: 0
-  m_DecayTime: 2.91
-  m_DecayHFRatio: 1.3
-  m_Reflections: -602
-  m_ReflectionsDelay: 0.015
-  m_Reverb: -302
-  m_ReverbDelay: 0.022
+  m_RoomHF: -454
+  m_DecayTime: 0.4
+  m_DecayHFRatio: 0.83
+  m_Reflections: -1646
+  m_ReflectionsDelay: 0.002
+  m_Reverb: 53
+  m_ReverbDelay: 0.003
   m_HFReference: 5000
   m_Diffusion: 100
   m_Density: 100
@@ -984,12 +985,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919675951}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.287236, y: 3.8470774, z: -0.13659719}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 602860522}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &997601045
 GameObject:
@@ -1384,7 +1385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.39908
+      value: -107.399666
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2142,7 +2143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1174915592
 Transform:
   m_ObjectHideFlags: 0
@@ -3292,10 +3293,9 @@ SceneRoots:
   - {fileID: 599823106}
   - {fileID: 519420032}
   - {fileID: 241571439}
-  - {fileID: 919675953}
   - {fileID: 115445282}
   - {fileID: 8822493276042486048}
-  - {fileID: 1738166609}
   - {fileID: 1028774915}
   - {fileID: 646683192}
+  - {fileID: 1738166609}
   - {fileID: 2130946143}

@@ -7,19 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 abstract public class EntityController<TH> : MonoBehaviour, InvurnabilityControl, IDealDamage
 {
     protected float invincCount = 0;
-    
-    //protected float groundDragBase = 30f;
-
-    //abstract public void resetDrag();
-
-    //abstract public void setDrag(float drag);
-
-    //abstract public void setGroundSpeedAffect(float f);
-    [SerializeField]
-    private bool invulnerable = false;
-
-
-
+    [SerializeField] private bool invulnerable = false;
     private bool isAlive = true;
     private float converToFloat(TH val)
     {

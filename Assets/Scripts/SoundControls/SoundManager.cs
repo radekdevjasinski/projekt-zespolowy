@@ -1,5 +1,7 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
@@ -84,6 +86,9 @@ public class SoundManager : MonoBehaviour
     {
         GameObject soundGameObject = playSound(this.transform, soundObject, position);
         AudioSource audio = soundGameObject.GetComponent<AudioSource>();
+        audio.pitch += Random.Range(-0.25f, 0.25f);
+        audio.pitch = Math.Clamp(audio.pitch, 0.75f, 1.25f);
+
         DestroyAfterTime.Destroy(soundGameObject, audio.clip.length);
     }
 
@@ -96,9 +101,12 @@ public class SoundManager : MonoBehaviour
     public void playSound(Transform parent, GameObject soundObject)
     {
         GameObject soundGameObject = Instantiate(soundObject, parent.position, Quaternion.identity, parent);
+        AudioSource audio = soundGameObject.GetComponent<AudioSource>();
+        audio.pitch += Random.Range(-0.25f, 0.25f);
+        audio.pitch = Math.Clamp(audio.pitch, 0.75f, 1.25f);
+
         DestroyAfterTime.Destroy(soundGameObject, soundGameObject.GetComponent<AudioSource>().clip.length);
     }
-
     public GameObject playLoop(Transform parent, GameObject loopSoundPrefab)
     {
         GameObject soundGameObject = Instantiate(loopSoundPrefab, parent.position, Quaternion.identity, parent);

@@ -33,7 +33,8 @@ public class DungeonRoom
 
     public List<Vector2Int> freeSpots(List<DungeonRoom> rooms)
     {
-        Vector2Int[] directions = { new Vector2Int(1, 0), new Vector2Int(0, 1), new Vector2Int(-1, 0), new Vector2Int(0, -1) };
+        Vector2Int[] directions = { new Vector2Int(1, 0), new Vector2Int(0, 1),
+            new Vector2Int(-1, 0), new Vector2Int(0, -1) };
         List<Vector2Int> free = new List<Vector2Int>();
         for (int i = 0; i < directions.Length; i++)
         {
@@ -147,28 +148,25 @@ public class DungeonGenerator : MonoBehaviour
  
         for (int i = 0; i < allRooms; i++)
         {
-            Debug.Log("Adding room nr: "+ i);
             if (roomCount > 0)
             {
-                Debug.Log("Adding room : room");
                 addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)),RoomType.ROOM);
                 roomCount--;
             }
             else if (shopRoomCount > 0)
             {
-                Debug.Log("Adding room : shop");
                 addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)), RoomType.SHOPROOM);
 
                 shopRoomCount--;
             }
             else if (bossRoomCount > 0)
             {
-                Debug.Log("Adding room : boss");
                 Vector2Int positon = getFarthestOpenSpot();
                 addRoomBase(positon, RoomType.BOSSROOM);
                 bossRoomCount--;
             }
         }
+
         DrawRooms();
         setupDriadSpawnPoint();
         setupRooms();
