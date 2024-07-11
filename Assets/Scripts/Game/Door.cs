@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
 
 
 
-    [SerializeField] private GameObject soundOnOpen;
+    //[SerializeField] private GameObject soundOnOpen;
     [SerializeField] private GameObject soundOnclose;
 
     [SerializeField] private bool openOnstar=false;
@@ -53,8 +53,8 @@ public class Door : MonoBehaviour
             //Debug.Log("opening door");
             col.enabled = false;
             renderer.color = Color.black;
-            if (soundOnOpen != null && SoundManager.instance!=null)
-                SoundManager.instance.playSound(transform, soundOnOpen);
+            //if (soundOnOpen != null && SoundManager.instance!=null)
+            //    SoundManager.instance.playSound(transform, soundOnOpen);
         }
     }
     public void closeDoor()
