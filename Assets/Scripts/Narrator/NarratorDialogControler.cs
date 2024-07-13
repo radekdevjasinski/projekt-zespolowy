@@ -65,7 +65,7 @@ public class NarratorDialogControler : MonoBehaviour
         dialogueText.text = "";
         int endLength = (txt.Length / 4) * 2;
 
-        image.enabled = true;
+        StartCoroutine(FadeImage(false));
         for (int i = 0; i < txt.Length; i++)
         {
             dialogueText.text += txt[i];
@@ -81,12 +81,12 @@ public class NarratorDialogControler : MonoBehaviour
         yield return new WaitForSeconds(pause);
         musicLoopSoundControls.stopSound();
         isTalking = false;
-        image.enabled = false;
         AudioSource[] sources = musicLoopSoundControls.GetComponentsInChildren<AudioSource>();
         foreach (var source in sources)
         {
             source.volume = 1.0f;
         }
+        StartCoroutine(FadeImage(true));
     }
 
     private IEnumerator FadeOutSound()
@@ -108,6 +108,28 @@ public class NarratorDialogControler : MonoBehaviour
         foreach (var source in sources)
         {
             source.volume = 0.1f;
+        }
+    }
+
+    IEnumerator FadeImage(bool fadeAway)
+    {
+        if (fadeAway)
+        {
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                image.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+            image.enabled = false;
+        }
+        else
+        {
+            image.enabled = true;
+            for (float i = 0; i <= 1; i += Time.deltaTime)
+            {
+                image.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
         }
     }
 }
