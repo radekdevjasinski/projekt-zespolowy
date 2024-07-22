@@ -30,8 +30,15 @@ public class Slash : Projectile
         EntityController<float> entityController;
         if (obj.TryGetComponent<EntityController<float>>(out entityController))
         {
-            
             entityController.dealDamage(playerAttributesController.Damage);
+        }
+
+        DestroyableObject destroyableObject;
+        if (obj.TryGetComponent<DestroyableObject>(out destroyableObject))
+        {
+            Debug.Log("Trafiono zniszczalny obiekt!");
+            int damage = Mathf.FloorToInt(playerAttributesController.Damage);
+            destroyableObject.GetDamage(damage);
         }
     }
 

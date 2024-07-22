@@ -7,10 +7,13 @@ public class Barrel : MonoBehaviour
     private bool hasStarted = false;
     public GameObject explosionPrefab;
     private DestroyableObject destroyableObject;
+    private NavigationBake navigationBake;
+
 
     private void Awake()
     {
         destroyableObject = GetComponent<DestroyableObject>();
+        navigationBake = FindObjectOfType<NavigationBake>();
     }
 
     private void FixedUpdate()
@@ -20,6 +23,7 @@ public class Barrel : MonoBehaviour
             SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             spriteRenderer.color = Color.red;
             StartCoroutine(DestroyThisObject());
+            //navigationBake.BakeNavMesh();
         }
     }
 
@@ -29,5 +33,16 @@ public class Barrel : MonoBehaviour
         yield return new WaitForSeconds(1f);
         GameObject newExplosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
+
+
+        if (navigationBake != null)
+        {
+            Debug.LogError("bake");
+            navigationBake.BakeNavMesh();
+        }
+        else
+        {
+            Debug.LogError("NavigationBake instance not found.");
+        }
     }
 }
