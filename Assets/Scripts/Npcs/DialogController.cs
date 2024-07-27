@@ -49,7 +49,7 @@ public class DialogController : MonoBehaviour
         for(int i = 0; i < txt.Length; i++)
         {
             //Debug.Log("txt add: " + txt[i]);
-            dialogueText.text += txt[i];
+            dialogueText.text += "";
            yield return new WaitForSeconds(characterSpeed);
         }
         musicLoopSoundControls.stopSound();
