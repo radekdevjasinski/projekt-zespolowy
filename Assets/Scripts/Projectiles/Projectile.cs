@@ -45,6 +45,11 @@ public abstract class Projectile : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D colider)
     {
+        if (colider.CompareTag("Shield"))
+        {
+            colider.gameObject.GetComponent<Shield>().shieldGlow();
+            colider.gameObject.GetComponentInParent<ZombieShield>().hitShield(this.gameObject);
+        }
         //Debug.Log("collsion: "+ colider.tag);
         if (colider.CompareTag("Collider") || colider.CompareTag("Entity") || colider.CompareTag("Enemy") || (colider.CompareTag("Player")& !wasShootByPlayer))
         {
@@ -57,6 +62,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected abstract void onHit(GameObject obj);
     protected abstract void OnDestroyed();
+
 
     public void setWasShootByPlayer(bool val)
     {

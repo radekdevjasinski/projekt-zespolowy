@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class AddEnemy : MonoBehaviour
 {
-    [SerializeField]
-    private bool spwanAtStart=false;
+    [SerializeField] private bool spwanAtStart;
+    public GameObject enemyToSpawn;
 
     private void Start()
     {
         if (spwanAtStart)
         {
-
+            Spawn();
         }
     }
 
-    public GameObject enemyToSpawn;
     public GameObject Spawn()
     {
         GameObject enemy = Instantiate(enemyToSpawn, transform.parent);

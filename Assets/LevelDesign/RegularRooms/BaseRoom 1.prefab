@@ -984,6 +984,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6242981495803141953}
   - {fileID: 7442108038862733785}
   - {fileID: 7704913578051453755}
   - {fileID: 2062145666242448653}
@@ -3308,7 +3309,7 @@ GameObject:
   - component: {fileID: 7995688680864202042}
   m_Layer: 0
   m_Name: WallsTilemap
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4980,6 +4981,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8070606983588051015, guid: 7f1f3be85d3422a4496182ff54e796c4, type: 3}
   m_PrefabInstance: {fileID: 8132044477048446898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8875601058961398616
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6930258652170534073}
+    m_Modifications:
+    - target: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241746789239409399, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 1700270595183996481, guid: 3c111d48f7149334fbdd23ace292abbe, type: 3}
+    - target: {fileID: 4241746789239409399, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: spwanAtStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745347521940499637, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+      propertyPath: m_Name
+      value: SpawnVampire
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+--- !u!4 &6242981495803141953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3283122705172743193, guid: 236dfd78b26ff9b478861ff3ad917c25, type: 3}
+  m_PrefabInstance: {fileID: 8875601058961398616}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9018577861796581474
 PrefabInstance:
