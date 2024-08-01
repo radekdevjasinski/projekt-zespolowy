@@ -1,0 +1,24 @@
+#MainContainer {
+    background-color: rgb(24, 15, 43);
+}
+
+.MenuButton {
+}
+
+.CreditsText {
+    font-size: 24px;
+    color: white;
+    align-self: flex-start;
+    justify-content: flex-start;
+}
+
+.CreditsTextEnd {
+    position: absolute;
+    bottom: 300%;
+    left: 0;
+    right: 0;
+    font-size: 24px;
+    color: white;
+    transition: bottom 10s linear;
+    transition-duration: 25s;
+}

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/stylemenu.uss?fileID=7433441132597879392&amp;guid=5ca275e6489aa48439a5218a07c97c07&amp;type=3#stylemenu" />
+    <ui:VisualElement name="MainContainer" style="flex-grow: 1; display: flex; align-items: auto; justify-content: flex-start; position: relative;">
+        <ui:Label tabindex="-1" text="Skład zespołu&#10;Kierownik projektu: Radosław Jasiński&#10;&#10;Programiści:&#10;&#10;Lider zespołu: Jakub Kotwica&#10;&#10;Janus Eliza&#10;Wiktoria Wójcik&#10;Jakub Kotwica&#10;Radosław Jasiński&#10;Filip Borowiec&#10;Bartosz Sułek&#10;Tomasz Szarek&#10;&#10;Graficy:&#10;&#10;Lider zespołu: Sebastian Pindral&#10;&#10;Julia Piotrowska&#10;Halyna Khoprova&#10;Sebastian Pindral&#10;Tomasz Zimnicki&#10;&#10;Scenarzyści:&#10;&#10;Lider zespołu: Konrad Sochacki&#10;&#10;Konrad Sochacki&#10;Bartosz Klimczak&#10;Piotr Skuta&#10;Michał Szot" parse-escape-sequences="true" display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); align-self: center;" />
+        <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="MenuButton" style="align-self: flex-end; justify-content: flex-start; align-items: auto; position: absolute; top: 25px; left: 1122px;" />
+    </ui:VisualElement>
+</ui:UXML>
