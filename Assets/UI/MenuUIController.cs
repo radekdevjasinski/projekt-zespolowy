@@ -119,6 +119,7 @@ public class MenuUIController : MonoBehaviour
 
         if(muteToggle != null)
         {
+            muteToggle.value = soundManager.IsMuted; 
             muteToggle.RegisterValueChangedCallback(OnToggleValueChanged);
         }
 
@@ -149,23 +150,10 @@ public class MenuUIController : MonoBehaviour
 
     private void OnToggleValueChanged(ChangeEvent<bool> evt)
     {
-        bool isChecked = evt.newValue;
-
-        if(isChecked)
-        {
-            ToggleMusic();
-        }
-        else
-        {
-            ToggleMusic();
-        }
-    }
-
-    private void ToggleMusic()
-    {
-        soundManager.IsMuted = !soundManager.IsMuted;
+        soundManager.IsMuted = evt.newValue;
         soundManager.SaveSettings();
 
+ 
         AudioSource[] audioSources = soundManager.GetComponentsInChildren<AudioSource>(true);
         foreach (AudioSource audioSource in audioSources)
         {
