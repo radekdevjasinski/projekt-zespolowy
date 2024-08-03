@@ -3,6 +3,16 @@
 }
 
 .MenuButton {
+    width: 20%;
+    height: 8%;
+    margin-top: 2%;
+    -unity-font-definition: url("project://database/Assets/UI/PixelifySans-VariableFont_wght%20SDF.asset?fileID=11400000&guid=e11eba40b881bc449aacfb478092cd9f&type=2#PixelifySans-VariableFont_wght SDF");
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
 }
 
 .CreditsText {
@@ -21,4 +31,21 @@
     color: white;
     transition: bottom 10s linear;
     transition-duration: 25s;
+}
+
+.MenuButton:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
 }

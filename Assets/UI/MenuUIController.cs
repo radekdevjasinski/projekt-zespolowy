@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 public class MenuUIController : MonoBehaviour
 {
     public MenuScript menuScript;
+    public MusicController musicController;
     public SoundManager soundManager;
     public VisualTreeAsset mainMenuVTA;
     public VisualTreeAsset settingsVTA;
@@ -15,14 +16,20 @@ public class MenuUIController : MonoBehaviour
     Button exitButton;
     Button backButton;
     Slider volumeSlider;
+    Toggle muteToggle;
     Label volumeLabel;
+
+
 
     private const float AnimationDuration = 10f; 
 
     public void OnEnable()
     {
+    
         root = GetComponent<UIDocument>().rootVisualElement;
         LoadMainMenu();
+       
+
     }
 
     private void Update()
@@ -48,9 +55,11 @@ public class MenuUIController : MonoBehaviour
 
         settingsButton.clicked += () =>
         {
+            soundManager = SoundManager.instance;
             LoadSettings();
 
-            AudioListener audioListener = FindObjectOfType<AudioListener>();
+           
+          /* AudioListener audioListener = FindObjectOfType<AudioListener>();
             if (audioListener != null)
             {
                 Debug.Log("AudioListener found.");
@@ -61,7 +70,7 @@ public class MenuUIController : MonoBehaviour
             else
             {
                 Debug.LogWarning("No AudioListener found in the scene.");
-            }
+            }*/
         };
 
         creditsButton.clicked += () =>
@@ -85,11 +94,33 @@ public class MenuUIController : MonoBehaviour
     {
         root.Clear();
         settingsVTA.CloneTree(root);
+     
 
         backButton = root.Q<Button>("BackButton");
         volumeSlider = root.Q<Slider>("VolumeSlider");
         volumeLabel = root.Q<Label>("VolumeLabel");
-        volumeSlider.RegisterValueChangedCallback(OnVolumeChanged);
+        muteToggle = root.Q<Toggle>("MuteToggle");
+
+/*        if (soundManager == null)
+        {
+            Debug.LogError("SoundManager instance not found");
+            return;
+        }*/
+
+
+        if (volumeSlider != null)
+        {
+            volumeSlider.lowValue = 0f;
+            volumeSlider.highValue = 1f;
+            volumeSlider.value = soundManager.MusicVolume;
+            Debug.Log($"VolumeSlider value set to: {volumeSlider.value}");
+            volumeSlider.RegisterValueChangedCallback(OnVolumeChanged);
+        }
+
+        if(muteToggle != null)
+        {
+            muteToggle.RegisterValueChangedCallback(OnToggleValueChanged);
+        }
 
         if (backButton != null)
         {
@@ -104,9 +135,42 @@ public class MenuUIController : MonoBehaviour
 
     private void OnVolumeChanged(ChangeEvent<float> evt)
     {
-        // Ustaw globaln¹ g³oœnoœæ AudioListener na podstawie wartoœci suwaka
-        AudioListener.volume = evt.newValue;
+        float volume = evt.newValue;
+        soundManager.MusicVolume = volume;
+        soundManager.SaveSettings();
 
+        AudioSource[] audioSources = soundManager.GetComponentsInChildren<AudioSource>(true);
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.volume = volume;
+        }
+
+    }
+
+    private void OnToggleValueChanged(ChangeEvent<bool> evt)
+    {
+        bool isChecked = evt.newValue;
+
+        if(isChecked)
+        {
+            ToggleMusic();
+        }
+        else
+        {
+            ToggleMusic();
+        }
+    }
+
+    private void ToggleMusic()
+    {
+        soundManager.IsMuted = !soundManager.IsMuted;
+        soundManager.SaveSettings();
+
+        AudioSource[] audioSources = soundManager.GetComponentsInChildren<AudioSource>(true);
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.mute = soundManager.IsMuted;
+        }
     }
 
     public void LoadCredits()

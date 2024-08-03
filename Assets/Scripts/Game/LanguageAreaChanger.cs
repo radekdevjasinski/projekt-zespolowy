@@ -11,7 +11,7 @@ public class LanguageAreaChanger : ActivatableAreaObjectTrigger
 
     public override bool activate(GameObject player)
     {
-        Debug.Log("acitvated lagnaue chagner");
+        Debug.Log("acitvated language chagner");
         LocalizationSettings.SelectedLocale = local;
         return true;
     }
