@@ -1,19 +1,19 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/stylemenu.uss?fileID=7433441132597879392&amp;guid=5ca275e6489aa48439a5218a07c97c07&amp;type=3#stylemenu" />
     <ui:VisualElement name="MainContainer" style="flex-grow: 1;">
-        <ui:Label tabindex="-1" text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font: initial; -unity-font-definition: url(&quot;project://database/Assets/UI/PixelifySans-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=e11eba40b881bc449aacfb478092cd9f&amp;type=2#PixelifySans-VariableFont_wght SDF&quot;); -unity-font-style: normal; color: rgb(255, 255, 255); align-self: center; font-size: 28px;" />
-        <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="MenuButton" />
+        <ui:Label tabindex="-1" text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingsLabel" style="-unity-font: initial; -unity-font-definition: url(&quot;project://database/Assets/UI/PixelifySans-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=e11eba40b881bc449aacfb478092cd9f&amp;type=2#PixelifySans-VariableFont_wght SDF&quot;); -unity-font-style: normal; color: rgb(255, 255, 255); align-self: center; font-size: 48px;" />
+        <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="MenuButton" style="width: 20%; height: 8%; font-size: 24px;" />
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 1;">
-                <ui:Slider label="Music Sound" high-value="1" name="VolumeSlider" style="color: rgb(255, 255, 255); width: 90%;" />
-                <ui:Toggle label="Mute Sound" name="MuteToggle" style="background-color: rgba(255, 255, 255, 0); color: rgb(255, 255, 255);" />
+                <ui:Slider label="Music Sound" high-value="1" name="VolumeSlider" style="color: rgb(255, 255, 255); width: 90%; font-size: 24px;" />
+                <ui:Toggle label="Mute Sound" name="MuteToggle" style="background-color: rgba(255, 255, 255, 0); color: rgb(255, 255, 255); font-size: 24px;" />
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; margin-right: 0;">
-                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="EnglishButton" style="background-image: url(&quot;project://database/Assets/Sprites/flags.png?fileID=-1445192744&amp;guid=42e61a1100927e04fa9ef8f0c3220b7b&amp;type=3#flags_1&quot;); -unity-background-scale-mode: scale-and-crop; width: 10%; height: 10%; background-color: rgba(188, 188, 188, 0); align-self: flex-start; flex-direction: row;" />
-                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PolishButton" style="background-image: url(&quot;project://database/Assets/Sprites/flags.png?fileID=-1224541667&amp;guid=42e61a1100927e04fa9ef8f0c3220b7b&amp;type=3#flags_0&quot;); width: 10%; height: 10%; background-color: rgba(188, 188, 188, 0); -unity-background-scale-mode: scale-and-crop; align-self: flex-start; flex-direction: row; margin-left: 10px;" />
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="EnglishButton" style="background-image: url(&quot;project://database/Assets/Sprites/flags.png?fileID=-1445192744&amp;guid=42e61a1100927e04fa9ef8f0c3220b7b&amp;type=3#flags_1&quot;); -unity-background-scale-mode: scale-and-crop; width: 15%; height: 15%; background-color: rgba(188, 188, 188, 0); align-self: flex-start; flex-direction: row;" />
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PolishButton" style="background-image: url(&quot;project://database/Assets/Sprites/flags.png?fileID=-1224541667&amp;guid=42e61a1100927e04fa9ef8f0c3220b7b&amp;type=3#flags_0&quot;); width: 15%; height: 15%; background-color: rgba(188, 188, 188, 0); -unity-background-scale-mode: scale-and-crop; align-self: flex-start; flex-direction: row; margin-left: 10px;" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 45%;">
-                <ui:Label tabindex="-1" text="Volume" parse-escape-sequences="true" display-tooltip-when-elided="true" name="VolumeLabel" style="color: rgb(255, 255, 255); margin-left: 20px;" />
+                <ui:Label tabindex="-1" text="Volume" parse-escape-sequences="true" display-tooltip-when-elided="true" name="VolumeLabel" style="color: rgb(255, 255, 255); margin-left: 20px; font-size: 24px;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

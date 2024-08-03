@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UIElements;
 
 public class MenuUIController : MonoBehaviour
@@ -18,6 +20,14 @@ public class MenuUIController : MonoBehaviour
     Slider volumeSlider;
     Toggle muteToggle;
     Label volumeLabel;
+    Button polishButton;
+    Button englishButton;
+    Label settingsLabel;
+    Label sliderLabel;
+    Label muteLabel;
+
+    [SerializeField] private Locale polishLocale;
+    [SerializeField] private Locale englishLocale;
 
 
 
@@ -36,6 +46,22 @@ public class MenuUIController : MonoBehaviour
     {   
         if(volumeSlider != null)
         UpdateVolumeLabel(volumeSlider.value);
+        UpdateUI();
+    }
+
+    private void ChangeLanguage(Locale locale)
+    {
+        if (locale != null)
+        {
+            Debug.Log("Changing language to: " + locale.name);
+            LocalizationSettings.SelectedLocale = locale;
+            UpdateUI();
+        }
+        else
+        {
+            Debug.LogError("Locale is null");
+            UpdateUI();
+        }
     }
 
     public void LoadMainMenu()
@@ -57,20 +83,20 @@ public class MenuUIController : MonoBehaviour
         {
             soundManager = SoundManager.instance;
             LoadSettings();
+            UpdateUI();
 
-           
-          /* AudioListener audioListener = FindObjectOfType<AudioListener>();
-            if (audioListener != null)
-            {
-                Debug.Log("AudioListener found.");
-                volumeSlider.value = AudioListener.volume;
+            /* AudioListener audioListener = FindObjectOfType<AudioListener>();
+              if (audioListener != null)
+              {
+                  Debug.Log("AudioListener found.");
+                  volumeSlider.value = AudioListener.volume;
 
-               
-            }
-            else
-            {
-                Debug.LogWarning("No AudioListener found in the scene.");
-            }*/
+
+              }
+              else
+              {
+                  Debug.LogWarning("No AudioListener found in the scene.");
+              }*/
         };
 
         creditsButton.clicked += () =>
@@ -83,6 +109,8 @@ public class MenuUIController : MonoBehaviour
         {
             menuScript.QuitGame();
         };
+
+        UpdateUI();
     }
     private void UpdateVolumeLabel(float value)
     {
@@ -98,8 +126,14 @@ public class MenuUIController : MonoBehaviour
 
         backButton = root.Q<Button>("BackButton");
         volumeSlider = root.Q<Slider>("VolumeSlider");
+        sliderLabel = volumeSlider.Q<Label>();
         volumeLabel = root.Q<Label>("VolumeLabel");
         muteToggle = root.Q<Toggle>("MuteToggle");
+        muteLabel = muteToggle.Q<Label>();
+        polishButton = root.Q<Button>("PolishButton");
+        englishButton = root.Q<Button>("EnglishButton");
+        settingsLabel = root.Q<Label>("SettingsLabel");
+      
 
 /*        if (soundManager == null)
         {
@@ -113,6 +147,7 @@ public class MenuUIController : MonoBehaviour
             volumeSlider.lowValue = 0f;
             volumeSlider.highValue = 1f;
             volumeSlider.value = soundManager.MusicVolume;
+           
             Debug.Log($"VolumeSlider value set to: {volumeSlider.value}");
             volumeSlider.RegisterValueChangedCallback(OnVolumeChanged);
         }
@@ -131,7 +166,23 @@ public class MenuUIController : MonoBehaviour
             };
         }
 
+        if(englishButton != null)
+        {
+            englishButton.clicked += () =>
+            {
+                ChangeLanguage(englishLocale);
+            };
+        }
 
+        if(polishButton != null)
+        {
+            polishButton.clicked += () =>
+            {
+                ChangeLanguage(polishLocale);
+            };
+        }
+
+        UpdateUI();
     }
 
     private void OnVolumeChanged(ChangeEvent<float> evt)
@@ -173,11 +224,28 @@ public class MenuUIController : MonoBehaviour
         {
            AnimateCredits(creditLabel);
         }
+        UpdateUI();
     }
 
 
     public void AnimateCredits(Label creditLabel)
     {
        // creditLabel.AddToClassList("CreditsTextEnd");
+    }
+
+    private void UpdateUI()
+    {
+        // Update text for buttons and labels according to the selected locale
+        if (newGameButton != null) newGameButton.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "NewGame");
+        if (creditsButton != null) creditsButton.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "Credits");
+        if (settingsButton != null) settingsButton.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "Settings");
+        if (exitButton != null) exitButton.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "Exit");
+        //if (volumeLabel != null) volumeLabel.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "Volume")
+       // if (polishButton != null) polishButton.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "Polish");
+       // if (englishButton != null) englishButton.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "English");
+        if (backButton != null) backButton.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "Back");
+        if (settingsLabel != null) settingsLabel.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "Settings");
+        if (sliderLabel != null) sliderLabel.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "MusicSound");
+        if (muteLabel != null) muteLabel.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "Mute");
     }
 }
