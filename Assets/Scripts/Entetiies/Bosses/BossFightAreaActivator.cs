@@ -16,7 +16,7 @@ public class BossFightAreaActivator : MonoBehaviour
 
     void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Narrator"))
         {
             bossFightController.startFight();
             this.GetComponent<Collider2D>().enabled = false;

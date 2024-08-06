@@ -33,12 +33,13 @@ public class SoundManager : MonoBehaviour
 
         MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         IsMuted = PlayerPrefs.GetInt("IsMuted", 0) == 1;
-
+        Debug.Log($"SoundManager Awake - MusicVolume: {MusicVolume}, IsMuted: {IsMuted}");
         ApplySettings();
     }
 
     private void ApplySettings()
     {
+        Debug.Log("Applying settings...");
         AudioSource[] audioSources = GetComponentsInChildren<AudioSource>(true);
         foreach (AudioSource audioSource in audioSources)
         {
@@ -49,6 +50,7 @@ public class SoundManager : MonoBehaviour
 
     public void SaveSettings()
     {
+        Debug.Log($"Saving settings - MusicVolume: {MusicVolume}, IsMuted: {IsMuted}");
         PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
         PlayerPrefs.SetInt("IsMuted", IsMuted ? 1 : 0);
     }
