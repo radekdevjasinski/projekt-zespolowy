@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6467945034120806868}
   - component: {fileID: -272338307828933733}
   - component: {fileID: 6914770144605913349}
+  - component: {fileID: 1760377680288598279}
   m_Layer: 0
   m_Name: Barrel_
   m_TagString: Destructable
@@ -203,3 +204,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6008129, y: 0.6335453}
   m_EdgeRadius: 0
+--- !u!208 &1760377680288598279
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121337066097333326}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.15, y: 0.15, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0
