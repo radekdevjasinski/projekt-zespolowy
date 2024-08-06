@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/stylemenu.uss?fileID=7433441132597879392&amp;guid=5ca275e6489aa48439a5218a07c97c07&amp;type=3#stylemenu" />
+    <ui:VisualElement name="MainContainer" style="flex-grow: 1; display: flex; -unity-background-scale-mode: stretch-to-fill; align-items: center;">
+        <ui:VisualElement name="Title" style="flex-grow: 0; align-items: center; background-image: url(&quot;project://database/Assets/Sprites/title_no_bg.png?fileID=21300000&amp;guid=52ca60b697dd0e2429440188b45943c1&amp;type=3#title_no_bg&quot;); -unity-background-scale-mode: scale-to-fit; width: 100%; height: 40%; align-self: center; justify-content: flex-start; margin-top: 2%; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0; -unity-slice-scale: 2px;" />
+        <ui:Button text="New Game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NewGameButton" class="MenuButton" />
+        <ui:Button text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingsButton" class="MenuButton" style="font-size: 24px;" />
+        <ui:Button text="Credtis" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CreditsButton" class="MenuButton" />
+        <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="MenuButton" />
+    </ui:VisualElement>
+</ui:UXML>
