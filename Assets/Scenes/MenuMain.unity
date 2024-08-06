@@ -494,7 +494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &135464443
 RectTransform:
   m_ObjectHideFlags: 0
@@ -773,6 +773,8 @@ MonoBehaviour:
   mainMenuVTA: {fileID: 9197481963319205126, guid: 27601158d986b554f868e26343987728, type: 3}
   settingsVTA: {fileID: 9197481963319205126, guid: 688510bbc1b93b444aba5fd92740d84c, type: 3}
   creditsVTA: {fileID: 9197481963319205126, guid: 8b6268f7d9aa6c94f980e6ba13fb9bed, type: 3}
+  creditsVTAold: {fileID: 9197481963319205126, guid: 9f675b2b7e969094e95727ea2fcb0d9a, type: 3}
+  toggleCredits: 0
   polishLocale: {fileID: 11400000, guid: 25d7981bf644f0449a0794bcf3273408, type: 2}
   englishLocale: {fileID: 11400000, guid: 2d9141869c7ee8640913c115bfcdbbf9, type: 2}
 --- !u!114 &378597962
