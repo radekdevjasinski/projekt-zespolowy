@@ -9,6 +9,8 @@ public class EnemyBase : EntityController<float>
     [SerializeField] protected float visionRange = 1f; //zasieg widzenia wrogiw
     [SerializeField] protected int damage = 1; //obrazenia wroga
     [SerializeField] protected float speed = 1f; //szybkosc wroga
+    [SerializeField] protected float dropItemChance = .5f; 
+
 
     private float changeDirectionTimer = 3f; //czas po kt?rym zmieniamy kierunek ruchu
     protected float timer;
@@ -136,23 +138,30 @@ public class EnemyBase : EntityController<float>
     public GameObject lootEnemy()
     {
 
-        int randomNumber = Random.Range(0, 4);
+        int randomNumber = Random.Range(0, 11);
         switch (randomNumber)
         {
             case 0:
-                return coin;
             case 1:
-                return bomb;
             case 2:
-                return key;
-            default:
+            case 3:
+                return coin;
+            case 4:
+            case 5:
+            case 6:
+                return bomb;
+            case 7:
+            case 8:
+            case 9:
                 return potion;
+            default:
+                return key;
         }
     }
     public void isLoot()
     {
-        int randomNumber = Random.Range(0, 4);
-        if (randomNumber == 0)
+        float randomNumber = Random.Range(0f, 1f);
+        if (randomNumber < dropItemChance)
         {
             Instantiate(
             lootEnemy(),

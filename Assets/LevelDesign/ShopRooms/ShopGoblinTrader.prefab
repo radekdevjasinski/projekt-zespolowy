@@ -9089,6 +9089,58 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[0].item.basePrice
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[1].item.basePrice
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[2].item.basePrice
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[3].item.basePrice
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[5].item.basePrice
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[6].item.basePrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[7].item.basePrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[9].item.basePrice
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[10].item.basePrice
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[11].item.basePrice
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[12].item.basePrice
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[13].item.basePrice
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945271907045184301, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
+      propertyPath: randomItems.Array.data[14].item.basePrice
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3197375250991396093, guid: 43dd1fb0783919842b5719f87ac74de8, type: 3}
       propertyPath: m_Name
       value: GoblinTrader

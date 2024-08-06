@@ -6,15 +6,21 @@ using UnityEngine.AI;
 
 public class ZombieShield : EnemyBase, OnDamage
 {
+    [Header("Movement and Attacking")]
     [SerializeField] private float attackSpeed = 0.1f;
-    [SerializeField] private float interpolation = 0.1f;
+    [SerializeField] private float startSpeed = 1f;
+    [SerializeField] private float startInterpolation = 0.1f;
+    private float interpolation;
+    [SerializeField] private float speedUpMultiplier = 0.1f;
+    [SerializeField] private float interpolationMultiplier = 0.001f;
     [SerializeField] private float wakeUpCooldown = 5f;
-    public PlayerEntityController playerController;
+    [SerializeField] private float wallHitLimit = 2f;
+    private PlayerEntityController playerController;
     private Animator animator;
     private bool canAttack = true;
     private bool stunned = false;
-    private Knockback knockback;
     private Shield shield;
+    private GameObject stars;
 
     protected override void Start()
     {
@@ -22,17 +28,11 @@ public class ZombieShield : EnemyBase, OnDamage
         currentHealthPoints = maxHelathPoints;
         animator = GetComponent<Animator>();
         playerController = GameObject.Find("Player").GetComponent<PlayerEntityController>();
-        knockback = GetComponent<Knockback>();
         shield = GetComponentInChildren<Shield>();
-
-        interpolation = Random.Range(interpolation - 0.05f, interpolation + 0.05f);
-        speed = Random.Range(speed - 0.5f, speed + 0.5f);
-
-        //usun
-        LockMovement = false;
-        //
-
-
+        stars = transform.GetChild(1).gameObject;
+        stars.SetActive(stunned);
+        speed = startSpeed;
+        interpolation = startInterpolation;
     }
     void FixedUpdate()
     {
@@ -42,7 +42,8 @@ public class ZombieShield : EnemyBase, OnDamage
             {
                 Move();
                 animator.speed = speed;
-                speed += Time.fixedDeltaTime * 0.1f;
+                speed += Time.fixedDeltaTime * speedUpMultiplier;
+                interpolation -= Time.fixedDeltaTime * interpolationMultiplier;
             }
         }
     }
@@ -76,9 +77,9 @@ public class ZombieShield : EnemyBase, OnDamage
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Wall"))
+        if (!collision.collider.CompareTag("Player") && !collision.collider.CompareTag("Enemy") && !collision.collider.CompareTag("Shield") && !collision.collider.CompareTag("Projectile"))
         {
-            if (speed > 2)
+            if (speed > wallHitLimit)
             {
                 Stun();
             }
@@ -94,6 +95,8 @@ public class ZombieShield : EnemyBase, OnDamage
         animator.Update(0f); // Ensure the animator updates immediately
         shield.shieldActive = false;
         stunned = true;
+        stars.SetActive(stunned);
+        CameraController.Instance.Shake();
         StartCoroutine(startRunning());
 
     }
@@ -103,7 +106,9 @@ public class ZombieShield : EnemyBase, OnDamage
         rb.bodyType = RigidbodyType2D.Dynamic;
         shield.shieldActive = true;
         stunned = false;
-        speed = 1f;
+        stars.SetActive(stunned);
+        speed = startSpeed;
+        interpolation = startInterpolation;
     }
     public void hitShield(GameObject gameObject)
     {

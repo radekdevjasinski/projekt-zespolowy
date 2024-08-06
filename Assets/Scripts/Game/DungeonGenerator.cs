@@ -116,18 +116,18 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject[] bossPrefabs;
     public GameObject[] shopPrefabs;
 
-    public Dictionary<Vector2Int,DungeonRoom> rooms = new Dictionary<Vector2Int, DungeonRoom>();
-    public HashSet<Vector2Int> freeSpots = new HashSet<Vector2Int>(){new Vector2Int(0,0)};
+    public Dictionary<Vector2Int, DungeonRoom> rooms = new Dictionary<Vector2Int, DungeonRoom>();
+    public HashSet<Vector2Int> freeSpots = new HashSet<Vector2Int>() { new Vector2Int(0, 0) };
     public NavigationBake navigationBake;
 
     public void addRoomBase(Vector2Int postion, RoomType type, bool visited = false)
     {
-    
+
         freeSpots.Remove(postion);
-        rooms.Add(postion,new DungeonRoom(postion, type) { visited = visited });
+        rooms.Add(postion, new DungeonRoom(postion, type) { visited = visited });
         foreach (Vector2Int dir in directions)
         {
-            if (!rooms.ContainsKey(dir+ postion))
+            if (!rooms.ContainsKey(dir + postion))
             {
                 freeSpots.Add(dir + postion);
             }
@@ -142,29 +142,42 @@ public class DungeonGenerator : MonoBehaviour
         cameraController = GameObject.Find("CameraHolder").GetComponent<CameraFollowRoom>();
         if (cameraController == null)
             throw new Exception("no cam,era hlder");
-        int allRooms = roomCount + shopRoomCount + bossRoomCount;
+        bool allRooms = false, allShops = false;
 
         addRoomBase(new Vector2Int(0, 0), RoomType.STARTROOM, true);
- 
-        for (int i = 0; i < allRooms; i++)
-        {
-            if (roomCount > 0)
-            {
-                addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)),RoomType.ROOM);
-                roomCount--;
-            }
-            else if (shopRoomCount > 0)
-            {
-                addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)), RoomType.SHOPROOM);
 
-                shopRoomCount--;
-            }
-            else if (bossRoomCount > 0)
+        while (!allRooms || !allShops)
+        {
+            if (UnityEngine.Random.Range(0f,1f) <= 0.7f)
             {
-                Vector2Int positon = getFarthestOpenSpot();
-                addRoomBase(positon, RoomType.BOSSROOM);
-                bossRoomCount--;
+                if (roomCount > 0)
+                {
+                    addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)), RoomType.ROOM);
+                    roomCount--;
+                }
+                else
+                {
+                    allRooms = true;
+                }
             }
+            else
+            {
+                if (shopRoomCount > 0)
+                {
+                    addRoomBase(freeSpots.ElementAt(UnityEngine.Random.Range(0, freeSpots.Count)), RoomType.SHOPROOM);
+                    shopRoomCount--;
+                }
+                else
+                {
+                    allShops = true;
+                }
+            }
+        }
+        if (bossRoomCount > 0)
+        {
+            Vector2Int positon = getFarthestOpenSpot();
+            addRoomBase(positon, RoomType.BOSSROOM);
+            bossRoomCount--;
         }
 
         DrawRooms();
@@ -179,6 +192,7 @@ public class DungeonGenerator : MonoBehaviour
     {
 
         List<Vector2Int> keys = rooms.Keys.ToList();
+        int shops = 0;
         //creates rooms
         foreach (Vector2Int key in keys)
         {
@@ -189,15 +203,16 @@ public class DungeonGenerator : MonoBehaviour
             {
               case RoomType.STARTROOM:
                   roomPrefab = startRoomPrefabs[UnityEngine.Random.Range(0, startRoomPrefabs.Length)];
-
                     break;
                 case RoomType.ROOM:
                     roomPrefab = roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Length)];
                     break;
                 case RoomType.BOSSROOM:
-                    roomPrefab = bossPrefabs[UnityEngine.Random.Range(0, bossPrefabs.Length)]; break;
+                    roomPrefab = bossPrefabs[UnityEngine.Random.Range(0, bossPrefabs.Length)]; 
+                    break;
                 case RoomType.SHOPROOM:
-                    roomPrefab = shopPrefabs[UnityEngine.Random.Range(0, shopPrefabs.Length)];
+                    roomPrefab = shopPrefabs[shops];
+                    shops++;
                     break;
             }
             item.gameObject = Instantiate(roomPrefab, this.gameObject.transform);

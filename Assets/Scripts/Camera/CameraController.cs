@@ -26,9 +26,7 @@ public class CameraController : MonoBehaviour
 
     public void Shake()
     {
-        Debug.Log("Aniamtior shake Camera" +
-                  "");
-        this.GetComponent<Animator>().SetTrigger("Shake");
+        this.GetComponent<Animator>().Play("Shake", 0, 0);
     }
 
 }
