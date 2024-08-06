@@ -81,9 +81,21 @@ public class PriestController : EnemyBase, OnDamage
         yield return new WaitForSeconds(spawnCooldown);
 
         Vector3 spawnPosition = transform.position + (Vector3)(Random.insideUnitCircle * 2);
-        Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+        //Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+        GameObject spawnedEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+
+        UnlockMovement(spawnedEnemy);
 
         canSpawn = true;
+    }
+
+    void UnlockMovement(GameObject enemy)
+    {
+        var zombieController = enemy.GetComponent<ZombieController>();
+        if (zombieController != null)
+        {
+            zombieController.LockMovement = false;
+        }
     }
 
     void OnTriggerStay2D(Collider2D collision)
