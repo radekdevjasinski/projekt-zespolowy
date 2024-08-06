@@ -7,6 +7,7 @@ public class PriestPathFinding : MonoBehaviour
 {
     Transform target;
     public NavMeshAgent agent;
+    public float safeDistance = 5.0f;
 
     private void Start()
     {
@@ -18,9 +19,21 @@ public class PriestPathFinding : MonoBehaviour
 
     public void Move()
     {
-        Vector3 directionAwayFromPlayer = transform.position - target.position;
-        Vector3 newDestination = transform.position + directionAwayFromPlayer;
+        float distance = Vector3.Distance(transform.position, target.position);
+        if (distance < safeDistance)
+        {
+            Vector3 directionToTarget = transform.position - target.position;
+            Vector3 fleePosition = transform.position + directionToTarget.normalized * safeDistance;
 
-        agent.SetDestination(newDestination);
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(fleePosition, out hit, safeDistance, NavMesh.AllAreas))
+            {
+                agent.SetDestination(hit.position);
+            }
+        }
+        else
+        {
+            agent.ResetPath();
+        }
     }
 }

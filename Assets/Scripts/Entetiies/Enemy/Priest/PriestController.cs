@@ -14,8 +14,10 @@ public class PriestController : EnemyBase, OnDamage
     private Knockback knockback;
 
     [SerializeField] private GameObject enemyToSpawn;
-    [SerializeField] private float spawnCooldown = 5.0f;
+    [SerializeField] private float spawnCooldown = 3.0f;
     private bool canSpawn = true;
+
+    private float PriestSpeed = 1.7f;
 
     protected override void Start()
     {
@@ -24,7 +26,7 @@ public class PriestController : EnemyBase, OnDamage
         damage = 1;
         animator = GetComponent<Animator>();
         priestPathFinding = GetComponent<PriestPathFinding>();
-        priestPathFinding.agent.speed = this.speed;
+        priestPathFinding.agent.speed = PriestSpeed;
         playerController = GameObject.Find("Player").GetComponent<PlayerEntityController>();
         knockback = GetComponent<Knockback>();
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
