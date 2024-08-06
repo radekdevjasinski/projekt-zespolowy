@@ -80,11 +80,12 @@ public class PriestController : EnemyBase, OnDamage
         canSpawn = false;
         yield return new WaitForSeconds(spawnCooldown);
 
-        Vector3 spawnPosition = transform.position + (Vector3)(Random.insideUnitCircle * 2);
-        //Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
-        GameObject spawnedEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
-
-        UnlockMovement(spawnedEnemy);
+        for (int i = 0; i < 2; i++)
+        {
+            Vector3 spawnPosition = transform.position + (Vector3)(Random.insideUnitCircle * 2);
+            GameObject spawnedEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+            UnlockMovement(spawnedEnemy);
+        }
 
         canSpawn = true;
     }
