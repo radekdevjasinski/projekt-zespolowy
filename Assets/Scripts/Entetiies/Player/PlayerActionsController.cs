@@ -131,26 +131,50 @@ public class PlayerActionsController : MonoBehaviour
             animator.SetTrigger("Shooting");
             canShoot = false;
 
+            Vector2 attackDirection = playerMovementController.getCurrentDirection();
             Vector3 startPosition = new Vector3(
-                transform.position.x + collider.bounds.size.x * 1.4f * direction.x,
-                transform.position.y + collider.bounds.size.y * 1.4f * direction.y,
+                transform.position.x + collider.bounds.size.x * 1.4f * attackDirection.x,
+                transform.position.y + collider.bounds.size.y * 1.4f * attackDirection.y,
                 0f);
-
             GameObject slashable = Instantiate(
                 slashableItem,
-                 startPosition,
-               new Quaternion(0f, 0f, 0f, 0f),
-               this.transform
-               );
+                startPosition,
+                Quaternion.identity,
+                this.transform
+            );
+
             slashable.GetComponent<Projectile>().setupProjectileParams(
                 playerAttributes.Damage,
                 playerAttributes.Range
-                );
+            );
+
             RotateSword(slashable);
+            RotateSword(slashable, attackDirection);
 
             slashable.GetComponent<Projectile>().setWasShootByPlayer(true);
             Invoke("resetShootingCooldDown", shootCooldown / (1 * playerAttributes.FireRate));
             MakeStaminaAction(shootStaminaCost);
+
+            //Vector3 startPosition = new Vector3(
+            //    transform.position.x + collider.bounds.size.x * 1.4f * direction.x,
+            //    transform.position.y + collider.bounds.size.y * 1.4f * direction.y,
+            //    0f);
+
+            //GameObject slashable = Instantiate(
+            //    slashableItem,
+            //     startPosition,
+            //   new Quaternion(0f, 0f, 0f, 0f),
+            //   this.transform
+            //   );
+            //slashable.GetComponent<Projectile>().setupProjectileParams(
+            //    playerAttributes.Damage,
+            //    playerAttributes.Range
+            //    );
+            //RotateSword(slashable);
+
+            //slashable.GetComponent<Projectile>().setWasShootByPlayer(true);
+            //Invoke("resetShootingCooldDown", shootCooldown / (1 * playerAttributes.FireRate));
+            //MakeStaminaAction(shootStaminaCost);
 
         }
     }
@@ -172,6 +196,26 @@ public class PlayerActionsController : MonoBehaviour
         if (direction == new Vector2(1f, 0))
         {
             slashable.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+        }
+    }
+
+    private void RotateSword(GameObject slashable, Vector2 attackDirection)
+    {
+        if (attackDirection == new Vector2(-1f, 0))
+        {
+            slashable.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+        }
+        else if (attackDirection == new Vector2(0, -1f))
+        {
+            slashable.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+        }
+        else if (attackDirection == new Vector2(1f, 0))
+        {
+            slashable.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+        }
+        else if (attackDirection == new Vector2(0, 1f))
+        {
+            slashable.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 
