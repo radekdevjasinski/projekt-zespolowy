@@ -56,4 +56,9 @@ public class PlayerMovementController : MonoBehaviour
     {
         return moveValue;
     }
+
+    public Vector2 getCurrentDirection()
+    {
+        return moveValue.normalized;
+    }
 }

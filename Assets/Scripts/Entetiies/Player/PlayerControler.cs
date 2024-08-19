@@ -101,6 +101,7 @@ public class PlayerControler : MonoBehaviour, Ipausable
     void OnMove(Vector2 movement)
     {
         playerMovementController.setMoveValue(movement);
+        playerActionsController.setShootingDiretion(movement);
     }
     void OnCancelMove(Vector2 movement)
     {
