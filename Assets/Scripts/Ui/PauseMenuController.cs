@@ -11,12 +11,19 @@ public class PauseMenuController : MonoBehaviour
     public GameObject endingMenuUI;
     public int menuScene = 0;
 
+    public GameObject tutorialScreen;
+    public GameObject tutorialButtons;
+
     private Controls controls;
 
     private void Awake()
     {
         controls = new Controls();
         controls.Menu.PauseMenu.performed += ctx => TogglePause();    
+    }
+    private void Start()
+    {
+        GameControler.instance.pausePlayerControls();
     }
     private void Update()
     {
@@ -60,7 +67,12 @@ public class PauseMenuController : MonoBehaviour
         GameControler.instance.pauseGame();
         EnablePauseGame();
     }
-
+    public void EndTutorial()
+    {
+        tutorialScreen.SetActive(false);
+        tutorialButtons.SetActive(false);
+        GameControler.instance.resumePlayerControls();
+    }
     public void LoadMenu()
     {
         Time.timeScale = 1f;
