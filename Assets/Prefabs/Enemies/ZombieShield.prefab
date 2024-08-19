@@ -117,6 +117,8 @@ MonoBehaviour:
   interpolationMultiplier: 0.01
   wakeUpCooldown: 5
   wallHitLimit: 2
+  wallHitSound: {fileID: 8559890285010858849, guid: d4c1ae3bcae98ee4297301e7d8450df2, type: 3}
+  shieldBlockSound: {fileID: 8559890285010858849, guid: f0e77dfdc87d23c4785f3678f7278400, type: 3}
 --- !u!50 &6568979143390308138
 Rigidbody2D:
   serializedVersion: 4

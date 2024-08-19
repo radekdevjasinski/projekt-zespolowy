@@ -66,7 +66,7 @@ public class MiniMapController : MonoBehaviour
                 roomIcon.rectTransform.sizeDelta = roomIconSize;
                 roomIcon.rectTransform.anchoredPosition = miniMapPos;
 
-                if (room.visited && (room.roomType == RoomType.BOSSROOM || room.roomType == RoomType.SHOPROOM))
+                if (room.roomType == RoomType.BOSSROOM || room.roomType == RoomType.SHOPROOM)
                 {
                     GameObject specialRoomIconObject = new GameObject("SpecialRoomIcon");
                     specialRoomIconObject.transform.SetParent(roomIconObject.transform);

@@ -21,6 +21,10 @@ public class ZombieShield : EnemyBase, OnDamage
     private bool stunned = false;
     private Shield shield;
     private GameObject stars;
+    [Header("Sounds")]
+    public GameObject wallHitSound;
+    public GameObject shieldBlockSound;
+
 
     protected override void Start()
     {
@@ -97,6 +101,7 @@ public class ZombieShield : EnemyBase, OnDamage
         stunned = true;
         stars.SetActive(stunned);
         CameraController.Instance.Shake();
+        SoundManager.instance.playSound(wallHitSound, gameObject.transform.position);
         StartCoroutine(startRunning());
 
     }
@@ -115,6 +120,7 @@ public class ZombieShield : EnemyBase, OnDamage
         if (!stunned)
         {
             Destroy(gameObject);
+            SoundManager.instance.playSound(shieldBlockSound, gameObject.transform.position);
         }
     }
     public void ShieldBash()
