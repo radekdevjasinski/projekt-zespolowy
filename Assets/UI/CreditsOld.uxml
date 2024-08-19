@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/stylemenu.uss?fileID=7433441132597879392&amp;guid=5ca275e6489aa48439a5218a07c97c07&amp;type=3#stylemenu" />
+    <ui:VisualElement style="flex-grow: 1; align-items: auto; width: 100%; height: 100%; flex-direction: row;">
+        <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: column-reverse; flex-wrap: nowrap; width: 30%; align-self: auto; background-color: rgb(24, 15, 43); position: relative; height: 100%; flex-shrink: 0; align-items: auto; justify-content: flex-start;">
+            <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BackButton" class="MenuButton" style="align-items: flex-start; flex-wrap: nowrap; align-self: flex-start; width: 50%; margin-left: 2px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; flex-direction: column; flex-wrap: nowrap; width: 40%; align-self: flex-start; background-color: rgba(24, 15, 43, 0); position: relative; height: 100%; flex-shrink: 0; align-items: flex-start; justify-content: flex-start;" />
+        <ui:VisualElement style="flex-grow: 0; flex-direction: column; flex-wrap: wrap-reverse; width: 30%; align-self: flex-end; background-color: rgb(24, 15, 43); position: relative; height: 100%; flex-shrink: 0; align-items: flex-start; justify-content: space-between;" />
+    </ui:VisualElement>
+</ui:UXML>

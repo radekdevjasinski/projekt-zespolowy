@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
@@ -11,6 +12,7 @@ public class MenuUIController : MonoBehaviour
     public VisualTreeAsset mainMenuVTA;
     public VisualTreeAsset settingsVTA;
     public VisualTreeAsset creditsVTA;
+    public VisualTreeAsset creditsVTAold;
     VisualElement root;
     Button newGameButton;
     Button creditsButton;
@@ -25,6 +27,9 @@ public class MenuUIController : MonoBehaviour
     Label settingsLabel;
     Label sliderLabel;
     Label muteLabel;
+    Label creditLabel;
+    public bool toggleCredits = false;
+
 
     [SerializeField] private Locale polishLocale;
     [SerializeField] private Locale englishLocale;
@@ -46,6 +51,11 @@ public class MenuUIController : MonoBehaviour
     {   
         if(volumeSlider != null)
         UpdateVolumeLabel(volumeSlider.value);
+
+        if(toggleCredits == true)
+        {
+          //  StartCoroutine(ToggleClassRoutine());
+        }
         UpdateUI();
     }
 
@@ -103,6 +113,8 @@ public class MenuUIController : MonoBehaviour
         {
             LoadCredits();
             menuScript.ToggleCredits();
+
+            // toggleCredits = true;
         };
 
         exitButton.clicked += () =>
@@ -215,14 +227,37 @@ public class MenuUIController : MonoBehaviour
     public void LoadCredits()
     {
         root.Clear();
-        creditsVTA.CloneTree(root);
+        //creditsVTA.CloneTree(root);
+        creditsVTAold.CloneTree(root);
 
         backButton = root.Q<Button>("BackButton");
-        Label creditLabel = root.Q<Label>("CreditsText");
+        //Label creditLabel = root.Q<Label>("CreditsLabel");
+        //creditLabel.AddToClassList("CreditsTextEnd"); // Dodaj klasê CSS
+
+        if (backButton != null)
+        {
+            backButton.clicked += () =>
+            {
+                Debug.Log("Wyjscie do menu...");
+                toggleCredits = false;
+                Debug.Log("ToggleCredits = " + toggleCredits);
+                menuScript.ToggleCredits();
+                LoadMainMenu();
+                
+            };
+        }
 
         if (creditLabel != null)
         {
-           AnimateCredits(creditLabel);
+
+            toggleCredits = true;
+            Debug.Log("Wejœcie w creditsy...");
+            Debug.Log("toggleCredits = " + toggleCredits);
+            Debug.Log("Start korutyny");
+            if (toggleCredits == true)
+            {
+                StartCoroutine(ToggleClassRoutine(toggleCredits, creditLabel));
+            }
         }
         UpdateUI();
     }
@@ -232,7 +267,17 @@ public class MenuUIController : MonoBehaviour
     {
        // creditLabel.AddToClassList("CreditsTextEnd");
     }
+    private IEnumerator ToggleClassRoutine(bool toggleCredits, Label creditLabel)
+    {
 
+        while (toggleCredits == true) // Pêtla wykonuj¹ca siê w nieskoñczonoœæ
+        {
+            creditLabel.AddToClassList("CreditsTextEnd"); // Dodaj klasê CSS
+            yield return new WaitForSeconds(25f); // Czekaj 25 sekund
+
+            creditLabel.RemoveFromClassList("CreditsTextEnd"); // Usuñ klasê CSS
+        }
+    }
     private void UpdateUI()
     {
         // Update text for buttons and labels according to the selected locale

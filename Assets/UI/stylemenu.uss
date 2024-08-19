@@ -16,24 +16,6 @@
     font-size: 24px;
 }
 
-.CreditsText {
-    font-size: 24px;
-    color: white;
-    align-self: flex-start;
-    justify-content: flex-start;
-}
-
-.CreditsTextEnd {
-    position: absolute;
-    bottom: 300%;
-    left: 0;
-    right: 0;
-    font-size: 24px;
-    color: white;
-    transition: bottom 10s linear;
-    transition-duration: 25s;
-}
-
 .MenuButton:hover {
     background-color: rgba(0, 0, 0, 0);
     color: rgb(255, 255, 255);
@@ -50,4 +32,36 @@
     border-bottom-width: 2px;
     border-left-width: 2px;
     font-size: 24px;
+}
+
+.LanguageButton:hover {
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+}
+
+.LanguageButton {
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.CreditsText {
+    translate: 0 650px;
+}
+
+.CreditsTextEnd {
+    translate: 0 -650px;
+    transition-timing-function: linear;
+    transition-duration: 20s;
 }
