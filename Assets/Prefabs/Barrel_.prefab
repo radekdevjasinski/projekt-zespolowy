@@ -142,7 +142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9afba9275b39334d8b646a0082b4d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 7249905866921875391, guid: 605c7cdbb24f9f04cab59045c753ef31, type: 3}
+  blastPrefab: {fileID: 7303302816115850705, guid: 5a59d1c9bd0a7094eb913a8e4bce1ef2, type: 3}
+  explosionMaterial: {fileID: 2100000, guid: 534dd4507016bcf48b12f20f39da9cb7, type: 2}
+  explosionSpeed: 0.5
+  blastRadius: 0.5
+  damageModifier: 2
+  damageLayerMask:
+    serializedVersion: 2
+    m_Bits: 1536
 --- !u!114 &-272338307828933733
 MonoBehaviour:
   m_ObjectHideFlags: 0
