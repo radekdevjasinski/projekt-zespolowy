@@ -10,7 +10,6 @@ public class Barrel : MonoBehaviour
     [SerializeField] private float blastRadius = 0.5f;
     [SerializeField] private float damageModifier = 2.0f;  
     [SerializeField] private LayerMask damageLayerMask;
-    [SerializeField] private float knockbackPower = 3.0f;
     private DestroyableObject destroyableObject;
     private NavigationBake navigationBake;
 
@@ -71,7 +70,7 @@ public class Barrel : MonoBehaviour
             IDealDamage damageable = obj.GetComponent<IDealDamage>();
             if (damageable != null)
             {
-                Vector2 direction = obj.transform.position - transform.position;
+                Vector2 direction = transform.position - obj.transform.position;
                 damageable.dealDamageUniversal(damageModifier, direction);
 
             }

@@ -145,11 +145,12 @@ MonoBehaviour:
   blastPrefab: {fileID: 7303302816115850705, guid: 5a59d1c9bd0a7094eb913a8e4bce1ef2, type: 3}
   explosionMaterial: {fileID: 2100000, guid: 534dd4507016bcf48b12f20f39da9cb7, type: 2}
   explosionSpeed: 0.5
-  blastRadius: 0.5
+  blastRadius: 1
   damageModifier: 2
   damageLayerMask:
     serializedVersion: 2
     m_Bits: 1536
+  knockbackPower: 3
 --- !u!114 &-272338307828933733
 MonoBehaviour:
   m_ObjectHideFlags: 0
