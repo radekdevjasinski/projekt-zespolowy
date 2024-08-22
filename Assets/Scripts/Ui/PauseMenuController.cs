@@ -15,6 +15,7 @@ public class PauseMenuController : MonoBehaviour
     public GameObject tutorialButtons;
 
     private Controls controls;
+    private bool tutorialOn;
 
     private void Awake()
     {
@@ -24,10 +25,17 @@ public class PauseMenuController : MonoBehaviour
     private void Start()
     {
         GameControler.instance.pausePlayerControls();
+        tutorialOn = true;
     }
     private void Update()
     {
-       // Debug.Log(GameIsPaused);
+        if (tutorialOn)
+        {
+            if (Input.anyKeyDown)
+            {
+                EndTutorial();
+            }
+        }
     }
     private void OnEnable()
     {
@@ -72,6 +80,7 @@ public class PauseMenuController : MonoBehaviour
         tutorialScreen.SetActive(false);
         tutorialButtons.SetActive(false);
         GameControler.instance.resumePlayerControls();
+        tutorialOn = false;
     }
     public void LoadMenu()
     {

@@ -609,7 +609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &429773616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2234,7 +2234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.39914
+      value: -107.399
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3096,7 +3096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomSpace: 50
-  roomCount: 1
+  roomCount: 15
   shopRoomCount: 3
   bossRoomCount: 1
   startRoomPrefabs:
@@ -3108,6 +3108,15 @@ MonoBehaviour:
   - {fileID: 5690942790177299855, guid: e59e5babd78831a439ea0d71c5ab68b6, type: 3}
   roomPrefabs:
   - {fileID: 5690942790177299855, guid: decd5614ed44402499e0f98feb2bebe5, type: 3}
+  - {fileID: 5690942790177299855, guid: f669861f539b2d24887627711937011d, type: 3}
+  - {fileID: 5690942790177299855, guid: 81d4502ae7425ae409f9e6657707e288, type: 3}
+  - {fileID: 5690942790177299855, guid: 8f82e9cb69327994b941609b4d3655a4, type: 3}
+  - {fileID: 5690942790177299855, guid: cc2ec60203b28e94ba7b20bf221ea5a8, type: 3}
+  - {fileID: 5690942790177299855, guid: d2c80ecbeed2db744b8351ec6fefb895, type: 3}
+  - {fileID: 5690942790177299855, guid: 89c48bb211eb82a479189f32347a7a56, type: 3}
+  - {fileID: 5690942790177299855, guid: d792c1fef95dbb14985b67ad52f6f74c, type: 3}
+  - {fileID: 5690942790177299855, guid: e2f6720748de4c84bb6b9ee7e6ba9a4a, type: 3}
+  - {fileID: 5690942790177299855, guid: 94f020c5c39735742ad0951a2eeafe46, type: 3}
   bossPrefabs:
   - {fileID: 6731866519351943996, guid: d4b892e898ee5754c95e66693dec31e5, type: 3}
   shopPrefabs:
