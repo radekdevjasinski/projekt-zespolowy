@@ -55,7 +55,7 @@ public class Barrel : MonoBehaviour
 
         if (navigationBake != null)
         {
-            Debug.LogError("bake");
+            Debug.Log("bake");
             navigationBake.BakeNavMesh();
         }
         else
