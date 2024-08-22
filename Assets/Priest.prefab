@@ -93,11 +93,7 @@ Animator:
   m_GameObject: {fileID: 1700270595183996481}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-<<<<<<< HEAD
   m_Controller: {fileID: 9100000, guid: fa4fe6d5ed404ea47a0bae447c1076bf, type: 2}
-=======
-  m_Controller: {fileID: 9100000, guid: 8e59958f7f1effe4b91e0ecd71e46ba8, type: 2}
->>>>>>> parent of 4e522f6 (Revert "Merge remote-tracking branch 'origin/Priest'")
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -171,11 +167,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: face42195644a224d9676a16c541aec7, type: 3}
-=======
-  m_Sprite: {fileID: 988757385, guid: 2770ade4033294341b3080904085b903, type: 3}
->>>>>>> parent of 4e522f6 (Revert "Merge remote-tracking branch 'origin/Priest'")
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -349,14 +341,10 @@ MonoBehaviour:
   playerController: {fileID: 0}
   attackRangeModifier: 1
   enemyToSpawn: {fileID: 1700270595183996481, guid: cd8a710d7f643a549ace2bfc3e552f0c, type: 3}
-<<<<<<< HEAD
   spawnCooldown: 3
   priestIdleSprite: {fileID: 21300000, guid: face42195644a224d9676a16c541aec7, type: 3}
   priestMoveRightSprite: {fileID: 21300000, guid: 3e0bf4b2111784b469cce2ae86a8840c, type: 3}
   priestMoveLeftSprite: {fileID: 21300000, guid: 0bd09e3116feb2f47a98fb8e27e27447, type: 3}
-=======
-  spawnCooldown: 5
->>>>>>> parent of 4e522f6 (Revert "Merge remote-tracking branch 'origin/Priest'")
 --- !u!114 &4563013715229676899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +358,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 3747560810997127324}
-<<<<<<< HEAD
   safeDistance: 5
-=======
->>>>>>> parent of 4e522f6 (Revert "Merge remote-tracking branch 'origin/Priest'")
