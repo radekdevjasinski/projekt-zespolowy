@@ -12,10 +12,6 @@ public class Barrel : MonoBehaviour
     [SerializeField] private LayerMask damageLayerMask;
     private DestroyableObject destroyableObject;
     private NavigationBake navigationBake;
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 9b7bd51 (Revert "Merge remote-tracking branch 'origin/Destroyable-Objects'")
 
     private void Awake()
     {
@@ -55,10 +51,6 @@ public class Barrel : MonoBehaviour
 
         Destroy(this.gameObject);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 9b7bd51 (Revert "Merge remote-tracking branch 'origin/Destroyable-Objects'")
         if (navigationBake != null)
         {
             Debug.LogError("bake");
@@ -68,7 +60,6 @@ public class Barrel : MonoBehaviour
         {
             Debug.LogError("NavigationBake instance not found.");
         }
-<<<<<<< HEAD
     }
 
     private void DealDamage()
@@ -84,7 +75,5 @@ public class Barrel : MonoBehaviour
 
             }
         }
-=======
->>>>>>> parent of 9b7bd51 (Revert "Merge remote-tracking branch 'origin/Destroyable-Objects'")
     }
 }
