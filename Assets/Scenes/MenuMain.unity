@@ -1080,8 +1080,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1340.4}
-  m_SizeDelta: {x: 892.53, y: 1386.7551}
+  m_AnchoredPosition: {x: 0, y: -1220.2815}
+  m_SizeDelta: {x: 892.53, y: 1146.5181}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &571740243
 MonoBehaviour:
@@ -1116,13 +1116,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sk\u0142ad zespo\u0142u\r\nKierownik projektu: Rados\u0142aw Jasi\u0144ski\r\n\r\nProgrami\u015Bci:\r\n\r\nLider
-    zespo\u0142u: Jakub Kotwica\r\n\r\nJanus Eliza\r\nWiktoria W\xF3jcik\r\nJakub
-    Kotwica\r\nRados\u0142aw Jasi\u0144ski\r\nFilip Borowiec\r\nBartosz Su\u0142ek\r\nTomasz
-    Szarek\r\n\nGraficy:\r\n\r\nLider zespo\u0142u: Sebastian Pindral\r\n\r\nJulia
-    Piotrowska\r\nHalyna Khoprova\r\nSebastian Pindral\r\nTomasz Zimnicki\r\n\nScenarzy\u015Bci:\r\n\r\nLider
-    zespo\u0142u: Konrad Sochacki\r\n\r\nKonrad Sochacki\r\nBartosz Klimczak\r\nPiotr
-    Skuta\r\nMicha\u0142 Szot"
+  m_text: "Leader: \nRados\u0142aw Jasi\u0144ski\n\nProgrammers:\nJakub Kotwica\nFilip
+    Borowiec\nJanus Eliza\nWiktoria W\xF3jcik\nRados\u0142aw Jasi\u0144ski\nBartosz
+    Su\u0142ek\nTomasz Szarek\n\nGraphic Designers:\nHalyna Khoprova\nSebastian Pindral\nJulia
+    Piotrowska\nTomasz Zimnicki\n\nMusic:\nPiotr Kary\u015B\n\nScript:\nKonrad Sochacki\nBartosz
+    Klimczak\nPiotr Skuta\nMicha\u0142 Szot"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5f9954ac936f764098d30a31269be81, type: 2}
   m_sharedMaterial: {fileID: -2083862922060453798, guid: b5f9954ac936f764098d30a31269be81, type: 2}

@@ -8,7 +8,8 @@ public class Barrel : MonoBehaviour
     [SerializeField] private Material explosionMaterial;
     [SerializeField] private float explosionSpeed = 0.5f;
     [SerializeField] private float blastRadius = 0.5f;
-    [SerializeField] private float damageModifier = 2.0f;  
+    [SerializeField] private float damageModifier = 2.0f;
+    [SerializeField] private float explodeTime = 0.5f;
     [SerializeField] private LayerMask damageLayerMask;
     private DestroyableObject destroyableObject;
     private NavigationBake navigationBake;
@@ -34,7 +35,7 @@ public class Barrel : MonoBehaviour
     private IEnumerator DestroyThisObject()
     {
         hasStarted = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(explodeTime);
 
         GameObject blast = Instantiate(blastPrefab);
         blast.transform.position = this.transform.position;

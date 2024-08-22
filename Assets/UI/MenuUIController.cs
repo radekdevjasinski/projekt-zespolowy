@@ -292,5 +292,6 @@ public class MenuUIController : MonoBehaviour
         if (settingsLabel != null) settingsLabel.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "Settings");
         if (sliderLabel != null) sliderLabel.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "MusicSound");
         if (muteLabel != null) muteLabel.text = LocalizationSettings.StringDatabase.GetLocalizedString("StringsUI", "Mute");
+        if (creditLabel != null) creditLabel.text = LocalizationSettings.StringDatabase.GetLocalizedString("Menu", "Credits");
     }
 }
