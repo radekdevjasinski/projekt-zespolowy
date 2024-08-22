@@ -9,7 +9,7 @@ public class EnemyBase : EntityController<float>
     [SerializeField] protected float visionRange = 1f; //zasieg widzenia wrogiw
     [SerializeField] protected int damage = 1; //obrazenia wroga
     [SerializeField] protected float speed = 1f; //szybkosc wroga
-    [SerializeField] protected float dropItemChance = .5f; 
+    public float dropItemChance = .5f; 
 
 
     private float changeDirectionTimer = 3f; //czas po kt?rym zmieniamy kierunek ruchu

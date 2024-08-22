@@ -10,14 +10,15 @@ public class PriestController : EnemyBase, OnDamage
     public float attackRangeModifier = 1;
     private Animator animator;
     private PriestPathFinding priestPathFinding;
+    private NavMeshAgent agent;
+
     private bool isInRange = false;
     private Knockback knockback;
 
     [SerializeField] private GameObject enemyToSpawn;
+    [SerializeField] private GameObject burst;
     [SerializeField] private float spawnCooldown = 3.0f;
-    private bool canSpawn = true;
-
-    private float PriestSpeed = 1.7f;
+    [SerializeField] private int spawnCount = 2;
 
     protected override void Start()
     {
@@ -26,11 +27,13 @@ public class PriestController : EnemyBase, OnDamage
         damage = 1;
         animator = GetComponent<Animator>();
         priestPathFinding = GetComponent<PriestPathFinding>();
-        priestPathFinding.agent.speed = PriestSpeed;
+        priestPathFinding.agent.speed = this.speed;
         playerController = GameObject.Find("Player").GetComponent<PlayerEntityController>();
         knockback = GetComponent<Knockback>();
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
+        StartCoroutine(SpawnEnemy());
+
     }
 
     void FixedUpdate()
@@ -43,11 +46,6 @@ public class PriestController : EnemyBase, OnDamage
                 Attack();
             }
         }
-
-        if (canSpawn)
-        {
-            StartCoroutine(SpawnEnemy());
-        }
     }
 
     public void ApplyKnockback(Vector2 direction, float knockbackForce, float knockbackDuration)
@@ -57,39 +55,50 @@ public class PriestController : EnemyBase, OnDamage
 
     protected override void Move()
     {
-        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        Vector2 direction = (transform.position - playerTransform.position).normalized;
-        Vector2 targetPosition = (Vector2)transform.position + direction;
-        Vector2 forceDirection = (targetPosition - (Vector2)transform.position).normalized;
+        priestPathFinding.Move();
+        animator.SetFloat("moveX", agent.velocity.x);
+        float speed = agent.velocity.magnitude;
+        animator.SetFloat("speed", speed);
 
-        if (rb != null)
-        {
-            priestPathFinding.Move();
-            animator.SetFloat("moveX", forceDirection.x);
-            animator.SetFloat("moveY", forceDirection.y);
-            animator.Play("Move");
-        }
+        //animator.Play("Move");
     }
 
     protected override void Attack()
     {
         playerController.dealDamage(damage);
-        ApplyKnockback((transform.position - GameObject.Find("Player").transform.position).normalized, knockback.knockbackForceAttacking, knockback.knockbackDurationAttacking);
+        ApplyKnockback((transform.position - GameObject.Find("Player").transform.position).normalized, 
+            knockback.knockbackForceAttacking, knockback.knockbackDurationAttacking);
     }
 
     IEnumerator SpawnEnemy()
     {
-        canSpawn = false;
+        priestPathFinding.isCasting = true;
+        animator.SetTrigger("summon");
         yield return new WaitForSeconds(spawnCooldown);
+        StartCoroutine(SpawnEnemy());
 
-        for (int i = 0; i < 2; i++)
+    }
+    public void Spawning()
+    {
+        for (int i = 0; i < spawnCount; i++)
         {
             Vector3 spawnPosition = transform.position + (Vector3)(Random.insideUnitCircle * 2);
+            Vector3 roomPosition = transform.parent.position;
+            spawnPosition = new Vector3(
+                Mathf.Clamp(spawnPosition.x, roomPosition.x - 5.5f, roomPosition.x + 5.5f),
+                Mathf.Clamp(spawnPosition.y, roomPosition.y - 2.5f, roomPosition.y + 2.5f),
+                spawnPosition.z);
             GameObject spawnedEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
             UnlockMovement(spawnedEnemy);
+            spawnedEnemy.GetComponent<EnemyBase>().dropItemChance = 0;
+            
+            GameObject spawnedBurst = Instantiate(burst, spawnPosition, Quaternion.identity);
+            spawnedBurst.GetComponent<ParticleSystem>().Play();
+            Destroy(spawnedBurst, 2f);
+        
+        
         }
-
-        canSpawn = true;
+        priestPathFinding.isCasting = false;
     }
 
     void UnlockMovement(GameObject enemy)
@@ -128,13 +137,6 @@ public class PriestController : EnemyBase, OnDamage
     {
         base.onDie();
     }
-
-    public void Modify(float mod)
-    {
-        attackRangeModifier = mod;
-        attackRange *= attackRangeModifier;
-    }
-
     public void onDamage()
     {
         ApplyKnockback((transform.position - playerController.gameObject.transform.position).normalized, knockback.knockbackForceAttacked, knockback.knockbackDurationAttacked);
