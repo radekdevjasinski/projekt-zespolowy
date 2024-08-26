@@ -1,139 +1,85 @@
-# Language
-* [Polski](#spis-treści)
-* [English](#table-of-contents)
-
-## Spis treści
-* [Informacje](#informacje)
-* [Użyte technologie](#użyte-technologie)
-* [Skład zespołu](#skład-zespołu)
-* [Zrzuty ekranu](#zrzuty-ekranu)
-
-## Informacje
-
-Projekt nad którym pracowaliśmy, dotyczył stworzenia gry komputerowej typu strzelanki, przygodowej gry akcji
-z elementami roguelike, które obejmują między innymi proceduralnie generowany świat oraz permanentną śmierć, 
-wymuszając na graczu rozpoczynanie rozgrywki od nowa w przypadku śmierci postaci.
-
-Styl graficzny, który wybraliśmy do stworzenia gry to pixelart, jest to prosty i klarowny styl, zapewniający
-dużą elastyczność podczas tworzenia oprawy artystycznej. Projekt został zrealizowany w klimacie dark fantasy,
-charakteryzującym się przede wszystkim mroczną atmosferą oraz obecnością magii i istot nadprzyrodzonych, które nie opuszczają 
-nas od momentu rozpoczęcia rozgrywki aż do jej końca.
-
-Nasza praca nad projektem opierała się na dwutygodniowych sprintach, gdzie po upływie ustalonego czasu spotykaliśmy się wszyscy
-na platformie Discord w celu pokazania naszych postępów nad projektem oraz dyskusji na temat dalszych planów odnośnie gry.
-Do określania celów oraz monitorowania postępów używamy internetowego narzędzia ClickUp.
-
-	
-## Użyte technologie
-Projekt został stworzony z wykorzystaniem:
-* Unity: 2022.3.21f1
-* Pixilart
-
-## Skład zespołu
-
-Kierownik projektu: __Radosław Jasiński__
-
-
-
-Programiści:
-
-Lider zespołu: __Jakub Kotwica__
-```
-Janus Eliza
-Wiktoria Wójcik
-Jakub Kotwica
-Radosław Jasiński
-Filip Borowiec
-Bartosz Sułek
-Tomasz Szarek
-```
-
-Graficy:
-
-Lider zespołu: __Sebastian Pindral__
-```
-Julia Piotrowska
-Halyna Khoprova
-Sebastian Pindral
-Tomasz Zimnicki
-```
-
-Scenarzyści:
-
-Lider zespołu: __Konrad Sochacki__
-```
-Konrad Sochacki
-Bartosz Klimczak
-Piotr Skuta
-Michał Szot
-```
-
-## Zrzuty ekranu 
-
-![screen1.png](https://i.postimg.cc/qBhSBSVL/screen1.png)
-
-![screen2.png](https://i.postimg.cc/XqdsKMn6/screen2.png)
-
-![screen3.png](https://i.postimg.cc/PqJK3vd4/screen3.png)
-
-
-## Table of Contents
-* [Information](#information)
+# Table of Contents
+* [Description](#description)
 * [Technologies Used](#technologies-used)
 * [Team Members](#team-members)
 * [Screenshots](#screenshots)
 
-## Information
+# Description
 
-The project we worked on involved creating a computer game, a shooter and action-adventure game with roguelike elements. These elements include, among others, a procedurally generated world and permanent death, forcing the player to restart the game upon character death.
+<p align="center">
+"This is your last chance to escape! Decide for yourself if you want to go in there; I can't promise you'll come out in one piece." <br>
+<em>~Dungeon's Whisper</em>
+</p>
 
-The graphic style we chose for the game is pixel art, a simple and clear style that provides great flexibility in creating the artistic environment. The project is set in a dark fantasy atmosphere, characterized primarily by its dark ambiance, and the presence of magic and supernatural beings, which accompany the player from the beginning to the end of the game.
+The Dungeon's Whisper is a dark fantasy roguelike game, inspired by classics like The Binding of Isaac and Enter the Gungeon. Designed as a project for our university, this demo represents our first steps into the world of game development.
 
-Our work on the project was based on two-week sprints, where after the set time, we all met on the Discord platform to show our progress on the project and discuss further plans for the game. We use the online tool ClickUp to set goals and monitor progress.
+The player is placed in a procedurally generated world filled with dangers and mysteries where magic and monstrous beings play a key role. Along the way, they will find chests containing items that enhance their character, offering crucial advantages over enemies and bosses of the dungeon.
+
+
+
+# Controls:
+
+- WASD: Move
+- Arrows/Left click: Attack
+- E: Bombs
+- Q: Health Potions
+- Space: Dash
+- Tab: Toggle Statistics
+- Escape: Pause Menu
+
+## Dev Controls
+- ~: Toggle Console (Type "help" for a command list)
+
+# Team Members
+
+Leader: __Radosław Jasiński__
+
+## Developers:
+
+- [Jakub Kotwica](https://github.com/AnchorDev)
+- [Radosław Jasiński](https://github.com/radekdevjasinski)
+- [Filip Borowiec](https://github.com/Filomilo)
+- [Janus Eliza](https://github.com/Elizaa0)
+- [Wiktoria Wójcik](https://github.com/Kulencjusz)
+- [Bartosz Sułek](https://github.com/Smigloling)
+- [Tomasz Szarek](https://github.com/TomaszSzarek)
+
+## Graphic Designers:
+
+- Julia Piotrowska
+- Halyna Khoprova
+- Sebastian Pindral
+- Tomasz Zimnicki
+
+## Writers:
+
+- Konrad Sochacki
+- Bartosz Klimczak
+- Piotr Skuta
+- Michał Szot
+
+## Music:
+
+- [Piotr Karyś](https://www.instagram.com/dvnte2022/)
+
+## Screenshots
+[![Menu.png](https://i.postimg.cc/HkynBLKq/Menu.png)](https://postimg.cc/ZWJJqJJH)
+
+[![Start.png](https://i.postimg.cc/0N1Q3s1b/Start.png)](https://postimg.cc/JsKMDSnL)
+
+[![Boss-Room-Info.png](https://i.postimg.cc/fyDqgkBB/Boss-Room-Info.png)](https://postimg.cc/FdCxYFtL)
+
+[![Priest.png](https://i.postimg.cc/nz8PB378/Priest.png)](https://postimg.cc/v1zhdL3X)
+
+[![ShopPNG.png](https://i.postimg.cc/50wk38qX/ShopPNG.png)](https://postimg.cc/bDwTYD5P)
+
+[![Speedster.png](https://i.postimg.cc/4yP2CZ0Z/Speedster.png)](https://postimg.cc/9w4YZ3VN)
+
+[![me-with-my-bitch.png](https://i.postimg.cc/yxVbxkq2/me-with-my-bitch.png)](https://postimg.cc/njPkwVh1)
+
+[![me-with-some-mf.png](https://i.postimg.cc/V6FKxmSg/me-with-some-mf.png)](https://postimg.cc/62yVRsf4)
 
 ## Technologies Used
 The project was created using:
 * Unity: 2022.3.21f1
 * Pixilart
-
-## Team Members
-
-Project Manager: __Radosław Jasiński__
-
-Developers:
-
-Team Leader: __Jakub Kotwica__
-```
-Janus Eliza
-Wiktoria Wójcik
-Jakub Kotwica
-Radosław Jasiński
-Filip Borowiec
-Bartosz Sułek
-Tomasz Szarek
-```
-Graphic Designers:
-
-Team Leader: __Sebastian Pindral__
-```
-Julia Piotrowska
-Halyna Khoprova
-Sebastian Pindral
-Tomasz Zimnicki
-```
-Writers:
-
-Team Leader: __Konrad Sochacki__
-```
-Konrad Sochacki
-Bartosz Klimczak
-Piotr Skuta
-Michał Szot
-```
-
-## Screenshots
-![screen1.png](https://i.postimg.cc/qBhSBSVL/screen1.png)
-
-![screen2.png](https://i.postimg.cc/XqdsKMn6/screen2.png)
-
-![screen3.png](https://i.postimg.cc/PqJK3vd4/screen3.png)
