@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3989447266005944237}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50,6 +50,7 @@ MonoBehaviour:
   bomb: {fileID: 5112259435028361392, guid: 4043e8fa32bdb7b439272ca6e940ceb9, type: 3}
   key: {fileID: 5112259435028361392, guid: ad732535650cc6f4da00e69877929907, type: 3}
   potion: {fileID: 5112259435028361392, guid: 2e9a9850028f60c4d8abd3120b96e5fe, type: 3}
+  goldCoin: {fileID: 5112259435028361392, guid: 02a65780966fe514d9025c5a5e0b2eb1, type: 3}
   items:
   - {fileID: 5112259435028361392, guid: 2763f44abcf228e4ea4f6cabef84ea8c, type: 3}
   - {fileID: 5112259435028361392, guid: e3fbc3e612156184bb8c61463c329bfd, type: 3}
@@ -63,7 +64,7 @@ MonoBehaviour:
   - {fileID: 5112259435028361392, guid: a91ea1b360cf5b944a3b53da65774498, type: 3}
   - {fileID: 5112259435028361392, guid: a2336a88352f82847a0ece456f27ea50, type: 3}
   - {fileID: 5112259435028361392, guid: 055c57ca9f913274c9adf1a9d30b3fb9, type: 3}
-  - {fileID: 5112259435028361392, guid: 02a65780966fe514d9025c5a5e0b2eb1, type: 3}
+  goldenCoinSpawnChance: 50
   bigChestChance: 30
   minItemsAmountChest: 5
   maxItemsAmountChest: 10

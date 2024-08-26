@@ -2060,7 +2060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287370801224881342, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -107.399826
+      value: -107.39911
       objectReference: {fileID: 0}
     - target: {fileID: 2429059187622132921, guid: c1c614f1ba560a147ab9c60b5c96e21d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2750,6 +2750,7 @@ MonoBehaviour:
   bomb: {fileID: 5112259435028361392, guid: 4043e8fa32bdb7b439272ca6e940ceb9, type: 3}
   key: {fileID: 5112259435028361392, guid: ad732535650cc6f4da00e69877929907, type: 3}
   potion: {fileID: 5112259435028361392, guid: 2e9a9850028f60c4d8abd3120b96e5fe, type: 3}
+  goldCoin: {fileID: 5112259435028361392, guid: 02a65780966fe514d9025c5a5e0b2eb1, type: 3}
   items:
   - {fileID: 5112259435028361392, guid: 2763f44abcf228e4ea4f6cabef84ea8c, type: 3}
   - {fileID: 5112259435028361392, guid: e3fbc3e612156184bb8c61463c329bfd, type: 3}
@@ -2763,6 +2764,7 @@ MonoBehaviour:
   - {fileID: 5112259435028361392, guid: a91ea1b360cf5b944a3b53da65774498, type: 3}
   - {fileID: 5112259435028361392, guid: a2336a88352f82847a0ece456f27ea50, type: 3}
   - {fileID: 5112259435028361392, guid: 055c57ca9f913274c9adf1a9d30b3fb9, type: 3}
+  goldenCoinSpawnChance: 50
   bigChestChance: 30
   minItemsAmountChest: 5
   maxItemsAmountChest: 10
@@ -2814,7 +2816,7 @@ MonoBehaviour:
   shopPrefabs:
   - {fileID: 6196426667538248293, guid: 802d816e2ef1e284abf77f9ff6c59c13, type: 3}
   - {fileID: 6196426667538248293, guid: b4b4b41d09a48d247b59f1727a81da1f, type: 3}
-  - {fileID: 6196426667538248293, guid: 27d45b19832b72041b031b183a8db837, type: 3}
+  - {fileID: 6196426667538248293, guid: b88908d084b1f264ea614297ee0ebe4f, type: 3}
   navigationBake: {fileID: 646683195}
   controlsOfTime: 0.8
 --- !u!1 &1099864995

@@ -15,6 +15,7 @@ public class ChestSpawner : MonoBehaviour
     [SerializeField] private GameObject bomb;
     [SerializeField] private GameObject key;
     [SerializeField] private GameObject potion;
+    [SerializeField] private GameObject goldCoin;
 
     [Header("Items")]
     [SerializeField] private List<GameObject> items = new List<GameObject>();
@@ -23,6 +24,7 @@ public class ChestSpawner : MonoBehaviour
     [SerializeField] private static int spawnChestChance=10;
     [SerializeField] private static int minSpawnChestChance=10;
     [SerializeField] private static int maxSpawnChestChance=70;
+    [SerializeField] private int goldenCoinSpawnChance=50;
     [SerializeField] private int bigChestChance;
     [SerializeField] private int minItemsAmountChest;
     [SerializeField] private int maxItemsAmountChest;
@@ -71,14 +73,16 @@ public class ChestSpawner : MonoBehaviour
 
     private GameObject SellectNewItem()
     {
-        int randomNumber = Random.Range(0, 4);
+        int randomNumber = Random.Range(0, 6);
         switch(randomNumber)
         {
             case 0:
-                return coin;
             case 1:
-                return bomb;
             case 2:
+                return coin;
+            case 3:
+                return bomb;
+            case 4:
                 return key;
             default:
                 return potion;
@@ -111,6 +115,14 @@ public class ChestSpawner : MonoBehaviour
         if (randomItem != null)
         {
             lootChest.loot.Add(randomItem);
+        }
+        PlayerItemsController player = GameObject.Find("Player").GetComponent<PlayerItemsController>();
+        if (!player.hasGoldenCoin())
+        {
+            if (Random.Range(0,100) < 50)
+            {
+                lootChest.loot.Add(goldCoin);
+            }
         }
 
     }
