@@ -157,11 +157,9 @@ public class PlayerEntityController : EntityController<int>
         PlayerLastHitted playerLastHitted = GetComponent<PlayerLastHitted>();
         if (playerLastHitted != null)
         {
-            Debug.Log("Found Last Hitted object");
             GameObject lastHittedObject = playerLastHitted.GetLastTouchedObject();
             if (lastHittedObject != null)
             {
-                Debug.Log("Ostatni obiekt, kt�ry dotkn�� gracza: " + lastHittedObject.name);
                 NarratorConversation conversation = transform.GetComponentInChildren<NarratorConversation>();
                 if (conversation != null)
                 {
@@ -188,11 +186,26 @@ public class PlayerEntityController : EntityController<int>
         {
             Debug.Log("Didnt found last hitted object");
         }
-        GetComponent<PlayerControler>().lockInput();
-        GetComponentInChildren<SpriteRenderer>().enabled = false;
         GameObject gameOverScreen = GameObject.Find("GameOver");
         gameOverScreen.GetComponent<GameOverScreen>().Setup();
-        Time.timeScale = 0;
-        PauseMenuController.GameIsPaused = true;
+        Time.timeScale = 1f;
+        //PauseMenuController.GameIsPaused = true;
+        GetComponent<PlayerControler>().enabled = false;
+        GetComponent<PlayerMovementController>().enabled = false;
+        GetComponent<PlayerActionsController>().enabled = false;
+        GetComponent<PlayerAttributesController>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Animator>().enabled = false;
+        GetComponent<PlayerUpdateScreenPostion>().enabled = false;
+        GetComponent<PlayerItemsController>().enabled = false;
+        GetComponent<PlaySounfOnHit>().enabled = false;
+        GetComponent<SpriteFlashOnDamage>().enabled = false;
+        GetComponent<RandomIdleController>().enabled = false;
+        GetComponent<PlayerLastHitted>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+
+
+
+
     }
 }

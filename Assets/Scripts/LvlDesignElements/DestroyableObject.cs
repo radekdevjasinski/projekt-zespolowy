@@ -6,8 +6,9 @@ public class DestroyableObject : MonoBehaviour
 {
     public int health;
 
-    public void GetDamage(int damage)
+    public void GetDamage(float damage)
     {
-        health -= damage;
+        int damageInt = Mathf.RoundToInt(damage);
+        health -= damageInt;
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Globalization;
 
 public class StatsUI : MonoBehaviour
 {
@@ -50,12 +51,12 @@ public class StatsUI : MonoBehaviour
 
     private void UpdateStatsUI()
     {
-        speedText.text = playerAttributes.Speed.ToString("F2");
-        fireRateText.text = playerAttributes.FireRate.ToString("F2");
-        damageText.text = playerAttributes.Damage.ToString("F2");
-        rangeText.text = playerAttributes.Range.ToString("F2");
-        projectileSpeedText.text = playerAttributes.ProjectileSpeed.ToString("F2");
-        luckText.text = playerAttributes.Luck.ToString("F2");
+        speedText.text = playerAttributes.Speed.ToString("F2", CultureInfo.InvariantCulture);
+        fireRateText.text = playerAttributes.FireRate.ToString("F2", CultureInfo.InvariantCulture);
+        damageText.text = playerAttributes.Damage.ToString("F2", CultureInfo.InvariantCulture);
+        rangeText.text = playerAttributes.Range.ToString("F2", CultureInfo.InvariantCulture);
+        projectileSpeedText.text = playerAttributes.ProjectileSpeed.ToString("F2", CultureInfo.InvariantCulture);
+        luckText.text = playerAttributes.Luck.ToString("F2", CultureInfo.InvariantCulture);
     }
 
     private void ToggleStatsPanel()

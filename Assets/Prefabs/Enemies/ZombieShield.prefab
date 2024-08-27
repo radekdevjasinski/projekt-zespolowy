@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invulnerable: 0
-  maxHelathPoints: 10
+  maxHelathPoints: 20
   currentHealthPoints: 0
   visionRange: 20
   damage: 1
@@ -113,10 +113,10 @@ MonoBehaviour:
   attackSpeed: 0.1
   startSpeed: 1
   startInterpolation: 0.1
-  speedUpMultiplier: 0.3
-  interpolationMultiplier: 0.01
-  wakeUpCooldown: 5
-  wallHitLimit: 2
+  speedUpMultiplier: 0.5
+  interpolationMultiplier: 0.001
+  wakeUpCooldown: 3.5
+  wallHitLimit: 3
   wallHitSound: {fileID: 8559890285010858849, guid: d4c1ae3bcae98ee4297301e7d8450df2, type: 3}
   shieldBlockSound: {fileID: 8559890285010858849, guid: f0e77dfdc87d23c4785f3678f7278400, type: 3}
 --- !u!50 &6568979143390308138

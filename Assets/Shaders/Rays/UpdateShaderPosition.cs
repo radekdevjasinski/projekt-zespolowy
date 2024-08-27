@@ -10,11 +10,11 @@ public class UpdateShaderPosition : MonoBehaviour
     {
         renderer = GetComponent<Renderer>();
         material = renderer.material;
+        characterTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        characterTransform = GameObject.FindGameObjectWithTag("Player").transform;
         if (material != null && characterTransform != null)
         {
             Vector3 characterPosition = characterTransform.position;

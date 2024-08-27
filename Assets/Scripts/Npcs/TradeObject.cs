@@ -39,7 +39,7 @@ public class TradeObject : MonoBehaviour
         objectToBeBought.AddComponent<RemoveMoneyOnPickUp>().setMoneyToRemove(basePrice);
         objectToBeBought.AddComponent<PlaySoundOnPickUP>().setAudio(soundOnBuy);
         objectToBeBought.AddComponent<RunFunctionOnPick>().addFunction(fucntion);
-        textMesh.SetText(basePrice + " c");
+        textMesh.SetText(basePrice + "c");
         return objectToBeBought;
     }
 }

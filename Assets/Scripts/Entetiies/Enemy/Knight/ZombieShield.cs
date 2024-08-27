@@ -99,10 +99,11 @@ public class ZombieShield : EnemyBase, OnDamage
         animator.Update(0f); // Ensure the animator updates immediately
         shield.shieldActive = false;
         stunned = true;
-        stars.SetActive(stunned);
+        stars.SetActive(true);
         CameraController.Instance.Shake();
         SoundManager.instance.playSound(wallHitSound, gameObject.transform.position);
         StartCoroutine(startRunning());
+        StartCoroutine(hideStarts());
 
     }
     IEnumerator startRunning()
@@ -111,9 +112,13 @@ public class ZombieShield : EnemyBase, OnDamage
         rb.bodyType = RigidbodyType2D.Dynamic;
         shield.shieldActive = true;
         stunned = false;
-        stars.SetActive(stunned);
         speed = startSpeed;
         interpolation = startInterpolation;
+    }
+    IEnumerator hideStarts()
+    {
+        yield return new WaitForSeconds(wakeUpCooldown - .5f);
+        stars.SetActive(false);
     }
     public void hitShield(GameObject gameObject)
     {

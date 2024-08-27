@@ -13,9 +13,9 @@ public class ItemUIPanel : MonoBehaviour
 
     public void SetValuesToText(int coinsAmount,int bombAmount, int keyAmount, int potionAmount)
     {
-        coinsText.text = coinsAmount.ToString();
-        bombText.text = bombAmount.ToString();
-        keyText.text = keyAmount.ToString();
-        potionText.text = potionAmount.ToString();
+        coinsText.text = coinsAmount.ToString("D2");
+        bombText.text = bombAmount.ToString("D2");
+        keyText.text = keyAmount.ToString("D2");
+        potionText.text = potionAmount.ToString("D2");
     }
 }
